@@ -18,6 +18,8 @@ public class LogicViewport implements GLEventListener {
 	@Override
 	public void display(GLAutoDrawable glAutoDrawable) {
 		GL2 gl = glAutoDrawable.getGL().getGL2();
+		// clear buffers
+		// draw checkers
 		drawnCount = 0;
 		for (ViewportArtifact sprite : sprites) {
 			if (sprite.isVisible()) {
