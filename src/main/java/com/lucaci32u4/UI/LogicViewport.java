@@ -5,8 +5,11 @@ import javax.media.opengl.*;
 
 public class LogicViewport implements GLEventListener {
 	private ViewportArtifact[] sprites;
-	private int[] drawnIndexes;
-	private int drawnIndexesCount;
+	private ViewportArtifact[] drawn;
+	private int drawnCount;
+	private int pixelWidth, pixelHeight;
+	private int unitWidth, unitHeight;
+	private int unitOffsetX, unitOffsetY;
 	@Override
 	public void init(GLAutoDrawable glAutoDrawable) {
 	
@@ -14,7 +17,16 @@ public class LogicViewport implements GLEventListener {
 	
 	@Override
 	public void display(GLAutoDrawable glAutoDrawable) {
-		final GL2 gl = glAutoDrawable.getGL().getGL2();
+		GL2 gl = glAutoDrawable.getGL().getGL2();
+		drawnCount = 0;
+		for (ViewportArtifact sprite : sprites) {
+			if (sprite.isVisible()) {
+				if (sprite.checkIfOnScreen(unitOffsetX, unitOffsetY, unitWidth, unitHeight)) {
+					drawn[drawnCount++] = sprite;
+					sprite.onDraw(gl);
+				}
+			}
+		}
 		gl.glFlush();
 		glAutoDrawable.swapBuffers();
 	}
@@ -25,18 +37,14 @@ public class LogicViewport implements GLEventListener {
 	}
 	
 	@Override
-	public void reshape(GLAutoDrawable glAutoDrawable, int i, int i1, int i2, int i3) {
-	
+	public void reshape(GLAutoDrawable glAutoDrawable, int x, int y, int w, int h) {
+		pixelWidth = w;
+		pixelHeight = h;
 	}
 	
 	ViewportArtifact pick(int x, int y) {
 		ViewportArtifact select = null;
-		for (int i = 0, index = drawnIndexes[i]; i < drawnIndexesCount; index = drawnIndexes[++i]) {
-			if (sprites[index].checkIfOnPoint(x, y)) {
-				select = sprites[index];
-				break;
-			}
-		}
+		
 		return select;
 	}
 }
