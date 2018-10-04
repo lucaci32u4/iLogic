@@ -67,6 +67,9 @@ public class LogicNode {
         }
     }
 	
+    UUID getUUID() {
+        return uuid;
+    }
 	void setUUID(UUID uuid) {
 		this.uuid = uuid;
 	}

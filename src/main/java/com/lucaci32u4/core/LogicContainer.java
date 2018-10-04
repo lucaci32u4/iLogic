@@ -394,12 +394,12 @@ public class LogicContainer {
 		event.node = node;
 		sync.postEvent(event);
 	}
-	public void createLink(@NotNull LogicPin pin,@NotNull LogicNode node) {
+	public void createLink(@NotNull LogicPin pin, @NotNull LogicNode node) {
 		Sync.EventAddLink event = new Sync.EventAddLink();
 		event.pin = pin; event.node = node;
 		sync.postEvent(event);
 	}
-	public void destroyLink(@NotNull LogicPin pin,@NotNull LogicNode node) {
+	public void destroyLink(@NotNull LogicPin pin, @NotNull LogicNode node) {
 		Sync.EventDeleteLink event = new Sync.EventDeleteLink();
 		event.pin = pin; event.node = node;
 		sync.postEvent(event);
@@ -451,8 +451,8 @@ public class LogicContainer {
 		for (LogicPin[] pins : componentPins) for (LogicPin pin : pins) master = master.concat("<" + pin.toString() + ">\r\n");
 		for (LogicPin.PinUpdate update : mainQueue) master = master.concat("<" + update.toString() + ">\r\n");
 		for (LogicPin.PinUpdate update : subsequentQueue) master = master.concat("<!" + update.toString() + ">\r\n");
-		if (incomingNodeUpdates != null) for (LogicNode node : incomingNodeUpdates) master = master.concat("<u n" + LogicID.toString(node.uuid) + ">\r\n");
-		if (incomingComponentUpdates != null) for (LogicComponent component : incomingComponentUpdates) master = master.concat("<u c" + LogicID.toString(component.uuid) + ">\r\n");
+		if (incomingNodeUpdates != null) for (LogicNode node : incomingNodeUpdates) master = master.concat("<u n" + LogicID.toString(node.getUUID()) + ">\r\n");
+		if (incomingComponentUpdates != null) for (LogicComponent component : incomingComponentUpdates) master = master.concat("<u c" + LogicID.toString(component.getUUID()) + ">\r\n");
 		return master;
 	}
 	long getTimeStamp() {

@@ -1,8 +1,11 @@
 package com.lucaci32u4.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.UUID;
 
 public abstract class LogicComponent {
+	
     public static class Interrupter {
         private LogicComponent owner;
         public Interrupter(LogicComponent ownerComponent) { owner = ownerComponent; }
@@ -16,20 +19,38 @@ public abstract class LogicComponent {
         }
     }
     
+    public interface Handler {
+		LogicPin[] onBegin();
+		void onSimulationSignalEvent();
+		void onSimulationInterrupt(Interrupter interrupter);
+		void onEnd();
+	}
+    
     private LogicContainer container;
-    UUID uuid;
-
-    protected LogicPin[] onBegin(LogicContainer container, UUID uuid) {
+    private Handler handler;
+    private UUID uuid;
+    
+    public LogicComponent(@NotNull Handler handler) {
+    	this.handler = handler;
+	}
+    LogicPin[] onBegin(@NotNull LogicContainer container, @NotNull UUID uuid) {
     	this.container = container;
     	this.uuid = uuid;
-    	return new LogicPin[0];
+    	return handler.onBegin();
 	}
-    protected abstract void onSimulationSignalEvent();
-    protected abstract void onSimulationInterrupt(Interrupter interrupter);
-    protected void onEnd() {
-    
+    void onSimulationSignalEvent() {
+    	handler.onSimulationSignalEvent();
+	}
+    void onSimulationInterrupt(Interrupter interrupter) {
+    	handler.onSimulationInterrupt(interrupter);
+	}
+    void onEnd() {
+    	handler.onEnd();
 	}
 	
+	void setUUID(@NotNull UUID uuid) {
+    	this.uuid = uuid;
+	}
 	public UUID getUUID() {
     	return uuid;
 	}
