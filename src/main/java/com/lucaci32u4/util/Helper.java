@@ -15,4 +15,7 @@ public class Helper {
 		}
 		return res;
 	}
+	public static int step(int origin, int current, int stepSize) {
+		return (int)(Math.round((origin - current) / (double)stepSize)) * stepSize;
+	}
 }
