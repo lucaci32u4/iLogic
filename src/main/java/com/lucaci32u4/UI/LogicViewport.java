@@ -4,6 +4,9 @@ package com.lucaci32u4.UI;
 import javax.media.opengl.*;
 
 public class LogicViewport implements GLEventListener {
+	private ViewportArtifact[] sprites;
+	private int[] drawnIndexes;
+	private int drawnIndexesCount;
 	@Override
 	public void init(GLAutoDrawable glAutoDrawable) {
 	
@@ -12,29 +15,6 @@ public class LogicViewport implements GLEventListener {
 	@Override
 	public void display(GLAutoDrawable glAutoDrawable) {
 		final GL2 gl = glAutoDrawable.getGL().getGL2();
-		gl.glBlendFunc (GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
-		gl.glEnable (GL2.GL_BLEND);
-		
-		gl.glEnable (GL2.GL_LINE_SMOOTH);
-		gl.glHint (GL2.GL_LINE_SMOOTH_HINT, GL2.GL_NICEST);
-		
-		//drawing the base
-		gl.glBegin (GL2.GL_LINES);
-		gl.glVertex3f(-0.50f, -0.50f, 0);
-		gl.glVertex3f(0.50f, -0.50f, 0);
-		gl.glEnd();
-		
-		//drawing the right edge
-		gl.glBegin (GL2.GL_LINES);
-		gl.glVertex3f(0f, 0.50f, 0);
-		gl.glVertex3f(-0.50f, -0.50f, 0);
-		gl.glEnd();
-		
-		//drawing the lft edge
-		gl.glBegin (GL2.GL_LINES);
-		gl.glVertex3f(0f, 0.50f, 0);
-		gl.glVertex3f(0.50f, -0.50f, 0);
-		gl.glEnd();
 		gl.glFlush();
 		glAutoDrawable.swapBuffers();
 	}
@@ -47,5 +27,16 @@ public class LogicViewport implements GLEventListener {
 	@Override
 	public void reshape(GLAutoDrawable glAutoDrawable, int i, int i1, int i2, int i3) {
 	
+	}
+	
+	ViewportArtifact pick(int x, int y) {
+		ViewportArtifact select = null;
+		for (int i = 0, index = drawnIndexes[i]; i < drawnIndexesCount; index = drawnIndexes[++i]) {
+			if (sprites[index].checkIfOnPoint(x, y)) {
+				select = sprites[index];
+				break;
+			}
+		}
+		return select;
 	}
 }
