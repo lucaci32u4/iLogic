@@ -9,4 +9,6 @@ public interface ViewportArtifact {
 	boolean checkIfOnScreen(int screenLeft, int screenTop, int screenWidth, int screenHeight);
 	boolean checkIfOnPoint(int xPoint, int yPoint);
 	void onDraw(@NotNull GL2 gl);
+	void setPickID(int ID);
+	int getPickID();
 }

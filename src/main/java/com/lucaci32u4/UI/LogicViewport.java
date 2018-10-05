@@ -1,18 +1,22 @@
 package com.lucaci32u4.UI;
 
 
+import com.jogamp.opengl.util.texture.Texture;
+import com.jogamp.opengl.util.texture.TextureIO;
+
 import javax.media.opengl.*;
 
 public class LogicViewport implements GLEventListener {
 	private ViewportArtifact[] sprites;
 	private ViewportArtifact[] drawn;
+	private Texture pickSurface;
 	private int drawnCount;
 	private int pixelWidth, pixelHeight;
 	private int unitWidth, unitHeight;
 	private int unitOffsetX, unitOffsetY;
 	@Override
 	public void init(GLAutoDrawable glAutoDrawable) {
-	
+		pickSurface = TextureIO.newTexture(GL.GL_TEXTURE_2D);
 	}
 	
 	@Override
@@ -24,8 +28,9 @@ public class LogicViewport implements GLEventListener {
 		for (ViewportArtifact sprite : sprites) {
 			if (sprite.isVisible()) {
 				if (sprite.checkIfOnScreen(unitOffsetX, unitOffsetY, unitWidth, unitHeight)) {
-					drawn[drawnCount++] = sprite;
+					sprite.setPickID(drawnCount);
 					sprite.onDraw(gl);
+					drawn[drawnCount++] = sprite;
 				}
 			}
 		}
@@ -46,7 +51,6 @@ public class LogicViewport implements GLEventListener {
 	
 	ViewportArtifact pick(int x, int y) {
 		ViewportArtifact select = null;
-		
 		return select;
 	}
 }

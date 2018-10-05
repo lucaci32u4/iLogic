@@ -54,7 +54,7 @@ public class Main {
 		caps.setAlphaBits(8);
 		caps.setHardwareAccelerated(true);
 		caps.setSampleBuffers(true);
-		caps.setNumSamples(16);
+		caps.setNumSamples(8);
 		GLCanvas glcanvas = new GLCanvas(caps);
 		GLEventListener wpt = new LogicViewport();
 		glcanvas.setAutoSwapBufferMode(false);

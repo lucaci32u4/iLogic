@@ -55,6 +55,6 @@ public class LogicPin {
     }
     
     @Override public String toString() {
-    	return "p[" + LogicID.toString(uuid) + "] c[" + LogicID.toString(component != null ? component.uuid : new UUID(0, 0)) + "] n[" + LogicID.toString(node != null ? node.uuid : new UUID(0, 0)) + "] " + externalState.toString() + " " + listening;
+    	return "p[" + LogicID.toString(uuid) + "] c[" + LogicID.toString(component != null ? component.getUUID() : new UUID(0, 0)) + "] n[" + LogicID.toString(node != null ? node.uuid : new UUID(0, 0)) + "] " + externalState.toString() + " " + listening;
 	}
 }
