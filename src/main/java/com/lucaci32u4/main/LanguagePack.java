@@ -27,6 +27,6 @@ public class LanguagePack {
 		return IOE;
 	}
 	public String get(String key) {
-		return (started ? prop.getProperty(key) : null);
+		return (started ? prop.getProperty(key) : "");
 	}
 }

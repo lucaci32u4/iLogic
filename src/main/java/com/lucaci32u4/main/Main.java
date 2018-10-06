@@ -26,7 +26,7 @@ public class Main {
 	}
 	public static void main(String[] args) {
 		setSystemLookAndFeel();
-		LanguagePack.getInstance().begin(Helper.fread("C:/javaspace/pr.txt"));
+		//LanguagePack.getInstance().begin(Helper.fread("C:/javaspace/pr.txt"));
 		SimpleEventQueue<MainWindow.Event> queue = new SimpleEventQueue<>();
 		MainWindow window = new MainWindow(queue);
 		window.setVisible(true);
@@ -44,24 +44,6 @@ public class Main {
 		}
 	}
 	public static void gl(MainWindow win) {
-		GLProfile profile = GLProfile.get(GLProfile.GL2);
-		GLCapabilities caps = new GLCapabilities(profile);
-		caps.setBackgroundOpaque(true);
-		caps.setDoubleBuffered(true);
-		caps.setRedBits(8);
-		caps.setGreenBits(8);
-		caps.setBlueBits(8);
-		caps.setAlphaBits(8);
-		caps.setHardwareAccelerated(true);
-		caps.setSampleBuffers(true);
-		caps.setNumSamples(8);
-		GLCanvas glcanvas = new GLCanvas(caps);
-		GLEventListener wpt = new LogicViewport();
-		glcanvas.setAutoSwapBufferMode(false);
-		glcanvas.addGLEventListener(wpt);
-		glcanvas.setSize(win.getFrame().getContentPane().getWidth(), win.getFrame().getContentPane().getHeight());
-		try {
-			SwingUtilities.invokeAndWait(()-> win.getFrame().add(glcanvas));
-		} catch (Exception e) { e.printStackTrace(); }
+
 	}
 }
