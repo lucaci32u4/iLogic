@@ -14,8 +14,22 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class SwingFrame_LWJGL {
-	
+
+	private static boolean setSystemLookAndFeel() {
+		boolean[] success = { true, true, true, true };
+		try {
+			System.setProperty("sun.java2d.noddraw", "true");
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch (ClassNotFoundException e) { success[0] = false; }
+		catch (InstantiationException e) { success[1] = false; }
+		catch (IllegalAccessException e) { success[2] = false; }
+		catch (UnsupportedLookAndFeelException e) { success[3] = false; }
+		return success[0] && success[1] && success[2] && success[3];
+	}
+
 	public static void main(String[] args) {
+		setSystemLookAndFeel();
 		EventQueue.invokeLater(new Runnable() {
 			
 			public void run() {
@@ -51,7 +65,6 @@ public class SwingFrame_LWJGL {
 			public void windowClosing(WindowEvent arg0) {
 			}
 			public void windowClosed(WindowEvent arg0) {
-				terminate();
 			}
 			public void windowActivated(WindowEvent arg0) {
 			}
@@ -76,38 +89,6 @@ public class SwingFrame_LWJGL {
 			public void menuCanceled(MenuEvent e) {
 			}
 		};
-		
-		JMenu mnNewMenu = new JMenu("New menu");
-		mnNewMenu.addMenuListener(menuListener);
-		menuBar.add(mnNewMenu);
-		for (int i = 0; i < 4; i++) {
-			JMenuItem menuItem = new JMenuItem("New menu item");
-			mnNewMenu.add(menuItem);
-		}
-		
-		JMenu mnNewMenu_1 = new JMenu("New menu");
-		mnNewMenu_1.addMenuListener(menuListener);
-		menuBar.add(mnNewMenu_1);
-		for (int i = 0; i < 4; i++) {
-			JMenuItem menuItem = new JMenuItem("New menu item");
-			mnNewMenu_1.add(menuItem);
-		}
-		
-		JMenu mnNewMenu_2 = new JMenu("New menu");
-		mnNewMenu_2.addMenuListener(menuListener);
-		menuBar.add(mnNewMenu_2);
-		for (int i = 0; i < 4; i++) {
-			JMenuItem menuItem = new JMenuItem("New menu item");
-			mnNewMenu_2.add(menuItem);
-		}
-		
-		JMenu mnNewMenu_3 = new JMenu("New menu");
-		mnNewMenu_3.addMenuListener(menuListener);
-		menuBar.add(mnNewMenu_3);
-		for (int i = 0; i < 4; i++) {
-			JMenuItem menuItem = new JMenuItem("New menu item");
-			mnNewMenu_3.add(menuItem);
-		}
 		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -287,10 +268,4 @@ public class SwingFrame_LWJGL {
 			e.printStackTrace();
 		}
 	}
-	
-	private void terminate() {
-		frame.dispose();
-		System.exit(0);
-	}
-	
 }
