@@ -13,5 +13,6 @@
   <rect id="righttop" height="25" width="25" y="0" x="375" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
   <rect id="leftbottom" height="25" width="25" y="375" x="0" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
   <rect id="rightbottom" height="25" width="25" y="375" x="375" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
+
  </g>
 </svg>
