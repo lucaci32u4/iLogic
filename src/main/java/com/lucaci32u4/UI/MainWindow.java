@@ -5,6 +5,7 @@ import com.lucaci32u4.util.SimpleEventQueue;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,6 +49,9 @@ public class MainWindow {
 	private JSplitPane splitPaneHorizontal;
 	private JTabbedPane tabbedPane;
 	private JTree selectTree, simulationTree;
+	private DefaultMutableTreeNode selectTreeRoot, simulationTreeRoot;
+	private DefaultMutableTreeNode circuitsRoot;
+	private DefaultMutableTreeNode componentsRoot;
 	private JPanel propertiesPanel;
 	private MenuEventHandler menuEventHandler;
 	private WindowEvenHandler windowEvenHandler;
@@ -205,6 +209,18 @@ public class MainWindow {
 				splitPaneHorizontal = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 				tabbedPane = new JTabbedPane();
 				propertiesPanel = new JPanel();
+				selectTreeRoot = new DefaultMutableTreeNode("");
+				simulationTreeRoot = new DefaultMutableTreeNode("");
+				selectTree = new JTree(selectTreeRoot);
+				simulationTree = new JTree(simulationTreeRoot);
+				circuitsRoot = new DefaultMutableTreeNode("");
+				componentsRoot = new DefaultMutableTreeNode("");
+				selectTreeRoot.add(circuitsRoot);
+				selectTreeRoot.add(componentsRoot);
+				selectTree.expandRow(0);
+				simulationTree.expandRow(0);
+				selectTree.setRootVisible(false);
+				simulationTree.setRootVisible(false);
 				contentPanel.setLayout(new BorderLayout());
 				topToolBar.setRollover(false);
 				bottomToolBar.setRollover(false);
@@ -214,17 +230,15 @@ public class MainWindow {
 				splitPaneVertical.setLeftComponent(splitPaneHorizontal);
 				splitPaneVertical.setRightComponent(circuitPanel);
 				splitPaneHorizontal.setTopComponent(tabbedPane);
-				splitPaneHorizontal.setBottomComponent(propertiesPanel);
-				tabbedPane.addTab(null, selectTree);
-				tabbedPane.addTab(null, simulationTree);
+				splitPaneHorizontal.setBottomComponent(new JScrollPane(propertiesPanel));
+				tabbedPane.addTab(null, new JScrollPane(selectTree));
+				tabbedPane.addTab(null, new JScrollPane(simulationTree));
 				frame.setContentPane(contentPanel);
 				updateText();
 			});
 		} catch (Exception e) { e.printStackTrace(); }
 	}
-	public void setVisible(boolean val) {
-		SwingUtilities.invokeLater(() -> frame.setVisible(val));
-	}
+
 	public void updateText() {
 		SwingUtilities.invokeLater(() -> {
 			menuFile.setText(lang.get("file"));
@@ -253,7 +267,7 @@ public class MainWindow {
 			miNewCircuit.setText(lang.get("newcircuit"));
 			miDeleteCircuit.setText(lang.get("deletecircuit"));
 			miLibraries.setText(lang.get("libraries"));
-			miStartStop.setText(lang.get("start"));
+			miStartStop.setText(lang.get("simulationrunning"));
 			miReset.setText(lang.get("reset"));
 			miActiveSimulations.setText(lang.get("activesimulations"));
 			miMaxmise.setText(lang.get("maximise"));
@@ -263,9 +277,14 @@ public class MainWindow {
 			miToolbarLocationOptions[1].setText(lang.get("right"));
 			miTutorial.setText(lang.get("tutorial"));
 			miDocumentation.setText(lang.get("documentation"));
-			tabbedPane.setTitleAt(0, lang.get("components"));
+			tabbedPane.setTitleAt(0, lang.get("componentstree"));
 			tabbedPane.setTitleAt(1, lang.get("simulationtree"));
+			componentsRoot.setUserObject(lang.get("components"));
+			circuitsRoot.setUserObject(lang.get("circuits"));
 		});
+	}
+	public void setVisible(boolean val) {
+		SwingUtilities.invokeLater(() -> frame.setVisible(val));
 	}
 	public int showExitPopup() {
 		String[] options = { lang.get("save"), lang.get("discard"), lang.get("cancel") };
