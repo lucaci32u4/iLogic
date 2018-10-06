@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MainWindow implements ActionListener, WindowListener {
+public class MainWindow {
 	public final static int EXIT_SAVE = 0b11;
 	public final static int EXIT_DISCARD = 0b10;
 	public final static int EXIT_CANCEL = 0b00;
@@ -41,6 +41,16 @@ public class MainWindow implements ActionListener, WindowListener {
 	}
 	private LanguagePack lang;
 	private JFrame frame;
+	private JPanel contentPanel;
+	private JToolBar topToolBar, bottomToolBar;
+	private JSplitPane splitPaneVertical;
+	private JPanel circuitPanel;
+	private JSplitPane splitPaneHorizontal;
+	private JTabbedPane tabbedPane;
+	private JTree selectTree, simulationTree;
+	private JPanel propertiesPanel;
+	private MenuEventHandler menuEventHandler;
+	private WindowEvenHandler windowEvenHandler;
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuEdit, menuProject, menuSimulation, menuWindow, menuHelp;
 	private JMenuItem miNew, miOpen, miSave, miSaveAs, miExport, miSettings, miExit;
@@ -64,49 +74,49 @@ public class MainWindow implements ActionListener, WindowListener {
 		this.listener = listener;
 		activeSimulation = false;
 		lang = LanguagePack.getInstance();
-		frame = new JFrame();
-		menuBar = new JMenuBar();
-		menuFile = new JMenu();
-		menuEdit = new JMenu();
-		menuProject = new JMenu();
-		menuSimulation = new JMenu();
-		menuWindow = new JMenu();
-		menuHelp = new JMenu();
-		miNew = new JMenuItem();
-		miOpen = new JMenuItem();
-		miSave = new JMenuItem();
-		miSaveAs = new JMenuItem();
-		miExport = new JMenuItem();
-		miSettings = new JMenuItem();
-		miExit = new JMenuItem();
-		miOpenRecent = new JMenu();
-		miOpenRecentFiles = new JMenuItem[0];
-		miUndo = new JMenuItem();
-		miRedo = new JMenuItem();
-		miRedoAll = new JMenuItem();
-		miCopy = new JMenuItem();
-		miPaste = new JMenuItem();
-		miCut = new JMenuItem();
-		miDelete = new JMenuItem();
-		miSelectAll = new JMenuItem();
-		miEditSelection = new JMenuItem();
-		miNewCircuit = new JMenuItem();
-		miDeleteCircuit = new JMenuItem();
-		miLibraries = new JMenuItem();
-		miStartStop = new JCheckBoxMenuItem();
-		miReset = new JMenuItem();
-		miActiveSimulations = new JMenu();
-		miActiveSimulationsOptions = new JMenuItem[0];
-		miMinimise = new JMenuItem();
-		miMaxmise = new JMenuItem();
-		miToolbarLocation = new JMenu();
-		miToolbarLocationOptions = new JMenuItem[2];
-		miToolbarLocationOptions[0] = new JMenuItem();
-		miToolbarLocationOptions[1] = new JMenuItem();
-		miTutorial = new JMenuItem();
-		miDocumentation = new JMenuItem();
 		try {
 			SwingUtilities.invokeAndWait(() -> {
+				frame = new JFrame();
+				menuBar = new JMenuBar();
+				menuFile = new JMenu();
+				menuEdit = new JMenu();
+				menuProject = new JMenu();
+				menuSimulation = new JMenu();
+				menuWindow = new JMenu();
+				menuHelp = new JMenu();
+				miNew = new JMenuItem();
+				miOpen = new JMenuItem();
+				miSave = new JMenuItem();
+				miSaveAs = new JMenuItem();
+				miExport = new JMenuItem();
+				miSettings = new JMenuItem();
+				miExit = new JMenuItem();
+				miOpenRecent = new JMenu();
+				miOpenRecentFiles = new JMenuItem[0];
+				miUndo = new JMenuItem();
+				miRedo = new JMenuItem();
+				miRedoAll = new JMenuItem();
+				miCopy = new JMenuItem();
+				miPaste = new JMenuItem();
+				miCut = new JMenuItem();
+				miDelete = new JMenuItem();
+				miSelectAll = new JMenuItem();
+				miEditSelection = new JMenuItem();
+				miNewCircuit = new JMenuItem();
+				miDeleteCircuit = new JMenuItem();
+				miLibraries = new JMenuItem();
+				miStartStop = new JCheckBoxMenuItem();
+				miReset = new JMenuItem();
+				miActiveSimulations = new JMenu();
+				miActiveSimulationsOptions = new JMenuItem[0];
+				miMinimise = new JMenuItem();
+				miMaxmise = new JMenuItem();
+				miToolbarLocation = new JMenu();
+				miToolbarLocationOptions = new JMenuItem[2];
+				miToolbarLocationOptions[0] = new JMenuItem();
+				miToolbarLocationOptions[1] = new JMenuItem();
+				miTutorial = new JMenuItem();
+				miDocumentation = new JMenuItem();
 				menuFile.add(miNew);
 				menuFile.add(miOpen);
 				menuFile.add(miOpenRecent);
@@ -151,39 +161,64 @@ public class MainWindow implements ActionListener, WindowListener {
 				menuBar.add(menuSimulation);
 				menuBar.add(menuWindow);
 				menuBar.add(menuHelp);
-				miNew.addActionListener(this);
-				miOpen.addActionListener(this);
-				miSave.addActionListener(this);
-				miSaveAs.addActionListener(this);
-				miExport.addActionListener(this);
-				miSettings.addActionListener(this);
-				miExit.addActionListener(this);
-				miUndo.addActionListener(this);
-				miRedo.addActionListener(this);
-				miRedoAll.addActionListener(this);
-				miCopy.addActionListener(this);
-				miCut.addActionListener(this);
-				miPaste.addActionListener(this);
-				miDelete.addActionListener(this);
-				miSelectAll.addActionListener(this);
-				miEditSelection.addActionListener(this);
-				miNewCircuit.addActionListener(this);
-				miDeleteCircuit.addActionListener(this);
-				miLibraries.addActionListener(this);
-				miStartStop.addActionListener(this);
-				miReset.addActionListener(this);
-				miMinimise.addActionListener(this);
-				miMaxmise.addActionListener(this);
-				miDocumentation.addActionListener(this);
-				miTutorial.addActionListener(this);
-				for (JMenuItem item : miToolbarLocationOptions) item.addActionListener(this);
+				menuEventHandler = new MenuEventHandler();
+				miNew.addActionListener(menuEventHandler);
+				miOpen.addActionListener(menuEventHandler);
+				miSave.addActionListener(menuEventHandler);
+				miSaveAs.addActionListener(menuEventHandler);
+				miExport.addActionListener(menuEventHandler);
+				miSettings.addActionListener(menuEventHandler);
+				miExit.addActionListener(menuEventHandler);
+				miUndo.addActionListener(menuEventHandler);
+				miRedo.addActionListener(menuEventHandler);
+				miRedoAll.addActionListener(menuEventHandler);
+				miCopy.addActionListener(menuEventHandler);
+				miCut.addActionListener(menuEventHandler);
+				miPaste.addActionListener(menuEventHandler);
+				miDelete.addActionListener(menuEventHandler);
+				miSelectAll.addActionListener(menuEventHandler);
+				miEditSelection.addActionListener(menuEventHandler);
+				miNewCircuit.addActionListener(menuEventHandler);
+				miDeleteCircuit.addActionListener(menuEventHandler);
+				miLibraries.addActionListener(menuEventHandler);
+				miStartStop.addActionListener(menuEventHandler);
+				miReset.addActionListener(menuEventHandler);
+				miMinimise.addActionListener(menuEventHandler);
+				miMaxmise.addActionListener(menuEventHandler);
+				miDocumentation.addActionListener(menuEventHandler);
+				miTutorial.addActionListener(menuEventHandler);
+				for (JMenuItem item : miToolbarLocationOptions) item.addActionListener(menuEventHandler);
 				miStartStop.setState(activeSimulation);
-				updateText();
-				frame.addWindowListener(this);
+				windowEvenHandler = new WindowEvenHandler();
+				frame.addWindowListener(windowEvenHandler);
 				frame.setJMenuBar(menuBar);
 				frame.setSize(1200, 600);
 				frame.setLocationRelativeTo(null);
 				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				contentPanel = new JPanel();
+				topToolBar = new JToolBar();
+				topToolBar.add(new JButton("cba"));
+				bottomToolBar = new JToolBar();
+				bottomToolBar.add(new JButton("abc"));
+				splitPaneVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+				circuitPanel = new JPanel();
+				splitPaneHorizontal = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+				tabbedPane = new JTabbedPane();
+				propertiesPanel = new JPanel();
+				contentPanel.setLayout(new BorderLayout());
+				topToolBar.setRollover(false);
+				bottomToolBar.setRollover(false);
+				contentPanel.add(topToolBar, BorderLayout.NORTH);
+				contentPanel.add(bottomToolBar, BorderLayout.SOUTH);
+				contentPanel.add(splitPaneVertical, BorderLayout.CENTER);
+				splitPaneVertical.setLeftComponent(splitPaneHorizontal);
+				splitPaneVertical.setRightComponent(circuitPanel);
+				splitPaneHorizontal.setTopComponent(tabbedPane);
+				splitPaneHorizontal.setBottomComponent(propertiesPanel);
+				tabbedPane.addTab(null, selectTree);
+				tabbedPane.addTab(null, simulationTree);
+				frame.setContentPane(contentPanel);
+				updateText();
 			});
 		} catch (Exception e) { e.printStackTrace(); }
 	}
@@ -228,6 +263,8 @@ public class MainWindow implements ActionListener, WindowListener {
 			miToolbarLocationOptions[1].setText(lang.get("right"));
 			miTutorial.setText(lang.get("tutorial"));
 			miDocumentation.setText(lang.get("documentation"));
+			tabbedPane.setTitleAt(0, lang.get("components"));
+			tabbedPane.setTitleAt(1, lang.get("simulationtree"));
 		});
 	}
 	public int showExitPopup() {
@@ -249,73 +286,81 @@ public class MainWindow implements ActionListener, WindowListener {
 	}
 	
 	// Handle all JMenuItem clicks
-	@Override public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == miNew) listener.produce(new Event(Event.Type.NEW));
-		if (e.getSource() == miOpen) listener.produce(new Event(Event.Type.OPEN));
-		for (JMenuItem item : miOpenRecentFiles) if (e.getSource() == item) {
-			listener.produce(new Event(Event.Type.OPEN, item.getActionCommand()));
-			break;
+	private class MenuEventHandler implements ActionListener {
+		@Override public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == miNew) listener.produce(new Event(Event.Type.NEW));
+			if (e.getSource() == miOpen) listener.produce(new Event(Event.Type.OPEN));
+			for (JMenuItem item : miOpenRecentFiles) if (e.getSource() == item) {
+				listener.produce(new Event(Event.Type.OPEN, item.getActionCommand()));
+				break;
+			}
+			if (e.getSource() == miSave) listener.produce(new Event(Event.Type.SAVE));
+			if (e.getSource() == miSaveAs) listener.produce(new Event(Event.Type.SAVE, e.getActionCommand()));
+			if (e.getSource() == miExport) listener.produce(new Event(Event.Type.EXPORT));
+			if (e.getSource() == miSettings) listener.produce(new Event(Event.Type.SETTINGS));
+			if (e.getSource() == miExit) windowEvenHandler.windowClosing(null);
+			if (e.getSource() == miUndo) listener.produce(new Event(Event.Type.UNDO));
+			if (e.getSource() == miRedo) listener.produce(new Event(Event.Type.REDO, 0));
+			if (e.getSource() == miRedoAll) listener.produce(new Event(Event.Type.REDO, 1));
+			if (e.getSource() == miCopy) listener.produce(new Event(Event.Type.COPY));
+			if (e.getSource() == miPaste) listener.produce(new Event(Event.Type.PASTE));
+			if (e.getSource() == miCut) {
+				listener.produce(new Event(Event.Type.COPY));
+				listener.produce(new Event(Event.Type.DELETE));
+			}
+			if (e.getSource() == miDelete) listener.produce(new Event(Event.Type.DELETE));
+			if (e.getSource() == miSelectAll) listener.produce(new Event(Event.Type.SELECTALL));
+			if (e.getSource() == miEditSelection) listener.produce(new Event(Event.Type.EDITSEL));
+			if (e.getSource() == miNewCircuit) listener.produce(new Event(Event.Type.NEWCIRCUIT));
+			if (e.getSource() == miDeleteCircuit) listener.produce(new Event(Event.Type.DELETECIRCUIT));
+			if (e.getSource() == miLibraries) listener.produce(new Event(Event.Type.LIBRARIES));
+			if (e.getSource() == miReset) listener.produce(new Event(Event.Type.RESET));
+			if (e.getSource() == miStartStop) listener.produce(new Event(Event.Type.STARTSTOP, activeSimulation ? 1 : 0));
+			for (JMenuItem item : miActiveSimulationsOptions) if (e.getSource() == item) {
+				listener.produce(new Event(Event.Type.ACTIVESIMULATION, item.getActionCommand()));
+				break;
+			}
+			if (e.getSource() == miMinimise) {
+				SwingUtilities.invokeLater(() -> frame.setState(JFrame.ICONIFIED));
+			}
+			if (e.getSource() == miMaxmise) {
+				SwingUtilities.invokeLater(() -> { frame.setMaximizedBounds(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds()); frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);});
+			}
+			if (e.getSource() == miTutorial) listener.produce(new Event(Event.Type.TUTORIAL));
+			if (e.getSource() == miDocumentation) listener.produce(new Event(Event.Type.DOCUMENTATION));
 		}
-		if (e.getSource() == miSave) listener.produce(new Event(Event.Type.SAVE));
-		if (e.getSource() == miSaveAs) listener.produce(new Event(Event.Type.SAVE, e.getActionCommand()));
-		if (e.getSource() == miExport) listener.produce(new Event(Event.Type.EXPORT));
-		if (e.getSource() == miSettings) listener.produce(new Event(Event.Type.SETTINGS));
-		if (e.getSource() == miExit) windowClosing(null);
-		if (e.getSource() == miUndo) listener.produce(new Event(Event.Type.UNDO));
-		if (e.getSource() == miRedo) listener.produce(new Event(Event.Type.REDO, 0));
-		if (e.getSource() == miRedoAll) listener.produce(new Event(Event.Type.REDO, 1));
-		if (e.getSource() == miCopy) listener.produce(new Event(Event.Type.COPY));
-		if (e.getSource() == miPaste) listener.produce(new Event(Event.Type.PASTE));
-		if (e.getSource() == miCut) {
-			listener.produce(new Event(Event.Type.COPY));
-			listener.produce(new Event(Event.Type.DELETE));
-		}
-		if (e.getSource() == miDelete) listener.produce(new Event(Event.Type.DELETE));
-		if (e.getSource() == miSelectAll) listener.produce(new Event(Event.Type.SELECTALL));
-		if (e.getSource() == miEditSelection) listener.produce(new Event(Event.Type.EDITSEL));
-		if (e.getSource() == miNewCircuit) listener.produce(new Event(Event.Type.NEWCIRCUIT));
-		if (e.getSource() == miDeleteCircuit) listener.produce(new Event(Event.Type.DELETECIRCUIT));
-		if (e.getSource() == miLibraries) listener.produce(new Event(Event.Type.LIBRARIES));
-		if (e.getSource() == miReset) listener.produce(new Event(Event.Type.RESET));
-		if (e.getSource() == miStartStop) listener.produce(new Event(Event.Type.STARTSTOP, activeSimulation ? 1 : 0));
-		for (JMenuItem item : miActiveSimulationsOptions) if (e.getSource() == item) {
-			listener.produce(new Event(Event.Type.ACTIVESIMULATION, item.getActionCommand()));
-			break;
-		}
-		if (e.getSource() == miMinimise) {
-			SwingUtilities.invokeLater(() -> frame.setState(JFrame.ICONIFIED));
-		}
-		if (e.getSource() == miMaxmise) {
-			SwingUtilities.invokeLater(() -> { frame.setMaximizedBounds(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds()); frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);});
-		}
-		if (e.getSource() == miTutorial) listener.produce(new Event(Event.Type.TUTORIAL));
-		if (e.getSource() == miDocumentation) listener.produce(new Event(Event.Type.DOCUMENTATION));
 	}
+	
 	
 	// Handle window closing button
-	@Override public void windowClosing(WindowEvent e) {
-		listener.produce(new Event(Event.Type.EXIT, 0, null));
-	}
-	public void windowClosed(WindowEvent e) {
+	private class WindowEvenHandler implements WindowListener {
+		@Override
+		public void windowClosing(WindowEvent e) {
+			listener.produce(new Event(Event.Type.EXIT, 0, null));
+		}
 
-	}
-	public void windowOpened(WindowEvent e) {
-	
-	}
-	public void windowIconified(WindowEvent e) {
+		@Override
+		public void windowClosed(WindowEvent e) {
+		}
 
-	}
-	public void windowDeiconified(WindowEvent e) {
+		@Override
+		public void windowOpened(WindowEvent e) {
+		}
 
-	}
-	public void windowActivated(WindowEvent e) {
+		@Override
+		public void windowIconified(WindowEvent e) {
+		}
 
-	}
-	public void windowDeactivated(WindowEvent e) {
+		@Override
+		public void windowDeiconified(WindowEvent e) {
+		}
 
-	}
-	
-	public JFrame getFrame() {
-		return frame;
+		@Override
+		public void windowActivated(WindowEvent e) {
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent e) {
+		}
 	}
 }
