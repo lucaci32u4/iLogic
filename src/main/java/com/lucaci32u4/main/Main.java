@@ -26,7 +26,7 @@ public class Main {
 	}
 	public static void main(String[] args) {
 		setSystemLookAndFeel();
-		//LanguagePack.getInstance().begin(Helper.fread("C:/javaspace/pr.txt"));
+		LanguagePack.getInstance().begin(Helper.fread("Translations\\english.txt"));
 		SimpleEventQueue<MainWindow.Event> queue = new SimpleEventQueue<>();
 		MainWindow window = new MainWindow(queue);
 		window.setVisible(true);
