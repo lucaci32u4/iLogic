@@ -38,7 +38,6 @@ public class SwingFrame_LWJGL {
 	private Canvas canvas;
 	private Thread gameThread;
 	private boolean running;
-	private volatile boolean needValidation;
 	private volatile boolean needUpdateViewport;
 	
 	public SwingFrame_LWJGL() {
@@ -47,47 +46,41 @@ public class SwingFrame_LWJGL {
 		frame.setBounds(100, 100, 1024, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		needValidation = true;
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JSplitPane splitPane = new JSplitPane();
-		frame.getContentPane().add(splitPane, BorderLayout.CENTER);
+		frame.getContentPane().add(splitPane);
 		
-		JPanel canvasPanel = new JPanel();
-		canvasPanel.setLayout(new BorderLayout(0, 0));
+		JPanel canvasPanel = new JPanel(new BorderLayout());
 		splitPane.setRightComponent(canvasPanel);
-		
+		splitPane.setLeftComponent(new JTree());
 		canvas = new Canvas() {
-			public void removeNotify() {
+			@Override public void removeNotify() {
 				stopOpenGL();
 			}
 		};
 		canvas.addComponentListener(new ComponentListener() {
-			public void componentShown(ComponentEvent e) {
-				setNeedValidation();
+			@Override public void componentShown(ComponentEvent e) {
+				needUpdateViewport = true;
 			}
-			public void componentResized(ComponentEvent e) {
-				setNeedValidation();
+			@Override public void componentResized(ComponentEvent e) {
+				needUpdateViewport = true;
 			}
-			public void componentMoved(ComponentEvent e) {
-				setNeedValidation();
+			@Override public void componentMoved(ComponentEvent e) {
+				needUpdateViewport = true;
 			}
-			public void componentHidden(ComponentEvent e) {
-				setNeedValidation();
+			@Override public void componentHidden(ComponentEvent e) {
+				needUpdateViewport = true;
 			}
 		});
 		canvas.setIgnoreRepaint(true);
+		canvas.setMinimumSize(new Dimension(1, 1));
 		canvas.setVisible(true);
-		canvasPanel.add(canvas, BorderLayout.CENTER);
-		splitPane.setLeftComponent(new JTree());
+		canvasPanel.add(canvas);
 		
 		startOpenGL();
 	}
 	
-	private void setNeedValidation() {
-		needValidation = true;
-		needUpdateViewport = true;
-	}
 	
 	private void startOpenGL() {
 		System.out.println("StartOpenGL");
@@ -133,6 +126,7 @@ public class SwingFrame_LWJGL {
 		Rectangle rect = canvas.getBounds();
 		int w = (int) rect.getWidth();
 		int h = (int) rect.getHeight();
+
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
 		GL11.glOrtho(0, w, h, 0, -1, 1);

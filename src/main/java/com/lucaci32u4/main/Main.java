@@ -1,14 +1,9 @@
 package com.lucaci32u4.main;
 
-import com.lucaci32u4.UI.LogicViewport;
 import com.lucaci32u4.UI.MainWindow;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.SimpleEventQueue;
 
-import javax.media.opengl.GLCapabilities;
-import javax.media.opengl.GLEventListener;
-import javax.media.opengl.GLProfile;
-import javax.media.opengl.awt.GLCanvas;
 import javax.swing.*;
 
 public class Main {
