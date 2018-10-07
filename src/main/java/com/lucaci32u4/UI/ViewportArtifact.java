@@ -8,7 +8,7 @@ public interface ViewportArtifact {
 	boolean isVisible();
 	boolean checkIfOnScreen(int screenLeft, int screenTop, int screenWidth, int screenHeight);
 	boolean checkIfOnPoint(int xPoint, int yPoint);
-	void onDraw(@NotNull GL2 gl);
+	void onDraw(@NotNull LogicViewport.DrawAPI pen);
 	void setPickID(int ID);
 	int getPickID();
 }
