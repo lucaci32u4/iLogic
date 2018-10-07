@@ -123,6 +123,15 @@ public class LogicViewport {
 			return pixels;
 		}
 		
+		@Override public void setUsingPresetColors(boolean b) {
+			// TODO: Write actual code
+		}
+		
+		@Override public boolean getUsingPresetColors() {
+			// TODO: Write actual code
+			return false;
+		}
+		
 		private void render_adjustToCanvasSize() {
 			Rectangle rect = canvas.getBounds();
 			width = (int)rect.getWidth();
@@ -144,5 +153,7 @@ public class LogicViewport {
 	public interface DrawAPI {
 		int unitsToPixels(int units);
 		int pixelsToUnits(int pixels);
+		void setUsingPresetColors(boolean b);
+		boolean getUsingPresetColors();
 	}
 }
