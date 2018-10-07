@@ -1,8 +1,7 @@
 package com.lucaci32u4.UI;
 
+import com.lucaci32u4.UI.Viewport.LogicViewport;
 import org.jetbrains.annotations.NotNull;
-
-import javax.media.opengl.GL2;
 
 public interface ViewportArtifact {
 	boolean isVisible();
