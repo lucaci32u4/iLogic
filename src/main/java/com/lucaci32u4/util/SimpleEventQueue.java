@@ -25,7 +25,7 @@ public class SimpleEventQueue<Event> {
 		lock.acquireUninterruptibly();
 		queue.offer(event);
 		lock.release();
-		newEvent.setState(true);
+		newEvent.set(true);
 	}
 	
 	public Event consume(boolean wait) {
@@ -33,10 +33,10 @@ public class SimpleEventQueue<Event> {
 	}
 	public Event consumeIf(boolean wait, @NotNull CheckEvent check) {
 		Event result = null;
-		newEvent.setState(false);
+		newEvent.set(false);
 		result = atomicIterateWithCheck(check);
 		while (wait && result == null) {
-			newEvent.waitForState(true);
+			newEvent.waitFor(true);
 			result = atomicIterateWithCheck(check);
 		}
 		return result;

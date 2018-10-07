@@ -6,18 +6,14 @@ public class JSignal {
     public JSignal(boolean initialState) {
         current = initialState;
     }
-    public synchronized boolean getState() {
+    public synchronized boolean get() {
         return current;
     }
-    public synchronized void setState(boolean state) {
+    public synchronized void set(boolean state) {
         current = state;
         this.notifyAll();
     }
-    public synchronized void invert() {
-        current = !current;
-        this.notifyAll();
-    }
-    public synchronized boolean waitForState(boolean finalState) {
+    public synchronized boolean waitFor(boolean finalState) {
         boolean immediateExit = true;
         if (current != finalState) {
             immediateExit = false;

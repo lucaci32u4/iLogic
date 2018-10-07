@@ -89,8 +89,8 @@ public class LogicContainer {
 			while (preferred == null) {
 				if (requests.size() == 0 && wait) {
 					resourceLock.release();
-					newEvent.waitForState(true);
-					newEvent.setState(false);
+					newEvent.waitFor(true);
+					newEvent.set(false);
 					resourceLock.acquireUninterruptibly();
 				}
 				for (Event event : requests) {
@@ -133,9 +133,9 @@ public class LogicContainer {
 			resourceLock.acquireUninterruptibly();
 			requests.offer(event);
 			if (requests.size() == 0) {
-				newEvent.setState(true);
+				newEvent.set(true);
 			}
-			newEvent.setState(true);
+			newEvent.set(true);
 			resourceLock.release();
 		}
 	}
