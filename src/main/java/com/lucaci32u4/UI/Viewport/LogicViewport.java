@@ -1,7 +1,7 @@
-package com.lucaci32u4.UI;
+package com.lucaci32u4.UI.Viewport;
 
+import com.lucaci32u4.UI.ViewportArtifact;
 import com.lucaci32u4.util.JSignal;
-import com.lucaci32u4.util.SimpleEventQueue;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
@@ -19,7 +19,9 @@ public class LogicViewport {
 	private int pixelWidth, pixelHeight;
 	private int unitWidth, unitHeight;
 	private int unitOffsetX, unitOffsetY;
-	private float backgroudR = 1, backgroundG = 1, backgroundB = 1;
+	private boolean readjust;
+	private boolean running;
+	private float backgroundR = 1, backgroundG = 1, backgroundB = 1;
 	private JPanel circuitPanel;
 	private Canvas canvas;
 	private RenderAPI pencil;
@@ -29,7 +31,7 @@ public class LogicViewport {
 		canvas = new Canvas() {
 			@Override public void removeNotify() {
 				super.removeNotify();
-				pencil.destroyRenderer();
+				running = false;
 			}
 		};
 		if (SwingUtilities.isEventDispatchThread()) {
@@ -39,57 +41,71 @@ public class LogicViewport {
 		}
 		new Thread(() -> {
 			pencil = new GL11Backend();
-			pencil.setBackgroundColor(backgroudR, backgroundG, backgroundB);
-			pencil.initRenderer(canvas);
-			SwingUtilities.invokeLater(() -> canvas.addComponentListener(new ComponentListener() {
-				public void componentShown(ComponentEvent e) {
+			pencil.setBackgroundColor(backgroundR, backgroundG, backgroundB);
+			running = pencil.initRenderer(canvas);
+			readjust = false;
+			if (running) {
+				SwingUtilities.invokeLater(() -> canvas.addComponentListener(new ComponentListener() {
+					@Override public void componentShown(ComponentEvent e) {
+						readjust = true;
+					}
+					@Override public void componentResized(ComponentEvent e) {
+						readjust = true;
+					}
+					@Override public void componentMoved(ComponentEvent e) {
+						readjust = true;
+					}
+					@Override public void componentHidden(ComponentEvent e) {
+						readjust = true;
+					}
+				}));
+			}
+			while (running) {
+				if (readjust) {
 					pencil.adjustToCanvasSize();
 				}
-				public void componentResized(ComponentEvent e) {
-					pencil.adjustToCanvasSize();
-				}
-				public void componentMoved(ComponentEvent e) {
-					pencil.adjustToCanvasSize();
-				}
-				public void componentHidden(ComponentEvent e) {
-					pencil.adjustToCanvasSize();
-				}
-			}));
-			
+				pencil.renderFrame();
+			}
+			pencil.destroyRenderer();
 		}).start();
 	}
 	
 	private static void initSwingCanvas(Canvas canvas, JPanel circuitPanel) {
 		canvas.setIgnoreRepaint(true);
+		canvas.setMinimumSize(new Dimension(1, 1));
 		circuitPanel.add(canvas);
 	}
 
 	private static class GL11Backend implements RenderAPI {
-		private JSignal renderThreadFree;
-		private Thread renderThread;
+		private boolean begin = false;
+		private Canvas canvas;
 		private int width, height;
 		private float backgroundR, backgroundG, backgroundB;
-		private Canvas canvas;
 		
-		public GL11Backend() {
+		// Drawing state variables
+		boolean colorMapping;
+		
+		GL11Backend() {
 			backgroundB = backgroundG = backgroundR = 1;
 		}
-		@Override public void initRenderer(Canvas surface){
-			renderThreadFree = new JSignal(false);
-			renderThread = Thread.currentThread();
+		@Override public boolean initRenderer(Canvas surface){
 			try {
-				Display.create();
 				Display.setParent(surface);
-				adjustToCanvasSize();
-				GL11.glClearColor(backgroundR, backgroundG, backgroundB, 1);
+				Display.create();
+				if (Display.isCreated()) {
+					begin = true;
+					canvas = surface;
+					adjustToCanvasSize();
+				}
 			} catch (LWJGLException e) {
 				e.printStackTrace();
 			}
-			renderThreadFree.setState(true);
+			return begin;
 		}
 
-		public void render() {
-			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+		@Override public void renderFrame() {
+			GL11.glClearColor(backgroundR, backgroundG, backgroundB, 1);
+			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
 			Display.update();
 		}
@@ -101,58 +117,53 @@ public class LogicViewport {
 		}
 
 		@Override public void adjustToCanvasSize() {
-			if (Thread.currentThread() == renderThread) {
-				render_adjustToCanvasSize();
-			} else {
-				renderThreadFree.waitForState(true);
-				renderThreadFree.setState(false);
+			if (begin) {
+				Rectangle rect = canvas.getBounds();
+				width = (int) rect.getWidth();
+				height = (int) rect.getHeight();
+				GL11.glViewport(0, 0, width, height);
+				GL11.glMatrixMode(GL11.GL_PROJECTION);
+				GL11.glLoadIdentity();
+				GL11.glOrtho(0, width, height, 0, -1, 1);
 			}
 		}
 
 		@Override public void setBackgroundColor(float r, float g, float b) {
-			backgroundR = r; backgroundG = g; backgroundB = b;
+			if (backgroundR != r || backgroundG != g || backgroundB != b) {
+				backgroundR = r; backgroundG = g; backgroundB = b;
+			}
 		}
 		
-		@Override public int unitsToPixels(int units) {
+		@Override public int unitsToPixels(int units, boolean absolute) {
 			// TODO: Write actual code
 			return units;
 		}
 		
-		@Override public int pixelsToUnits(int pixels) {
+		@Override public int pixelsToUnits(int pixels, boolean absolute) {
 			// TODO: Write actual code
 			return pixels;
 		}
 		
 		@Override public void setUsingPresetColors(boolean b) {
-			// TODO: Write actual code
+			colorMapping = b;
 		}
 		
 		@Override public boolean getUsingPresetColors() {
-			// TODO: Write actual code
-			return false;
-		}
-		
-		private void render_adjustToCanvasSize() {
-			Rectangle rect = canvas.getBounds();
-			width = (int)rect.getWidth();
-			height = (int)rect.getHeight();
-			GL11.glViewport(0, 0, width, height);
-			GL11.glMatrixMode(GL11.GL_PROJECTION);
-			GL11.glLoadIdentity();
-			GL11.glOrtho(0, width, height, 0, -1, 1);
+			return colorMapping;
 		}
 	}
 
 	private interface RenderAPI extends ControlAPI, DrawAPI { }
 	private interface ControlAPI {
-		void initRenderer(Canvas surface);
+		boolean initRenderer(Canvas surface);
 		void destroyRenderer();
 		void adjustToCanvasSize();
 		void setBackgroundColor(float r, float g, float b);
+		void renderFrame();
 	}
 	public interface DrawAPI {
-		int unitsToPixels(int units);
-		int pixelsToUnits(int pixels);
+		int unitsToPixels(int units, boolean absolute);
+		int pixelsToUnits(int pixels, boolean absolute);
 		void setUsingPresetColors(boolean b);
 		boolean getUsingPresetColors();
 	}
