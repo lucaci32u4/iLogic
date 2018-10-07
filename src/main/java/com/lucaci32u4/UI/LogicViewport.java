@@ -21,20 +21,26 @@ public class LogicViewport {
 
 
 	private void init() {
-		pencil = new GL11Backend();
 		canvas = new Canvas() {
 			@Override public void removeNotify() {
 				super.removeNotify();
 				pencil.destroyRenderer();
 			}
-
-			@Override
-			public void revalidate() {
-				super.revalidate();
-			}
 		};
+		if (SwingUtilities.isEventDispatchThread()) {
+			initSwingCanvas(canvas, circuitPanel);
+		} else {
+			SwingUtilities.invokeLater(() -> initSwingCanvas(canvas, circuitPanel));
+		}
+		new Thread(() -> {
+			pencil = new GL11Backend();
+			pencil.initRenderer(canvas);
+		}).start();
+	}
+	
+	private static void initSwingCanvas(Canvas canvas, JPanel circuitPanel) {
+		canvas.setIgnoreRepaint(true);
 		circuitPanel.add(canvas);
-		pencil.initRenderer(canvas);
 	}
 
 	private static class GL11Backend implements RenderAPI {
@@ -57,7 +63,6 @@ public class LogicViewport {
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
 			Display.update();
-			Display.sync(60);
 		}
 
 		@Override public void destroyRenderer () {
@@ -81,10 +86,13 @@ public class LogicViewport {
 		}
 	}
 
-	private interface RenderAPI {
+	private interface RenderAPI extends DrawAPI {
 		void initRenderer(Canvas surface);
 		void destroyRenderer();
 		void adjustToCanvasSize();
 		void setBackgroundColor(float r, float g, float b);
+	}
+	public interface DrawAPI {
+	
 	}
 }
