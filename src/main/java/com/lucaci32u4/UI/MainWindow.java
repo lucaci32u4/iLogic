@@ -69,7 +69,7 @@ public class MainWindow {
 	private JMenuItem miMinimise, miMaxmise;
 	private JMenu miToolbarLocation;
 	private JMenuItem[] miToolbarLocationOptions;
-	private JMenuItem miTutorial, miDocumentation;
+	private JMenuItem miTutorial, miDocumentation, miAbout;
 	private SimpleEventQueue<Event> listener;
 	
 	private boolean activeSimulation;
@@ -121,6 +121,7 @@ public class MainWindow {
 				miToolbarLocationOptions[1] = new JMenuItem();
 				miTutorial = new JMenuItem();
 				miDocumentation = new JMenuItem();
+				miAbout = new JMenuItem();
 				menuFile.add(miNew);
 				menuFile.add(miOpen);
 				menuFile.add(miOpenRecent);
@@ -159,6 +160,8 @@ public class MainWindow {
 				for (JMenuItem item : miToolbarLocationOptions) miToolbarLocation.add(item);
 				menuHelp.add(miTutorial);
 				menuHelp.add(miDocumentation);
+				menuHelp.addSeparator();
+				menuHelp.add(miAbout);
 				menuBar.add(menuFile);
 				menuBar.add(menuEdit);
 				menuBar.add(menuProject);
@@ -277,6 +280,7 @@ public class MainWindow {
 			miToolbarLocationOptions[1].setText(lang.get("right"));
 			miTutorial.setText(lang.get("tutorial"));
 			miDocumentation.setText(lang.get("documentation"));
+			miAbout.setText(lang.get("about"));
 			tabbedPane.setTitleAt(0, lang.get("componentstree"));
 			tabbedPane.setTitleAt(1, lang.get("simulationtree"));
 			componentsRoot.setUserObject(lang.get("components"));

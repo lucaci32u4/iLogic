@@ -43,3 +43,4 @@ discard=Discard
 cancel=Cancel
 exitquestion=Exit without saving?
 confirm=Confirm
+about=About
