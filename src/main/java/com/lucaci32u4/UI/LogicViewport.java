@@ -1,26 +1,31 @@
 package com.lucaci32u4.UI;
 
+import com.lucaci32u4.util.JSignal;
+import com.lucaci32u4.util.SimpleEventQueue;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 public class LogicViewport {
+	
 	private ViewportArtifact[] sprites;
 	private ViewportArtifact[] drawn;
 	private int drawnCount;
 	private int pixelWidth, pixelHeight;
 	private int unitWidth, unitHeight;
 	private int unitOffsetX, unitOffsetY;
-	private float backgroudR, backgroundG, backgroundB;
+	private float backgroudR = 1, backgroundG = 1, backgroundB = 1;
 	private JPanel circuitPanel;
 	private Canvas canvas;
 	private RenderAPI pencil;
-
-
-	private void init() {
+	
+	private void init(JPanel displayPanel) {
+		circuitPanel = displayPanel;
 		canvas = new Canvas() {
 			@Override public void removeNotify() {
 				super.removeNotify();
@@ -34,7 +39,23 @@ public class LogicViewport {
 		}
 		new Thread(() -> {
 			pencil = new GL11Backend();
+			pencil.setBackgroundColor(backgroudR, backgroundG, backgroundB);
 			pencil.initRenderer(canvas);
+			SwingUtilities.invokeLater(() -> canvas.addComponentListener(new ComponentListener() {
+				public void componentShown(ComponentEvent e) {
+					pencil.adjustToCanvasSize();
+				}
+				public void componentResized(ComponentEvent e) {
+					pencil.adjustToCanvasSize();
+				}
+				public void componentMoved(ComponentEvent e) {
+					pencil.adjustToCanvasSize();
+				}
+				public void componentHidden(ComponentEvent e) {
+					pencil.adjustToCanvasSize();
+				}
+			}));
+			
 		}).start();
 	}
 	
@@ -44,19 +65,27 @@ public class LogicViewport {
 	}
 
 	private static class GL11Backend implements RenderAPI {
+		private JSignal renderThreadFree;
+		private Thread renderThread;
 		private int width, height;
 		private float backgroundR, backgroundG, backgroundB;
 		private Canvas canvas;
+		
+		public GL11Backend() {
+			backgroundB = backgroundG = backgroundR = 1;
+		}
 		@Override public void initRenderer(Canvas surface){
+			renderThreadFree = new JSignal(false);
+			renderThread = Thread.currentThread();
 			try {
 				Display.create();
 				Display.setParent(surface);
-				setBackgroundColor(1, 1, 1);
 				adjustToCanvasSize();
 				GL11.glClearColor(backgroundR, backgroundG, backgroundB, 1);
 			} catch (LWJGLException e) {
 				e.printStackTrace();
 			}
+			renderThreadFree.setState(true);
 		}
 
 		public void render() {
@@ -72,6 +101,29 @@ public class LogicViewport {
 		}
 
 		@Override public void adjustToCanvasSize() {
+			if (Thread.currentThread() == renderThread) {
+				render_adjustToCanvasSize();
+			} else {
+				renderThreadFree.waitForState(true);
+				renderThreadFree.setState(false);
+			}
+		}
+
+		@Override public void setBackgroundColor(float r, float g, float b) {
+			backgroundR = r; backgroundG = g; backgroundB = b;
+		}
+		
+		@Override public int unitsToPixels(int units) {
+			// TODO: Write actual code
+			return units;
+		}
+		
+		@Override public int pixelsToUnits(int pixels) {
+			// TODO: Write actual code
+			return pixels;
+		}
+		
+		private void render_adjustToCanvasSize() {
 			Rectangle rect = canvas.getBounds();
 			width = (int)rect.getWidth();
 			height = (int)rect.getHeight();
@@ -80,19 +132,17 @@ public class LogicViewport {
 			GL11.glLoadIdentity();
 			GL11.glOrtho(0, width, height, 0, -1, 1);
 		}
-
-		@Override public void setBackgroundColor(float r, float g, float b) {
-			backgroundR = r; backgroundG = g; backgroundB = b;
-		}
 	}
 
-	private interface RenderAPI extends DrawAPI {
+	private interface RenderAPI extends ControlAPI, DrawAPI { }
+	private interface ControlAPI {
 		void initRenderer(Canvas surface);
 		void destroyRenderer();
 		void adjustToCanvasSize();
 		void setBackgroundColor(float r, float g, float b);
 	}
 	public interface DrawAPI {
-	
+		int unitsToPixels(int units);
+		int pixelsToUnits(int pixels);
 	}
 }
