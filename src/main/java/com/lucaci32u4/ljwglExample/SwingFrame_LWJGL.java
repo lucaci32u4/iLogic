@@ -133,7 +133,6 @@ public class SwingFrame_LWJGL {
 		Rectangle rect = canvas.getBounds();
 		int w = (int) rect.getWidth();
 		int h = (int) rect.getHeight();
-
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
 		GL11.glOrtho(0, w, h, 0, -1, 1);
