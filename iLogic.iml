@@ -20,16 +20,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES />
-        <JAVADOC />
-        <NATIVE>
-          <root url="file://$MODULE_DIR$/LWJGLNatives/windows" />
-        </NATIVE>
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt-main:2.0-rc11" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:2.0-rc11" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-android-armv6:2.0-rc11" level="project" />

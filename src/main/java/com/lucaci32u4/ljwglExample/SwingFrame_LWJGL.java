@@ -73,8 +73,6 @@ public class SwingFrame_LWJGL {
 		frame.setBounds(100, 100, 1024, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
 		needValidation = true;
 		MenuListener menuListener = new MenuListener() {
 			public void menuSelected(MenuEvent e) {
@@ -145,8 +143,8 @@ public class SwingFrame_LWJGL {
 		gameThread = new Thread() {
 			public void run() {
 				try {
-					Display.create();
 					Display.setParent(canvas);
+					Display.create();
 					GL11.glClearColor(1.0f, 1.0f, 1.0f, 1);
 					makesize();
 					setupVertices();
@@ -193,6 +191,7 @@ public class SwingFrame_LWJGL {
 	}
 	
 	private void updateGL() {
+		GL11.glGetError();
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		
 		render();
@@ -202,9 +201,9 @@ public class SwingFrame_LWJGL {
 		
 		if (needUpdateViewport) {
 			needUpdateViewport = false;
-			
 			makesize();
 		}
+		
 		
 		int error = GL11.glGetError();
 		if (error != GL11.GL_NO_ERROR) {
@@ -223,7 +222,7 @@ public class SwingFrame_LWJGL {
 				case GL11.GL_OUT_OF_MEMORY:
 					msg = "Out of memory"; break;
 			}
-			throw new RuntimeException(msg);
+			System.out.println(msg);
 		}
 	}
 	

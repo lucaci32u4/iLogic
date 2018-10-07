@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iLogic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iLogic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,22 +70,22 @@
         <counts>
           <entry key="class" value="6" />
           <entry key="glsl" value="2" />
-          <entry key="java" value="16" />
-          <entry key="xml" value="5" />
+          <entry key="java" value="17" />
+          <entry key="xml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="6" />
           <entry key="GLSL shader file" value="2" />
-          <entry key="JAVA" value="16" />
-          <entry key="XML" value="5" />
+          <entry key="JAVA" value="17" />
+          <entry key="XML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="glsl" value="16" />
-          <entry key="java" value="2931" />
+          <entry key="java" value="3003" />
           <entry key="txt" value="181" />
           <entry key="xml" value="45" />
         </counts>
@@ -91,7 +93,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="GLSL shader file" value="16" />
-          <entry key="JAVA" value="2931" />
+          <entry key="JAVA" value="3003" />
           <entry key="PLAIN_TEXT" value="181" />
           <entry key="XML" value="45" />
         </counts>
@@ -99,7 +101,21 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="202" column="39" selection-start-line="202" selection-start-column="39" selection-end-line="202" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#setupVertices#0;class#SwingFrame_LWJGL#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -116,6 +132,8 @@
       <find>miActivesimulationsOptions</find>
       <find>uuid</find>
       <find>main</find>
+      <find>lwjgl</find>
+      <find>Main</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -164,8 +182,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/LogicViewport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java" />
       </list>
     </option>
   </component>
@@ -322,7 +340,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538935562061" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538937925048" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -341,10 +359,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.LJWGLExample">
     <configuration name="LJWGLExample" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.lucaci32u4.ljwglExample.SwingFrame_LWJGL" />
       <module name="iLogic" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=LWJGLNatives\windows" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -454,8 +473,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2249467" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2249467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -464,7 +484,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -472,7 +492,7 @@
       <window_info anchor="bottom" id="AllProjects" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Version Control" order="10" visible="true" weight="0.29501083" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.29501083" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -726,20 +746,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="167" column="37" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="362" column="39" selection-start-line="362" selection-start-column="35" selection-end-line="362" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="202" column="39" selection-start-line="202" selection-start-column="39" selection-end-line="202" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setupVertices#0;class#SwingFrame_LWJGL#0" />
+          </folding>
         </state>
       </provider>
     </entry>
