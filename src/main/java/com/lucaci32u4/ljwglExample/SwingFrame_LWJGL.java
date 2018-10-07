@@ -77,17 +77,9 @@ public class SwingFrame_LWJGL {
 			}
 		});
 		canvas.setIgnoreRepaint(true);
-		canvas.setPreferredSize(new Dimension(800, 600));
-		canvas.setMinimumSize(new Dimension(320, 240));
 		canvas.setVisible(true);
 		canvasPanel.add(canvas, BorderLayout.CENTER);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setMinimumSize(new Dimension(160, 160));
-		splitPane.setLeftComponent(scrollPane_1);
-		
-		JTree tree = new JTree();
-		scrollPane_1.setViewportView(tree);
+		splitPane.setLeftComponent(new JTree());
 		
 		startOpenGL();
 	}
