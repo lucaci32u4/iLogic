@@ -15,30 +15,20 @@ import java.awt.event.WindowListener;
 
 public class SwingFrame_LWJGL {
 
-	private static boolean setSystemLookAndFeel() {
-		boolean[] success = { true, true, true, true };
+	private static void setSystemLookAndFeel() {
 		try {
 			System.setProperty("sun.java2d.noddraw", "true");
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		}
-		catch (ClassNotFoundException e) { success[0] = false; }
-		catch (InstantiationException e) { success[1] = false; }
-		catch (IllegalAccessException e) { success[2] = false; }
-		catch (UnsupportedLookAndFeelException e) { success[3] = false; }
-		return success[0] && success[1] && success[2] && success[3];
+		} catch (Exception e) { e.printStackTrace(); }
 	}
-
 	public static void main(String[] args) {
 		setSystemLookAndFeel();
-		EventQueue.invokeLater(new Runnable() {
-			
-			public void run() {
-				try {
-					SwingFrame_LWJGL window = new SwingFrame_LWJGL();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				SwingFrame_LWJGL window = new SwingFrame_LWJGL();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -53,41 +43,11 @@ public class SwingFrame_LWJGL {
 	
 	public SwingFrame_LWJGL() {
 		frame = new JFrame();
-		frame.addWindowListener(new WindowListener() {
-			public void windowOpened(WindowEvent arg0) {
-			}
-			public void windowIconified(WindowEvent arg0) {
-			}
-			public void windowDeiconified(WindowEvent arg0) {
-			}
-			public void windowDeactivated(WindowEvent arg0) {
-			}
-			public void windowClosing(WindowEvent arg0) {
-			}
-			public void windowClosed(WindowEvent arg0) {
-			}
-			public void windowActivated(WindowEvent arg0) {
-			}
-		});
 		frame.setTitle("Swing + LWJGL");
 		frame.setBounds(100, 100, 1024, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		needValidation = true;
-		MenuListener menuListener = new MenuListener() {
-			public void menuSelected(MenuEvent e) {
-				if (needValidation) {
-					needValidation = false;
-					frame.validate();
-					System.out.println("Validate");
-				}
-			}
-			public void menuDeselected(MenuEvent e) {
-			}
-			public void menuCanceled(MenuEvent e) {
-			}
-		};
-		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JSplitPane splitPane = new JSplitPane();
@@ -140,26 +100,24 @@ public class SwingFrame_LWJGL {
 	private void startOpenGL() {
 		System.out.println("StartOpenGL");
 		
-		gameThread = new Thread() {
-			public void run() {
-				try {
-					Display.setParent(canvas);
-					Display.create();
-					GL11.glClearColor(1.0f, 1.0f, 1.0f, 1);
-					makesize();
-					setupVertices();
-					running = true;
-				} catch (LWJGLException e) {
-					e.printStackTrace();
-				}
-				while (running) {
-					updateGL();
-				}
-				if (Display.isCreated()) {
-					Display.destroy();
-				}
+		gameThread = new Thread(() -> {
+			try {
+				Display.setParent(canvas);
+				Display.create();
+				GL11.glClearColor(1.0f, 1.0f, 1.0f, 1);
+				makesize();
+				setupVertices();
+				running = true;
+			} catch (LWJGLException e) {
+				e.printStackTrace();
 			}
-		};
+			while (running) {
+				updateGL();
+			}
+			if (Display.isCreated()) {
+				Display.destroy();
+			}
+		});
 		gameThread.start();
 	}
 	
@@ -230,19 +188,11 @@ public class SwingFrame_LWJGL {
 		float scale = 100;
 		//System.out.println("render");
 		GL11.glBegin(GL11.GL_QUADS);
-		
-		GL11.glColor4f(1, 0, 0, 1);
-		GL11.glVertex3f(vertices[0] * scale, vertices[1] * scale, 0);
-		
-		GL11.glColor4f(1, 0, 0, 1);
-		GL11.glVertex3f(vertices[2] * scale, vertices[3] * scale, 0);
-		
-		GL11.glColor4f(1, 0, 0, 1);
-		GL11.glVertex3f(vertices[4] * scale, vertices[5] * scale, 0);
-		
-		GL11.glColor4f(1, 0, 0, 1);
-		GL11.glVertex3f(vertices[6] * scale, vertices[7] * scale, 0);
-		
+		for (int i = 0; i < 4; i++) {
+			int k = 2 * i;
+			GL11.glColor4f(1, 0, 0, 1);
+			GL11.glVertex3f(vertices[k] * scale, vertices[k + 1] * scale, 0);
+		}
 		GL11.glEnd();
 	}
 	
