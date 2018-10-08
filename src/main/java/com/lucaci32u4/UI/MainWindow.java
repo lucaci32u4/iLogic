@@ -302,7 +302,7 @@ public class MainWindow {
 		return (n == 2 || n == JOptionPane.CLOSED_OPTION ? EXIT_CANCEL : (n == 0 ? EXIT_SAVE : EXIT_DISCARD));
 	}
 	public void close() {
-		SwingUtilities.invokeLater(() -> { frame.setVisible(false); frame.dispose(); });
+		SwingUtilities.invokeLater(() -> { frame.setVisible(false); circuitPanel.removeAll(); frame.dispose(); });
 	}
 	public void setActiveSimulation(boolean active) {
 		SwingUtilities.invokeLater(() -> { activeSimulation = active; miStartStop.setState(activeSimulation); });
