@@ -130,27 +130,17 @@ public class LogicViewport {
 		}
 		
 		// Drawing state variables
-		boolean colorMapping;
 		int canvasOffsetX, canvasOffsetY;
-		float lineThickness;
-		int colorMode;
+		float pixelsPerUnit;
+		int depth;
+		int lineThickness;
 		
-		@Override public int unitsToPixels(int units, boolean absolute) {
-			// TODO: Write actual code
-			return units;
+		@Override public float unitsToPixels(int units) {
+			return (units * pixelsPerUnit);
 		}
 		
-		@Override public int pixelsToUnits(int pixels, boolean absolute) {
-			// TODO: Write actual code
-			return pixels;
-		}
-		
-		@Override public void setUsingPresetColors(boolean b) {
-			colorMapping = b;
-		}
-		
-		@Override public boolean getUsingPresetColors() {
-			return colorMapping;
+		@Override public float pixelsToUnits(int pixels) {
+			return (pixels / pixelsPerUnit);
 		}
 		
 		@Override public void setCanvasOffsetUnits(int offsetX, int offsetY) {
@@ -158,28 +148,33 @@ public class LogicViewport {
 			canvasOffsetY = offsetY;
 		}
 		
-		@Override public void setLineThckness(float thickness) {
+		@Override public void setLineThckness(int thickness) {
 			lineThickness = thickness;
-		}
-		
-		@Override public float getLineThickness() {
-			return lineThickness;
-		}
-		
-		@Override public void setColorMode(int bitmask) {
-			colorMode = bitmask;
+			GL11.glLineWidth(lineThickness);
 		}
 		
 		@Override public void drawLine(int fromX, int fromY, int toX, int toY) {
-		
+			GL11.glBegin(GL11.GL_LINE);
+			GL11.glVertex2i(fromX, fromY);
+			GL11.glVertex2i(toX, toY);
+			GL11.glEnd();
 		}
 		
 		@Override public void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY) {
-		
+			GL11.glBegin(GL11.GL_TRIANGLES);
+			GL11.glVertex2i(aX, aY);
+			GL11.glVertex2i(bX, bY);
+			GL11.glVertex2i(cX, cY);
+			GL11.glEnd();
 		}
 		
 		@Override public void drawRectangle(int left, int top, int right, int bottom) {
-		
+			GL11.glBegin(GL11.GL_QUADS);
+			GL11.glVertex2i(left, top);
+			GL11.glVertex2i(right, top);
+			GL11.glVertex2i(right, bottom);
+			GL11.glVertex2i(left, bottom);
+			GL11.glEnd();
 		}
 	}
 
@@ -192,18 +187,10 @@ public class LogicViewport {
 		void renderFrame();
 	}
 	public interface DrawAPI {
-		int COLOR_SIMPLE = 0b00;
-		int COLOR_TEXTURE = 0b10;
-		int COLOR_PRESET = 0b01;
-		int COLOR_TEXTURE_PRESET = COLOR_SIMPLE | COLOR_PRESET | COLOR_TEXTURE;
-		int unitsToPixels(int units, boolean absolute);
-		int pixelsToUnits(int pixels, boolean absolute);
-		void setUsingPresetColors(boolean b);
-		boolean getUsingPresetColors();
+		float unitsToPixels(int units);
+		float pixelsToUnits(int pixels);
 		void setCanvasOffsetUnits(int offsetX, int offsetY);
-		void setLineThckness(float thickness);
-		float getLineThickness();
-		void setColorMode(int bitmask);
+		void setLineThckness(int thicknessUnits);
 		void drawLine(int fromX, int fromY, int toX, int toY);
 		void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY);
 		void drawRectangle(int left, int top, int right, int bottom);
