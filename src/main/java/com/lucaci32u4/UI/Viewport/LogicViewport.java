@@ -1,7 +1,5 @@
 package com.lucaci32u4.UI.Viewport;
 
-import com.lucaci32u4.UI.ViewportArtifact;
-import com.lucaci32u4.util.JSignal;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
@@ -82,9 +80,6 @@ public class LogicViewport {
 		private int width, height;
 		private float backgroundR, backgroundG, backgroundB;
 		
-		// Drawing state variables
-		boolean colorMapping;
-		
 		GL11Backend() {
 			backgroundB = backgroundG = backgroundR = 1;
 		}
@@ -134,6 +129,12 @@ public class LogicViewport {
 			}
 		}
 		
+		// Drawing state variables
+		boolean colorMapping;
+		int canvasOffsetX, canvasOffsetY;
+		float lineThickness;
+		int colorMode;
+		
 		@Override public int unitsToPixels(int units, boolean absolute) {
 			// TODO: Write actual code
 			return units;
@@ -151,6 +152,35 @@ public class LogicViewport {
 		@Override public boolean getUsingPresetColors() {
 			return colorMapping;
 		}
+		
+		@Override public void setCanvasOffsetUnits(int offsetX, int offsetY) {
+			canvasOffsetX = offsetX;
+			canvasOffsetY = offsetY;
+		}
+		
+		@Override public void setLineThckness(float thickness) {
+			lineThickness = thickness;
+		}
+		
+		@Override public float getLineThickness() {
+			return lineThickness;
+		}
+		
+		@Override public void setColorMode(int bitmask) {
+			colorMode = bitmask;
+		}
+		
+		@Override public void drawLine(int fromX, int fromY, int toX, int toY) {
+		
+		}
+		
+		@Override public void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY) {
+		
+		}
+		
+		@Override public void drawRectangle(int left, int top, int right, int bottom) {
+		
+		}
 	}
 
 	private interface RenderAPI extends ControlAPI, DrawAPI { }
@@ -162,9 +192,20 @@ public class LogicViewport {
 		void renderFrame();
 	}
 	public interface DrawAPI {
+		int COLOR_SIMPLE = 0b00;
+		int COLOR_TEXTURE = 0b10;
+		int COLOR_PRESET = 0b01;
+		int COLOR_TEXTURE_PRESET = COLOR_SIMPLE | COLOR_PRESET | COLOR_TEXTURE;
 		int unitsToPixels(int units, boolean absolute);
 		int pixelsToUnits(int pixels, boolean absolute);
 		void setUsingPresetColors(boolean b);
 		boolean getUsingPresetColors();
+		void setCanvasOffsetUnits(int offsetX, int offsetY);
+		void setLineThckness(float thickness);
+		float getLineThickness();
+		void setColorMode(int bitmask);
+		void drawLine(int fromX, int fromY, int toX, int toY);
+		void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY);
+		void drawRectangle(int left, int top, int right, int bottom);
 	}
 }
