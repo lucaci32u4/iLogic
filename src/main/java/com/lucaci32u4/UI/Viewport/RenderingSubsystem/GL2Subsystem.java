@@ -1,6 +1,7 @@
 package com.lucaci32u4.UI.Viewport.RenderingSubsystem;
 
 import com.lucaci32u4.UI.Viewport.LogicViewport;
+import com.lucaci32u4.UI.Viewport.ViewportArtifact;
 import com.lucaci32u4.util.JSignal;
 
 import javax.media.opengl.*;
@@ -60,7 +61,7 @@ public class GL2Subsystem implements LogicViewport.RenderAPI, GLEventListener {
 	
 	}
 	
-	@Override public void renderFrame() {
+	@Override public void renderFrame(ViewportArtifact[] sprites) {
 	
 	}
 	

@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/GL2Subsystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/GL2Subsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/GL2Subsystem.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,7 +72,7 @@
         <counts>
           <entry key="class" value="10" />
           <entry key="glsl" value="11" />
-          <entry key="java" value="40" />
+          <entry key="java" value="43" />
           <entry key="txt" value="1" />
           <entry key="xml" value="8" />
         </counts>
@@ -82,7 +81,7 @@
         <counts>
           <entry key="CLASS" value="10" />
           <entry key="GLSL shader file" value="11" />
-          <entry key="JAVA" value="40" />
+          <entry key="JAVA" value="43" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="8" />
         </counts>
@@ -91,16 +90,16 @@
         <counts>
           <entry key="dummy" value="18" />
           <entry key="glsl" value="1112" />
-          <entry key="java" value="9004" />
-          <entry key="txt" value="767" />
+          <entry key="java" value="9583" />
+          <entry key="txt" value="919" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="GLSL shader file" value="1112" />
-          <entry key="JAVA" value="9004" />
-          <entry key="PLAIN_TEXT" value="785" />
+          <entry key="JAVA" value="9583" />
+          <entry key="PLAIN_TEXT" value="937" />
           <entry key="XML" value="51" />
         </counts>
       </usages-collector>
@@ -111,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="31" column="71" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+            <state relative-caret-position="551">
+              <caret line="53" column="25" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,20 +120,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/GL2Subsystem.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state relative-caret-position="425">
+              <caret line="58" column="50" lean-forward="true" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#componentShown#0;class#819:1219" />
-                <element signature="method#componentResized#0;class#819:1267" />
-                <element signature="method#componentMoved#0;class#819:1307" />
-                <element signature="method#componentHidden#0;class#819:1333" />
-                <element signature="e#878#879#0" expanded="true" />
-                <element signature="e#893#894#0" expanded="true" />
-                <element signature="e#946#947#0" expanded="true" />
-                <element signature="e#961#962#0" expanded="true" />
+                <element signature="e#646#738#0" expanded="true" />
+                <element signature="e#737#738#0" expanded="true" />
+                <element signature="method#componentShown#0;class#877:1402" />
+                <element signature="method#componentMoved#0;class#877:1402" />
+                <element signature="method#componentHidden#0;class#877:1402" />
+                <element signature="e#2029#2030#0" expanded="true" />
+                <element signature="e#2044#2045#0" expanded="true" />
+                <element signature="e#2097#2098#0" expanded="true" />
+                <element signature="e#2112#2113#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -225,9 +225,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/GLSL/vertex_colormap_position_to_color_position.glsl" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/GLSL/fragment_color_position_picker_to_color_picker.glsl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/GL2Subsystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java" />
       </list>
     </option>
   </component>
@@ -402,7 +403,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539034522548" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539036753972" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -673,7 +674,28 @@
       <option name="project" value="LOCAL" />
       <updated>1539021466121</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Removed circuitPanel at exit">
+      <created>1539034463764</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1539034463764</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Removed LWJGL code in favour of JOGL">
+      <created>1539034520873</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1539034520873</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Added unfinished JOGL implementation of RenderAPI, now in separate file">
+      <created>1539034585463</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1539034585463</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -740,9 +762,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Now using getter/setter for UUID access" />
-    <MESSAGE value="Drawing code" />
-    <MESSAGE value="example gl" />
     <MESSAGE value="LWJGL example modifications" />
     <MESSAGE value="More code cleanup" />
     <MESSAGE value="added runtime options" />
@@ -765,7 +784,10 @@
     <MESSAGE value="Added shaders with color mapping and picking" />
     <MESSAGE value="Created special colors instances in color class" />
     <MESSAGE value="cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
+    <MESSAGE value="Removed circuitPanel at exit" />
+    <MESSAGE value="Removed LWJGL code in favour of JOGL" />
+    <MESSAGE value="Added unfinished JOGL implementation of RenderAPI, now in separate file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added unfinished JOGL implementation of RenderAPI, now in separate file" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/app/logic/application/app/logic/core.java" />
@@ -1017,16 +1039,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="31" column="71" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -1055,10 +1067,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="3419" column="16" selection-start-line="3419" selection-start-column="16" selection-end-line="3419" selection-end-column="16" />
+          <folding>
+            <element signature="e#115028#115029#0" expanded="true" />
+            <element signature="e#115075#115076#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/GL2Subsystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        <state relative-caret-position="493">
+          <caret line="63" column="38" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#componentShown#0;class#819:1219" />
@@ -1069,6 +1092,35 @@
             <element signature="e#893#894#0" expanded="true" />
             <element signature="e#946#947#0" expanded="true" />
             <element signature="e#961#962#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="53" column="25" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="58" column="50" lean-forward="true" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#646#738#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="method#componentShown#0;class#877:1402" />
+            <element signature="method#componentMoved#0;class#877:1402" />
+            <element signature="method#componentHidden#0;class#877:1402" />
+            <element signature="e#2029#2030#0" expanded="true" />
+            <element signature="e#2044#2045#0" expanded="true" />
+            <element signature="e#2097#2098#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
           </folding>
         </state>
       </provider>

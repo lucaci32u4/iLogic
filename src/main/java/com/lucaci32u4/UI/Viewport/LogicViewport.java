@@ -34,7 +34,7 @@ public class LogicViewport {
 				if (readjust) {
 					pencil.adjustToCanvasSize();
 				}
-				pencil.renderFrame();
+				pencil.renderFrame(sprites);
 			}
 			pencil.destroyRenderer();
 		}).start();
@@ -51,7 +51,7 @@ public class LogicViewport {
 		void destroyRenderer();
 		void adjustToCanvasSize();
 		void setBackgroundColor(float r, float g, float b);
-		void renderFrame();
+		void renderFrame(ViewportArtifact[] sprites);
 	}
 	public interface DrawAPI {
 		float unitsToPixels(int units);
