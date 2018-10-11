@@ -17,53 +17,58 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	private Semaphore painter;
 	private JSignal requestedPainting;
 	private Canvas canvas;
+	private Container parentContainer;
 	
-	// Per-frame fields
+	// Per-frame data
 	private float pixelsPerUnit;
 	private int unitsOffsetX, unitsOffsetY;
 	private int primitiveOffsetX, primitiveOffsetY;
 	private Brush brush;
 	private Graphics2D g2d;
 	
-	@Override public boolean initRenderer(JPanel panel, JSignal signalForceWake) {
+	public Java2DSubsystem() {
 		pixelsPerUnit = 1;
 		unitsOffsetX = 0;
 		unitsOffsetY = 0;
 		primitiveOffsetX = 0;
 		primitiveOffsetY = 0;
+		brush = null;
+		g2d = null;
+		drawData = null;
+		canvas = null;
 		painter = new Semaphore(1);
 		requestedPainting = new JSignal(false);
-		try {
-			SwingUtilities.invokeAndWait(() -> {
-				canvas = new Canvas() {
-					@Override public void paint(Graphics g) { onDraw((Graphics2D)g); }
-				};
-				canvas.setIgnoreRepaint(true);
-				canvas.setMinimumSize(new Dimension(10, 10));
-				canvas.addComponentListener(new ComponentListener() {
-					@Override public void componentShown(ComponentEvent e) {
-						signalForceWake.set(true);
-					}
-					@Override public void componentResized(ComponentEvent e) {
-						signalForceWake.set(true);
-					}
-					@Override public void componentMoved(ComponentEvent e) {
-						signalForceWake.set(true);
-					}
-					@Override public void componentHidden(ComponentEvent e) {
-						signalForceWake.set(true);
-					}
-				});
-				panel.add(canvas);
+	}
+	
+	@Override public boolean initRenderer(JPanel panel, JSignal signalForceWake) {
+		parentContainer = panel;
+		SwingUtilities.invokeLater(() -> {
+			canvas = new Canvas() {
+				@Override public void paint(Graphics g) { onDraw((Graphics2D)g); }
+			};
+			canvas.setIgnoreRepaint(true);
+			canvas.setMinimumSize(new Dimension(10, 10));
+			canvas.addComponentListener(new ComponentListener() {
+				@Override public void componentShown(ComponentEvent e) {
+					signalForceWake.set(true);
+				}
+				@Override public void componentResized(ComponentEvent e) {
+					signalForceWake.set(true);
+				}
+				@Override public void componentMoved(ComponentEvent e) {
+					signalForceWake.set(true);
+				}
+				@Override public void componentHidden(ComponentEvent e) {
+					signalForceWake.set(true);
+				}
 			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			parentContainer.add(canvas);
+		});
 		return false;
 	}
 	
 	@Override public void destroyRenderer() {
-		// TODO: 10/10/2018: Write actual code
+		parentContainer.remove(canvas);
 	}
 	
 	@Override public boolean requestRenderFrame(LogicViewport.DrawData drawData) {
