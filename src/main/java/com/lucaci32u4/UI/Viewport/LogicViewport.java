@@ -3,10 +3,16 @@ package com.lucaci32u4.UI.Viewport;
 //import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
 import com.lucaci32u4.UI.Viewport.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2DSubsystem;
+import com.lucaci32u4.util.Helper;
+import org.apache.commons.collections4.CollectionUtils;
 import com.lucaci32u4.util.JSignal;
+import org.apache.commons.collections4.Equator;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class LogicViewport {
 	public static class DrawData {
@@ -18,10 +24,9 @@ public class LogicViewport {
 	
 	private DrawData pendingData;
 	private DrawData reserveData;
-	private boolean running;
 	private JPanel circuitPanel;
 	private RenderAPI pencil;
-	private JSignal signalForceWake;
+	private JSignal buffersUnlocked;
 	
 	public void init(JPanel displayPanel, ViewportArtifact backgroundSprite) {
 		circuitPanel = displayPanel;
@@ -31,15 +36,9 @@ public class LogicViewport {
 		reserveData.bkgndSprite = backgroundSprite;
 		pendingData.sprites = new ViewportArtifact[0];
 		reserveData.sprites = new ViewportArtifact[0];
-		new Thread(() -> {
-			signalForceWake = new JSignal(false);
-			pencil = new Java2DSubsystem();
-			running = pencil.initRenderer(circuitPanel, signalForceWake);
-			while (running) {
-				requestUpdate();
-			}
-			pencil.destroyRenderer();
-		}).start();
+		buffersUnlocked = new JSignal(true);
+		pencil = new Java2DSubsystem();
+		pencil.initRenderer(circuitPanel, this);
 	}
 	
 	public void attach(ViewportArtifact sprite) {
@@ -52,19 +51,37 @@ public class LogicViewport {
 		requestUpdate();
 	}
 	
-	private void requestUpdate() {
+	public void requestUpdate() {
+		
 		boolean immediate = pencil.requestRenderFrame(pendingData);
 		if (immediate) {
 			// Swapping buffers
 			DrawData aux = reserveData;
 			reserveData = pendingData;
 			pendingData = aux;
+			reshapeBuffers(pendingData);
 		}
+	}
+	
+	private void reshapeBuffers(@NotNull DrawData data) {
+		buffersUnlocked.set(false);
+		if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
+			Collection<ViewportArtifact> com = CollectionUtils.retainAll(data.pendingAttach, data.pendingDetach);
+			data.pendingAttach.removeAll(com);
+			data.pendingDetach.removeAll(com);
+			if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
+				com = Arrays.asList(data.sprites);
+				com.removeAll(data.pendingDetach);
+				com.addAll(data.pendingAttach);
+				data.sprites = (ViewportArtifact[]) com.toArray();
+			}
+		}
+		buffersUnlocked.set(true);
 	}
 
 	public interface RenderAPI extends ControlAPI, DrawAPI, ResourceAPI { }
 	public interface ControlAPI {
-		boolean initRenderer(JPanel panel, JSignal signalForceWake);
+		boolean initRenderer(JPanel panel, LogicViewport viewport);
 		void destroyRenderer();
 		boolean requestRenderFrame(DrawData drawData);
 		void setSpaceScale(float pixelsPerUnit);
