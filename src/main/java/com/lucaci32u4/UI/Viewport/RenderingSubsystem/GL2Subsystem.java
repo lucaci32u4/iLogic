@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
+/*
+
 public class GL2Subsystem implements LogicViewport.RenderAPI, GLEventListener {
 	private GLProfile glProfile;
 	private GLCapabilities glCapabilities;
@@ -121,3 +123,5 @@ public class GL2Subsystem implements LogicViewport.RenderAPI, GLEventListener {
 	
 	}
 }
+
+*/
