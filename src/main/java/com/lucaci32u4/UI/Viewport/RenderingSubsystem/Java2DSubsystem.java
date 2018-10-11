@@ -17,13 +17,9 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	private Semaphore painter;
 	private JSignal requestedPainting;
 	private Canvas canvas;
-	private boolean readjust;
-	private boolean shown;
-	private boolean hidden;
 	
 	// Per-frame fields
 	private float pixelsPerUnit;
-	private float lineThickness;
 	private int unitsOffsetX, unitsOffsetY;
 	private int primitiveOffsetX, primitiveOffsetY;
 	private Brush brush;
@@ -46,19 +42,15 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 				canvas.setMinimumSize(new Dimension(10, 10));
 				canvas.addComponentListener(new ComponentListener() {
 					@Override public void componentShown(ComponentEvent e) {
-						shown = true;
 						signalForceWake.set(true);
 					}
 					@Override public void componentResized(ComponentEvent e) {
-						readjust = true;
 						signalForceWake.set(true);
 					}
 					@Override public void componentMoved(ComponentEvent e) {
-						readjust = true;
 						signalForceWake.set(true);
 					}
 					@Override public void componentHidden(ComponentEvent e) {
-						hidden = true;
 						signalForceWake.set(true);
 					}
 				});
