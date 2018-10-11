@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.concurrent.Semaphore;
 
 public class Java2DSubsystem implements LogicViewport.RenderAPI {
@@ -17,7 +18,9 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	private Semaphore painter;
 	private JSignal requestedPainting;
 	private Canvas canvas;
+	private ComponentListener canvasComponentListener;
 	private Container parentContainer;
+	private LogicViewport parentViewport;
 	
 	// Per-frame data
 	private float pixelsPerUnit;
@@ -40,28 +43,30 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		requestedPainting = new JSignal(false);
 	}
 	
-	@Override public boolean initRenderer(JPanel panel, JSignal signalForceWake) {
+	@Override public boolean initRenderer(JPanel panel, LogicViewport viewport) {
 		parentContainer = panel;
+		parentViewport = viewport;
 		SwingUtilities.invokeLater(() -> {
 			canvas = new Canvas() {
 				@Override public void paint(Graphics g) { onDraw((Graphics2D)g); }
 			};
 			canvas.setIgnoreRepaint(true);
 			canvas.setMinimumSize(new Dimension(10, 10));
-			canvas.addComponentListener(new ComponentListener() {
+			canvasComponentListener = new ComponentListener() {
 				@Override public void componentShown(ComponentEvent e) {
-					signalForceWake.set(true);
+					parentViewport.requestUpdate();
 				}
 				@Override public void componentResized(ComponentEvent e) {
-					signalForceWake.set(true);
+					parentViewport.requestUpdate();
 				}
 				@Override public void componentMoved(ComponentEvent e) {
-					signalForceWake.set(true);
+					parentViewport.requestUpdate();
 				}
 				@Override public void componentHidden(ComponentEvent e) {
-					signalForceWake.set(true);
+					parentViewport.requestUpdate();
 				}
-			});
+			};
+			canvas.addComponentListener(canvasComponentListener);
 			parentContainer.add(canvas);
 		});
 		return false;
@@ -69,6 +74,7 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	
 	@Override public void destroyRenderer() {
 		parentContainer.remove(canvas);
+		canvas.removeComponentListener(canvasComponentListener);
 	}
 	
 	@Override public boolean requestRenderFrame(LogicViewport.DrawData drawData) {
@@ -161,21 +167,21 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		ViewportArtifact[] sprites = drawData.sprites;
 		Collection<ViewportArtifact> pendingAttach = drawData.pendingAttach;
 		Collection<ViewportArtifact> pendingDetach = drawData.pendingDetach;
-		for (ViewportArtifact sprite : pendingDetach) {
-			sprite.onDetach(this);
-		}
-		for (ViewportArtifact sprite : pendingAttach) {
-			sprite.onAttach(this);
-		}
 		int widthPixels = canvas.getWidth();
 		int heightPixels = canvas.getHeight();
 		int widthUnits = (int)pixelsToUnits(widthPixels);
 		int heightUnits = (int)pixelsToUnits(heightPixels);
+		for (ViewportArtifact sprite : pendingAttach) {
+			sprite.onAttach(this);
+		}
 		drawData.bkgndSprite.onDraw(this, this);
 		for (ViewportArtifact sprite : sprites) {
 			if (sprite.checkIfOnScreen(unitsOffsetX, unitsOffsetY, widthUnits, heightUnits)) {
 				sprite.onDraw(this, this);
 			}
+		}
+		for (ViewportArtifact sprite : pendingDetach) {
+			sprite.onDetach(this);
 		}
 		painter.release();
 	}
