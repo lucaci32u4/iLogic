@@ -1,17 +1,17 @@
 package com.lucaci32u4.UI.Viewport;
 
-import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
+//import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
+import com.lucaci32u4.UI.Viewport.Brushes.Brush;
+import com.lucaci32u4.UI.Viewport.Brushes.ColorBrush;
+import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2DSubsystem;
 import com.lucaci32u4.util.JSignal;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 public class LogicViewport {
 	
 	private ViewportArtifact[] sprites;
-	private ViewportArtifact[] drawn;
 	private int drawnCount;
 	private int pixelWidth, pixelHeight;
 	private int unitWidth, unitHeight;
@@ -27,8 +27,8 @@ public class LogicViewport {
 		circuitPanel = displayPanel;
 		new Thread(() -> {
 			signalForceWake = new JSignal(false);
-			pencil = new GL2Subsystem();
-			pencil.setBackgroundColor(backgroundR, backgroundG, backgroundB);
+			pencil = new Java2DSubsystem();
+			pencil.setBackgroundBrush(ColorBrush.BACKGROUND);
 			running = pencil.initRenderer(circuitPanel, signalForceWake);
 			while (running) {
 				if (readjust) {
@@ -41,7 +41,6 @@ public class LogicViewport {
 	}
 	
 	private static void initSwingCanvas(Canvas canvas, JPanel circuitPanel) {
-		
 		circuitPanel.add(canvas);
 	}
 
@@ -50,17 +49,23 @@ public class LogicViewport {
 		boolean initRenderer(JPanel panel, JSignal signalForceWake);
 		void destroyRenderer();
 		void adjustToCanvasSize();
-		void setBackgroundColor(float r, float g, float b);
+		void setBackgroundBrush(Brush bkgndBrush);
 		void renderFrame(ViewportArtifact[] sprites);
+		void setSpaceScale(float pixelsPerUnit);
+		void setSpaceOffset(int offsetX, int offsetY);
 	}
 	public interface DrawAPI {
 		float unitsToPixels(int units);
 		float pixelsToUnits(int pixels);
 		void setCanvasOffsetUnits(int offsetX, int offsetY);
-		void setLineThickness(int thicknessUnits);
+		void setLineThickness(int thicknessPixels);
+		void setBrush(Brush brush);
 		void drawLine(int fromX, int fromY, int toX, int toY);
 		void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY);
 		void drawRectangle(int left, int top, int right, int bottom);
-		void drawRectangle(int left, int top, int right, int bottom, int timesRollover);
+	}
+	
+	public interface ResourceAPI {
+	
 	}
 }
