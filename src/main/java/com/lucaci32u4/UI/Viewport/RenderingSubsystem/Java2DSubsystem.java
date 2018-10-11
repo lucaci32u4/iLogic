@@ -26,11 +26,15 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	private float lineThickness;
 	private int unitsOffsetX, unitsOffsetY;
 	private int primitiveOffsetX, primitiveOffsetY;
-	private int widthPixels, heightPixels, widthUnits, heightUnits;
 	private Brush brush;
 	private Graphics2D g2d;
 	
 	@Override public boolean initRenderer(JPanel panel, JSignal signalForceWake) {
+		pixelsPerUnit = 1;
+		unitsOffsetX = 0;
+		unitsOffsetY = 0;
+		primitiveOffsetX = 0;
+		primitiveOffsetY = 0;
 		painter = new Semaphore(1);
 		requestedPainting = new JSignal(false);
 		try {
@@ -95,10 +99,6 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		primitiveOffsetY = offsetY;
 	}
 	
-	@Override public void setLineThickness(int thicknessPixels) {
-		lineThickness = thicknessPixels;
-	}
-	
 	@Override public void setBrush(Brush brush) {
 		this.brush = brush;
 	}
@@ -111,12 +111,13 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		return units * pixelsPerUnit;
 	}
 	
-	@Override public void drawLine(int fromX, int fromY, int toX, int toY) {
+	@Override public void drawLine(int fromX, int fromY, int toX, int toY, float thicknessPixels) {
 		fromX += primitiveOffsetX;	fromX *= pixelsPerUnit;
 		fromY += primitiveOffsetY;	fromY *= pixelsPerUnit;
 		toX += primitiveOffsetX;	toX *= pixelsPerUnit;
 		toY += primitiveOffsetY;	toY *= pixelsPerUnit;
 		g2d.setPaint((Paint)(Brush.get(brush)));
+		g2d.setStroke(new BasicStroke(thicknessPixels));
 		g2d.drawLine(fromX, fromY, toX, toY);
 	}
 	
@@ -169,10 +170,10 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		for (ViewportArtifact sprite : pendingAttach) {
 			sprite.onAttach(this);
 		}
-		widthPixels = canvas.getWidth();
-		heightPixels = canvas.getHeight();
-		widthUnits = (int)pixelsToUnits(widthPixels);
-		heightUnits = (int)pixelsToUnits(heightPixels);
+		int widthPixels = canvas.getWidth();
+		int heightPixels = canvas.getHeight();
+		int widthUnits = (int)pixelsToUnits(widthPixels);
+		int heightUnits = (int)pixelsToUnits(heightPixels);
 		drawData.bkgndSprite.onDraw(this, this);
 		for (ViewportArtifact sprite : sprites) {
 			if (sprite.checkIfOnScreen(unitsOffsetX, unitsOffsetY, widthUnits, heightUnits)) {

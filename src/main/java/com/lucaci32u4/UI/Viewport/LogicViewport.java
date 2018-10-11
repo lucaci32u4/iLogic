@@ -74,9 +74,8 @@ public class LogicViewport {
 		float unitsToPixels(int units);
 		float pixelsToUnits(int pixels);
 		void setCanvasOffsetUnits(int offsetX, int offsetY);
-		void setLineThickness(int thicknessPixels);
 		void setBrush(Brush brush);
-		void drawLine(int fromX, int fromY, int toX, int toY);
+		void drawLine(int fromX, int fromY, int toX, int toY, float thicknessPixels);
 		void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY);
 		void drawRectangle(int left, int top, int right, int bottom);
 	}
