@@ -2,55 +2,71 @@ package com.lucaci32u4.UI.Viewport;
 
 //import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
 import com.lucaci32u4.UI.Viewport.Brushes.Brush;
-import com.lucaci32u4.UI.Viewport.Brushes.ColorBrush;
 import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2DSubsystem;
 import com.lucaci32u4.util.JSignal;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.ArrayDeque;
 
 public class LogicViewport {
+	public static class DrawData {
+		public final ArrayDeque<ViewportArtifact> pendingAttach = new ArrayDeque<>(100);
+		public final ArrayDeque<ViewportArtifact> pendingDetach = new ArrayDeque<>(100);
+		public ViewportArtifact[] sprites;
+		public ViewportArtifact bkgndSprite;
+	}
 	
-	private ViewportArtifact[] sprites;
-	private int drawnCount;
-	private int pixelWidth, pixelHeight;
-	private int unitWidth, unitHeight;
-	private int unitOffsetX, unitOffsetY;
+	private DrawData pendingData;
+	private DrawData reserveData;
 	private boolean running;
-	private boolean readjust;
-	private float backgroundR = 1, backgroundG = 1, backgroundB = 1;
 	private JPanel circuitPanel;
 	private RenderAPI pencil;
 	private JSignal signalForceWake;
 	
-	private void init(JPanel displayPanel) {
+	public void init(JPanel displayPanel, ViewportArtifact backgroundSprite) {
 		circuitPanel = displayPanel;
+		pendingData = new DrawData();
+		reserveData = new DrawData();
+		pendingData.bkgndSprite = backgroundSprite;
+		reserveData.bkgndSprite = backgroundSprite;
+		pendingData.sprites = new ViewportArtifact[0];
+		reserveData.sprites = new ViewportArtifact[0];
 		new Thread(() -> {
 			signalForceWake = new JSignal(false);
 			pencil = new Java2DSubsystem();
-			pencil.setBackgroundBrush(ColorBrush.BACKGROUND);
 			running = pencil.initRenderer(circuitPanel, signalForceWake);
 			while (running) {
-				if (readjust) {
-					pencil.adjustToCanvasSize();
-				}
-				pencil.renderFrame(sprites);
+				requestUpdate();
 			}
 			pencil.destroyRenderer();
 		}).start();
 	}
 	
-	private static void initSwingCanvas(Canvas canvas, JPanel circuitPanel) {
-		circuitPanel.add(canvas);
+	public void attach(ViewportArtifact sprite) {
+		pendingData.pendingAttach.offer(sprite);
+		requestUpdate();
+	}
+	
+	public void detach(ViewportArtifact sprite) {
+		pendingData.pendingDetach.offer(sprite);
+		requestUpdate();
+	}
+	
+	private void requestUpdate() {
+		boolean immediate = pencil.requestRenderFrame(pendingData);
+		if (immediate) {
+			// Swapping buffers
+			DrawData aux = reserveData;
+			reserveData = pendingData;
+			pendingData = aux;
+		}
 	}
 
-	public interface RenderAPI extends ControlAPI, DrawAPI { }
+	public interface RenderAPI extends ControlAPI, DrawAPI, ResourceAPI { }
 	public interface ControlAPI {
 		boolean initRenderer(JPanel panel, JSignal signalForceWake);
 		void destroyRenderer();
-		void adjustToCanvasSize();
-		void setBackgroundBrush(Brush bkgndBrush);
-		void renderFrame(ViewportArtifact[] sprites);
+		boolean requestRenderFrame(DrawData drawData);
 		void setSpaceScale(float pixelsPerUnit);
 		void setSpaceOffset(int offsetX, int offsetY);
 	}

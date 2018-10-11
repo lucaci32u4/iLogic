@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/ViewportArtifact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/ViewportArtifact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -93,7 +91,7 @@
           <entry key="dummy" value="28" />
           <entry key="glsl" value="1112" />
           <entry key="java" value="15010" />
-          <entry key="txt" value="1266" />
+          <entry key="txt" value="1432" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
@@ -101,7 +99,7 @@
         <counts>
           <entry key="GLSL shader file" value="1112" />
           <entry key="JAVA" value="15010" />
-          <entry key="PLAIN_TEXT" value="1294" />
+          <entry key="PLAIN_TEXT" value="1460" />
           <entry key="XML" value="51" />
         </counts>
       </usages-collector>
@@ -112,7 +110,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="459">
               <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -399,7 +397,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539290896628" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539290939125" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -765,7 +763,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539281049253</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Array resizing method">
+      <created>1539290937600</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1539290937600</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Added click event handler, added ResourceAPI parameter to drawing methods">
+      <created>1539291056885</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1539291056885</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -781,7 +793,7 @@
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2510661" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2510661" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -790,7 +802,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -798,7 +810,7 @@
       <window_info anchor="bottom" id="AllProjects" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Version Control" order="10" visible="true" weight="0.29501083" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.29501083" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -841,8 +853,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Refactored names for JSignal's methods" />
-    <MESSAGE value="Code cleanup" />
     <MESSAGE value="Versioning" />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="New geometry classes" />
@@ -866,7 +876,9 @@
     <MESSAGE value="changed drawing API" />
     <MESSAGE value="Commented entire class. Development of OpenGL renderer is suspended until Java2D renderer is finished and functional" />
     <MESSAGE value="Drawing methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Drawing methods" />
+    <MESSAGE value="Array resizing method" />
+    <MESSAGE value="Added click event handler, added ResourceAPI parameter to drawing methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added click event handler, added ResourceAPI parameter to drawing methods" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/app/logic/application/app/logic/core.java" />
@@ -1182,7 +1194,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="459">
           <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
