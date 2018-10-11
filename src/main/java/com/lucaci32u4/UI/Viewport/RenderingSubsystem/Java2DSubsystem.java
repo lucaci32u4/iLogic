@@ -9,17 +9,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
 public class Java2DSubsystem implements LogicViewport.RenderAPI {
-	private ViewportArtifact[] sprites;
+	private LogicViewport.DrawData drawData;
 	private Semaphore painter;
-	private JSignal finishedPainting;
+	private JSignal requestedPainting;
 	private Canvas canvas;
 	private boolean readjust;
 	private boolean shown;
 	private boolean hidden;
-	private Brush bkgndBrush;
 	
 	// Per-frame fields
 	private float pixelsPerUnit;
@@ -32,7 +32,7 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	
 	@Override public boolean initRenderer(JPanel panel, JSignal signalForceWake) {
 		painter = new Semaphore(1);
-		finishedPainting = new JSignal(false);
+		requestedPainting = new JSignal(false);
 		try {
 			SwingUtilities.invokeAndWait(() -> {
 				canvas = new Canvas() {
@@ -70,19 +70,15 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		// TODO: 10/10/2018: Write actual code
 	}
 	
-	@Override public void renderFrame(ViewportArtifact[] sprites) {
-		if (painter.availablePermits() != 0) {
+	@Override public boolean requestRenderFrame(LogicViewport.DrawData drawData) {
+		boolean immediate = painter.availablePermits() != 0;
+		if (immediate) {
 			painter.acquireUninterruptibly();
-			this.sprites = sprites;
-			finishedPainting.set(false);
+			this.drawData  = drawData;
 			SwingUtilities.invokeLater(() -> canvas.repaint());
-			finishedPainting.waitFor(true);
-			finishedPainting.set(false);
-		}
-	}
-	
-	@Override public void adjustToCanvasSize() {
-		// TODO: 10/10/2018: Write actual code
+			immediate = true;
+		} else requestedPainting.set(true);
+		return immediate;
 	}
 	
 	@Override public void setSpaceScale(float pixelsPerUnit) {
@@ -92,10 +88,6 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	@Override public void setSpaceOffset(int offsetX, int offsetY) {
 		unitsOffsetX = offsetX;
 		unitsOffsetY = offsetY;
-	}
-	
-	@Override public void setBackgroundBrush(Brush bkgndBrush) {
-		this.bkgndBrush = bkgndBrush;
 	}
 	
 	@Override public void setCanvasOffsetUnits(int offsetX, int offsetY) {
@@ -168,19 +160,25 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	
 	private void onDraw(Graphics2D g) {
 		g2d = g;
+		ViewportArtifact[] sprites = drawData.sprites;
+		Collection<ViewportArtifact> pendingAttach = drawData.pendingAttach;
+		Collection<ViewportArtifact> pendingDetach = drawData.pendingDetach;
+		for (ViewportArtifact sprite : pendingDetach) {
+			sprite.onDetach(this);
+		}
+		for (ViewportArtifact sprite : pendingAttach) {
+			sprite.onAttach(this);
+		}
 		widthPixels = canvas.getWidth();
 		heightPixels = canvas.getHeight();
 		widthUnits = (int)pixelsToUnits(widthPixels);
 		heightUnits = (int)pixelsToUnits(heightPixels);
-		setBrush(bkgndBrush);
-		setCanvasOffsetUnits(0, 0);
-		drawRectangle(unitsOffsetX, unitsOffsetY, widthUnits, heightPixels);
+		drawData.bkgndSprite.onDraw(this, this);
 		for (ViewportArtifact sprite : sprites) {
 			if (sprite.checkIfOnScreen(unitsOffsetX, unitsOffsetY, widthUnits, heightUnits)) {
-				sprite.onDraw(this);
+				sprite.onDraw(this, this);
 			}
 		}
-		finishedPainting.set(true);
 		painter.release();
 	}
 }

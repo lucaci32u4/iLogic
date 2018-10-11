@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -72,7 +71,7 @@
         <counts>
           <entry key="class" value="10" />
           <entry key="glsl" value="11" />
-          <entry key="java" value="99" />
+          <entry key="java" value="100" />
           <entry key="txt" value="1" />
           <entry key="xml" value="9" />
         </counts>
@@ -81,7 +80,7 @@
         <counts>
           <entry key="CLASS" value="10" />
           <entry key="GLSL shader file" value="11" />
-          <entry key="JAVA" value="99" />
+          <entry key="JAVA" value="100" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="9" />
         </counts>
@@ -91,7 +90,7 @@
           <entry key="dummy" value="28" />
           <entry key="glsl" value="1112" />
           <entry key="java" value="15010" />
-          <entry key="txt" value="1432" />
+          <entry key="txt" value="1705" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
@@ -99,7 +98,7 @@
         <counts>
           <entry key="GLSL shader file" value="1112" />
           <entry key="JAVA" value="15010" />
-          <entry key="PLAIN_TEXT" value="1460" />
+          <entry key="PLAIN_TEXT" value="1733" />
           <entry key="XML" value="51" />
         </counts>
       </usages-collector>
@@ -107,13 +106,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="204">
               <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="79" column="43" lean-forward="true" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#setSpaceOffset#0;class#Java2DSubsystem#0" />
+                <element signature="method#setCanvasOffsetUnits#0;class#Java2DSubsystem#0" />
               </folding>
             </state>
           </provider>
@@ -397,7 +410,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539290939125" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539291090675" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -777,7 +790,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539291056885</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added DrawData instead of arrays and collections,&#10;Removed unnecessary synchronization,&#10;Added detach and attach callbacks,&#10;Replaced background drawing with sprite,&#10;Removed unused methods,&#10;Added redraw signal.">
+      <created>1539291439095</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1539291439095</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView">
@@ -793,7 +813,7 @@
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2510661" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2510661" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -802,7 +822,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -853,7 +873,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Versioning" />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="New geometry classes" />
     <MESSAGE value="Moved" />
@@ -878,7 +897,8 @@
     <MESSAGE value="Drawing methods" />
     <MESSAGE value="Array resizing method" />
     <MESSAGE value="Added click event handler, added ResourceAPI parameter to drawing methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added click event handler, added ResourceAPI parameter to drawing methods" />
+    <MESSAGE value="Added DrawData instead of arrays and collections,&#10;Removed unnecessary synchronization,&#10;Added detach and attach callbacks,&#10;Replaced background drawing with sprite,&#10;Removed unused methods,&#10;Added redraw signal." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DrawData instead of arrays and collections,&#10;Removed unnecessary synchronization,&#10;Added detach and attach callbacks,&#10;Replaced background drawing with sprite,&#10;Removed unused methods,&#10;Added redraw signal." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/app/logic/application/app/logic/core.java" />
@@ -1163,28 +1183,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="79" column="43" lean-forward="true" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2741#2742#0" expanded="true" />
-            <element signature="e#2782#2783#0" expanded="true" />
-            <element signature="method#setSpaceOffset#0;class#Java2DSubsystem#0" />
-            <element signature="method#setCanvasOffsetUnits#0;class#Java2DSubsystem#0" />
-            <element signature="e#3107#3108#0" expanded="true" />
-            <element signature="e#3145#3146#0" expanded="true" />
-            <element signature="e#3194#3195#0" expanded="true" />
-            <element signature="e#3219#3220#0" expanded="true" />
-            <element signature="e#3273#3274#0" expanded="true" />
-            <element signature="e#3309#3310#0" expanded="true" />
-            <element signature="e#3362#3363#0" expanded="true" />
-            <element signature="e#3397#3398#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/ViewportArtifact.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1194,10 +1192,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="204">
           <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="79" column="43" lean-forward="true" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setSpaceOffset#0;class#Java2DSubsystem#0" />
+            <element signature="method#setCanvasOffsetUnits#0;class#Java2DSubsystem#0" />
           </folding>
         </state>
       </provider>
