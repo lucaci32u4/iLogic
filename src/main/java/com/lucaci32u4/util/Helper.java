@@ -15,7 +15,17 @@ public class Helper {
 		}
 		return res;
 	}
+	
 	public static int step(int origin, int current, int stepSize) {
 		return (int)(Math.round((origin - current) / (double)stepSize)) * stepSize;
+	}
+	
+	public static Object[] resize(Object[] arr, int newSize) {
+		Object[] loc = arr;
+		if (arr.length != newSize) {
+			loc = new Object[newSize];
+			System.arraycopy(arr, 0, loc, 0, (arr.length > newSize ? newSize : arr.length));
+		}
+		return loc;
 	}
 }
