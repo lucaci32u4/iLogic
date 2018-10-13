@@ -6,6 +6,7 @@ public interface PickerAPI extends PickerManager {
 	void init();
 	void pick(int pointerX, int pointerY, int pickerChannel);
 	void destroy();
+
 	class HitboxLifetimeEvent {
 		public enum Type {
 			ATTACH, DETACH, EXIT,
