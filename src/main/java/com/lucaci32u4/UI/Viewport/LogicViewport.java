@@ -3,18 +3,20 @@ package com.lucaci32u4.UI.Viewport;
 //import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
 import com.lucaci32u4.UI.Viewport.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2DSubsystem;
-import com.lucaci32u4.util.Helper;
 import org.apache.commons.collections4.CollectionUtils;
 import com.lucaci32u4.util.JSignal;
-import org.apache.commons.collections4.Equator;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.Semaphore;
 
-public class LogicViewport {
+public class LogicViewport implements Runnable {
+	public static final int WORKER_EXEC = 1;
+	public static final int WORKER_EXIT = 2;
+
 	public static class DrawData {
 		public final ArrayDeque<ViewportArtifact> pendingAttach = new ArrayDeque<>(100);
 		public final ArrayDeque<ViewportArtifact> pendingDetach = new ArrayDeque<>(100);
@@ -26,7 +28,10 @@ public class LogicViewport {
 	private DrawData reserveData;
 	private JPanel circuitPanel;
 	private RenderAPI pencil;
-	private JSignal buffersUnlocked;
+	private Semaphore bufferLock;
+	private Thread bufferWorker;
+	private JSignal workerCmdSignal;
+	public int workerCommand;
 	
 	public void init(JPanel displayPanel, ViewportArtifact backgroundSprite) {
 		circuitPanel = displayPanel;
@@ -36,35 +41,42 @@ public class LogicViewport {
 		reserveData.bkgndSprite = backgroundSprite;
 		pendingData.sprites = new ViewportArtifact[0];
 		reserveData.sprites = new ViewportArtifact[0];
-		buffersUnlocked = new JSignal(true);
+		bufferLock = new Semaphore(1);
+		workerCmdSignal = new JSignal(false);
 		pencil = new Java2DSubsystem();
 		pencil.initRenderer(circuitPanel, this);
+		bufferWorker = new Thread(this);
+		bufferWorker.start();
 	}
 	
 	public void attach(ViewportArtifact sprite) {
 		pendingData.pendingAttach.offer(sprite);
+		bufferLock.release();
 		requestUpdate();
+		bufferLock.acquireUninterruptibly();
 	}
 	
 	public void detach(ViewportArtifact sprite) {
+		bufferLock.acquireUninterruptibly();
 		pendingData.pendingDetach.offer(sprite);
 		requestUpdate();
+		bufferLock.release();
 	}
 	
 	public void requestUpdate() {
-		
 		boolean immediate = pencil.requestRenderFrame(pendingData);
 		if (immediate) {
 			// Swapping buffers
 			DrawData aux = reserveData;
 			reserveData = pendingData;
 			pendingData = aux;
-			reshapeBuffers(pendingData);
+			workerCommand = WORKER_EXEC;
+			workerCmdSignal.set(true);
 		}
 	}
 	
 	private void reshapeBuffers(@NotNull DrawData data) {
-		buffersUnlocked.set(false);
+		bufferLock.acquireUninterruptibly();
 		if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
 			Collection<ViewportArtifact> com = CollectionUtils.retainAll(data.pendingAttach, data.pendingDetach);
 			data.pendingAttach.removeAll(com);
@@ -76,7 +88,25 @@ public class LogicViewport {
 				data.sprites = (ViewportArtifact[]) com.toArray();
 			}
 		}
-		buffersUnlocked.set(true);
+		bufferLock.release();
+	}
+
+	@Override public void run() {
+		boolean running = true;
+		while (running) {
+			workerCmdSignal.waitFor(true);
+			workerCmdSignal.set(false);
+			switch(workerCommand) {
+				case WORKER_EXEC:
+					bufferLock.acquireUninterruptibly();
+					reshapeBuffers(pendingData);
+					bufferLock.release();
+					break;
+				case WORKER_EXIT:
+					running = false;
+					break;
+			}
+		}
 	}
 
 	public interface RenderAPI extends ControlAPI, DrawAPI, ResourceAPI { }
