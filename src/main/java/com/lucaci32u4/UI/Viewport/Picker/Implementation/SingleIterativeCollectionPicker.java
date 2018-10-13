@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 
-	private SimpleEventQueue<PickerAPI.PickerEvent> queue;
+	private SimpleEventQueue<HitboxLifetimeEvent> queue;
 
 	private Collection<Hitbox>[] channel;
 	private Thread thread;
@@ -20,11 +20,11 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 	}
 
 	@Override public void attach(Hitbox hitbox, int pickerChannel) {
-		queue.produce(new PickerEvent(PickerEvent.Type.ATTACH, hitbox, pickerChannel));
+		queue.produce(new HitboxLifetimeEvent(HitboxLifetimeEvent.Type.ATTACH, hitbox, pickerChannel));
 	}
 
 	@Override public void detach(Hitbox hitbox, int pickerChannel) {
-		queue.produce(new PickerEvent(PickerEvent.Type.DETACH, hitbox, pickerChannel));
+		queue.produce(new HitboxLifetimeEvent(HitboxLifetimeEvent.Type.DETACH, hitbox, pickerChannel));
 	}
 
 	@Override public void pick(int pointerX, int pointerY, int pickerChannel) {
@@ -39,12 +39,12 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 	}
 
 	@Override public void destroy() {
-		queue.produce(new PickerEvent(PickerEvent.Type.EXIT, null, -1));
+		queue.produce(new HitboxLifetimeEvent(HitboxLifetimeEvent.Type.EXIT, null, -1));
 	}
 
 	private void run() {
 		boolean running = true;
-		PickerAPI.PickerEvent event = null;
+		HitboxLifetimeEvent event = null;
 		while (running) {
 			event = queue.consume(true);
 			synchronized (this) {
