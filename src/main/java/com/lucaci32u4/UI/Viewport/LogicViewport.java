@@ -11,6 +11,9 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collection;
@@ -27,31 +30,54 @@ public class LogicViewport {
 		public int offX, offY;
 	}
 	
-	private ViewportData pendingData;
-	private ViewportData reserveData;
+	private ViewportData data;
 	private Semaphore bufferLock;
 	private SimpleWorkerThread bufferWorker;
 	private RenderAPI pencil;
 	private PickerAPI picker;
+	private UserInputListener userInputListener;
 
-	public void init(@NotNull JPanel displayPanel, @NotNull RenderAPI renderAPI, @NotNull PickerAPI pickerAPI) {
+	public void init(@NotNull JPanel displayPanel, @NotNull RenderAPI renderAPI, @NotNull PickerAPI pickerAPI, @NotNull UserInputListener inputListener) {
 		pencil = renderAPI;
 		picker = pickerAPI;
-		pendingData = new ViewportData();
-		reserveData = new ViewportData();
-		pendingData.bkgndSprite = null;
-		reserveData.bkgndSprite = null;
-		pendingData.sprites = new VisualArtifact[0];
-		reserveData.sprites = new VisualArtifact[0];
+		userInputListener = inputListener;
+		data = new ViewportData();
+		data.bkgndSprite = null;
+		data.sprites = new VisualArtifact[0];
 		bufferWorker = new SimpleWorkerThread(this::run);
 		bufferLock = new Semaphore(1);
 		pencil = new Java2DSubsystem();
 		pencil.initRenderer(displayPanel, this);
+		pencil.getCanvas().addMouseListener(new MouseListener() {
+			@Override public void mouseClicked(MouseEvent e) {
+
+			}
+			@Override public void mousePressed(MouseEvent e) {
+				userInputListener.mouseButtonEvent(e);
+			}
+			@Override public void mouseReleased(MouseEvent e) {
+				userInputListener.mouseButtonEvent(e);
+			}
+			@Override public void mouseEntered(MouseEvent e) {
+				userInputListener.isInsidePerimeter(true);
+			}
+			@Override public void mouseExited(MouseEvent e) {
+				userInputListener.isInsidePerimeter(false);
+			}
+		});
+		pencil.getCanvas().addMouseMotionListener(new MouseMotionListener() {
+			@Override public void mouseDragged(MouseEvent e) {
+				userInputListener.mouseMotionEvent(e, true);
+			}
+			@Override public void mouseMoved(MouseEvent e) {
+				userInputListener.mouseMotionEvent(e, false);
+			}
+		});
 		bufferWorker.start();
 	}
 	
 	public void attach(VisualArtifact sprite) {
-		pendingData.pendingAttach.offer(sprite);
+		data.pendingAttach.offer(sprite);
 		bufferLock.release();
 		requestUpdate();
 		bufferLock.acquireUninterruptibly();
@@ -59,7 +85,7 @@ public class LogicViewport {
 	
 	public void detach(VisualArtifact sprite) {
 		bufferLock.acquireUninterruptibly();
-		pendingData.pendingDetach.offer(sprite);
+		data.pendingDetach.offer(sprite);
 		requestUpdate();
 		bufferLock.release();
 	}
@@ -70,11 +96,8 @@ public class LogicViewport {
 	}
 	
 	public void requestUpdate() {
-		boolean immediate = pencil.requestRenderFrame(pendingData);
+		boolean immediate = pencil.requestRenderFrame(data);
 		if (immediate) {
-			ViewportData aux = reserveData;
-			reserveData = pendingData;
-			pendingData = aux;
 			bufferWorker.submit();
 		}
 	}
@@ -95,7 +118,7 @@ public class LogicViewport {
 
 	private void run() {
 		bufferLock.acquireUninterruptibly();
-		reshapeBuffers(pendingData);
+		reshapeBuffers(data);
 		bufferLock.release();
 	}
 
