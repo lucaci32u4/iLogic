@@ -28,4 +28,16 @@ public class Helper {
 		}
 		return loc;
 	}
+
+	public static void join(Thread thread) {
+		boolean interrupted = false;
+		while(thread.isAlive()) {
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				interrupted = true;
+			}
+		}
+		if (interrupted) Thread.currentThread().interrupt();
+	}
 }
