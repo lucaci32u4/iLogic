@@ -4,6 +4,7 @@ import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
+import com.lucaci32u4.util.SimpleEventQueue;
 import com.lucaci32u4.util.SimpleWorkerThread;
 import org.apache.commons.collections4.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
