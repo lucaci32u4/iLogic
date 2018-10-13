@@ -19,8 +19,7 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 		thread = new Thread(this::run);
 	}
 
-	@Override
-	public void attach(Hitbox hitbox, int pickerChannel) {
+	@Override public void attach(Hitbox hitbox, int pickerChannel) {
 		queue.produce(new PickerEvent(PickerEvent.Type.ATTACH, hitbox, pickerChannel));
 	}
 
