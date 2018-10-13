@@ -21,6 +21,19 @@ import java.awt.event.ComponentListener;
 import java.util.concurrent.Semaphore;
 
 public class Java2DSubsystem implements RenderAPI {
+
+	static class ArtifactLifetimeEvent {
+		enum Type {
+			ATTACH, DETACH, EXIT,
+		}
+		Type type;
+		VisualArtifact sprite;
+		ArtifactLifetimeEvent(Type type, VisualArtifact sprite) {
+			this.type = type;
+			this.sprite = sprite;
+		}
+	}
+
 	private Semaphore painter;
 	private JSignal requestedPainting;
 	private Canvas canvas;
@@ -52,6 +65,7 @@ public class Java2DSubsystem implements RenderAPI {
 	@Override public void init(JPanel panel, LogicViewport viewport) {
 		parentContainer = panel;
 		parentViewport = viewport;
+		queue = new SimpleEventQueue<>();
 		SwingUtilities.invokeLater(() -> {
 			canvas = new Canvas() {
 				@Override public void paint(Graphics g) { onDraw((Graphics2D)g); }

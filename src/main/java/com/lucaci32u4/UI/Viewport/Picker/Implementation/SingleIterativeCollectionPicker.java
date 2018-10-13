@@ -8,6 +8,20 @@ import java.util.Collection;
 
 public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 
+	static class HitboxLifetimeEvent {
+		enum Type {
+			ATTACH, DETACH, EXIT,
+		}
+		Type type;
+		Hitbox hitbox;
+		int pickerChannel;
+		HitboxLifetimeEvent(Type type, Hitbox hitbox, int pickerChannel) {
+			this.type = type;
+			this.hitbox = hitbox;
+			this.pickerChannel = pickerChannel;
+		}
+	}
+
 	private SimpleEventQueue<HitboxLifetimeEvent> queue;
 
 	private Collection<Hitbox>[] channel;
