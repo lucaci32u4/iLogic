@@ -4,31 +4,15 @@ import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
 import com.lucaci32u4.UI.Viewport.Picker.PickerManager;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderManager;
-import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
-import com.lucaci32u4.util.SimpleWorkerThread;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayDeque;
-import java.util.concurrent.Semaphore;
 
 public class LogicViewport {
 
-	public static class ViewportData {
-		public final ArrayDeque<VisualArtifact> pendingAttach = new ArrayDeque<>(100);
-		public final ArrayDeque<VisualArtifact> pendingDetach = new ArrayDeque<>(100);
-		public VisualArtifact[] sprites;
-		public VisualArtifact bkgndSprite;
-		public float pixelsPerUnit;
-		public int offX, offY;
-	}
-	
-	private ViewportData data;
-	private Semaphore bufferLock;
-	private SimpleWorkerThread bufferWorker;
 	private RenderAPI pencil;
 	private PickerAPI picker;
 	private UserInputListener userInputListener;
@@ -37,10 +21,6 @@ public class LogicViewport {
 		pencil = renderAPI;
 		picker = pickerAPI;
 		userInputListener = inputListener;
-		data = new ViewportData();
-		data.bkgndSprite = null;
-		data.sprites = new VisualArtifact[0];
-		bufferLock = new Semaphore(1);
 		pencil.initRenderer(displayPanel, this);
 		pencil.getCanvas().addMouseListener(new MouseListener() {
 			@Override public void mouseClicked(MouseEvent e) {
@@ -67,7 +47,6 @@ public class LogicViewport {
 				userInputListener.mouseMotionEvent(e, false);
 			}
 		});
-		bufferWorker.start();
 	}
 
 	public PickerManager getPickerManager() {
