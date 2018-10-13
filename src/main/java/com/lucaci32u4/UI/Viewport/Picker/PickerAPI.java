@@ -7,5 +7,13 @@ public interface PickerAPI {
 	void detach(Hitbox hitbox, int pickerChannel);
 	void pick(int pointerX, int pointerY, int pickerChannel);
 	void destroy();
+	class PickerEvent {
+		public enum Type {
+			ATTACH, DETACH,
+		}
+		Type type;
+		Hitbox hitbox;
+		int pickerChannel;
+	}
 }
 
