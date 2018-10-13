@@ -1,10 +1,11 @@
 package com.lucaci32u4.UI.Viewport;
 
-//import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.GL2Subsystem;
+import com.lucaci32u4.UI.Viewport.Picker.HitboxPicker;
 import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
 import com.lucaci32u4.util.Helper;
+import com.lucaci32u4.util.SimpleWorkerThread;
 import org.apache.commons.collections4.CollectionUtils;
 import com.lucaci32u4.util.JSignal;
 import org.jetbrains.annotations.NotNull;
@@ -24,15 +25,14 @@ public class LogicViewport {
 		public final ArrayDeque<VisualArtifact> pendingDetach = new ArrayDeque<>(100);
 		public VisualArtifact[] sprites;
 		public VisualArtifact bkgndSprite;
+		public HitboxPicker picker;
 	}
 	
 	private ViewportData pendingData;
 	private ViewportData reserveData;
 	private RenderAPI pencil;
 	private Semaphore bufferLock;
-	private Thread bufferWorker;
-	private JSignal workerCmdSignal;
-	private int workerCommand;
+	private SimpleWorkerThread bufferWorker;
 	
 	public void init(JPanel displayPanel, VisualArtifact backgroundSprite) {
 		pendingData = new ViewportData();
@@ -42,10 +42,9 @@ public class LogicViewport {
 		pendingData.sprites = new VisualArtifact[0];
 		reserveData.sprites = new VisualArtifact[0];
 		bufferLock = new Semaphore(1);
-		workerCmdSignal = new JSignal(false);
 		pencil = new Java2DSubsystem();
 		pencil.initRenderer(displayPanel, this);
-		bufferWorker = new Thread(this::run);
+		bufferWorker = new SimpleWorkerThread(this::run);
 		bufferWorker.start();
 	}
 	
@@ -65,9 +64,7 @@ public class LogicViewport {
 
 	public void destroy() {
 		pencil.destroyRenderer();
-		workerCommand = WORKER_EXIT;
-		workerCmdSignal.set(true);
-		Helper.join(bufferWorker);
+		bufferWorker.exit(true);
 	}
 	
 	public void requestUpdate() {
@@ -77,8 +74,7 @@ public class LogicViewport {
 			ViewportData aux = reserveData;
 			reserveData = pendingData;
 			pendingData = aux;
-			workerCommand = WORKER_EXEC;
-			workerCmdSignal.set(true);
+			bufferWorker.submit();
 		}
 	}
 	
@@ -99,21 +95,9 @@ public class LogicViewport {
 	}
 
 	private void run() {
-		boolean running = true;
-		while (running) {
-			workerCmdSignal.waitFor(true);
-			workerCmdSignal.set(false);
-			switch(workerCommand) {
-				case WORKER_EXEC:
-					bufferLock.acquireUninterruptibly();
-					reshapeBuffers(pendingData);
-					bufferLock.release();
-					break;
-				case WORKER_EXIT:
-					running = false;
-					break;
-			}
-		}
+		bufferLock.acquireUninterruptibly();
+		reshapeBuffers(pendingData);
+		bufferLock.release();
 	}
 
 	public interface RenderAPI extends ControlAPI, DrawAPI, ResourceAPI { }
