@@ -34,7 +34,6 @@ public class Java2DSubsystem implements RenderAPI {
 		}
 	}
 
-	private Semaphore painter;
 	private JSignal requestedPainting;
 	private Canvas canvas;
 	private ComponentListener canvasComponentListener;
@@ -58,14 +57,13 @@ public class Java2DSubsystem implements RenderAPI {
 		brush = null;
 		g2d = null;
 		canvas = null;
-		painter = new Semaphore(1);
 		requestedPainting = new JSignal(false);
+		queue = new SimpleEventQueue<>();
 	}
 	
 	@Override public void init(JPanel panel, LogicViewport viewport) {
 		parentContainer = panel;
 		parentViewport = viewport;
-		queue = new SimpleEventQueue<>();
 		SwingUtilities.invokeLater(() -> {
 			canvas = new Canvas() {
 				@Override public void paint(Graphics g) { onDraw((Graphics2D)g); }
@@ -180,6 +178,5 @@ public class Java2DSubsystem implements RenderAPI {
 	private void onDraw(Graphics2D g) {
 		g2d = g;
 
-		painter.release();
 	}
 }
