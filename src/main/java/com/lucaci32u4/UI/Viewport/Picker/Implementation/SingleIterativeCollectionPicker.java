@@ -1,11 +1,11 @@
 package com.lucaci32u4.UI.Viewport.Picker.Implementation;
 
 import com.lucaci32u4.UI.Viewport.Picker.Hitbox;
-import com.lucaci32u4.UI.Viewport.Picker.HitboxPicker;
+import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
 
 import java.util.Collection;
 
-public abstract class SingleIterativeCollectionPicker implements HitboxPicker {
+public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 
 	private Collection<Hitbox>[] channel;
 

@@ -1,6 +1,6 @@
 package com.lucaci32u4.UI.Viewport.Picker;
 
-public interface HitboxPicker {
+public interface PickerAPI {
 	int CHANNEL_EDITOR          = 0;
 	int CHANNEL_SIMULATION      = 1;
 	void attach(Hitbox hitbox, int pickerChannel);

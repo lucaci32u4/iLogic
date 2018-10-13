@@ -1,6 +1,6 @@
 package com.lucaci32u4.UI.Viewport;
 
-import com.lucaci32u4.UI.Viewport.Picker.HitboxPicker;
+import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
@@ -15,15 +15,12 @@ import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
 public class LogicViewport {
-	private static final int WORKER_EXEC = 1;
-	private static final int WORKER_EXIT = 2;
 
 	public static class ViewportData {
 		public final ArrayDeque<VisualArtifact> pendingAttach = new ArrayDeque<>(100);
 		public final ArrayDeque<VisualArtifact> pendingDetach = new ArrayDeque<>(100);
 		public VisualArtifact[] sprites;
 		public VisualArtifact bkgndSprite;
-		public HitboxPicker picker;
 	}
 	
 	private ViewportData pendingData;
@@ -31,12 +28,13 @@ public class LogicViewport {
 	private RenderAPI pencil;
 	private Semaphore bufferLock;
 	private SimpleWorkerThread bufferWorker;
+	private PickerAPI picker;
 	
-	public void init(JPanel displayPanel, VisualArtifact backgroundSprite) {
+	public void init(@NotNull JPanel displayPanel, @NotNull RenderAPI renderAPI, @NotNull PickerAPI pickerAPI) {
 		pendingData = new ViewportData();
 		reserveData = new ViewportData();
-		pendingData.bkgndSprite = backgroundSprite;
-		reserveData.bkgndSprite = backgroundSprite;
+		pendingData.bkgndSprite = null;
+		reserveData.bkgndSprite = null;
 		pendingData.sprites = new VisualArtifact[0];
 		reserveData.sprites = new VisualArtifact[0];
 		bufferLock = new Semaphore(1);
@@ -95,14 +93,14 @@ public class LogicViewport {
 		bufferLock.release();
 	}
 
-	public interface RenderAPI extends ControlAPI, DrawAPI, ResourceAPI { }
-	public interface ControlAPI {
+	public interface RenderAPI extends DrawAPI, ResourceAPI {
 		void initRenderer(JPanel panel, LogicViewport viewport);
 		void destroyRenderer();
 		boolean requestRenderFrame(ViewportData drawData);
 		void setSpaceScale(float pixelsPerUnit);
 		void setSpaceOffset(int offsetX, int offsetY);
 	}
+
 	public interface DrawAPI {
 		float unitsToPixels(int units);
 		float pixelsToUnits(int pixels);
