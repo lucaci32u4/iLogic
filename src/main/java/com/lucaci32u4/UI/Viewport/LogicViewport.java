@@ -41,7 +41,6 @@ public class LogicViewport {
 		data = new ViewportData();
 		data.bkgndSprite = null;
 		data.sprites = new VisualArtifact[0];
-		bufferWorker = new SimpleWorkerThread(this::run);
 		bufferLock = new Semaphore(1);
 		pencil.initRenderer(displayPanel, this);
 		pencil.getCanvas().addMouseListener(new MouseListener() {
@@ -73,49 +72,19 @@ public class LogicViewport {
 	}
 	
 	public void attach(VisualArtifact sprite) {
-		data.pendingAttach.offer(sprite);
-		bufferLock.release();
-		requestUpdate();
-		bufferLock.acquireUninterruptibly();
+
 	}
 	
 	public void detach(VisualArtifact sprite) {
-		bufferLock.acquireUninterruptibly();
-		data.pendingDetach.offer(sprite);
-		requestUpdate();
-		bufferLock.release();
+
 	}
 
 	public void destroy() {
 		pencil.destroyRenderer();
 		picker.destroy();
-		bufferWorker.exit(true);
 	}
 	
 	public void requestUpdate() {
-		boolean immediate = pencil.requestRenderFrame(data);
-		if (immediate) {
-			bufferWorker.submit();
-		}
-	}
-	
-	private void reshapeBuffers(@NotNull LogicViewport.ViewportData data) {
-		if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
-			Collection<VisualArtifact> com = CollectionUtils.retainAll(data.pendingAttach, data.pendingDetach);
-			data.pendingAttach.removeAll(com);
-			data.pendingDetach.removeAll(com);
-			if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
-				com = Arrays.asList(data.sprites);
-				com.removeAll(data.pendingDetach);
-				com.addAll(data.pendingAttach);
-				data.sprites = (VisualArtifact[]) com.toArray();
-			}
-		}
-	}
 
-	private void run() {
-		bufferLock.acquireUninterruptibly();
-		reshapeBuffers(data);
-		bufferLock.release();
 	}
 }
