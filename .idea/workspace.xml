@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
+    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="Added depth to hitboxes to treat correctly overlapping cases">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Pickable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Hitbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Hitbox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxManager.java" afterDir="false" />
@@ -116,44 +117,35 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="11" />
+          <entry key="java" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="11" />
+          <entry key="JAVA" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1258" />
-          <entry key="txt" value="206" />
+          <entry key="java" value="1706" />
+          <entry key="txt" value="278" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1258" />
-          <entry key="PLAIN_TEXT" value="206" />
+          <entry key="JAVA" value="1706" />
+          <entry key="PLAIN_TEXT" value="278" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Hitbox.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+            <state relative-caret-position="68">
+              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -164,9 +156,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="GLSL Shader" />
-        <option value="Interface" />
         <option value="yet_unknown" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -198,7 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/logic/main/SimpleEventQueue.java" />
         <option value="$PROJECT_DIR$/src/app/logic/main/Main.java" />
         <option value="$PROJECT_DIR$/src/app/logic/main/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/app/logic/UI/MainWindow.java" />
@@ -247,6 +238,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2D/Java2DSubsystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/ViewportArtifact.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Pickable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Hitbox.java" />
       </list>
@@ -410,7 +402,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539431444658" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539431606479" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -461,13 +453,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00011" summary="LWJGL example modifications">
-      <created>1538938079833</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1538938079834</updated>
     </task>
     <task id="LOCAL-00012" summary="More code cleanup">
       <created>1538941400228</created>
@@ -805,7 +790,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539430921813</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Added depth to hitboxes to treat correctly overlapping cases">
+      <created>1539431605465</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1539431605465</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TodoView">
@@ -881,7 +873,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="cleanup" />
     <MESSAGE value="Removed circuitPanel at exit" />
     <MESSAGE value="Removed LWJGL code in favour of JOGL" />
     <MESSAGE value="Added unfinished JOGL implementation of RenderAPI, now in separate file" />
@@ -906,10 +897,10 @@
     <MESSAGE value="Removed unused picking method" />
     <MESSAGE value="Moved to diffrent packages" />
     <MESSAGE value="Added picking classes and interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added picking classes and interfaces" />
+    <MESSAGE value="Added depth to hitboxes to treat correctly overlapping cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added depth to hitboxes to treat correctly overlapping cases" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../TestDev/src/com/test/StringPack.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1165,17 +1156,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Hitbox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        <state relative-caret-position="102">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Hitbox.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Pickable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+          <caret line="3" column="62" lean-forward="true" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
         </state>
       </provider>
     </entry>
