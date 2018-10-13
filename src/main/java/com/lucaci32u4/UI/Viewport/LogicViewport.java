@@ -3,6 +3,7 @@ package com.lucaci32u4.UI.Viewport;
 //import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
 import com.lucaci32u4.UI.Viewport.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2DSubsystem;
+import com.lucaci32u4.util.Helper;
 import org.apache.commons.collections4.CollectionUtils;
 import com.lucaci32u4.util.JSignal;
 import org.jetbrains.annotations.NotNull;
@@ -13,9 +14,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
-public class LogicViewport implements Runnable {
-	public static final int WORKER_EXEC = 1;
-	public static final int WORKER_EXIT = 2;
+public class LogicViewport {
+	private static final int WORKER_EXEC = 1;
+	private static final int WORKER_EXIT = 2;
 
 	public static class DrawData {
 		public final ArrayDeque<ViewportArtifact> pendingAttach = new ArrayDeque<>(100);
@@ -26,15 +27,13 @@ public class LogicViewport implements Runnable {
 	
 	private DrawData pendingData;
 	private DrawData reserveData;
-	private JPanel circuitPanel;
 	private RenderAPI pencil;
 	private Semaphore bufferLock;
 	private Thread bufferWorker;
 	private JSignal workerCmdSignal;
-	public int workerCommand;
+	private int workerCommand;
 	
 	public void init(JPanel displayPanel, ViewportArtifact backgroundSprite) {
-		circuitPanel = displayPanel;
 		pendingData = new DrawData();
 		reserveData = new DrawData();
 		pendingData.bkgndSprite = backgroundSprite;
@@ -44,8 +43,8 @@ public class LogicViewport implements Runnable {
 		bufferLock = new Semaphore(1);
 		workerCmdSignal = new JSignal(false);
 		pencil = new Java2DSubsystem();
-		pencil.initRenderer(circuitPanel, this);
-		bufferWorker = new Thread(this);
+		pencil.initRenderer(displayPanel, this);
+		bufferWorker = new Thread(this::run);
 		bufferWorker.start();
 	}
 	
@@ -61,6 +60,13 @@ public class LogicViewport implements Runnable {
 		pendingData.pendingDetach.offer(sprite);
 		requestUpdate();
 		bufferLock.release();
+	}
+
+	public void destroy() {
+		pencil.destroyRenderer();
+		workerCommand = WORKER_EXIT;
+		workerCmdSignal.set(true);
+		Helper.join(bufferWorker);
 	}
 	
 	public void requestUpdate() {
@@ -91,7 +97,7 @@ public class LogicViewport implements Runnable {
 		bufferLock.release();
 	}
 
-	@Override public void run() {
+	private void run() {
 		boolean running = true;
 		while (running) {
 			workerCmdSignal.waitFor(true);
@@ -111,7 +117,7 @@ public class LogicViewport implements Runnable {
 
 	public interface RenderAPI extends ControlAPI, DrawAPI, ResourceAPI { }
 	public interface ControlAPI {
-		boolean initRenderer(JPanel panel, LogicViewport viewport);
+		void initRenderer(JPanel panel, LogicViewport viewport);
 		void destroyRenderer();
 		boolean requestRenderFrame(DrawData drawData);
 		void setSpaceScale(float pixelsPerUnit);

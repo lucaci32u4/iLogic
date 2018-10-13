@@ -43,7 +43,7 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		requestedPainting = new JSignal(false);
 	}
 	
-	@Override public boolean initRenderer(JPanel panel, LogicViewport viewport) {
+	@Override public void initRenderer(JPanel panel, LogicViewport viewport) {
 		parentContainer = panel;
 		parentViewport = viewport;
 		SwingUtilities.invokeLater(() -> {
@@ -69,7 +69,6 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 			canvas.addComponentListener(canvasComponentListener);
 			parentContainer.add(canvas);
 		});
-		return false;
 	}
 	
 	@Override public void destroyRenderer() {
