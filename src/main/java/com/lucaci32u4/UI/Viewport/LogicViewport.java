@@ -1,8 +1,9 @@
 package com.lucaci32u4.UI.Viewport;
 
-//import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
-import com.lucaci32u4.UI.Viewport.Brushes.Brush;
-import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2D.Java2DSubsystem;
+//import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.GL2Subsystem;
+import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
+import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
+import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
 import com.lucaci32u4.util.Helper;
 import org.apache.commons.collections4.CollectionUtils;
 import com.lucaci32u4.util.JSignal;
@@ -18,28 +19,28 @@ public class LogicViewport {
 	private static final int WORKER_EXEC = 1;
 	private static final int WORKER_EXIT = 2;
 
-	public static class DrawData {
-		public final ArrayDeque<ViewportArtifact> pendingAttach = new ArrayDeque<>(100);
-		public final ArrayDeque<ViewportArtifact> pendingDetach = new ArrayDeque<>(100);
-		public ViewportArtifact[] sprites;
-		public ViewportArtifact bkgndSprite;
+	public static class ViewportData {
+		public final ArrayDeque<VisualArtifact> pendingAttach = new ArrayDeque<>(100);
+		public final ArrayDeque<VisualArtifact> pendingDetach = new ArrayDeque<>(100);
+		public VisualArtifact[] sprites;
+		public VisualArtifact bkgndSprite;
 	}
 	
-	private DrawData pendingData;
-	private DrawData reserveData;
+	private ViewportData pendingData;
+	private ViewportData reserveData;
 	private RenderAPI pencil;
 	private Semaphore bufferLock;
 	private Thread bufferWorker;
 	private JSignal workerCmdSignal;
 	private int workerCommand;
 	
-	public void init(JPanel displayPanel, ViewportArtifact backgroundSprite) {
-		pendingData = new DrawData();
-		reserveData = new DrawData();
+	public void init(JPanel displayPanel, VisualArtifact backgroundSprite) {
+		pendingData = new ViewportData();
+		reserveData = new ViewportData();
 		pendingData.bkgndSprite = backgroundSprite;
 		reserveData.bkgndSprite = backgroundSprite;
-		pendingData.sprites = new ViewportArtifact[0];
-		reserveData.sprites = new ViewportArtifact[0];
+		pendingData.sprites = new VisualArtifact[0];
+		reserveData.sprites = new VisualArtifact[0];
 		bufferLock = new Semaphore(1);
 		workerCmdSignal = new JSignal(false);
 		pencil = new Java2DSubsystem();
@@ -48,14 +49,14 @@ public class LogicViewport {
 		bufferWorker.start();
 	}
 	
-	public void attach(ViewportArtifact sprite) {
+	public void attach(VisualArtifact sprite) {
 		pendingData.pendingAttach.offer(sprite);
 		bufferLock.release();
 		requestUpdate();
 		bufferLock.acquireUninterruptibly();
 	}
 	
-	public void detach(ViewportArtifact sprite) {
+	public void detach(VisualArtifact sprite) {
 		bufferLock.acquireUninterruptibly();
 		pendingData.pendingDetach.offer(sprite);
 		requestUpdate();
@@ -73,7 +74,7 @@ public class LogicViewport {
 		boolean immediate = pencil.requestRenderFrame(pendingData);
 		if (immediate) {
 			// Swapping buffers
-			DrawData aux = reserveData;
+			ViewportData aux = reserveData;
 			reserveData = pendingData;
 			pendingData = aux;
 			workerCommand = WORKER_EXEC;
@@ -81,17 +82,17 @@ public class LogicViewport {
 		}
 	}
 	
-	private void reshapeBuffers(@NotNull DrawData data) {
+	private void reshapeBuffers(@NotNull LogicViewport.ViewportData data) {
 		bufferLock.acquireUninterruptibly();
 		if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
-			Collection<ViewportArtifact> com = CollectionUtils.retainAll(data.pendingAttach, data.pendingDetach);
+			Collection<VisualArtifact> com = CollectionUtils.retainAll(data.pendingAttach, data.pendingDetach);
 			data.pendingAttach.removeAll(com);
 			data.pendingDetach.removeAll(com);
 			if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
 				com = Arrays.asList(data.sprites);
 				com.removeAll(data.pendingDetach);
 				com.addAll(data.pendingAttach);
-				data.sprites = (ViewportArtifact[]) com.toArray();
+				data.sprites = (VisualArtifact[]) com.toArray();
 			}
 		}
 		bufferLock.release();
@@ -119,7 +120,7 @@ public class LogicViewport {
 	public interface ControlAPI {
 		void initRenderer(JPanel panel, LogicViewport viewport);
 		void destroyRenderer();
-		boolean requestRenderFrame(DrawData drawData);
+		boolean requestRenderFrame(ViewportData drawData);
 		void setSpaceScale(float pixelsPerUnit);
 		void setSpaceOffset(int offsetX, int offsetY);
 	}

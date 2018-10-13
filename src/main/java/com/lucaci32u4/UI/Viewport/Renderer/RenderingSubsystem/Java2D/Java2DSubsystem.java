@@ -1,8 +1,8 @@
-package com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2D;
+package com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D;
 
-import com.lucaci32u4.UI.Viewport.Brushes.Brush;
+import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.LogicViewport;
-import com.lucaci32u4.UI.Viewport.ViewportArtifact;
+import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.util.JSignal;
 
 import javax.swing.*;
@@ -10,11 +10,10 @@ import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.concurrent.Semaphore;
 
 public class Java2DSubsystem implements LogicViewport.RenderAPI {
-	private LogicViewport.DrawData drawData;
+	private LogicViewport.ViewportData drawData;
 	private Semaphore painter;
 	private JSignal requestedPainting;
 	private Canvas canvas;
@@ -76,7 +75,7 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		canvas.removeComponentListener(canvasComponentListener);
 	}
 	
-	@Override public boolean requestRenderFrame(LogicViewport.DrawData drawData) {
+	@Override public boolean requestRenderFrame(LogicViewport.ViewportData drawData) {
 		boolean immediate = painter.availablePermits() != 0;
 		if (immediate) {
 			painter.acquireUninterruptibly();
@@ -163,23 +162,23 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	
 	private void onDraw(Graphics2D g) {
 		g2d = g;
-		ViewportArtifact[] sprites = drawData.sprites;
-		Collection<ViewportArtifact> pendingAttach = drawData.pendingAttach;
-		Collection<ViewportArtifact> pendingDetach = drawData.pendingDetach;
+		VisualArtifact[] sprites = drawData.sprites;
+		Collection<VisualArtifact> pendingAttach = drawData.pendingAttach;
+		Collection<VisualArtifact> pendingDetach = drawData.pendingDetach;
 		int widthPixels = canvas.getWidth();
 		int heightPixels = canvas.getHeight();
 		int widthUnits = (int)pixelsToUnits(widthPixels);
 		int heightUnits = (int)pixelsToUnits(heightPixels);
-		for (ViewportArtifact sprite : pendingAttach) {
+		for (VisualArtifact sprite : pendingAttach) {
 			sprite.onAttach(this);
 		}
 		drawData.bkgndSprite.onDraw(this, this);
-		for (ViewportArtifact sprite : sprites) {
+		for (VisualArtifact sprite : sprites) {
 			if (sprite.checkIfOnScreen(unitsOffsetX, unitsOffsetY, widthUnits, heightUnits)) {
 				sprite.onDraw(this, this);
 			}
 		}
-		for (ViewportArtifact sprite : pendingDetach) {
+		for (VisualArtifact sprite : pendingDetach) {
 			sprite.onDetach(this);
 		}
 		painter.release();

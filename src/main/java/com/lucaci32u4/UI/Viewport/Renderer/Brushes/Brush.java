@@ -1,4 +1,4 @@
-package com.lucaci32u4.UI.Viewport.Brushes;
+package com.lucaci32u4.UI.Viewport.Renderer.Brushes;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

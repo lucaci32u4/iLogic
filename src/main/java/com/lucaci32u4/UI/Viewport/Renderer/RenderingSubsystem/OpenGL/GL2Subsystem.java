@@ -1,15 +1,4 @@
-package com.lucaci32u4.UI.Viewport.RenderingSubsystem.OpenGL;
-
-import com.lucaci32u4.UI.Viewport.LogicViewport;
-import com.lucaci32u4.UI.Viewport.ViewportArtifact;
-import com.lucaci32u4.util.JSignal;
-
-import javax.media.opengl.*;
-import javax.media.opengl.awt.GLCanvas;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
+package com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.OpenGL;
 
 /*
 
@@ -63,7 +52,7 @@ public class GL2Subsystem implements LogicViewport.RenderAPI, GLEventListener {
 	
 	}
 	
-	@Override public void renderFrame(ViewportArtifact[] sprites) {
+	@Override public void renderFrame(VisualArtifact[] sprites) {
 	
 	}
 	

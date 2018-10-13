@@ -1,4 +1,4 @@
-package com.lucaci32u4.UI.Viewport.Brushes;
+package com.lucaci32u4.UI.Viewport.Renderer.Brushes;
 
 public class ColorBrush extends Brush {
 	public static final ColorBrush BACKGROUND 	= new ColorBrush(null);
