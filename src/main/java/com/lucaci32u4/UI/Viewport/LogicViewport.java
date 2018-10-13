@@ -1,16 +1,13 @@
 package com.lucaci32u4.UI.Viewport;
 
 import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
-import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
 import com.lucaci32u4.util.SimpleWorkerThread;
 import org.apache.commons.collections4.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -46,7 +43,6 @@ public class LogicViewport {
 		data.sprites = new VisualArtifact[0];
 		bufferWorker = new SimpleWorkerThread(this::run);
 		bufferLock = new Semaphore(1);
-		pencil = new Java2DSubsystem();
 		pencil.initRenderer(displayPanel, this);
 		pencil.getCanvas().addMouseListener(new MouseListener() {
 			@Override public void mouseClicked(MouseEvent e) {
