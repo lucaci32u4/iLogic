@@ -5,7 +5,7 @@ public class SimpleWorkerThread {
 	private Thread thread;
 	private JSignal submit;
 	private Runnable task;
-	private boolean running;
+	private volatile boolean running;
 
 	public SimpleWorkerThread(Runnable workerTask) {
 		task = workerTask;
