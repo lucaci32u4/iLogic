@@ -1,7 +1,9 @@
 package com.lucaci32u4.UI.Viewport;
 
 import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
+import com.lucaci32u4.UI.Viewport.Picker.PickerManager;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
+import com.lucaci32u4.UI.Viewport.Renderer.RenderManager;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.util.SimpleWorkerThread;
 import org.jetbrains.annotations.NotNull;
@@ -67,13 +69,13 @@ public class LogicViewport {
 		});
 		bufferWorker.start();
 	}
-	
-	public void attach(VisualArtifact sprite) {
 
+	public PickerManager getPickerManager() {
+		return picker;
 	}
-	
-	public void detach(VisualArtifact sprite) {
 
+	public RenderManager getRenderManager() {
+		return pencil;
 	}
 
 	public void destroy() {
