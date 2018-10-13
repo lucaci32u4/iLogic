@@ -2,9 +2,9 @@ package com.lucaci32u4.UI.Viewport;
 
 import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
+import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
-import com.lucaci32u4.util.SimpleEventQueue;
 import com.lucaci32u4.util.SimpleWorkerThread;
 import org.apache.commons.collections4.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
@@ -92,6 +92,7 @@ public class LogicViewport {
 
 	public void destroy() {
 		pencil.destroyRenderer();
+		picker.destroy();
 		bufferWorker.exit(true);
 	}
 	
@@ -120,26 +121,5 @@ public class LogicViewport {
 		bufferLock.acquireUninterruptibly();
 		reshapeBuffers(data);
 		bufferLock.release();
-	}
-
-	public interface RenderAPI extends DrawAPI, ResourceAPI {
-		void initRenderer(JPanel panel, LogicViewport viewport);
-		void destroyRenderer();
-		boolean requestRenderFrame(ViewportData drawData);
-		Canvas getCanvas();
-	}
-
-	public interface DrawAPI {
-		float unitsToPixels(int units);
-		float pixelsToUnits(int pixels);
-		void setCanvasOffsetUnits(int offsetX, int offsetY);
-		void setBrush(Brush brush);
-		void drawLine(int fromX, int fromY, int toX, int toY, float thicknessPixels);
-		void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY);
-		void drawRectangle(int left, int top, int right, int bottom);
-	}
-	
-	public interface ResourceAPI {
-
 	}
 }

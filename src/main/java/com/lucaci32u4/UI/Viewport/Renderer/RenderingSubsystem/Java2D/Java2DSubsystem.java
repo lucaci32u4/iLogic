@@ -2,19 +2,25 @@ package com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D;
 
 import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.LogicViewport;
+import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.util.JSignal;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.SwingUtilities;
+import javax.swing.JPanel;
+import java.awt.Canvas;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.BasicStroke;
+import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
-public class Java2DSubsystem implements LogicViewport.RenderAPI {
+public class Java2DSubsystem implements RenderAPI {
 	private LogicViewport.ViewportData drawData;
 	private Semaphore painter;
 	private JSignal requestedPainting;
