@@ -21,7 +21,7 @@ public class LogicViewport {
 		pencil = renderAPI;
 		picker = pickerAPI;
 		userInputListener = inputListener;
-		pencil.initRenderer(displayPanel, this);
+		pencil.init(displayPanel, this);
 		pencil.getCanvas().addMouseListener(new MouseListener() {
 			@Override public void mouseClicked(MouseEvent e) {
 

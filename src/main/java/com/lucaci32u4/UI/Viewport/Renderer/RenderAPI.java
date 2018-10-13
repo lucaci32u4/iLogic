@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 import java.awt.Canvas;
 
 public interface RenderAPI extends DrawAPI, ResourceAPI, RenderManager {
-	void initRenderer(JPanel panel, LogicViewport viewport);
+	void init(JPanel panel, LogicViewport viewport);
 	void destroyRenderer();
-	boolean requestRenderFrame(LogicViewport.ViewportData drawData);
+	boolean requestRenderFrame();
 	Canvas getCanvas();
 }

@@ -17,11 +17,9 @@ import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
 public class Java2DSubsystem implements RenderAPI {
-	private LogicViewport.ViewportData drawData;
 	private Semaphore painter;
 	private JSignal requestedPainting;
 	private Canvas canvas;
@@ -44,13 +42,12 @@ public class Java2DSubsystem implements RenderAPI {
 		primitiveOffsetY = 0;
 		brush = null;
 		g2d = null;
-		drawData = null;
 		canvas = null;
 		painter = new Semaphore(1);
 		requestedPainting = new JSignal(false);
 	}
 	
-	@Override public void initRenderer(JPanel panel, LogicViewport viewport) {
+	@Override public void init(JPanel panel, LogicViewport viewport) {
 		parentContainer = panel;
 		parentViewport = viewport;
 		SwingUtilities.invokeLater(() -> {
@@ -83,15 +80,8 @@ public class Java2DSubsystem implements RenderAPI {
 		canvas.removeComponentListener(canvasComponentListener);
 	}
 	
-	@Override public boolean requestRenderFrame(LogicViewport.ViewportData drawData) {
-		boolean immediate = painter.availablePermits() != 0;
-		if (immediate) {
-			painter.acquireUninterruptibly();
-			this.drawData  = drawData;
-			SwingUtilities.invokeLater(() -> canvas.repaint());
-			immediate = true;
-		} else requestedPainting.set(true);
-		return immediate;
+	@Override public boolean requestRenderFrame() {
+		return false;
 	}
 
 	@Override public Canvas getCanvas() {
@@ -173,28 +163,7 @@ public class Java2DSubsystem implements RenderAPI {
 	
 	private void onDraw(Graphics2D g) {
 		g2d = g;
-		VisualArtifact[] sprites = drawData.sprites;
-		Collection<VisualArtifact> pendingAttach = drawData.pendingAttach;
-		Collection<VisualArtifact> pendingDetach = drawData.pendingDetach;
-		pixelsPerUnit = drawData.pixelsPerUnit;
-		unitsOffsetX = drawData.offX;
-		unitsOffsetY = drawData.offY;
-		int widthPixels = canvas.getWidth();
-		int heightPixels = canvas.getHeight();
-		int widthUnits = (int)pixelsToUnits(widthPixels);
-		int heightUnits = (int)pixelsToUnits(heightPixels);
-		for (VisualArtifact sprite : pendingAttach) {
-			sprite.onAttach(this);
-		}
-		drawData.bkgndSprite.onDraw(this, this);
-		for (VisualArtifact sprite : sprites) {
-			if (sprite.checkIfOnScreen(unitsOffsetX, unitsOffsetY, widthUnits, heightUnits)) {
-				sprite.onDraw(this, this);
-			}
-		}
-		for (VisualArtifact sprite : pendingDetach) {
-			sprite.onDetach(this);
-		}
+
 		painter.release();
 	}
 }
