@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
@@ -85,16 +87,11 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		} else requestedPainting.set(true);
 		return immediate;
 	}
-	
-	@Override public void setSpaceScale(float pixelsPerUnit) {
-		this.pixelsPerUnit = pixelsPerUnit;
+
+	@Override public Canvas getCanvas() {
+		return canvas;
 	}
-	
-	@Override public void setSpaceOffset(int offsetX, int offsetY) {
-		unitsOffsetX = offsetX;
-		unitsOffsetY = offsetY;
-	}
-	
+
 	@Override public void setCanvasOffsetUnits(int offsetX, int offsetY) {
 		primitiveOffsetX = offsetX;
 		primitiveOffsetY = offsetY;
@@ -113,22 +110,22 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	}
 	
 	@Override public void drawLine(int fromX, int fromY, int toX, int toY, float thicknessPixels) {
-		fromX += primitiveOffsetX;	fromX *= pixelsPerUnit;
-		fromY += primitiveOffsetY;	fromY *= pixelsPerUnit;
-		toX += primitiveOffsetX;	toX *= pixelsPerUnit;
-		toY += primitiveOffsetY;	toY *= pixelsPerUnit;
+		fromX += primitiveOffsetX + unitsOffsetX;	fromX *= pixelsPerUnit;
+		fromY += primitiveOffsetY + unitsOffsetY;	fromY *= pixelsPerUnit;
+		toX += primitiveOffsetX + unitsOffsetX; 	toX *= pixelsPerUnit;
+		toY += primitiveOffsetY + unitsOffsetY; 	toY *= pixelsPerUnit;
 		g2d.setPaint((Paint)(Brush.get(brush)));
 		g2d.setStroke(new BasicStroke(thicknessPixels));
 		g2d.drawLine(fromX, fromY, toX, toY);
 	}
 	
 	@Override public void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY) {
-		aX += primitiveOffsetX;		aX *= pixelsPerUnit;
-		aY += primitiveOffsetY;		aY *= pixelsPerUnit;
-		bX += primitiveOffsetX;		bX *= pixelsPerUnit;
-		bY += primitiveOffsetY;		bY *= pixelsPerUnit;
-		cX += primitiveOffsetX;		cX *= pixelsPerUnit;
-		cY += primitiveOffsetY;		cY *= pixelsPerUnit;
+		aX += primitiveOffsetX + unitsOffsetX;		aX *= pixelsPerUnit;
+		aY += primitiveOffsetY + unitsOffsetY;		aY *= pixelsPerUnit;
+		bX += primitiveOffsetX + unitsOffsetX;		bX *= pixelsPerUnit;
+		bY += primitiveOffsetY + unitsOffsetY;		bY *= pixelsPerUnit;
+		cX += primitiveOffsetX + unitsOffsetX;		cX *= pixelsPerUnit;
+		cY += primitiveOffsetY + unitsOffsetY;		cY *= pixelsPerUnit;
 		int[] x = { aX, bX, cX };
 		int[] y = { aY, bY, cY };
 		g2d.setPaint((Paint)(Brush.get(brush)));
@@ -144,10 +141,10 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 	}
 	
 	@Override public void drawRectangle(int left, int top, int right, int bottom) {
-		left += primitiveOffsetX;		left *= pixelsPerUnit;
-		top += primitiveOffsetY;		top *= pixelsPerUnit;
-		right += primitiveOffsetX;		right *= pixelsPerUnit;
-		bottom += primitiveOffsetY;		bottom *= pixelsPerUnit;
+		left += primitiveOffsetX + unitsOffsetX;	left *= pixelsPerUnit;
+		top += primitiveOffsetY + unitsOffsetY;		top *= pixelsPerUnit;
+		right += primitiveOffsetX + unitsOffsetX;	right *= pixelsPerUnit;
+		bottom += primitiveOffsetY + unitsOffsetY;	bottom *= pixelsPerUnit;
 		g2d.setPaint((Paint)(Brush.get(brush)));
 		switch (brush.getType()) {
 			case TEXTURE:
@@ -165,6 +162,9 @@ public class Java2DSubsystem implements LogicViewport.RenderAPI {
 		VisualArtifact[] sprites = drawData.sprites;
 		Collection<VisualArtifact> pendingAttach = drawData.pendingAttach;
 		Collection<VisualArtifact> pendingDetach = drawData.pendingDetach;
+		pixelsPerUnit = drawData.pixelsPerUnit;
+		unitsOffsetX = drawData.offX;
+		unitsOffsetY = drawData.offY;
 		int widthPixels = canvas.getWidth();
 		int heightPixels = canvas.getHeight();
 		int widthUnits = (int)pixelsToUnits(widthPixels);

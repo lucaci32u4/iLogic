@@ -9,6 +9,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,26 +22,30 @@ public class LogicViewport {
 		public final ArrayDeque<VisualArtifact> pendingDetach = new ArrayDeque<>(100);
 		public VisualArtifact[] sprites;
 		public VisualArtifact bkgndSprite;
+		public float pixelsPerUnit;
+		public int offX, offY;
 	}
 	
 	private ViewportData pendingData;
 	private ViewportData reserveData;
-	private RenderAPI pencil;
 	private Semaphore bufferLock;
 	private SimpleWorkerThread bufferWorker;
+	private RenderAPI pencil;
 	private PickerAPI picker;
-	
+
 	public void init(@NotNull JPanel displayPanel, @NotNull RenderAPI renderAPI, @NotNull PickerAPI pickerAPI) {
+		pencil = renderAPI;
+		picker = pickerAPI;
 		pendingData = new ViewportData();
 		reserveData = new ViewportData();
 		pendingData.bkgndSprite = null;
 		reserveData.bkgndSprite = null;
 		pendingData.sprites = new VisualArtifact[0];
 		reserveData.sprites = new VisualArtifact[0];
+		bufferWorker = new SimpleWorkerThread(this::run);
 		bufferLock = new Semaphore(1);
 		pencil = new Java2DSubsystem();
 		pencil.initRenderer(displayPanel, this);
-		bufferWorker = new SimpleWorkerThread(this::run);
 		bufferWorker.start();
 	}
 	
@@ -97,8 +102,7 @@ public class LogicViewport {
 		void initRenderer(JPanel panel, LogicViewport viewport);
 		void destroyRenderer();
 		boolean requestRenderFrame(ViewportData drawData);
-		void setSpaceScale(float pixelsPerUnit);
-		void setSpaceOffset(int offsetX, int offsetY);
+		Canvas getCanvas();
 	}
 
 	public interface DrawAPI {
