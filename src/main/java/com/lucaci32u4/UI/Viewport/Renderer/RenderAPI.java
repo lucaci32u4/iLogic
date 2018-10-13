@@ -11,4 +11,17 @@ public interface RenderAPI extends DrawAPI, ResourceAPI, RenderManager {
 	void destroy();
 	boolean requestRenderFrame();
 	Canvas getCanvas();
+
+	class ArtifactLifetimeEvent {
+		public enum Type {
+			ATTACH, DETACH, EXIT,
+		}
+		public Type type;
+		public VisualArtifact sprite;
+		public ArtifactLifetimeEvent(Type type, VisualArtifact sprite) {
+			this.type = type;
+			this.sprite = sprite;
+		}
+	}
 }
+
