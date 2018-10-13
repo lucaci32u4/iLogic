@@ -1,4 +1,4 @@
-package com.lucaci32u4.UI.Viewport.RenderingSubsystem;
+package com.lucaci32u4.UI.Viewport.RenderingSubsystem.OpenGL;
 
 import com.lucaci32u4.UI.Viewport.LogicViewport;
 import com.lucaci32u4.UI.Viewport.ViewportArtifact;

@@ -1,4 +1,4 @@
-package com.lucaci32u4.UI.Viewport.RenderingSubsystem;
+package com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2D;
 
 import com.lucaci32u4.UI.Viewport.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.LogicViewport;
