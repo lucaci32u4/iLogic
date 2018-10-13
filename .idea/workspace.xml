@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Swapchain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Hitbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Hitbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Pickable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Clickable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -119,51 +115,38 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="32" />
+          <entry key="java" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="32" />
+          <entry key="JAVA" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="52" />
           <entry key="java" value="3749" />
-          <entry key="txt" value="536" />
+          <entry key="txt" value="672" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="3749" />
-          <entry key="PLAIN_TEXT" value="588" />
+          <entry key="PLAIN_TEXT" value="724" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+            <state relative-caret-position="1131">
+              <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-              <folding>
-                <element signature="e#497#498#0" expanded="true" />
-                <element signature="e#510#511#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -262,8 +245,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/WorkerThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Swapchain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
       </list>
     </option>
   </component>
@@ -437,7 +420,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539448897182" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539449147038" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -488,34 +471,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Mode cleanup">
-      <created>1538947627561</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1538947627561</updated>
-    </task>
-    <task id="LOCAL-00018" summary="New methods for preset colors manipulation">
-      <created>1538947689533</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1538947689533</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Refactored names for JSignal's methods">
-      <created>1538954180619</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1538954180619</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Code cleanup">
-      <created>1538954199815</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1538954199815</updated>
     </task>
     <task id="LOCAL-00021" summary="Versioning">
       <created>1538954303197</created>
@@ -832,7 +787,35 @@
       <option name="project" value="LOCAL" />
       <updated>1539443831103</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Added a swapchain class">
+      <created>1539448871161</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1539448871161</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Added a simple worker thread class">
+      <created>1539448895809</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1539448895809</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Renamed Pickable to Clickable">
+      <created>1539448952374</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1539448952374</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Adapted code tu use worker thread class">
+      <created>1539448980408</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1539448980408</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TodoView">
@@ -848,7 +831,7 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26092544" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26092544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -863,7 +846,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="AllProjects" order="7" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32839838" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32839838" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.29501083" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.329718" />
@@ -908,10 +891,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Removed LWJGL library" />
-    <MESSAGE value="Moved translations to resources folder" />
-    <MESSAGE value="Added Brushes to handle color and texture" />
-    <MESSAGE value="Removed unused methods" />
     <MESSAGE value="changed drawing API" />
     <MESSAGE value="Commented entire class. Development of OpenGL renderer is suspended until Java2D renderer is finished and functional" />
     <MESSAGE value="Drawing methods" />
@@ -933,7 +912,11 @@
     <MESSAGE value="Added picking methods and picking channel" />
     <MESSAGE value="Moved files in correct packages" />
     <MESSAGE value="Started working on a simple worker thread class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started working on a simple worker thread class" />
+    <MESSAGE value="Added a swapchain class" />
+    <MESSAGE value="Added a simple worker thread class" />
+    <MESSAGE value="Renamed Pickable to Clickable" />
+    <MESSAGE value="Adapted code tu use worker thread class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adapted code tu use worker thread class" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/java/awt/AWTEventMulticaster.java">
@@ -1200,6 +1183,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Swapchain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1209,21 +1203,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+        <state relative-caret-position="1131">
+          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -4,10 +4,8 @@ import com.lucaci32u4.UI.Viewport.Picker.HitboxPicker;
 import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
-import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.SimpleWorkerThread;
 import org.apache.commons.collections4.CollectionUtils;
-import com.lucaci32u4.util.JSignal;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -70,7 +68,6 @@ public class LogicViewport {
 	public void requestUpdate() {
 		boolean immediate = pencil.requestRenderFrame(pendingData);
 		if (immediate) {
-			// Swapping buffers
 			ViewportData aux = reserveData;
 			reserveData = pendingData;
 			pendingData = aux;
@@ -79,7 +76,6 @@ public class LogicViewport {
 	}
 	
 	private void reshapeBuffers(@NotNull LogicViewport.ViewportData data) {
-		bufferLock.acquireUninterruptibly();
 		if (data.pendingAttach.size() + data.pendingDetach.size() != 0) {
 			Collection<VisualArtifact> com = CollectionUtils.retainAll(data.pendingAttach, data.pendingDetach);
 			data.pendingAttach.removeAll(com);
@@ -91,7 +87,6 @@ public class LogicViewport {
 				data.sprites = (VisualArtifact[]) com.toArray();
 			}
 		}
-		bufferLock.release();
 	}
 
 	private void run() {
