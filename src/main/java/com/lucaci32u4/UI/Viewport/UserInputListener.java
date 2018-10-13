@@ -1,9 +1,9 @@
 package com.lucaci32u4.UI.Viewport;
 
+import java.awt.event.MouseEvent;
+
 public interface UserInputListener {
-	void mouseScroll(int direction);
-	void mouseLeft(boolean state);
-	void mouseRight(boolean state);
-	void mouseMiddle(boolean state);
-	void key(int vCode, boolean state);
+	void mouseButtonEvent(MouseEvent e);
+	void mouseMotionEvent(MouseEvent e, boolean drag);
+	void isInsidePerimeter(boolean inside);
 }
