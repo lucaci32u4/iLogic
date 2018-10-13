@@ -5,6 +5,7 @@ import com.lucaci32u4.UI.Viewport.LogicViewport;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.util.JSignal;
+import com.lucaci32u4.util.SimpleEventQueue;
 
 import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
@@ -26,6 +27,7 @@ public class Java2DSubsystem implements RenderAPI {
 	private ComponentListener canvasComponentListener;
 	private Container parentContainer;
 	private LogicViewport parentViewport;
+	private SimpleEventQueue<ArtifactLifetimeEvent> queue;
 	
 	// Per-frame data
 	private float pixelsPerUnit;
@@ -58,16 +60,16 @@ public class Java2DSubsystem implements RenderAPI {
 			canvas.setMinimumSize(new Dimension(10, 10));
 			canvasComponentListener = new ComponentListener() {
 				@Override public void componentShown(ComponentEvent e) {
-					parentViewport.requestUpdate();
+					/*parentViewport.requestUpdate();*/
 				}
 				@Override public void componentResized(ComponentEvent e) {
-					parentViewport.requestUpdate();
+					/*parentViewport.requestUpdate();*/
 				}
 				@Override public void componentMoved(ComponentEvent e) {
-					parentViewport.requestUpdate();
+					/*parentViewport.requestUpdate();*/
 				}
 				@Override public void componentHidden(ComponentEvent e) {
-					parentViewport.requestUpdate();
+					/*parentViewport.requestUpdate();*/
 				}
 			};
 			canvas.addComponentListener(canvasComponentListener);
@@ -89,11 +91,11 @@ public class Java2DSubsystem implements RenderAPI {
 	}
 
 	@Override public void attach(VisualArtifact sprite) {
-
+		queue.produce(new ArtifactLifetimeEvent(ArtifactLifetimeEvent.Type.ATTACH, sprite));
 	}
 
 	@Override public void detach(VisualArtifact sprite) {
-
+		queue.produce(new ArtifactLifetimeEvent(ArtifactLifetimeEvent.Type.DETACH, sprite));
 	}
 
 	@Override public void setCanvasOffsetUnits(int offsetX, int offsetY) {
