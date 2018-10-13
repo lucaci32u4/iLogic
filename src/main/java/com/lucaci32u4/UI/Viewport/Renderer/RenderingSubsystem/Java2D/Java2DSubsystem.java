@@ -98,6 +98,14 @@ public class Java2DSubsystem implements RenderAPI {
 		return canvas;
 	}
 
+	@Override public void attach(VisualArtifact sprite) {
+
+	}
+
+	@Override public void detach(VisualArtifact sprite) {
+
+	}
+
 	@Override public void setCanvasOffsetUnits(int offsetX, int offsetY) {
 		primitiveOffsetX = offsetX;
 		primitiveOffsetY = offsetY;
