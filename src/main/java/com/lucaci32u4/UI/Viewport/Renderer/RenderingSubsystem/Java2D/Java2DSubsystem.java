@@ -75,7 +75,7 @@ public class Java2DSubsystem implements RenderAPI {
 		});
 	}
 	
-	@Override public void destroyRenderer() {
+	@Override public void destroy() {
 		parentContainer.remove(canvas);
 		canvas.removeComponentListener(canvasComponentListener);
 	}

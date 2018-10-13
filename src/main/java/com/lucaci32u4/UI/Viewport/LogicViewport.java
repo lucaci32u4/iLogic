@@ -22,6 +22,7 @@ public class LogicViewport {
 		picker = pickerAPI;
 		userInputListener = inputListener;
 		pencil.init(displayPanel, this);
+		picker.init();
 		pencil.getCanvas().addMouseListener(new MouseListener() {
 			@Override public void mouseClicked(MouseEvent e) {
 
@@ -58,7 +59,7 @@ public class LogicViewport {
 	}
 
 	public void destroy() {
-		pencil.destroyRenderer();
+		pencil.destroy();
 		picker.destroy();
 	}
 	
