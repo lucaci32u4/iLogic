@@ -63,7 +63,7 @@ public class LogicViewport {
 		picker.destroy();
 	}
 	
-	public void requestUpdate() {
+	public void requestNewFrame() {
 
 	}
 }
