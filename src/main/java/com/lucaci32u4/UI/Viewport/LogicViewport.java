@@ -2,7 +2,7 @@ package com.lucaci32u4.UI.Viewport;
 
 //import com.lucaci32u4.UI.Viewport.RenderingSubsystem.GL2Subsystem;
 import com.lucaci32u4.UI.Viewport.Brushes.Brush;
-import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2DSubsystem;
+import com.lucaci32u4.UI.Viewport.RenderingSubsystem.Java2D.Java2DSubsystem;
 import com.lucaci32u4.util.Helper;
 import org.apache.commons.collections4.CollectionUtils;
 import com.lucaci32u4.util.JSignal;
@@ -134,6 +134,6 @@ public class LogicViewport {
 	}
 	
 	public interface ResourceAPI {
-	
+
 	}
 }
