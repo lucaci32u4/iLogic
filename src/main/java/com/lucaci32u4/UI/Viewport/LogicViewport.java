@@ -4,7 +4,6 @@ import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.util.SimpleWorkerThread;
-import org.apache.commons.collections4.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JPanel;
@@ -12,8 +11,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
 public class LogicViewport {
