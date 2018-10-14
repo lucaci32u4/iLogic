@@ -110,6 +110,15 @@ public class Java2DSubsystem implements RenderAPI {
 		queue.produce(new ArtifactLifetimeEvent(ArtifactLifetimeEvent.Type.DETACH, sprite));
 	}
 
+	@Override public void setCoordinates(int unitsOffsetX, int unitOffsetY, float pixelsPerUnit) {
+		synchronized (updateDataLock) {
+			producer.crdValid = true;
+			producer.offX = unitsOffsetX;
+			producer.offY = unitOffsetY;
+			producer.ppu = pixelsPerUnit;
+		}
+	}
+
 	@Override public void setCanvasOffsetUnits(int offsetX, int offsetY) {
 		primitiveOffsetX = offsetX;
 		primitiveOffsetY = offsetY;
