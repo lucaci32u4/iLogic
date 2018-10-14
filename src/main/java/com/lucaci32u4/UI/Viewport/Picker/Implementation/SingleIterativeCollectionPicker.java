@@ -2,6 +2,7 @@ package com.lucaci32u4.UI.Viewport.Picker.Implementation;
 
 import com.lucaci32u4.UI.Viewport.Picker.Hitbox;
 import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
+import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.SimpleEventQueue;
 
 import java.util.ArrayList;
@@ -23,17 +24,16 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 		}
 	}
 
-	private SimpleEventQueue<HitboxLifetimeEvent> queue;
+	private SimpleEventQueue<HitboxLifetimeEvent> queue = new SimpleEventQueue<>();;
 
 	private ArrayList<Collection<Hitbox>> channel;
-	private Thread thread;
-
-	public SingleIterativeCollectionPicker() {
-		queue = new SimpleEventQueue<>();
+	private Thread thread = new Thread(this::run);
+	
+	@Override public void init() {
 		channel = createCollections(2);
-		thread = new Thread(this::run);
+		thread.start();
 	}
-
+	
 	@Override public void attach(Hitbox hitbox, int pickerChannel) {
 		queue.produce(new HitboxLifetimeEvent(HitboxLifetimeEvent.Type.ATTACH, hitbox, pickerChannel));
 	}
@@ -55,6 +55,7 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 
 	@Override public void destroy() {
 		queue.produce(new HitboxLifetimeEvent(HitboxLifetimeEvent.Type.EXIT, null, -1));
+		Helper.join(thread);
 	}
 
 	private void run() {
