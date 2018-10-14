@@ -5,7 +5,7 @@ import com.lucaci32u4.UI.Viewport.LogicViewport;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.util.JSignal;
-import com.lucaci32u4.util.SimpleEventQueue;
+import com.lucaci32u4.util.SimpleWorkerThread;
 
 import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
@@ -18,29 +18,33 @@ import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.util.concurrent.Semaphore;
+import java.util.ArrayDeque;
 
 public class Java2DSubsystem implements RenderAPI {
 
-	static class ArtifactLifetimeEvent {
-		enum Type {
-			ATTACH, DETACH, EXIT,
-		}
-		Type type;
-		VisualArtifact sprite;
-		ArtifactLifetimeEvent(Type type, VisualArtifact sprite) {
-			this.type = type;
-			this.sprite = sprite;
-		}
+	static class DataUpdate {
+		ArrayDeque<VisualArtifact> att = new ArrayDeque<>(100);
+		ArrayDeque<VisualArtifact> det = new ArrayDeque<>(100);
+		boolean crdValid;
+		float ppu;
+		int offX, offY;
 	}
 
 	private JSignal requestedPainting;
 	private Canvas canvas;
 	private ComponentListener canvasComponentListener;
 	private Container parentContainer;
-	private LogicViewport parentViewport;
-	private SimpleEventQueue<ArtifactLifetimeEvent> queue;
-	
+	private SimpleWorkerThread bufferWorker;
+
+	// Update data
+	private final Object updateDataLock = new Object();
+	private DataUpdate producer = new DataUpdate();
+	private DataUpdate consumer = new DataUpdate();
+
+	// Draw data
+	private final Object drawDataLock = new Object();
+	private VisualArtifact[] sprites = new VisualArtifact[0];
+
 	// Per-frame data
 	private float pixelsPerUnit;
 	private int unitsOffsetX, unitsOffsetY;
@@ -58,12 +62,10 @@ public class Java2DSubsystem implements RenderAPI {
 		g2d = null;
 		canvas = null;
 		requestedPainting = new JSignal(false);
-		queue = new SimpleEventQueue<>();
 	}
 	
 	@Override public void init(JPanel panel, LogicViewport viewport) {
 		parentContainer = panel;
-		parentViewport = viewport;
 		SwingUtilities.invokeLater(() -> {
 			canvas = new Canvas() {
 				@Override public void paint(Graphics g) { onDraw((Graphics2D)g); }
@@ -87,6 +89,8 @@ public class Java2DSubsystem implements RenderAPI {
 			canvas.addComponentListener(canvasComponentListener);
 			parentContainer.add(canvas);
 		});
+		bufferWorker = new SimpleWorkerThread(this::runBufferJob);
+		bufferWorker.start();
 	}
 	
 	@Override public void destroy() {
@@ -103,11 +107,15 @@ public class Java2DSubsystem implements RenderAPI {
 	}
 
 	@Override public void attach(VisualArtifact sprite) {
-		queue.produce(new ArtifactLifetimeEvent(ArtifactLifetimeEvent.Type.ATTACH, sprite));
+		synchronized (updateDataLock) {
+			producer.att.add(sprite);
+		}
 	}
 
 	@Override public void detach(VisualArtifact sprite) {
-		queue.produce(new ArtifactLifetimeEvent(ArtifactLifetimeEvent.Type.DETACH, sprite));
+		synchronized (updateDataLock) {
+			producer.det.add(sprite);
+		}
 	}
 
 	@Override public void setCoordinates(int unitsOffsetX, int unitOffsetY, float pixelsPerUnit) {
@@ -186,6 +194,29 @@ public class Java2DSubsystem implements RenderAPI {
 	
 	private void onDraw(Graphics2D g) {
 		g2d = g;
+		synchronized (updateDataLock) {
+			DataUpdate aux = producer;
+			producer = consumer;
+			consumer = aux;
+		}
+		synchronized (drawDataLock) {
+			if (consumer.crdValid) {
+				unitsOffsetX = consumer.offX;
+				unitsOffsetY = consumer.offY;
+				pixelsPerUnit = consumer.ppu;
+				consumer.crdValid = false;
+			}
+			int pixelWidth = canvas.getWidth();
+			int pixelHeight = canvas.getHeight();
+			int unitWidth = Math.round(pixelsToUnits(pixelWidth));
+			int unitHeight = Math.round(pixelsToUnits(pixelHeight));
+			setCanvasOffsetUnits(0, 0);
+		}
+	}
 
+	private void runBufferJob() {
+		synchronized (drawDataLock) {
+
+		}
 	}
 }
