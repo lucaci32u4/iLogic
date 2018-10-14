@@ -10,6 +10,7 @@ public class SimpleWorkerThread {
 	public SimpleWorkerThread(Runnable workerTask) {
 		task = workerTask;
 		submit = new JSignal(false);
+		running = true;
 		thread = new Thread(() -> {
 			while (running) {
 				submit.waitFor(true);
