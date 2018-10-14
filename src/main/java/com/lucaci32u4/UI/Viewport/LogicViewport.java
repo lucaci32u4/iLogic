@@ -6,7 +6,7 @@ import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderManager;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -23,30 +23,32 @@ public class LogicViewport {
 		userInputListener = inputListener;
 		pencil.init(displayPanel, this);
 		picker.init();
-		pencil.getCanvas().addMouseListener(new MouseListener() {
-			@Override public void mouseClicked(MouseEvent e) {
+		SwingUtilities.invokeLater(() -> {
+			pencil.getCanvas().addMouseListener(new MouseListener() {
+				@Override public void mouseClicked(MouseEvent e) {
 
-			}
-			@Override public void mousePressed(MouseEvent e) {
-				userInputListener.mouseButtonEvent(e);
-			}
-			@Override public void mouseReleased(MouseEvent e) {
-				userInputListener.mouseButtonEvent(e);
-			}
-			@Override public void mouseEntered(MouseEvent e) {
-				userInputListener.isInsidePerimeter(true);
-			}
-			@Override public void mouseExited(MouseEvent e) {
-				userInputListener.isInsidePerimeter(false);
-			}
-		});
-		pencil.getCanvas().addMouseMotionListener(new MouseMotionListener() {
-			@Override public void mouseDragged(MouseEvent e) {
-				userInputListener.mouseMotionEvent(e, true);
-			}
-			@Override public void mouseMoved(MouseEvent e) {
-				userInputListener.mouseMotionEvent(e, false);
-			}
+				}
+				@Override public void mousePressed(MouseEvent e) {
+					userInputListener.mouseButtonEvent(e);
+				}
+				@Override public void mouseReleased(MouseEvent e) {
+					userInputListener.mouseButtonEvent(e);
+				}
+				@Override public void mouseEntered(MouseEvent e) {
+					userInputListener.notifyPerimeter(true);
+				}
+				@Override public void mouseExited(MouseEvent e) {
+					userInputListener.notifyPerimeter(false);
+				}
+			});
+			pencil.getCanvas().addMouseMotionListener(new MouseMotionListener() {
+				@Override public void mouseDragged(MouseEvent e) {
+					userInputListener.mouseMotionEvent(e, true);
+				}
+				@Override public void mouseMoved(MouseEvent e) {
+					userInputListener.mouseMotionEvent(e, false);
+				}
+			});
 		});
 	}
 
@@ -64,6 +66,6 @@ public class LogicViewport {
 	}
 	
 	public void requestNewFrame() {
-
+		pencil.requestRenderFrame();
 	}
 }

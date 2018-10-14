@@ -1,5 +1,10 @@
 package com.lucaci32u4.UI;
 
+import com.lucaci32u4.UI.Viewport.LogicViewport;
+import com.lucaci32u4.UI.Viewport.Picker.Hitbox;
+import com.lucaci32u4.UI.Viewport.Picker.Implementation.SingleIterativeCollectionPicker;
+import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
+import com.lucaci32u4.UI.Viewport.UserInputListener;
 import com.lucaci32u4.main.LanguagePack;
 import com.lucaci32u4.util.SimpleEventQueue;
 import org.jetbrains.annotations.NotNull;
@@ -7,10 +12,10 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainWindow {
@@ -40,7 +45,10 @@ public class MainWindow {
 			this(subject, 0, param2);
 		}
 	}
+
 	private LanguagePack lang;
+
+	// Swing objects
 	private JFrame frame;
 	private JPanel contentPanel;
 	private JToolBar topToolBar, bottomToolBar;
@@ -54,7 +62,9 @@ public class MainWindow {
 	private DefaultMutableTreeNode componentsRoot;
 	private JPanel propertiesPanel;
 	private MenuEventHandler menuEventHandler;
-	private WindowEvenHandler windowEvenHandler;
+	private WindowEventHandler windowEventHandler;
+
+	// Swing menus
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuEdit, menuProject, menuSimulation, menuWindow, menuHelp;
 	private JMenuItem miNew, miOpen, miSave, miSaveAs, miExport, miSettings, miExit;
@@ -70,9 +80,15 @@ public class MainWindow {
 	private JMenu miToolbarLocation;
 	private JMenuItem[] miToolbarLocationOptions;
 	private JMenuItem miTutorial, miDocumentation, miAbout;
+
+	// Outbound event queue
 	private SimpleEventQueue<Event> listener;
-	
+
+	// Simulation variables
 	private boolean activeSimulation;
+
+	// Circuit viewport
+	private LogicViewport circuitViewport;
 	
 	public MainWindow(@NotNull SimpleEventQueue<MainWindow.Event> listener) {
 		this.listener = listener;
@@ -196,8 +212,8 @@ public class MainWindow {
 				miTutorial.addActionListener(menuEventHandler);
 				for (JMenuItem item : miToolbarLocationOptions) item.addActionListener(menuEventHandler);
 				miStartStop.setState(activeSimulation);
-				windowEvenHandler = new WindowEvenHandler();
-				frame.addWindowListener(windowEvenHandler);
+				windowEventHandler = new WindowEventHandler();
+				frame.addWindowListener(windowEventHandler);
 				frame.setJMenuBar(menuBar);
 				frame.setSize(1200, 600);
 				frame.setLocationRelativeTo(null);
@@ -287,9 +303,11 @@ public class MainWindow {
 			circuitsRoot.setUserObject(lang.get("circuits"));
 		});
 	}
+
 	public void setVisible(boolean val) {
 		SwingUtilities.invokeLater(() -> frame.setVisible(val));
 	}
+
 	public int showExitPopup() {
 		String[] options = { lang.get("save"), lang.get("discard"), lang.get("cancel") };
 		AtomicInteger nOption = new AtomicInteger(JOptionPane.CLOSED_OPTION);
@@ -301,11 +319,51 @@ public class MainWindow {
 		int n = nOption.get();
 		return (n == 2 || n == JOptionPane.CLOSED_OPTION ? EXIT_CANCEL : (n == 0 ? EXIT_SAVE : EXIT_DISCARD));
 	}
+
 	public void close() {
 		SwingUtilities.invokeLater(() -> { frame.setVisible(false); circuitPanel.removeAll(); frame.dispose(); });
 	}
+
 	public void setActiveSimulation(boolean active) {
-		SwingUtilities.invokeLater(() -> { activeSimulation = active; miStartStop.setState(activeSimulation); });
+		activeSimulation = active;
+		SwingUtilities.invokeLater(() -> miStartStop.setState(activeSimulation));
+	}
+
+	public void setCircuitViewport(LogicViewport viewport) {
+		circuitViewport = viewport;
+		viewport.init(circuitPanel, new Java2DSubsystem(), new SingleIterativeCollectionPicker() {
+			@Override
+			public ArrayList<Collection<Hitbox>> createCollections(int collectionCount) {
+				ArrayList<Collection<Hitbox>> l = new ArrayList<>();
+				l.add(new ArrayDeque<>());
+				l.add(new ArrayDeque<>());
+				return l;
+			}
+
+			@Override
+			public void init() {
+
+			}
+		}, new UserInputListener() {
+			@Override
+			public void mouseButtonEvent(MouseEvent e) {
+				circuitViewport.requestNewFrame();
+			}
+
+			@Override
+			public void mouseMotionEvent(MouseEvent e, boolean drag) {
+
+			}
+
+			@Override
+			public void notifyPerimeter(boolean inside) {
+
+			}
+		});
+	}
+
+	public LogicViewport getCircuitViewport() {
+		return circuitViewport;
 	}
 	
 	// Handle all JMenuItem clicks
@@ -321,7 +379,7 @@ public class MainWindow {
 			if (e.getSource() == miSaveAs) listener.produce(new Event(Event.Type.SAVE, e.getActionCommand()));
 			if (e.getSource() == miExport) listener.produce(new Event(Event.Type.EXPORT));
 			if (e.getSource() == miSettings) listener.produce(new Event(Event.Type.SETTINGS));
-			if (e.getSource() == miExit) windowEvenHandler.windowClosing(null);
+			if (e.getSource() == miExit) windowEventHandler.windowClosing(null);
 			if (e.getSource() == miUndo) listener.produce(new Event(Event.Type.UNDO));
 			if (e.getSource() == miRedo) listener.produce(new Event(Event.Type.REDO, 0));
 			if (e.getSource() == miRedoAll) listener.produce(new Event(Event.Type.REDO, 1));
@@ -356,34 +414,27 @@ public class MainWindow {
 	
 	
 	// Handle window closing button
-	private class WindowEvenHandler implements WindowListener {
-		@Override
-		public void windowClosing(WindowEvent e) {
+	private class WindowEventHandler implements WindowListener {
+		@Override public void windowClosing(WindowEvent e) {
 			listener.produce(new Event(Event.Type.EXIT, 0, null));
 		}
+		@Override public void windowClosed(WindowEvent e) {
 
-		@Override
-		public void windowClosed(WindowEvent e) {
 		}
+		@Override public void windowOpened(WindowEvent e) {
 
-		@Override
-		public void windowOpened(WindowEvent e) {
 		}
+		@Override public void windowIconified(WindowEvent e) {
 
-		@Override
-		public void windowIconified(WindowEvent e) {
 		}
+		@Override public void windowDeiconified(WindowEvent e) {
 
-		@Override
-		public void windowDeiconified(WindowEvent e) {
 		}
+		@Override public void windowActivated(WindowEvent e) {
 
-		@Override
-		public void windowActivated(WindowEvent e) {
 		}
+		@Override public void windowDeactivated(WindowEvent e) {
 
-		@Override
-		public void windowDeactivated(WindowEvent e) {
 		}
 	}
 }

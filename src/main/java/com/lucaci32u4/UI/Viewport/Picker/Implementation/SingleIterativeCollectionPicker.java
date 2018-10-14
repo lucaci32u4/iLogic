@@ -4,6 +4,7 @@ import com.lucaci32u4.UI.Viewport.Picker.Hitbox;
 import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
 import com.lucaci32u4.util.SimpleEventQueue;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public abstract class SingleIterativeCollectionPicker implements PickerAPI {
@@ -24,7 +25,7 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 
 	private SimpleEventQueue<HitboxLifetimeEvent> queue;
 
-	private Collection<Hitbox>[] channel;
+	private ArrayList<Collection<Hitbox>> channel;
 	private Thread thread;
 
 	public SingleIterativeCollectionPicker() {
@@ -43,7 +44,7 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 
 	@Override public void pick(int pointerX, int pointerY, int pickerChannel) {
 		synchronized (this) {
-			Collection<Hitbox> ch = channel[pickerChannel];
+			Collection<Hitbox> ch = channel.get(pickerChannel);
 			for (Hitbox hitbox : ch) {
 				if (hitbox.left <= pointerX) if (pointerX <= hitbox.right) if (hitbox.top <= pointerY) if (pointerY <= hitbox.bottom) {
 					hitbox.parent.clicked(pointerX, pointerY, hitbox, pickerChannel);
@@ -64,10 +65,10 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 			synchronized (this) {
 				switch (event.type) {
 					case ATTACH:
-						channel[event.pickerChannel].add(event.hitbox);
+						channel.get(event.pickerChannel).add(event.hitbox);
 						break;
 					case DETACH:
-						channel[event.pickerChannel].remove(event.hitbox);
+						channel.get(event.pickerChannel).remove(event.hitbox);
 						break;
 					case EXIT:
 						running = false;
@@ -77,5 +78,5 @@ public abstract class SingleIterativeCollectionPicker implements PickerAPI {
 		}
 	}
 
-	public abstract Collection<Hitbox>[] createCollections(int collectionCount);
+	public abstract ArrayList<Collection<Hitbox>> createCollections(int collectionCount);
 }

@@ -4,7 +4,6 @@ import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.LogicViewport;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
-import com.lucaci32u4.util.JSignal;
 import com.lucaci32u4.util.SimpleWorkerThread;
 
 import javax.swing.SwingUtilities;
@@ -31,7 +30,7 @@ public class Java2DSubsystem implements RenderAPI {
 	}
 
 	private volatile boolean requestedPainting;
-	private Canvas canvas;
+	private JPanel canvas;
 	private ComponentListener canvasComponentListener;
 	private Container parentContainer;
 	private SimpleWorkerThread bufferWorker;
@@ -67,23 +66,25 @@ public class Java2DSubsystem implements RenderAPI {
 	@Override public void init(JPanel panel, LogicViewport viewport) {
 		parentContainer = panel;
 		SwingUtilities.invokeLater(() -> {
-			canvas = new Canvas() {
-				@Override public void paint(Graphics g) { onDraw((Graphics2D)g); }
+			canvas = new JPanel() {
+				@Override protected void paintComponent(Graphics g) {
+					onDraw((Graphics2D)g);
+				}
 			};
 			canvas.setIgnoreRepaint(true);
 			canvas.setMinimumSize(new Dimension(10, 10));
 			canvasComponentListener = new ComponentListener() {
 				@Override public void componentShown(ComponentEvent e) {
-					/*parentViewport.requestUpdate();*/
+					requestRenderFrame();
 				}
 				@Override public void componentResized(ComponentEvent e) {
-					/*parentViewport.requestUpdate();*/
+					requestRenderFrame();
 				}
 				@Override public void componentMoved(ComponentEvent e) {
-					/*parentViewport.requestUpdate();*/
+					requestRenderFrame();
 				}
 				@Override public void componentHidden(ComponentEvent e) {
-					/*parentViewport.requestUpdate();*/
+					requestRenderFrame();
 				}
 			};
 			canvas.addComponentListener(canvasComponentListener);
@@ -105,7 +106,7 @@ public class Java2DSubsystem implements RenderAPI {
 		return immediate;
 	}
 
-	@Override public Canvas getCanvas() {
+	@Override public JPanel getCanvas() {
 		return canvas;
 	}
 
@@ -154,7 +155,7 @@ public class Java2DSubsystem implements RenderAPI {
 		fromY += primitiveOffsetY + unitsOffsetY;	fromY *= pixelsPerUnit;
 		toX += primitiveOffsetX + unitsOffsetX; 	toX *= pixelsPerUnit;
 		toY += primitiveOffsetY + unitsOffsetY; 	toY *= pixelsPerUnit;
-		g2d.setPaint((Paint)(Brush.get(brush)));
+//		g2d.setPaint((Paint)(Brush.get(brush)));
 		g2d.setStroke(new BasicStroke(thicknessPixels));
 		g2d.drawLine(fromX, fromY, toX, toY);
 	}
