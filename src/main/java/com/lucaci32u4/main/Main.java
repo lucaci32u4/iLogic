@@ -31,28 +31,20 @@ public class Main {
 		MainWindow window = new MainWindow(queue);
 		window.setCircuitViewport(new LogicViewport());
 		window.getCircuitViewport().getRenderManager().attach(new VisualArtifact() {
-			@Override
-			public boolean checkIfOnScreen(int screenLeft, int screenTop, int screenWidth, int screenHeight) {
+			@Override public boolean checkIfOnScreen(int screenLeft, int screenTop, int screenWidth, int screenHeight) {
 				return true;
 			}
-
-			@Override
-			public void onAttach(@NotNull ResourceAPI resourceAPI) {
-				int x = 0;
+			@Override public void onAttach(@NotNull ResourceAPI resourceAPI) {
+			
 			}
-
-			@Override
-			public void onDraw(@NotNull DrawAPI pen, @NotNull ResourceAPI resourceAPI) {
+			@Override public void onDraw(@NotNull DrawAPI pen, @NotNull ResourceAPI resourceAPI) {
 				pen.drawLine(0, 0, 100, 100, 3.0f);
 			}
-
-			@Override
-			public void onDetach(@NotNull ResourceAPI resourceAPI) {
+			@Override public void onDetach(@NotNull ResourceAPI resourceAPI) {
 
 			}
 		});
 		window.setVisible(true);
-		//gl(window);
 		boolean run = true;
 		while (run) {
 			MainWindow.Event e = queue.consume(true);
@@ -64,8 +56,5 @@ public class Main {
 				}
 			}
 		}
-	}
-	public static void gl(MainWindow win) {
-
 	}
 }
