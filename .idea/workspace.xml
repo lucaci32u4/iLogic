@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Implementation/SingleIterativeCollectionPicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Implementation/SingleIterativeCollectionPicker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,7 +73,7 @@
         <counts>
           <entry key="class" value="10" />
           <entry key="glsl" value="11" />
-          <entry key="java" value="112" />
+          <entry key="java" value="114" />
           <entry key="txt" value="1" />
           <entry key="xml" value="12" />
         </counts>
@@ -81,7 +82,7 @@
         <counts>
           <entry key="CLASS" value="10" />
           <entry key="GLSL shader file" value="11" />
-          <entry key="JAVA" value="112" />
+          <entry key="JAVA" value="114" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="12" />
         </counts>
@@ -90,16 +91,16 @@
         <counts>
           <entry key="dummy" value="28" />
           <entry key="glsl" value="1112" />
-          <entry key="java" value="16680" />
-          <entry key="txt" value="2087" />
+          <entry key="java" value="16695" />
+          <entry key="txt" value="2101" />
           <entry key="xml" value="87" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="GLSL shader file" value="1112" />
-          <entry key="JAVA" value="16680" />
-          <entry key="PLAIN_TEXT" value="2115" />
+          <entry key="JAVA" value="16695" />
+          <entry key="PLAIN_TEXT" value="2129" />
           <entry key="XML" value="87" />
         </counts>
       </usages-collector>
@@ -142,24 +143,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/PickerAPI.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+            <state relative-caret-position="415">
+              <caret line="30" column="54" lean-forward="true" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#checkIfOnScreen#0;class#1380:1826" />
+                <element signature="method#onAttach#0;class#1380:1826" />
+                <element signature="method#onDraw#0;class#1380:1826" />
+                <element signature="method#onDetach#0;class#1380:1826" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Implementation/SingleIterativeCollectionPicker.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+            <state relative-caret-position="401">
+              <caret line="340" column="36" lean-forward="true" selection-start-line="340" selection-start-column="36" selection-end-line="340" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#945#946#0" expanded="true" />
-                <element signature="e#957#958#0" expanded="true" />
+                <element signature="e#11741#11742#0" expanded="true" />
+                <element signature="e#11803#11804#0" expanded="true" />
+                <element signature="e#12857#13132#0" expanded="true" />
+                <element signature="e#13131#13132#0" expanded="true" />
+                <element signature="e#13263#13264#0" expanded="true" />
+                <element signature="e#13307#13308#0" expanded="true" />
+                <element signature="e#16669#16725#0" />
+                <element signature="e#16728#16784#0" />
+                <element signature="e#16787#16846#0" />
+                <element signature="e#16849#16910#0" />
+                <element signature="e#16913#16972#0" />
+                <element signature="e#16975#17036#0" />
               </folding>
             </state>
           </provider>
@@ -254,15 +272,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/RenderCoordinateManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/PickerAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/PickerManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Implementation/SingleIterativeCollectionPicker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" />
       </list>
     </option>
   </component>
@@ -449,7 +467,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539548046733" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539548227300" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -500,13 +518,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Moved files in correct packages">
-      <created>1539443803849</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1539443803849</updated>
     </task>
     <task id="LOCAL-00065" summary="Started working on a simple worker thread class">
       <created>1539443831103</created>
@@ -844,7 +855,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539547364053</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="Initialization">
+      <created>1539548254166</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1539548254166</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TodoView">
@@ -920,7 +938,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Renamed parameter" />
     <MESSAGE value="Removed old code, added getter for picker/renderer manager interface" />
     <MESSAGE value="Added picker/renderer manager interface" />
     <MESSAGE value="Added all interface methods for renderer manager" />
@@ -945,7 +962,8 @@
     <MESSAGE value="JPanel coordinate anchoring" />
     <MESSAGE value="Removed old code" />
     <MESSAGE value="Moved constants" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved constants" />
+    <MESSAGE value="Initialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initialization" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl/2.8.2/lwjgl-2.8.2.jar!/org/lwjgl/Sys.class">
@@ -1087,20 +1105,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="362" selection-start-line="362" selection-end-line="362" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11741#11742#0" expanded="true" />
-            <element signature="e#11803#11804#0" expanded="true" />
-            <element signature="e#13263#13264#0" expanded="true" />
-            <element signature="e#13307#13308#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1156,19 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="28" column="95" lean-forward="true" selection-start-line="28" selection-start-column="95" selection-end-line="28" selection-end-column="95" />
-          <folding>
-            <element signature="method#checkIfOnScreen#0;class#1380:1829" />
-            <element signature="method#onAttach#0;class#1380:1835" />
-            <element signature="method#onDraw#0;class#1380:1846" />
-            <element signature="method#onDetach#0;class#1380:1852" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Clickable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1190,21 +1181,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/PickerAPI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Implementation/SingleIterativeCollectionPicker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        <state relative-caret-position="187">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Implementation/SingleIterativeCollectionPicker.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/PickerAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="340" column="36" lean-forward="true" selection-start-line="340" selection-start-column="36" selection-end-line="340" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#945#946#0" expanded="true" />
-            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#11741#11742#0" expanded="true" />
+            <element signature="e#11803#11804#0" expanded="true" />
+            <element signature="e#12857#13132#0" expanded="true" />
+            <element signature="e#13131#13132#0" expanded="true" />
+            <element signature="e#13263#13264#0" expanded="true" />
+            <element signature="e#13307#13308#0" expanded="true" />
+            <element signature="e#16669#16725#0" />
+            <element signature="e#16728#16784#0" />
+            <element signature="e#16787#16846#0" />
+            <element signature="e#16849#16910#0" />
+            <element signature="e#16913#16972#0" />
+            <element signature="e#16975#17036#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="30" column="54" lean-forward="true" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#checkIfOnScreen#0;class#1380:1826" />
+            <element signature="method#onAttach#0;class#1380:1826" />
+            <element signature="method#onDraw#0;class#1380:1826" />
+            <element signature="method#onDetach#0;class#1380:1826" />
           </folding>
         </state>
       </provider>

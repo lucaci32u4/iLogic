@@ -15,7 +15,6 @@ public class Main {
 	private static boolean setSystemLookAndFeel() {
 		boolean[] success = { true, true, true, true };
 		try {
-			System.setProperty("sun.java2d.noddraw", "true");
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}
 		catch (ClassNotFoundException e) { success[0] = false; }

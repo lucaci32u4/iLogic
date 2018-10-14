@@ -332,17 +332,11 @@ public class MainWindow {
 	public void setCircuitViewport(LogicViewport viewport) {
 		circuitViewport = viewport;
 		viewport.init(circuitPanel, new Java2DSubsystem(), new SingleIterativeCollectionPicker() {
-			@Override
-			public ArrayList<Collection<Hitbox>> createCollections(int collectionCount) {
+			@Override public ArrayList<Collection<Hitbox>> createCollections(int collectionCount) {
 				ArrayList<Collection<Hitbox>> l = new ArrayList<>();
 				l.add(new ArrayDeque<>());
 				l.add(new ArrayDeque<>());
 				return l;
-			}
-
-			@Override
-			public void init() {
-
 			}
 		}, new UserInputListener() {
 			@Override
