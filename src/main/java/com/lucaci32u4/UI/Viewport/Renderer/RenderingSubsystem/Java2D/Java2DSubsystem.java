@@ -8,7 +8,7 @@ import com.lucaci32u4.util.SimpleWorkerThread;
 
 import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
-import java.awt.Canvas;
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -68,6 +68,7 @@ public class Java2DSubsystem implements RenderAPI {
 		SwingUtilities.invokeLater(() -> {
 			canvas = new JPanel() {
 				@Override protected void paintComponent(Graphics g) {
+					super.paintComponent(g);
 					onDraw((Graphics2D)g);
 				}
 			};
@@ -88,7 +89,8 @@ public class Java2DSubsystem implements RenderAPI {
 				}
 			};
 			canvas.addComponentListener(canvasComponentListener);
-			parentContainer.add(canvas);
+			parentContainer.setLayout(new BorderLayout());
+			parentContainer.add(canvas, BorderLayout.CENTER);
 		});
 		bufferWorker = new SimpleWorkerThread(this::runBufferJob);
 		bufferWorker.start();
