@@ -109,12 +109,14 @@ public class Java2DSubsystem implements RenderAPI {
 	@Override public void attach(VisualArtifact sprite) {
 		synchronized (updateDataLock) {
 			producer.att.add(sprite);
+			producer.det.remove(sprite);
 		}
 	}
 
 	@Override public void detach(VisualArtifact sprite) {
 		synchronized (updateDataLock) {
 			producer.det.add(sprite);
+			producer.att.remove(sprite);
 		}
 	}
 
