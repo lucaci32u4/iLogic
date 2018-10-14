@@ -30,7 +30,7 @@ public class Java2DSubsystem implements RenderAPI {
 		int offX, offY;
 	}
 
-	private JSignal requestedPainting;
+	private volatile boolean requestedPainting;
 	private Canvas canvas;
 	private ComponentListener canvasComponentListener;
 	private Container parentContainer;
@@ -61,7 +61,7 @@ public class Java2DSubsystem implements RenderAPI {
 		brush = null;
 		g2d = null;
 		canvas = null;
-		requestedPainting = new JSignal(false);
+		requestedPainting = false;
 	}
 	
 	@Override public void init(JPanel panel, LogicViewport viewport) {
@@ -99,7 +99,10 @@ public class Java2DSubsystem implements RenderAPI {
 	}
 	
 	@Override public boolean requestRenderFrame() {
-		return false;
+		boolean immediate = !requestedPainting;
+		requestedPainting = true;
+		canvas.repaint();
+		return immediate;
 	}
 
 	@Override public Canvas getCanvas() {
@@ -197,6 +200,7 @@ public class Java2DSubsystem implements RenderAPI {
 	private void onDraw(Graphics2D g) {
 		g2d = g;
 		synchronized (updateDataLock) {
+			requestedPainting = false;
 			DataUpdate aux = producer;
 			producer = consumer;
 			consumer = aux;
