@@ -214,11 +214,39 @@ public class Java2DSubsystem implements RenderAPI {
 			int unitHeight = Math.round(pixelsToUnits(pixelHeight));
 			setCanvasOffsetUnits(0, 0);
 		}
+		bufferWorker.submit();
 	}
 
 	private void runBufferJob() {
 		synchronized (drawDataLock) {
-
+			int currentSize = sprites.length;
+			VisualArtifact[] newArray = sprites;
+			if (consumer.det.size() != 0) {
+				for (VisualArtifact oldSprite : consumer.det) {
+					for (int i = 0; i < currentSize; i++) {
+						if (sprites[i] == oldSprite) {
+							System.arraycopy(sprites, i + 1, sprites, i, currentSize - i - 1);
+							currentSize--;
+							break;
+						}
+					}
+				}
+			}
+			if (consumer.att.size() != 0) {
+				int newLength = consumer.att.size() + currentSize;
+				if (newLength > sprites.length) {
+					newArray = new VisualArtifact[newLength];
+				} else if (newLength < sprites.length / 2) {
+					newArray = new VisualArtifact[newLength];
+				}
+				if (newArray != sprites) System.arraycopy(sprites, 0, newArray, 0, currentSize);
+				for (VisualArtifact sprite : consumer.att) {
+					newArray[currentSize++] = sprite;
+				}
+				sprites = newArray;
+			}
+			consumer.det.clear();
+			consumer.att.clear();
 		}
 	}
 }
