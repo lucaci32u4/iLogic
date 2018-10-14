@@ -213,6 +213,16 @@ public class Java2DSubsystem implements RenderAPI {
 			int unitWidth = Math.round(pixelsToUnits(pixelWidth));
 			int unitHeight = Math.round(pixelsToUnits(pixelHeight));
 			setCanvasOffsetUnits(0, 0);
+			for (VisualArtifact sprite : consumer.att) {
+				sprite.onAttach(this);
+				if (sprite.checkIfOnScreen(unitsOffsetX, unitsOffsetY, unitWidth, unitHeight)) sprite.onDraw(this, this);
+			}
+			for (VisualArtifact sprite : sprites) {
+				if (sprite.checkIfOnScreen(unitsOffsetX, unitsOffsetY, unitWidth, unitHeight)) sprite.onDraw(this, this);
+			}
+			for (VisualArtifact sprite : consumer.det) {
+				sprite.onDetach(this);
+			}
 		}
 		bufferWorker.submit();
 	}
