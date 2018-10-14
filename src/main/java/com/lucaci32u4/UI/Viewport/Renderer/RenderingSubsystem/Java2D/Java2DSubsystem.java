@@ -23,8 +23,8 @@ import java.util.ArrayDeque;
 public class Java2DSubsystem implements RenderAPI {
 
 	static class DataUpdate {
-		ArrayDeque<VisualArtifact> att = new ArrayDeque<>(100);
-		ArrayDeque<VisualArtifact> det = new ArrayDeque<>(100);
+		ArrayDeque<VisualArtifact> att = new ArrayDeque<>(40);
+		ArrayDeque<VisualArtifact> det = new ArrayDeque<>(40);
 		boolean crdValid;
 		float ppu;
 		int offX, offY;
