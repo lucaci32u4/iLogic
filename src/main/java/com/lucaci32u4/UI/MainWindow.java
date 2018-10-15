@@ -321,7 +321,12 @@ public class MainWindow {
 	}
 
 	public void close() {
-		SwingUtilities.invokeLater(() -> { frame.setVisible(false); circuitPanel.removeAll(); frame.dispose(); });
+		SwingUtilities.invokeLater(() -> {
+			frame.setVisible(false);
+			circuitPanel.removeAll();
+			circuitViewport.destroy();
+			frame.dispose();
+		});
 	}
 
 	public void setActiveSimulation(boolean active) {
@@ -329,35 +334,8 @@ public class MainWindow {
 		SwingUtilities.invokeLater(() -> miStartStop.setState(activeSimulation));
 	}
 
-	public void setCircuitViewport(LogicViewport viewport) {
-		circuitViewport = viewport;
-		viewport.init(circuitPanel, new Java2DSubsystem(), new SingleIterativeCollectionPicker() {
-			@Override public ArrayList<Collection<Hitbox>> createCollections(int collectionCount) {
-				ArrayList<Collection<Hitbox>> l = new ArrayList<>();
-				l.add(new ArrayDeque<>());
-				l.add(new ArrayDeque<>());
-				return l;
-			}
-		}, new UserInputListener() {
-			@Override
-			public void mouseButtonEvent(MouseEvent e) {
-				circuitViewport.requestNewFrame();
-			}
-
-			@Override
-			public void mouseMotionEvent(MouseEvent e, boolean drag) {
-
-			}
-
-			@Override
-			public void notifyPerimeter(boolean inside) {
-
-			}
-		});
-	}
-
-	public LogicViewport getCircuitViewport() {
-		return circuitViewport;
+	public JPanel getCircuitPanel() {
+		return circuitPanel;
 	}
 	
 	// Handle all JMenuItem clicks

@@ -60,7 +60,7 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <groupId>groupId</groupId>
+    <groupId>lucaci32u4</groupId>
     <artifactId>iLogic</artifactId>
     <version>0.1</version>
 

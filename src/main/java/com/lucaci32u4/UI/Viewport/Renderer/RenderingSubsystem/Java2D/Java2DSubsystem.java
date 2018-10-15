@@ -2,25 +2,24 @@ package com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D;
 
 import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
 import com.lucaci32u4.UI.Viewport.LogicViewport;
+import com.lucaci32u4.UI.Viewport.Renderer.Brushes.OutlineBrush;
+import com.lucaci32u4.UI.Viewport.Renderer.Brushes.SolidBrush;
+import com.lucaci32u4.UI.Viewport.Renderer.Brushes.TextureBrush;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.util.SimpleWorkerThread;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Paint;
-import java.awt.BasicStroke;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayDeque;
 
 public class Java2DSubsystem implements RenderAPI {
-
+	
 	static class DataUpdate {
 		ArrayDeque<VisualArtifact> att = new ArrayDeque<>(40);
 		ArrayDeque<VisualArtifact> det = new ArrayDeque<>(40);
@@ -28,13 +27,21 @@ public class Java2DSubsystem implements RenderAPI {
 		float ppu;
 		int offX, offY;
 	}
-
-	private volatile boolean requestedPainting;
+	
 	private JPanel canvas;
 	private ComponentListener canvasComponentListener;
 	private Container parentContainer;
 	private SimpleWorkerThread bufferWorker;
-
+	
+	// Channel
+	public static class ChannelData {
+		DataUpdate producer;
+		DataUpdate consumer;
+		VisualArtifact[] sprites;
+		float ppu;
+		int offX, offY;
+	}
+	
 	// Update data
 	private final Object updateDataLock = new Object();
 	private DataUpdate producer = new DataUpdate();
@@ -47,9 +54,11 @@ public class Java2DSubsystem implements RenderAPI {
 	// Per-frame data
 	private float pixelsPerUnit;
 	private int unitsOffsetX, unitsOffsetY;
-	private int primitiveOffsetX, primitiveOffsetY;
 	private Brush brush;
 	private Graphics2D g2d;
+	
+	// Per-sprite data
+	private int primitiveOffsetX, primitiveOffsetY;
 	
 	public Java2DSubsystem() {
 		pixelsPerUnit = 1;
@@ -60,7 +69,6 @@ public class Java2DSubsystem implements RenderAPI {
 		brush = null;
 		g2d = null;
 		canvas = null;
-		requestedPainting = false;
 	}
 	
 	@Override public void init(JPanel panel, LogicViewport viewport) {
@@ -99,19 +107,41 @@ public class Java2DSubsystem implements RenderAPI {
 	@Override public void destroy() {
 		parentContainer.remove(canvas);
 		canvas.removeComponentListener(canvasComponentListener);
+		bufferWorker.exit(true);
 	}
 	
-	@Override public boolean requestRenderFrame() {
-		boolean immediate = !requestedPainting;
-		requestedPainting = true;
+	@Override public void requestRenderFrame() {
 		canvas.repaint();
-		return immediate;
 	}
 
 	@Override public JPanel getCanvas() {
 		return canvas;
 	}
-
+	
+	@Override public Object switchChannel(@Nullable Object newChannelContent) {
+		ChannelData current = new ChannelData();
+		ChannelData replace = (ChannelData)newChannelContent;
+		synchronized (drawDataLock) {
+			synchronized (updateDataLock) {
+				current.sprites = sprites;
+				current.consumer = consumer;
+				current.producer = producer;
+				current.offX = unitsOffsetX;
+				current.offY = unitsOffsetY;
+				current.ppu = pixelsPerUnit;
+				if (replace != null) {
+					sprites = replace.sprites;
+					consumer = replace.consumer;
+					producer = replace.producer;
+					unitsOffsetX = replace.offX;
+					unitsOffsetY = replace.offY;
+					pixelsPerUnit = replace.ppu;
+				}
+			}
+		}
+		return current;
+	}
+	
 	@Override public void attach(VisualArtifact sprite) {
 		synchronized (updateDataLock) {
 			producer.att.add(sprite);
@@ -202,8 +232,8 @@ public class Java2DSubsystem implements RenderAPI {
 	
 	private void onDraw(Graphics2D g) {
 		g2d = g;
+		bufferWorker.finish(true);
 		synchronized (updateDataLock) {
-			requestedPainting = false;
 			DataUpdate aux = producer;
 			producer = consumer;
 			consumer = aux;
@@ -265,5 +295,17 @@ public class Java2DSubsystem implements RenderAPI {
 			consumer.det.clear();
 			consumer.att.clear();
 		}
+	}
+	
+	@Override public SolidBrush createSolidBrush(int r, int g, int b) {
+		return new SolidBrush(new Color(r, g, b));
+	}
+	
+	@Override public OutlineBrush createOutlineBrush(int r, int g, int b) {
+		return new OutlineBrush(new Color(r, g, b));
+	}
+	
+	@Override public TextureBrush createTextureBrush(BufferedImage image, int unitWidth, int unitHeight) {
+		return new TextureBrush(new TexturePaint(image, new Rectangle(0, 0, unitWidth, unitHeight)));
 	}
 }

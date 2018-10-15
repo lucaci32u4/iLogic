@@ -65,6 +65,10 @@ public class LogicViewport {
 		picker.destroy();
 	}
 	
+	public Object switchChannel(Object newChannelContent) {
+		return pencil.switchChannel(newChannelContent);
+	}
+	
 	public void requestNewFrame() {
 		pencil.requestRenderFrame();
 	}

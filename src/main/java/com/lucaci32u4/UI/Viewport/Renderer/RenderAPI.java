@@ -8,7 +8,8 @@ import javax.swing.JPanel;
 public interface RenderAPI extends DrawAPI, ResourceAPI, RenderManager, RenderCoordinateManager {
 	void init(JPanel panel, LogicViewport viewport);
 	void destroy();
-	boolean requestRenderFrame();
+	void requestRenderFrame();
 	JPanel getCanvas();
+	Object switchChannel(Object newChannelContent);
 }
 
