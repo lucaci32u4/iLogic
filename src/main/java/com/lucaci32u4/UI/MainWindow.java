@@ -86,9 +86,6 @@ public class MainWindow {
 
 	// Simulation variables
 	private boolean activeSimulation;
-
-	// Circuit viewport
-	private LogicViewport circuitViewport;
 	
 	public MainWindow(@NotNull SimpleEventQueue<MainWindow.Event> listener) {
 		this.listener = listener;
@@ -324,7 +321,6 @@ public class MainWindow {
 		SwingUtilities.invokeLater(() -> {
 			frame.setVisible(false);
 			circuitPanel.removeAll();
-			circuitViewport.destroy();
 			frame.dispose();
 		});
 	}
