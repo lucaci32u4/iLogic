@@ -63,5 +63,6 @@
     <orderEntry type="library" name="Maven: xerces:xercesImpl:2.5.0" level="project" />
     <orderEntry type="library" name="Maven: xml-apis:xmlParserAPIs:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: batik:batik-swing:1.6" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
   </component>
 </module>
