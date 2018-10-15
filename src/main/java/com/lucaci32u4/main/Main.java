@@ -2,6 +2,7 @@ package com.lucaci32u4.main;
 
 import com.lucaci32u4.UI.MainWindow;
 
+import com.lucaci32u4.UI.SettingsWindow;
 import com.lucaci32u4.util.SimpleEventQueue;
 
 import javax.swing.*;
@@ -28,6 +29,7 @@ public class Main {
 		MainWindow window = new MainWindow(queue);
 		window.setVisible(true);
 		boolean run = true;
+		SettingsWindow s = new SettingsWindow();
 		while (run) {
 			MainWindow.Event e = queue.consume(true);
 			System.out.println(e.subject);
@@ -36,6 +38,9 @@ public class Main {
 					run = false;
 					window.close();
 				}
+			}
+			if (e.subject == MainWindow.Event.Type.SETTINGS) {
+				s.create(LanguagePack.getInstance(), null, new ApplicationSettings());
 			}
 		}
 	}
