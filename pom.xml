@@ -47,9 +47,14 @@
             <artifactId>batik-swing</artifactId>
             <version>1.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
+        </dependency>
     </dependencies>
 
-    <pluginRepositories>
+    <!--<pluginRepositories>
         <pluginRepository>
             <id>repository.jetbrains.com</id>
             <name>repository.jetbrains.com-all</name>
@@ -58,7 +63,24 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
-    </pluginRepositories>
+    </pluginRepositories>-->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.lucaci32u4.main.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <groupId>lucaci32u4</groupId>
     <artifactId>iLogic</artifactId>
