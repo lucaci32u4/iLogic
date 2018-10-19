@@ -54,17 +54,6 @@
         </dependency>
     </dependencies>
 
-    <!--<pluginRepositories>
-        <pluginRepository>
-            <id>repository.jetbrains.com</id>
-            <name>repository.jetbrains.com-all</name>
-            <url>http://repository.jetbrains.com/all</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>-->
-
     <build>
         <plugins>
             <plugin>
@@ -83,7 +72,7 @@
     </build>
 
     <groupId>lucaci32u4</groupId>
-    <artifactId>iLogic</artifactId>
+    <artifactId>iSignal</artifactId>
     <version>0.1</version>
 
     

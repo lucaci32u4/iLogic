@@ -7,11 +7,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Translations/english.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Translations/english.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/License.txt" beforeDir="false" afterPath="$PROJECT_DIR$/License.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iLogic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iSignal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/Brush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/Brush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/OutlineBrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/OutlineBrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/SolidBrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/SolidBrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/TextureBrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/TextureBrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderCoordinateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderCoordinateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GL2Subsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GL2Subsystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/fragment_color_position_picker_to_color_picker.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/fragment_color_position_picker_to_color_picker.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/ResourceAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/ResourceAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualArtifact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualArtifact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/UserInputListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/UserInputListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,56 +100,60 @@
     <session id="2031391890">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.7" value="3" />
-          <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.open.time.8" value="3" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="MF" value="1" />
+          <entry key="MF" value="3" />
           <entry key="class" value="10" />
-          <entry key="glsl" value="11" />
-          <entry key="java" value="168" />
-          <entry key="txt" value="6" />
-          <entry key="xml" value="16" />
+          <entry key="glsl" value="13" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="198" />
+          <entry key="md" value="1" />
+          <entry key="txt" value="8" />
+          <entry key="xml" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="10" />
-          <entry key="GLSL shader file" value="11" />
-          <entry key="JAVA" value="168" />
-          <entry key="Manifest" value="1" />
-          <entry key="PLAIN_TEXT" value="6" />
-          <entry key="XML" value="16" />
+          <entry key="GLSL shader file" value="13" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="198" />
+          <entry key="Manifest" value="3" />
+          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="XML" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="MF" value="1" />
+          <entry key="MF" value="3" />
           <entry key="dummy" value="33" />
-          <entry key="glsl" value="1112" />
-          <entry key="java" value="22575" />
-          <entry key="txt" value="2556" />
-          <entry key="xml" value="141" />
+          <entry key="glsl" value="1116" />
+          <entry key="java" value="23282" />
+          <entry key="md" value="9" />
+          <entry key="txt" value="2603" />
+          <entry key="xml" value="160" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="GLSL shader file" value="1112" />
-          <entry key="JAVA" value="22575" />
-          <entry key="Manifest" value="1" />
-          <entry key="PLAIN_TEXT" value="2589" />
-          <entry key="XML" value="141" />
+          <entry key="GLSL shader file" value="1116" />
+          <entry key="JAVA" value="23282" />
+          <entry key="Manifest" value="3" />
+          <entry key="PLAIN_TEXT" value="2645" />
+          <entry key="XML" value="160" />
         </counts>
       </usages-collector>
     </session>
@@ -155,25 +195,97 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+            <state relative-caret-position="459">
+              <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#1727#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="98" selection-start-line="4" selection-start-column="98" selection-end-line="4" selection-end-column="98" />
+            <state relative-caret-position="459">
+              <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#2309#0" expanded="true" />
+              </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#2196#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#2564#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#2229#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iSignal.iml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/License.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -225,57 +337,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/GLSL/fragment_color_position_picker_to_color_picker.glsl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Texture.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/GL2Subsystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Color.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Brushes/Color.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Brushes/Texture.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Brushes/TextureBrush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Brushes/ColorBrush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Brushes/OutlineBrush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Brushes/Brush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Brushes/Brush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2DSubsystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderingSubsystem/Java2D/Java2DSubsystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/ViewportArtifact.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/HitboxPicker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Implementation/SingleIterativeArrayPicker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Hitbox.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Implementation/SingleIterativeCollectionPicker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Picker/Pickable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/WorkerThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/UserInputListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualArtifact.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/RenderManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Swapchain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/RenderCoordinateManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/PickerAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/PickerManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Picker/Implementation/SingleIterativeCollectionPicker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/TexturePaintDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/TextureBrush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/SolidBrush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/OutlineBrush.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/ResourceAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualBatch.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java" />
+        <option value="$PROJECT_DIR$/resources/Translations/english.txt" />
+        <option value="$PROJECT_DIR$/License.txt" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicID.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/UserInputListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualArtifact.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/ResourceAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderCoordinateManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/Brush.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/OutlineBrush.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/SolidBrush.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/TextureBrush.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GL2Subsystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/fragment_color_position_picker_to_color_picker.glsl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" />
-        <option value="$PROJECT_DIR$/resources/Translations/english.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java" />
       </list>
     </option>
   </component>
@@ -314,56 +426,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="iLogic" type="58d84e3e:PackageViewProjectNode" />
-              <item name="iLogic" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Translations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -371,7 +460,16 @@
               <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -380,7 +478,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -389,12 +487,117 @@
               <item name="UI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="iLogic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="Viewport" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="Viewport" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="Viewport" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="Brushes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="Viewport" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="RenderingSubsystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="Viewport" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="RenderingSubsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="Java2D" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="Viewport" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="RenderingSubsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="OpenGL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="Viewport" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="RenderingSubsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="OpenGL" type="462c0819:PsiDirectoryNode" />
+              <item name="GLSL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="iLogic" type="58d84e3e:PackageViewProjectNode" />
+              <item name="iLogic" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -411,19 +614,20 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539634090779" />
+    <property name="SearchEverywhereHistoryKey" value="font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539973289876" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -446,7 +650,7 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.lucaci32u4.main.Main" />
-      <module name="iLogic" />
+      <module name="iSignal" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -478,20 +682,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Renamed some classes">
-      <created>1539451593086</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1539451593086</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Added a getCanvas (awt.Canvas) and fixed coordinate offset calculation">
-      <created>1539453279266</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1539453279266</updated>
     </task>
     <task id="LOCAL-00073" summary="Removed unused imoprt statements">
       <created>1539456411321</created>
@@ -822,7 +1012,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539623445902</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="Added settings class">
+      <created>1539634119290</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1539634119290</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Added settings window">
+      <created>1539634139355</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1539634139355</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TodoView">
@@ -838,7 +1042,7 @@
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22867803" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23400854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -847,7 +1051,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3275488" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3275488" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -898,8 +1102,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Renamed destroyRenderer method to destroy" />
-    <MESSAGE value="Renamed method" />
     <MESSAGE value="Renamed class" />
     <MESSAGE value="Added attach/detach event class" />
     <MESSAGE value="Reformatting" />
@@ -923,74 +1125,11 @@
     <MESSAGE value="Configured, fixed bugs" />
     <MESSAGE value="annotations" />
     <MESSAGE value="Code cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup" />
+    <MESSAGE value="Added settings class" />
+    <MESSAGE value="Added settings window" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added settings window" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Geometry/Line.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ljwglExample/SwingFrame_LWJGL.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/fragment_color_position_picker_to_color_picker.glsl" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jogamp/jogl/jogl-all/2.0-rc11/jogl-all-2.0-rc11.jar!/javax/media/opengl/Threading.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jogamp/jogl/jogl-all/2.0-rc11/jogl-all-2.0-rc11.jar!/javax/media/opengl/awt/AWTGLAutoDrawable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jogamp/jogl/jogl-all/2.0-rc11/jogl-all-2.0-rc11.jar!/javax/media/opengl/awt/GLCanvas.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="62" column="58" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/java/awt/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
-          <caret line="3419" column="30" selection-start-line="3419" selection-start-column="30" selection-end-line="3419" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/Brush.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/ArrayDeque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-690">
-          <caret line="1159" column="35" selection-start-line="1159" selection-start-column="35" selection-end-line="1159" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GL2Subsystem.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="40" column="60" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/UserInputListener.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualArtifact.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/misc/Unsafe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="2293" column="23" selection-start-line="2293" selection-start-column="23" selection-end-line="2293" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -1002,13 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="1022" selection-start-line="1022" selection-end-line="1022" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderCoordinateManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1040,42 +1172,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/TexturePaintDemo.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/TextureBrush.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/SolidBrush.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/OutlineBrush.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualBatch.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1088,50 +1185,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="184" column="37" selection-start-line="184" selection-start-column="37" selection-end-line="184" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/ResourceAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="88" selection-start-line="11" selection-start-column="88" selection-end-line="11" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#mouseClicked#0;class#933:1442" />
-            <element signature="e#2009#2010#0" expanded="true" />
-            <element signature="e#2062#2063#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1153,65 +1206,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
           <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9078#9079#0" expanded="true" />
-            <element signature="e#9126#9127#0" expanded="true" />
-            <element signature="e#9201#9202#0" expanded="true" />
-            <element signature="e#9251#9252#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="318" lean-forward="true" selection-start-line="318" selection-end-line="318" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11741#11742#0" expanded="true" />
-            <element signature="e#11803#11804#0" expanded="true" />
-            <element signature="e#12790#12791#0" expanded="true" />
-            <element signature="e#12816#12817#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1222,32 +1216,353 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="42" column="86" selection-start-line="42" selection-start-column="86" selection-end-line="42" selection-end-column="86" />
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#2286#0" expanded="true" />
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#17218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#3743#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#3291#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="98" selection-start-line="4" selection-start-column="98" selection-end-line="4" selection-end-column="98" />
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1817#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2803#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
           <folding>
+            <element signature="e#0#5508#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#17520#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#11679#11680#0" expanded="true" />
+            <element signature="e#11741#11742#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/UserInputListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1536#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#3430#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#mouseClicked#0;class#933:1442" />
+            <element signature="e#2009#2010#0" expanded="true" />
+            <element signature="e#2062#2063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualArtifact.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1683#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/ResourceAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderCoordinateManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/Brush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1854#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/OutlineBrush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/SolidBrush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1850#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/Brushes/TextureBrush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1471#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#10754#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GL2Subsystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#4109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/fragment_color_position_picker_to_color_picker.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/OpenGL/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#1727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2309#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2564#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#2229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iSignal.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/License.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
@@ -1302,7 +1617,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>iLogic</last-edited>
+          <last-edited>iSignal</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
