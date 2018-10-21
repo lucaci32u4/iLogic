@@ -29,22 +29,13 @@
 
 package com.lucaci32u4.UI;
 
-import com.lucaci32u4.UI.Viewport.LogicViewport;
-import com.lucaci32u4.UI.Viewport.Picker.Hitbox;
-import com.lucaci32u4.UI.Viewport.Picker.Implementation.SingleIterativeCollectionPicker;
-import com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D.Java2DSubsystem;
-import com.lucaci32u4.UI.Viewport.UserInputListener;
 import com.lucaci32u4.main.LanguagePack;
-import com.lucaci32u4.util.SimpleEventQueue;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainWindow {
