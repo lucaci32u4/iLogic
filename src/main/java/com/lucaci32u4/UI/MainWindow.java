@@ -39,31 +39,20 @@ import java.awt.event.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainWindow {
-	public final static int EXIT_SAVE = 0b11;
-	public final static int EXIT_DISCARD = 0b10;
-	public final static int EXIT_CANCEL = 0b00;
+	public interface ExitDialogResult {
+		int EXIT_SAVE = 0b11;
+		int EXIT_DISCARD = 0b10;
+		int EXIT_CANCEL = 0b00;
+	}
 	
-	public static class Event {
-		public enum Type {
-			NEW, OPEN, SAVE, EXPORT, SETTINGS, EXIT, UNDO, REDO, COPY, PASTE, DELETE, SELECTALL, EDITSEL, NEWCIRCUIT, DELETECIRCUIT, LIBRARIES, STARTSTOP, RESET, ACTIVESIMULATION, TUTORIAL, DOCUMENTATION,
+	public interface UserInputListener {
+		enum Type {
+			NEW, OPEN, SAVE, EXPORT, SETTINGS, EXIT, UNDO,
+			REDO, COPY, PASTE, DELETE, SELECTALL, EDITSEL,
+			NEWCIRCUIT, DELETECIRCUIT, LIBRARIES, STARTSTOP,
+			RESET, ACTIVESIMULATION, TUTORIAL, DOCUMENTATION,
 		}
-		public Type subject;
-		public int param1;
-		public String param2;
-		public Event(Type subject, int param1, String param2) {
-			this.subject = subject;
-			this.param1 = param1;
-			this.param2 = param2;
-		}
-		public Event(Type subject) {
-			this(subject, 0, null);
-		}
-		public Event(Type subject, int param1) {
-			this(subject, param1, null);
-		}
-		public Event(Type subject, String param2) {
-			this(subject, 0, param2);
-		}
+		void onUserEvent(Type subject, int param1, String param2);
 	}
 
 	private LanguagePack lang;
@@ -102,13 +91,13 @@ public class MainWindow {
 	private JMenuItem miTutorial, miDocumentation, miAbout;
 
 	// Outbound event queue
-	private SimpleEventQueue<Event> listener;
+	private UserInputListener listener = null;
 
 	// Simulation variables
 	private boolean activeSimulation;
 	
-	public MainWindow(@NotNull SimpleEventQueue<MainWindow.Event> listener) {
-		this.listener = listener;
+	public MainWindow(@Nullable UserInputListener uil) {
+		this.listener = uil;
 		activeSimulation = false;
 		lang = LanguagePack.getInstance();
 		try {
@@ -334,7 +323,7 @@ public class MainWindow {
 			);
 		} catch (Exception e) { e.printStackTrace(); };
 		int n = nOption.get();
-		return (n == 2 || n == JOptionPane.CLOSED_OPTION ? EXIT_CANCEL : (n == 0 ? EXIT_SAVE : EXIT_DISCARD));
+		return (n == 2 || n == JOptionPane.CLOSED_OPTION ? ExitDialogResult.EXIT_CANCEL : (n == 0 ? ExitDialogResult.EXIT_SAVE : ExitDialogResult.EXIT_DISCARD));
 	}
 
 	public void close() {
@@ -357,46 +346,53 @@ public class MainWindow {
 	// Handle all JMenuItem clicks
 	private class MenuEventHandler implements ActionListener {
 		@Override public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == miNew) listener.produce(new Event(Event.Type.NEW));
-			if (e.getSource() == miOpen) listener.produce(new Event(Event.Type.OPEN));
+			if (e.getSource() == miNew) listener.onUserEvent(UserInputListener.Type.NEW, 0, null);
+			if (e.getSource() == miOpen) listener.onUserEvent(UserInputListener.Type.OPEN, 0, null);
 			for (JMenuItem item : miOpenRecentFiles) if (e.getSource() == item) {
-				listener.produce(new Event(Event.Type.OPEN, item.getActionCommand()));
+				listener.onUserEvent(UserInputListener.Type.OPEN, 0, e.getActionCommand());
 				break;
 			}
-			if (e.getSource() == miSave) listener.produce(new Event(Event.Type.SAVE));
-			if (e.getSource() == miSaveAs) listener.produce(new Event(Event.Type.SAVE, e.getActionCommand()));
-			if (e.getSource() == miExport) listener.produce(new Event(Event.Type.EXPORT));
-			if (e.getSource() == miSettings) listener.produce(new Event(Event.Type.SETTINGS));
+			if (e.getSource() == miSave) listener.onUserEvent(UserInputListener.Type.SAVE, 0, null);
+			if (e.getSource() == miSaveAs) listener.onUserEvent(UserInputListener.Type.SAVE, 1, null);
+			if (e.getSource() == miExport) listener.onUserEvent(UserInputListener.Type.EXPORT, 0, null);
+			if (e.getSource() == miSettings) listener.onUserEvent(UserInputListener.Type.SETTINGS, 0, null);
 			if (e.getSource() == miExit) windowEventHandler.windowClosing(null);
-			if (e.getSource() == miUndo) listener.produce(new Event(Event.Type.UNDO));
-			if (e.getSource() == miRedo) listener.produce(new Event(Event.Type.REDO, 0));
-			if (e.getSource() == miRedoAll) listener.produce(new Event(Event.Type.REDO, 1));
-			if (e.getSource() == miCopy) listener.produce(new Event(Event.Type.COPY));
-			if (e.getSource() == miPaste) listener.produce(new Event(Event.Type.PASTE));
+			if (e.getSource() == miUndo) listener.onUserEvent(UserInputListener.Type.UNDO, 0, null);
+			if (e.getSource() == miRedo) listener.onUserEvent(UserInputListener.Type.REDO, 0, null);
+			if (e.getSource() == miRedoAll) listener.onUserEvent(UserInputListener.Type.REDO, 1, null);
+			if (e.getSource() == miCopy) listener.onUserEvent(UserInputListener.Type.COPY, 0, null);
+			if (e.getSource() == miPaste) listener.onUserEvent(UserInputListener.Type.PASTE, 0, null);
 			if (e.getSource() == miCut) {
-				listener.produce(new Event(Event.Type.COPY));
-				listener.produce(new Event(Event.Type.DELETE));
+				listener.onUserEvent(UserInputListener.Type.COPY, 0, null);
+				listener.onUserEvent(UserInputListener.Type.DELETE, 0, null);
 			}
-			if (e.getSource() == miDelete) listener.produce(new Event(Event.Type.DELETE));
-			if (e.getSource() == miSelectAll) listener.produce(new Event(Event.Type.SELECTALL));
-			if (e.getSource() == miEditSelection) listener.produce(new Event(Event.Type.EDITSEL));
-			if (e.getSource() == miNewCircuit) listener.produce(new Event(Event.Type.NEWCIRCUIT));
-			if (e.getSource() == miDeleteCircuit) listener.produce(new Event(Event.Type.DELETECIRCUIT));
-			if (e.getSource() == miLibraries) listener.produce(new Event(Event.Type.LIBRARIES));
-			if (e.getSource() == miReset) listener.produce(new Event(Event.Type.RESET));
-			if (e.getSource() == miStartStop) listener.produce(new Event(Event.Type.STARTSTOP, activeSimulation ? 1 : 0));
+			if (e.getSource() == miDelete) listener.onUserEvent(UserInputListener.Type.DELETE, 0, null);
+			if (e.getSource() == miSelectAll) listener.onUserEvent(UserInputListener.Type.SELECTALL, 0, null);
+			if (e.getSource() == miEditSelection) listener.onUserEvent(UserInputListener.Type.EDITSEL, 0, null);
+			if (e.getSource() == miNewCircuit) listener.onUserEvent(UserInputListener.Type.NEWCIRCUIT, 0, null);
+			if (e.getSource() == miDeleteCircuit) listener.onUserEvent(UserInputListener.Type.DELETECIRCUIT, 0, null);
+			if (e.getSource() == miLibraries) listener.onUserEvent(UserInputListener.Type.LIBRARIES, 0, null);
+			if (e.getSource() == miReset) listener.onUserEvent(UserInputListener.Type.RESET, 0, null);
+			if (e.getSource() == miStartStop) listener.onUserEvent(UserInputListener.Type.STARTSTOP, activeSimulation ? 1 : 0, null);
 			for (JMenuItem item : miActiveSimulationsOptions) if (e.getSource() == item) {
-				listener.produce(new Event(Event.Type.ACTIVESIMULATION, item.getActionCommand()));
+				listener.onUserEvent(UserInputListener.Type.ACTIVESIMULATION, 0, e.getActionCommand());
 				break;
 			}
 			if (e.getSource() == miMinimise) {
 				SwingUtilities.invokeLater(() -> frame.setState(JFrame.ICONIFIED));
 			}
 			if (e.getSource() == miMaxmise) {
-				SwingUtilities.invokeLater(() -> { frame.setMaximizedBounds(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds()); frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);});
+				SwingUtilities.invokeLater(() -> {
+					frame.setMaximizedBounds(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds());
+					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				});
 			}
-			if (e.getSource() == miTutorial) listener.produce(new Event(Event.Type.TUTORIAL));
-			if (e.getSource() == miDocumentation) listener.produce(new Event(Event.Type.DOCUMENTATION));
+			if (e.getSource() == miTutorial) {
+			
+			}
+			if (e.getSource() == miDocumentation) {
+			
+			}
 		}
 	}
 	
@@ -404,7 +400,7 @@ public class MainWindow {
 	// Handle window closing button
 	private class WindowEventHandler implements WindowListener {
 		@Override public void windowClosing(WindowEvent e) {
-			listener.produce(new Event(Event.Type.EXIT, 0, null));
+			listener.onUserEvent(UserInputListener.Type.EXIT, 0, null);
 		}
 		@Override public void windowClosed(WindowEvent e) {
 
