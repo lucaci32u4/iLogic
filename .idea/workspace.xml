@@ -7,11 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PagedTreeWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -84,7 +81,7 @@
           <entry key="glsl" value="13" />
           <entry key="html" value="3" />
           <entry key="iml" value="1" />
-          <entry key="java" value="217" />
+          <entry key="java" value="218" />
           <entry key="md" value="2" />
           <entry key="txt" value="8" />
           <entry key="xml" value="21" />
@@ -96,7 +93,7 @@
           <entry key="GLSL shader file" value="13" />
           <entry key="HTML" value="3" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="217" />
+          <entry key="JAVA" value="218" />
           <entry key="Manifest" value="3" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
@@ -108,18 +105,18 @@
           <entry key="MF" value="3" />
           <entry key="dummy" value="33" />
           <entry key="glsl" value="1116" />
-          <entry key="java" value="26647" />
+          <entry key="java" value="26657" />
           <entry key="md" value="9" />
-          <entry key="txt" value="2878" />
+          <entry key="txt" value="3099" />
           <entry key="xml" value="165" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="GLSL shader file" value="1116" />
-          <entry key="JAVA" value="26647" />
+          <entry key="JAVA" value="26657" />
           <entry key="Manifest" value="3" />
-          <entry key="PLAIN_TEXT" value="2920" />
+          <entry key="PLAIN_TEXT" value="3141" />
           <entry key="XML" value="165" />
         </counts>
       </usages-collector>
@@ -183,10 +180,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="721">
+            <state relative-caret-position="748">
               <caret line="44" column="4" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -197,6 +194,15 @@
                 <element signature="e#1126#1127#0" expanded="true" />
                 <element signature="e#1174#1175#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -289,7 +295,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/AboutWindow.java" />
         <option value="$PROJECT_DIR$/resources/About/about.html" />
@@ -301,6 +306,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PageTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PagedTreeWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" />
       </list>
     </option>
   </component>
@@ -471,7 +477,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540245317257" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540245705749" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -532,48 +538,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Removed unused import">
-      <created>1539461872327</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1539461872327</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Removed old, incompatible code">
-      <created>1539461999811</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1539461999811</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Removed unused imports">
-      <created>1539462024459</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1539462024459</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Added interfaces to encapsulate picker and renderer attaching/detaching">
-      <created>1539462324917</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1539462324917</updated>
-    </task>
-    <task id="LOCAL-00085" summary="Reformatting">
-      <created>1539462843243</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1539462843243</updated>
-    </task>
-    <task id="LOCAL-00086" summary="Renamed parameter">
-      <created>1539462876580</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1539462876580</updated>
     </task>
     <task id="LOCAL-00087" summary="Removed old code, added getter for picker/renderer manager interface">
       <created>1539462915065</created>
@@ -876,7 +840,49 @@
       <option name="project" value="LOCAL" />
       <updated>1540245285636</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="Removed unused enum members">
+      <created>1540245316585</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245316585</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Added paged tree navigation windows for use in documentation and tutorial">
+      <created>1540245378323</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245378323</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Added about string field">
+      <created>1540245481719</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245481719</updated>
+    </task>
+    <task id="LOCAL-00133" summary="Removed useless code">
+      <created>1540245504044</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245504044</updated>
+    </task>
+    <task id="LOCAL-00134" summary="Removed useless code">
+      <created>1540245525774</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245525774</updated>
+    </task>
+    <task id="LOCAL-00135" summary="Added event handling for About menu item">
+      <created>1540245549619</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245549619</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TodoView">
@@ -907,7 +913,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="AllProjects" order="7" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.27006507" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27006507" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32839838" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.29392624" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3275488" />
@@ -952,11 +958,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added interface for changing draw coordinates" />
-    <MESSAGE value="Changed synchronization mechanism" />
-    <MESSAGE value="Changed array sizes" />
-    <MESSAGE value="Made attach/detach exclusive" />
-    <MESSAGE value="Added buffer compacting code" />
     <MESSAGE value="Drawing code" />
     <MESSAGE value="Repainting synchronization" />
     <MESSAGE value="Fixed initialization" />
@@ -977,7 +978,12 @@
     <MESSAGE value="Added about file (html)" />
     <MESSAGE value="Changed fread helper function" />
     <MESSAGE value="Moved to diffrent folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved to diffrent folder" />
+    <MESSAGE value="Removed unused enum members" />
+    <MESSAGE value="Added paged tree navigation windows for use in documentation and tutorial" />
+    <MESSAGE value="Added about string field" />
+    <MESSAGE value="Removed useless code" />
+    <MESSAGE value="Added event handling for About menu item" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added event handling for About menu item" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1245,13 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="45" column="32" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1342,7 +1341,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
+        <state relative-caret-position="748">
           <caret line="44" column="4" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1353,6 +1352,13 @@
             <element signature="e#1126#1127#0" expanded="true" />
             <element signature="e#1174#1175#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
         </state>
       </provider>
     </entry>
