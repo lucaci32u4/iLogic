@@ -221,6 +221,7 @@ public class MainWindow {
 				miMaxmise.addActionListener(menuEventHandler);
 				miDocumentation.addActionListener(menuEventHandler);
 				miTutorial.addActionListener(menuEventHandler);
+				miAbout.addActionListener(menuEventHandler);
 				for (JMenuItem item : miToolbarLocationOptions) item.addActionListener(menuEventHandler);
 				miStartStop.setState(activeSimulation);
 				windowEventHandler = new WindowEventHandler();
@@ -397,6 +398,11 @@ public class MainWindow {
 			}
 			if (e.getSource() == miDocumentation) {
 			
+			}
+			if (e.getSource() == miAbout) {
+				AboutWindow about = new AboutWindow();
+				about.setContent(aboutText);
+				about.setVisible(true);
 			}
 		}
 	}
