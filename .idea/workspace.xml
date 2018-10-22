@@ -7,20 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_0_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/AboutWindow.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PagedTreeWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iSignal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iSignal.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/SettingsWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -119,7 +110,7 @@
           <entry key="glsl" value="1116" />
           <entry key="java" value="26647" />
           <entry key="md" value="9" />
-          <entry key="txt" value="2739" />
+          <entry key="txt" value="2878" />
           <entry key="xml" value="165" />
         </counts>
       </usages-collector>
@@ -128,7 +119,7 @@
           <entry key="GLSL shader file" value="1116" />
           <entry key="JAVA" value="26647" />
           <entry key="Manifest" value="3" />
-          <entry key="PLAIN_TEXT" value="2781" />
+          <entry key="PLAIN_TEXT" value="2920" />
           <entry key="XML" value="165" />
         </counts>
       </usages-collector>
@@ -480,7 +471,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540245159415" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540245203938" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -541,34 +532,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Made running variable volatile">
-      <created>1539459062926</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1539459062926</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Added mouse event listeners">
-      <created>1539459090897</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1539459090897</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Moved interfaces to separate files">
-      <created>1539459999245</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1539459999245</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Picker code">
-      <created>1539461733954</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1539461733954</updated>
     </task>
     <task id="LOCAL-00081" summary="Removed unused import">
       <created>1539461872327</created>
@@ -885,7 +848,35 @@
       <option name="project" value="LOCAL" />
       <updated>1540161701728</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="Added apache.commons.io and lombok dependencies">
+      <created>1540245127583</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245127583</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Added about file (html)">
+      <created>1540245158606</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245158606</updated>
+    </task>
+    <task id="LOCAL-00128" summary="Changed fread helper function">
+      <created>1540245203133</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245203133</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Moved to diffrent folder">
+      <created>1540245285636</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1540245285636</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TodoView">
@@ -961,10 +952,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added event queue" />
-    <MESSAGE value="Moved event classes inside implementation classes" />
-    <MESSAGE value="Added circular swapchain class" />
-    <MESSAGE value="Removed unused import stamenent" />
     <MESSAGE value="Added interface for changing draw coordinates" />
     <MESSAGE value="Changed synchronization mechanism" />
     <MESSAGE value="Changed array sizes" />
@@ -986,7 +973,11 @@
     <MESSAGE value="Added proper license notice in all files" />
     <MESSAGE value="Removed unused imports" />
     <MESSAGE value="changed notification system from event queue to listeners" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed notification system from event queue to listeners" />
+    <MESSAGE value="Added apache.commons.io and lombok dependencies" />
+    <MESSAGE value="Added about file (html)" />
+    <MESSAGE value="Changed fread helper function" />
+    <MESSAGE value="Moved to diffrent folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved to diffrent folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
