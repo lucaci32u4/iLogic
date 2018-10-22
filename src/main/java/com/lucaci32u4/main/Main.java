@@ -68,8 +68,6 @@ public class Main {
 		window.setVisible(true);
 		boolean run = true;
 		SettingsWindow s = new SettingsWindow();
-		while (run) {
 		
-		}
 	}
 }
