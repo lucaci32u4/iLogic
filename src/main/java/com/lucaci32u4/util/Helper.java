@@ -33,16 +33,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import org.apache.commons.io.*;
 
 public class Helper {
-	public static InputStream fread(String file) {
-		InputStream res = null;
+	
+	public static String freadText(InputStream res) {
+		String str = null;
 		try {
-			res = new FileInputStream(new File(file));
+			if (res != null) {
+				str = IOUtils.toString(res, "UTF-8");
+			}
 		} catch (IOException e) {
-			res = null;
+			e.printStackTrace();
 		}
-		return res;
+		return str;
 	}
 	
 	public static int step(int origin, int current, int stepSize) {
