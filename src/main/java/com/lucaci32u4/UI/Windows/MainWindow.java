@@ -97,8 +97,12 @@ public class MainWindow {
 	// Simulation variables
 	private boolean activeSimulation;
 	
-	public MainWindow(@Nullable UserInputListener uil) {
+	// Strings
+	private String aboutText;
+	
+	public MainWindow(@Nullable UserInputListener uil, @NotNull String aboutText) {
 		this.listener = uil;
+		this.aboutText = aboutText;
 		activeSimulation = false;
 		lang = LanguagePack.getInstance();
 		try {

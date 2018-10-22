@@ -63,7 +63,8 @@ public class Main {
 	
 	private Main() {
 		LanguagePack.getInstance().begin(getClass().getResourceAsStream("/Translations/english.txt"));
-		MainWindow window = new MainWindow(new UserEvent());
+		String aboutText = Helper.freadText(getClass().getResourceAsStream("/about.html"));
+		MainWindow window = new MainWindow(new UserEvent(), aboutText);
 		window.setVisible(true);
 		boolean run = true;
 		SettingsWindow s = new SettingsWindow();
