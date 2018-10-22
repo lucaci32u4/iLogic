@@ -92,7 +92,7 @@ public class MainWindow {
 	private JMenuItem miTutorial, miDocumentation, miAbout;
 
 	// Outbound event queue
-	private UserInputListener listener = null;
+	private UserInputListener listener;
 
 	// Simulation variables
 	private boolean activeSimulation;
