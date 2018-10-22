@@ -29,9 +29,10 @@
 
 package com.lucaci32u4.main;
 
-import com.lucaci32u4.UI.MainWindow;
+import com.lucaci32u4.UI.Windows.MainWindow;
 
-import com.lucaci32u4.UI.SettingsWindow;
+import com.lucaci32u4.UI.Windows.SettingsWindow;
+import com.lucaci32u4.util.Helper;
 
 import javax.swing.*;
 

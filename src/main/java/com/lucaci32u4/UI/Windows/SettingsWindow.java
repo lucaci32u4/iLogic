@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI;
+package com.lucaci32u4.UI.Windows;
 
 import com.lucaci32u4.main.ApplicationSettings;
 import com.lucaci32u4.main.LanguagePack;

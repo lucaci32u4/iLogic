@@ -27,9 +27,10 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI;
+package com.lucaci32u4.UI.Windows;
 
 import com.lucaci32u4.main.LanguagePack;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -403,13 +404,13 @@ public class MainWindow {
 			listener.onUserEvent(UserInputListener.Type.EXIT, 0, null);
 		}
 		@Override public void windowClosed(WindowEvent e) {
-
+		
 		}
 		@Override public void windowOpened(WindowEvent e) {
-
+		
 		}
 		@Override public void windowIconified(WindowEvent e) {
-
+		
 		}
 		@Override public void windowDeiconified(WindowEvent e) {
 
