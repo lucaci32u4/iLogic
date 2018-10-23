@@ -17,17 +17,34 @@ public class Page {
 		HashMap<DefaultMutableTreeNode, String> content = new HashMap<>();
 	}
 	
-	@Getter @Setter private Icon icon = null;
-	@Getter @Setter private String name = null;
-	@Getter @Setter private String content = null;
+	@Getter private Icon icon = null;
+	@Getter private String name = null;
+	@Getter private String content = null;
 	@Getter private Collection<Page> children = new ArrayList<>();
 	
-	public void add(Page page) {
+	public Page add(Page page) {
 		children.add(page);
+		return this;
 	}
 	
-	public void remove(Page page) {
+	public Page remove(Page page) {
 		children.remove(page);
+		return this;
+	}
+	
+	public Page setIcon(Icon icon) {
+		this.icon = icon;
+		return this;
+	}
+	
+	public Page setName(String name) {
+		this.name = name;
+		return this;
+	}
+	
+	public Page setContent(String content) {
+		this.content = content;
+		return this;
 	}
 	
 	private PageSet recursiveAdder(PageSet set) {
@@ -38,8 +55,10 @@ public class Page {
 		for (Page page : children) {
 			page.recursiveAdder(set);
 		}
-		root.add(set.root);
-		set.root = root;
+		if (root != null) {
+			root.add(set.root);
+			set.root = root;
+		}
 		return set;
 	}
 	
