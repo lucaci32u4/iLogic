@@ -37,16 +37,12 @@ import com.lucaci32u4.util.Helper;
 import javax.swing.*;
 
 public class Main {
-	private static boolean setSystemLookAndFeel() {
-		boolean[] success = { true, true, true, true };
+	private static void setSystemLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch (ClassNotFoundException e) { success[0] = false; }
-		catch (InstantiationException e) { success[1] = false; }
-		catch (IllegalAccessException e) { success[2] = false; }
-		catch (UnsupportedLookAndFeelException e) { success[3] = false; }
-		return success[0] && success[1] && success[2] && success[3];
 	}
 	public static void main(String[] args) {
 		setSystemLookAndFeel();
@@ -68,6 +64,5 @@ public class Main {
 		window.setVisible(true);
 		boolean run = true;
 		SettingsWindow s = new SettingsWindow();
-		
 	}
 }
