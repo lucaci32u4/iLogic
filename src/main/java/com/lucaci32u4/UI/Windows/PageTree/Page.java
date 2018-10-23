@@ -49,7 +49,7 @@ public class Page {
 	
 	private PageSet recursiveAdder(PageSet set) {
 		DefaultMutableTreeNode root = set.root;
-		set.root = new DefaultMutableTreeNode(name);
+		set.root = new DefaultMutableTreeNode(" " + name + " ");
 		set.icon.put(set.root, icon);
 		set.content.put(set.root, content);
 		for (Page page : children) {

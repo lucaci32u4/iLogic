@@ -29,14 +29,21 @@
 
 package com.lucaci32u4.UI.Windows;
 
+import com.lucaci32u4.UI.Windows.PageTree.Page;
+import com.lucaci32u4.UI.Windows.PageTree.PagedTreeWindow;
 import com.lucaci32u4.main.LanguagePack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.TreeCellRenderer;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainWindow {
@@ -67,6 +74,7 @@ public class MainWindow {
 	private JSplitPane splitPaneHorizontal;
 	private JTabbedPane tabbedPane;
 	private JTree selectTree, simulationTree;
+	private HashMap<Object, Icon> treeIcon;
 	private DefaultMutableTreeNode selectTreeRoot, simulationTreeRoot;
 	private DefaultMutableTreeNode circuitsRoot;
 	private DefaultMutableTreeNode componentsRoot;
@@ -230,6 +238,7 @@ public class MainWindow {
 				frame.setSize(1200, 600);
 				frame.setLocationRelativeTo(null);
 				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				treeIcon = new HashMap<>();
 				contentPanel = new JPanel();
 				topToolBar = new JToolBar();
 				topToolBar.add(new JButton("cba"));
@@ -251,7 +260,13 @@ public class MainWindow {
 				selectTree.expandRow(0);
 				simulationTree.expandRow(0);
 				selectTree.setRootVisible(false);
+				selectTree.setShowsRootHandles(true);
+				selectTree.addTreeSelectionListener(new SelectTreeSelectionListener());
+				selectTree.setCellRenderer(new MyTreeCellRenderer());
 				simulationTree.setRootVisible(false);
+				simulationTree.setShowsRootHandles(true);
+				simulationTree.addTreeSelectionListener(new SimulationTreeSelectionListener());
+				simulationTree.setCellRenderer(selectTree.getCellRenderer());
 				contentPanel.setLayout(new BorderLayout());
 				topToolBar.setRollover(false);
 				bottomToolBar.setRollover(false);
@@ -264,6 +279,10 @@ public class MainWindow {
 				splitPaneHorizontal.setBottomComponent(new JScrollPane(propertiesPanel));
 				tabbedPane.addTab(null, new JScrollPane(selectTree));
 				tabbedPane.addTab(null, new JScrollPane(simulationTree));
+				tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+				splitPaneVertical.setDividerLocation(200);
+				splitPaneVertical.setDividerSize(8);
+				splitPaneHorizontal.setDividerSize(5);
 				frame.setContentPane(contentPanel);
 				updateText();
 			});
@@ -311,8 +330,8 @@ public class MainWindow {
 			miAbout.setText(lang.get("about"));
 			tabbedPane.setTitleAt(0, lang.get("componentstree"));
 			tabbedPane.setTitleAt(1, lang.get("simulationtree"));
-			componentsRoot.setUserObject(lang.get("components"));
-			circuitsRoot.setUserObject(lang.get("circuits"));
+			componentsRoot.setUserObject(" " + lang.get("components") + " ");
+			circuitsRoot.setUserObject(" " + lang.get("circuits") + " ");
 		});
 	}
 
@@ -394,7 +413,19 @@ public class MainWindow {
 				});
 			}
 			if (e.getSource() == miTutorial) {
-			
+				Page root = new Page();
+				Page exroot = new Page();
+				Page ch1 = new Page(), ch2 = new Page(), ch3 = new Page();
+				ch1.setName("ch1");
+				ch2.setName("ch2");
+				ch3.setName("ch3");
+				root.setName("root");
+				exroot.setName("exroot");
+				root.add(ch1).add(ch2);
+				exroot.add(ch3);
+				PagedTreeWindow p = new PagedTreeWindow( new Page[] {root, exroot}, "tutorial");
+				p.setVisible(true);
+				
 			}
 			if (e.getSource() == miDocumentation) {
 			
@@ -430,6 +461,41 @@ public class MainWindow {
 		}
 		@Override public void windowDeactivated(WindowEvent e) {
 
+		}
+	}
+	
+	// Handle tree cell drawing
+	private class MyTreeCellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
+		private Icon closed = UIManager.getIcon("Tree.closedIcon");
+		private Icon open = UIManager.getIcon("Tree.openIcon");
+		private Icon leaf = UIManager.getIcon("Tree.leafIcon");
+		@Override public Component getTreeCellRendererComponent(JTree tree, Object value, boolean bSelected, boolean bExpanded, boolean bLeaf, int iRow, boolean bHasFocus) {
+			Icon nodeIcon = treeIcon.get(value);
+			nodeIcon = (nodeIcon != null ? nodeIcon : (bLeaf ? leaf : (bExpanded ? open : closed)));
+			setIcon(nodeIcon);
+			setBackgroundSelectionColor(bLeaf ? Color.LIGHT_GRAY : Color.WHITE);
+			setBorderSelectionColor(Color.BLACK);
+			setTextSelectionColor(Color.BLACK);
+			return super.getTreeCellRendererComponent(tree, value, bSelected, bExpanded, bLeaf, iRow, bHasFocus);
+		}
+	}
+	
+	// Handle component tree events
+	private class SelectTreeSelectionListener implements TreeSelectionListener {
+		@Override public void valueChanged(TreeSelectionEvent e) {
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)selectTree.getLastSelectedPathComponent();
+			if (node != null) {
+			
+			}
+		}
+	}
+	
+	private class SimulationTreeSelectionListener implements TreeSelectionListener {
+		@Override public void valueChanged(TreeSelectionEvent e) {
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)simulationTree.getLastSelectedPathComponent();
+			if (node != null) {
+			
+			}
 		}
 	}
 }
