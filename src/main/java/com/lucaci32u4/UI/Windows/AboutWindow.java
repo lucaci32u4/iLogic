@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class AboutWindow {
 	
-	private JFrame frame = new JFrame();
+	private JFrame frame = new JFrame("About");
 	private JEditorPane pane = new JEditorPane();
 	AboutWindow() {
 		pane.setEditorKit(new HTMLEditorKit());
