@@ -6,11 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="Reformat code">
+    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PagedTreeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PagedTreeWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,7 +61,7 @@
     <session id="2031391890">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.12" value="2" />
@@ -71,9 +69,9 @@
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="5" />
+          <entry key="project.open.time.7" value="7" />
           <entry key="project.open.time.8" value="5" />
-          <entry key="project.opened" value="22" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -84,7 +82,7 @@
           <entry key="html" value="3" />
           <entry key="iml" value="1" />
           <entry key="java" value="236" />
-          <entry key="md" value="2" />
+          <entry key="md" value="3" />
           <entry key="txt" value="8" />
           <entry key="xml" value="24" />
         </counts>
@@ -97,7 +95,7 @@
           <entry key="IDEA_MODULE" value="1" />
           <entry key="JAVA" value="236" />
           <entry key="Manifest" value="3" />
-          <entry key="Markdown" value="1" />
+          <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="XML" value="24" />
         </counts>
@@ -108,8 +106,8 @@
           <entry key="dummy" value="51" />
           <entry key="glsl" value="1116" />
           <entry key="java" value="29525" />
-          <entry key="md" value="9" />
-          <entry key="txt" value="3272" />
+          <entry key="md" value="277" />
+          <entry key="txt" value="3331" />
           <entry key="xml" value="178" />
         </counts>
       </usages-collector>
@@ -118,7 +116,8 @@
           <entry key="GLSL shader file" value="1116" />
           <entry key="JAVA" value="29525" />
           <entry key="Manifest" value="3" />
-          <entry key="PLAIN_TEXT" value="3332" />
+          <entry key="Markdown" value="268" />
+          <entry key="PLAIN_TEXT" value="3391" />
           <entry key="XML" value="178" />
         </counts>
       </usages-collector>
@@ -161,14 +160,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="284" column="52" selection-start-line="284" selection-start-column="52" selection-end-line="284" selection-end-column="52" />
+            <state relative-caret-position="-2043">
+              <caret line="281" column="77" lean-forward="true" selection-start-line="281" selection-start-column="77" selection-end-line="281" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="68">
+                <caret line="4" column="125" selection-start-line="4" selection-start-column="125" selection-end-line="4" selection-end-column="125" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -231,7 +242,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualBatch.java" />
         <option value="$PROJECT_DIR$/resources/Translations/english.txt" />
         <option value="$PROJECT_DIR$/License.txt" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" />
@@ -273,6 +283,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PagedTreeWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -306,24 +317,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="iLogic" type="58d84e3e:PackageViewProjectNode" />
-              <item name="iLogic" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
               <item name="iLogic" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="iLogic" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="iLogic" type="58d84e3e:PackageViewProjectNode" />
+              <item name="iLogic" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -436,6 +446,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -443,7 +454,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540335562622" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540336017972" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -504,13 +515,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Renamed destroyRenderer method to destroy">
-      <created>1539463728530</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1539463728530</updated>
     </task>
     <task id="LOCAL-00093" summary="Renamed method">
       <created>1539463895708</created>
@@ -848,7 +852,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540331078526</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="Added custom drawing and event handling to JTree's">
+      <created>1540335784633</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1540335784633</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TodoView">
@@ -864,7 +875,7 @@
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18976545" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -873,13 +884,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3275488" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3275488" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="AllProjects" order="7" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.27006507" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27006507" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32839838" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.29392624" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3275488" />
@@ -924,7 +935,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Moved constants" />
     <MESSAGE value="Initialization" />
     <MESSAGE value="Removed unused code" />
     <MESSAGE value="Configured, fixed bugs" />
@@ -949,7 +959,8 @@
     <MESSAGE value="Updated lombok to the latest version" />
     <MESSAGE value="Switched from lombok setters to cascadable setters" />
     <MESSAGE value="Added title" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added title" />
+    <MESSAGE value="Added custom drawing and event handling to JTree's" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added custom drawing and event handling to JTree's" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -1034,13 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -1249,9 +1253,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1266,10 +1267,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="313" column="15" selection-start-line="313" selection-start-column="15" selection-end-line="313" selection-end-column="15" />
-          <folding>
-            <element signature="e#10281#10282#0" expanded="true" />
-            <element signature="e#10317#10318#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1308,19 +1305,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="80" column="58" lean-forward="true" selection-start-line="80" selection-start-column="58" selection-end-line="80" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2043">
+          <caret line="281" column="77" lean-forward="true" selection-start-line="281" selection-start-column="77" selection-end-line="281" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="284" column="52" selection-start-line="284" selection-start-column="52" selection-end-line="284" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="68">
+            <caret line="4" column="125" selection-start-line="4" selection-start-column="125" selection-end-line="4" selection-end-column="125" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
