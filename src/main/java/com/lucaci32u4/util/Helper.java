@@ -42,6 +42,7 @@ public class Helper {
 		try {
 			if (res != null) {
 				str = IOUtils.toString(res, "UTF-8");
+				res.close();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
