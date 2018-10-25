@@ -29,8 +29,6 @@
 
 package com.lucaci32u4.UI.Windows;
 
-import com.lucaci32u4.UI.Windows.PageTree.Page;
-import com.lucaci32u4.UI.Windows.PageTree.PagedTreeWindow;
 import com.lucaci32u4.main.LanguagePack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -413,19 +411,11 @@ public class MainWindow {
 				});
 			}
 			if (e.getSource() == miTutorial) {
-				Page root = new Page();
-				Page exroot = new Page();
-				Page ch1 = new Page(), ch2 = new Page(), ch3 = new Page();
-				ch1.setName("ch1");
-				ch2.setName("ch2");
-				ch3.setName("ch3");
-				root.setName("root");
-				exroot.setName("exroot");
-				root.add(ch1).add(ch2);
-				exroot.add(ch3);
-				PagedTreeWindow p = new PagedTreeWindow( new Page[] {root, exroot}, "tutorial");
+				String[] pages = new String[] {"r1\\c1", "r1\\c2", "r1\\c3", "r1\\c1\\sub", "r2\\c2"};
+				String[] contents = new String[] {"", "", "", "", ""};
+				Icon[] icons = new Icon[] {null, null, null, null, null};
+				PagedTreeWindow p = PagedTreeWindow.invokeNew(pages, contents, icons, "Tutorial");
 				p.setVisible(true);
-				
 			}
 			if (e.getSource() == miDocumentation) {
 			
