@@ -1,5 +1,6 @@
 package com.lucaci32u4.IO;
 
+import com.lucaci32u4.main.ApplicationConstants;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
@@ -38,7 +39,7 @@ public class IOInterface {
 		try {
 			inputStream = getClass().getResourceAsStream(resource);
 			if (inputStream != null) {
-				res = IOUtils.toString(inputStream, "UTF-8");
+				res = IOUtils.toString(inputStream, ApplicationConstants.getInstance().get("resource.encoding"));
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace(stderr.get());
@@ -81,7 +82,7 @@ public class IOInterface {
 		String res = null;
 		try {
 			if (!systemAbsolute) path = convertToSystemPath(path);
-			res = FileUtils.readFileToString(new File(path), "UTF-8");
+			res = FileUtils.readFileToString(new File(path), ApplicationConstants.getInstance().get("file.encoding"));
 		} catch (IOException ioe) {
 			ioe.printStackTrace(stderr.get());
 		}
@@ -103,7 +104,7 @@ public class IOInterface {
 		IOException res = null;
 		try {
 			if (!systemAbsolute) path = convertToSystemPath(path);
-			FileUtils.writeStringToFile(new File(path), content, "UTF-8");
+			FileUtils.writeStringToFile(new File(path), content, ApplicationConstants.getInstance().get("file.encoding"));
 		} catch (IOException e) {
 			res = e;
 		}
