@@ -81,7 +81,7 @@ public class IOInterface {
 		String res = null;
 		try {
 			if (!systemAbsolute) path = convertToSystemPath(path);
-			res = IOUtils.toString(FileUtils.openInputStream(new File(path)), "UTF-8");
+			res = FileUtils.readFileToString(new File(path), "UTF-8");
 		} catch (IOException ioe) {
 			ioe.printStackTrace(stderr.get());
 		}
@@ -92,7 +92,7 @@ public class IOInterface {
 		byte[] res = null;
 		try {
 			if (!systemAbsolute) path = convertToSystemPath(path);
-			res = IOUtils.toByteArray(FileUtils.openInputStream(new File(path)));
+			res = FileUtils.readFileToByteArray(new File(path));
 		} catch (IOException ioe) {
 			ioe.printStackTrace(stderr.get());
 		}
