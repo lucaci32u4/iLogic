@@ -4,6 +4,7 @@ import com.lucaci32u4.main.ApplicationConstants;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -117,6 +118,20 @@ public class IOInterface {
 			FileUtils.writeByteArrayToFile(new File(path), content);
 		} catch (IOException e) {
 			res = e;
+		}
+		return res;
+	}
+	
+	public Font loadResourceFont(String resource) {
+		Font res = null;
+		InputStream inputStream;
+		try {
+			inputStream = getClass().getResourceAsStream(resource);
+			if (inputStream != null) {
+				res = Font.createFont(Font.TRUETYPE_FONT, inputStream);
+			}
+		} catch (Exception e) {
+			e.printStackTrace(stderr.get());
 		}
 		return res;
 	}
