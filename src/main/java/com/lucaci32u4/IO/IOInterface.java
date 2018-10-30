@@ -88,6 +88,17 @@ public class IOInterface {
 		return res;
 	}
 	
+	public byte[] loadFileBytes(boolean systemAbsolute, String path) {
+		byte[] res = null;
+		try {
+			if (!systemAbsolute) path = convertToSystemPath(path);
+			res = IOUtils.toByteArray(FileUtils.openInputStream(new File(path)));
+		} catch (IOException ioe) {
+			ioe.printStackTrace(stderr.get());
+		}
+		return res;
+	}
+	
 	public static String getDefaultsystemWorkspace() {
 		String wksp;
 		if (System.getProperty("os.name").startsWith("Windows")) {
