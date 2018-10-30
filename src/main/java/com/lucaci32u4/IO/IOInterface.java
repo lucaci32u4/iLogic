@@ -99,6 +99,28 @@ public class IOInterface {
 		return res;
 	}
 	
+	public IOException storeFile(boolean systemAbsolute, String path, String content) {
+		IOException res = null;
+		try {
+			if (!systemAbsolute) path = convertToSystemPath(path);
+			FileUtils.writeStringToFile(new File(path), content, "UTF-8");
+		} catch (IOException e) {
+			res = e;
+		}
+		return res;
+	}
+	
+	public IOException storeFile(boolean systemAbsolute, String path, byte[] content) {
+		IOException res = null;
+		try {
+			if (!systemAbsolute) path = convertToSystemPath(path);
+			FileUtils.writeByteArrayToFile(new File(path), content);
+		} catch (IOException e) {
+			res = e;
+		}
+		return res;
+	}
+	
 	public static String getDefaultsystemWorkspace() {
 		String wksp;
 		if (System.getProperty("os.name").startsWith("Windows")) {
