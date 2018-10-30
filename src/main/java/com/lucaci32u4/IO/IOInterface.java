@@ -4,17 +4,14 @@ import com.lucaci32u4.main.ApplicationConstants;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
-import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.nio.file.FileSystems;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class IOInterface {
-	private static final String separator = FileSystems.getDefault().getSeparator();
 	
 	private AtomicReference<PrintStream> stderr = new AtomicReference<>(System.out);
 	private AtomicBoolean initialised = new AtomicBoolean(false);
@@ -62,11 +59,13 @@ public class IOInterface {
 	}
 	
 	public String setSystemWorkspaceDirectory(String dir) {
+		String separator = ApplicationConstants.getInstance().get("file.separator");
 		if (!dir.endsWith(separator)) dir += separator;
 		return workspace.getAndSet(dir);
 	}
 	
 	private String convertToSystemPath(String path) {
+		String separator = ApplicationConstants.getInstance().get("file.separator");
 		StringBuilder sb = new StringBuilder();
 		String bits[] = path.split("\\\\");
 		sb.append(workspace.get());
@@ -120,18 +119,5 @@ public class IOInterface {
 			res = e;
 		}
 		return res;
-	}
-	
-	public static String getDefaultsystemWorkspace() {
-		String wksp;
-		if (System.getProperty("os.name").startsWith("Windows")) {
-			//wksp = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
-			wksp = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
-		} else {
-			wksp = System.getProperty("user.home");
-		}
-		if (!wksp.endsWith(separator)) wksp += separator;
-		
-		return wksp;
 	}
 }
