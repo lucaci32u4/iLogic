@@ -9,8 +9,11 @@
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/Constants.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Constants.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Translations/english.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Translations/English.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -82,11 +85,11 @@
           <entry key="MF" value="3" />
           <entry key="class" value="11" />
           <entry key="glsl" value="13" />
-          <entry key="html" value="4" />
+          <entry key="html" value="5" />
           <entry key="iml" value="1" />
-          <entry key="java" value="252" />
+          <entry key="java" value="258" />
           <entry key="md" value="3" />
-          <entry key="properties" value="10" />
+          <entry key="properties" value="18" />
           <entry key="txt" value="8" />
           <entry key="xml" value="24" />
         </counts>
@@ -95,13 +98,13 @@
         <counts>
           <entry key="CLASS" value="11" />
           <entry key="GLSL shader file" value="13" />
-          <entry key="HTML" value="4" />
+          <entry key="HTML" value="5" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="252" />
+          <entry key="JAVA" value="258" />
           <entry key="Manifest" value="3" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Properties" value="10" />
+          <entry key="Properties" value="18" />
           <entry key="XML" value="24" />
         </counts>
       </usages-collector>
@@ -110,21 +113,21 @@
           <entry key="MF" value="3" />
           <entry key="dummy" value="51" />
           <entry key="glsl" value="1116" />
-          <entry key="java" value="39580" />
+          <entry key="java" value="39775" />
           <entry key="md" value="277" />
-          <entry key="properties" value="248" />
-          <entry key="txt" value="3835" />
+          <entry key="properties" value="308" />
+          <entry key="txt" value="3891" />
           <entry key="xml" value="178" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="GLSL shader file" value="1116" />
-          <entry key="JAVA" value="39580" />
+          <entry key="JAVA" value="39775" />
           <entry key="Manifest" value="3" />
           <entry key="Markdown" value="268" />
-          <entry key="PLAIN_TEXT" value="3895" />
-          <entry key="Properties" value="248" />
+          <entry key="PLAIN_TEXT" value="3951" />
+          <entry key="Properties" value="308" />
           <entry key="XML" value="178" />
         </counts>
       </usages-collector>
@@ -167,11 +170,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+            <state relative-caret-position="612">
+              <caret line="63" column="134" selection-start-line="63" selection-start-column="134" selection-end-line="63" selection-end-column="134" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -180,10 +204,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="289">
+              <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -240,7 +276,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualBatch.java" />
         <option value="$PROJECT_DIR$/resources/Translations/english.txt" />
         <option value="$PROJECT_DIR$/License.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" />
@@ -249,7 +284,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicID.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/SettingsWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/UserInputListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
@@ -278,7 +312,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/AboutWindow.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/Page.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Windows/PageTree/PagedTreeWindow.java" />
@@ -288,9 +321,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/IOInterface.java" />
         <option value="$PROJECT_DIR$/resources/constants.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" />
-        <option value="$PROJECT_DIR$/resources/Constants.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java" />
+        <option value="$PROJECT_DIR$/resources/Translations/English.properties" />
+        <option value="$PROJECT_DIR$/resources/Constants.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
       </list>
     </option>
   </component>
@@ -347,6 +383,12 @@
               <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
               <item name="iLogic" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iLogic" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="Translations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
@@ -459,7 +501,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540935973442" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540937984988" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -521,13 +563,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00107" summary="Drawing code">
-      <created>1539519361736</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1539519361736</updated>
     </task>
     <task id="LOCAL-00108" summary="Repainting synchronization">
       <created>1539520947833</created>
@@ -865,7 +900,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540934934351</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="Added file separator constant and programatic constants">
+      <created>1540935996473</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1540935996474</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TodoView">
@@ -890,7 +932,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3275488" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3275488" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -941,7 +983,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Moved to diffrent folder" />
     <MESSAGE value="Removed unused enum members" />
     <MESSAGE value="Added paged tree navigation windows for use in documentation and tutorial" />
     <MESSAGE value="Added about string field" />
@@ -966,7 +1007,8 @@
     <MESSAGE value="Added methods for writing files" />
     <MESSAGE value="Changed code to use encoding constants" />
     <MESSAGE value="Removed unused import statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused import statements" />
+    <MESSAGE value="Added file separator constant and programatic constants" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added file separator constant and programatic constants" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -996,13 +1038,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicID.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1163,13 +1198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/Reader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1312,16 +1340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="48" column="28" lean-forward="true" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/About.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1335,10 +1353,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="67" column="84" selection-start-line="67" selection-start-column="84" selection-end-line="67" selection-end-column="84" />
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Translations/English.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="63" column="134" selection-start-line="63" selection-start-column="134" selection-end-line="63" selection-end-column="134" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1347,18 +1399,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
         </state>
       </provider>
     </entry>

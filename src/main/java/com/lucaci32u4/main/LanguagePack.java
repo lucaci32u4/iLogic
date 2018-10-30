@@ -37,13 +37,13 @@ import java.util.Properties;
 
 public class LanguagePack {
 	private static LanguagePack ourInstance = new LanguagePack();
+	public static LanguagePack getInstance() {
+		return ourInstance;
+	}
 	
 	private boolean started = false;
 	private Properties prop;
 	
-	public static LanguagePack getInstance() {
-		return ourInstance;
-	}
 	public IOException begin(@NotNull InputStream stream) {
 		IOException IOE = null;
 		prop = new Properties();
@@ -52,7 +52,7 @@ public class LanguagePack {
 		} catch (IOException io) {
 			IOE = io;
 		}
-		if (IOE == null)started = true;
+		if (IOE == null) started = true;
 		return IOE;
 	}
 	public String get(String key) {

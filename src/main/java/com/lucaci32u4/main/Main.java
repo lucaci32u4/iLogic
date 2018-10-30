@@ -29,6 +29,7 @@
 
 package com.lucaci32u4.main;
 
+import com.lucaci32u4.IO.IOInterface;
 import com.lucaci32u4.UI.Windows.MainWindow;
 
 import com.lucaci32u4.UI.Windows.SettingsWindow;
@@ -58,8 +59,9 @@ public class Main {
 	}
 	
 	private Main() {
-		LanguagePack.getInstance().begin(getClass().getResourceAsStream("/Translations/english.txt"));
-		String aboutText = Helper.freadText(getClass().getResourceAsStream("/About.html"));
+		IOInterface.getInstance().init(System.err, ApplicationConstants.getInstance().get("workspace.path"));
+		LanguagePack.getInstance().begin(getClass().getResourceAsStream(ApplicationConstants.getInstance().get("resource.language.english")));
+		String aboutText = Helper.freadText(getClass().getResourceAsStream(ApplicationConstants.getInstance().get("resource.about")));
 		MainWindow window = new MainWindow(new UserEvent(), aboutText);
 		window.setVisible(true);
 		boolean run = true;

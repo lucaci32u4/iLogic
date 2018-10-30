@@ -18,7 +18,7 @@ public class IOInterface {
 	private AtomicReference<String> workspace = new AtomicReference<>("");
 	
 	private static IOInterface ourInstance = new IOInterface();
-	public IOInterface getInstance() {
+	public static IOInterface getInstance() {
 		return ourInstance;
 	}
 	
