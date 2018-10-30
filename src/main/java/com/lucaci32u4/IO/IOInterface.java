@@ -79,13 +79,9 @@ public class IOInterface {
 	
 	public String loadFile(boolean systemAbsolute, String path) {
 		String res = null;
-		InputStream inputStream;
 		try {
 			if (!systemAbsolute) path = convertToSystemPath(path);
-			inputStream = FileUtils.openInputStream(new File(path));
-			if (inputStream != null) {
-				res = IOUtils.toString(inputStream, "UTF-8");
-			}
+			res = IOUtils.toString(FileUtils.openInputStream(new File(path)), "UTF-8");
 		} catch (IOException ioe) {
 			ioe.printStackTrace(stderr.get());
 		}

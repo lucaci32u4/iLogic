@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/Constants.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/About.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -88,7 +83,7 @@
           <entry key="iml" value="1" />
           <entry key="java" value="248" />
           <entry key="md" value="3" />
-          <entry key="properties" value="1" />
+          <entry key="properties" value="2" />
           <entry key="txt" value="8" />
           <entry key="xml" value="24" />
         </counts>
@@ -103,7 +98,7 @@
           <entry key="Manifest" value="3" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Properties" value="1" />
+          <entry key="Properties" value="2" />
           <entry key="XML" value="24" />
         </counts>
       </usages-collector>
@@ -115,7 +110,7 @@
           <entry key="java" value="38926" />
           <entry key="md" value="277" />
           <entry key="properties" value="125" />
-          <entry key="txt" value="3426" />
+          <entry key="txt" value="3600" />
           <entry key="xml" value="178" />
         </counts>
       </usages-collector>
@@ -125,7 +120,7 @@
           <entry key="JAVA" value="38926" />
           <entry key="Manifest" value="3" />
           <entry key="Markdown" value="268" />
-          <entry key="PLAIN_TEXT" value="3486" />
+          <entry key="PLAIN_TEXT" value="3660" />
           <entry key="Properties" value="125" />
           <entry key="XML" value="178" />
         </counts>
@@ -181,7 +176,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="538">
@@ -190,20 +185,6 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#536#537#0" expanded="true" />
                 <element signature="e#554#555#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#180#181#0" expanded="true" />
-                <element signature="e#192#193#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -489,7 +470,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540933340707" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540933662737" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -551,34 +532,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Reformatting">
-      <created>1539464240164</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1539464240164</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Added event queue">
-      <created>1539464694403</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1539464694403</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Moved event classes inside implementation classes">
-      <created>1539464872464</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1539464872464</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Removed old code">
-      <created>1539464961229</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1539464961229</updated>
     </task>
     <task id="LOCAL-00100" summary="Added circular swapchain class">
       <created>1539465996781</created>
@@ -895,7 +848,35 @@
       <option name="project" value="LOCAL" />
       <updated>1540479693787</updated>
     </task>
-    <option name="localTasksCounter" value="145" />
+    <task id="LOCAL-00145" summary="Added a class to hold all application constants">
+      <created>1540933339806</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1540933339807</updated>
+    </task>
+    <task id="LOCAL-00146" summary="Capitalized resources">
+      <created>1540933380169</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1540933380169</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Added a class that handles storage operations">
+      <created>1540933402945</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1540933402946</updated>
+    </task>
+    <task id="LOCAL-00148" summary="Capitalized resources">
+      <created>1540933462329</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1540933462330</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="TodoView">
@@ -971,9 +952,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="annotations" />
-    <MESSAGE value="Code cleanup" />
-    <MESSAGE value="Added settings class" />
     <MESSAGE value="Added settings window" />
     <MESSAGE value="Added proper license notice in all files" />
     <MESSAGE value="Removed unused imports" />
@@ -996,7 +974,10 @@
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Closed stream" />
     <MESSAGE value="Remove Page API, added builder for PagedTreeWindow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove Page API, added builder for PagedTreeWindow" />
+    <MESSAGE value="Added a class to hold all application constants" />
+    <MESSAGE value="Added a class that handles storage operations" />
+    <MESSAGE value="Capitalized resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="Capitalized resources" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -1352,31 +1333,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="48" column="28" lean-forward="true" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1389,6 +1351,25 @@
             <element signature="imports" expanded="true" />
             <element signature="e#180#181#0" expanded="true" />
             <element signature="e#192#193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/IO/IOInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#554#555#0" expanded="true" />
           </folding>
         </state>
       </provider>
