@@ -13,6 +13,7 @@ public class AboutWindow {
 	AboutWindow() {
 		pane.setEditorKit(new HTMLEditorKit());
 		pane.setEditable(false);
+		pane.setFont(UIManager.getDefaults().getFont("TextPane.font"));
 		frame.setContentPane(pane);
 		frame.setPreferredSize(new Dimension(250, 500));
 		frame.pack();

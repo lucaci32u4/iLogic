@@ -16,7 +16,7 @@ public class ApplicationConstants {
 	
 	private ApplicationConstants() {
 		try {
-			InputStream inputStream = getClass().getResourceAsStream("Constants.properties");
+			InputStream inputStream = getClass().getResourceAsStream("/Constants.properties");
 			if (inputStream != null) {
 				prop.load(inputStream);
 				initProgrammaticConstants();
