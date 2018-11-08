@@ -61,18 +61,14 @@ public class Main {
 		}
 	}
 	
-	private Main() {
-		MainWindow window = new MainWindow(new UserEventListener());
-		window.setVisible(true);
-		SettingsWindow s = new SettingsWindow();
-	}
-	
 	private void init(String [] args) {
 		IOInterface.getInstance().init(System.err, Const.query("workspace.path"));
 		LanguagePack.getInstance().init(System.err, IOInterface.getInstance().loadResourceString(Const.query("resource.language.english")));
 	}
 	
 	private void run(String[] args) {
-	
+		MainWindow window = new MainWindow(new UserEventListener());
+		window.updateText();
+		window.setVisible(true);
 	}
 }
