@@ -29,33 +29,55 @@
 
 package com.lucaci32u4.main;
 
-import org.jetbrains.annotations.NotNull;
-
+import javax.swing.filechooser.FileSystemView;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.StringReader;
+import java.nio.file.FileSystems;
 import java.util.Properties;
 
-public class LanguagePack {
-	private static LanguagePack ourInstance = new LanguagePack();
-	public static LanguagePack getInstance() {
+public class Const {
+	private static Const ourInstance = new Const();
+	public static Const getInstance() {
 		return ourInstance;
 	}
 	
 	private Properties prop = new Properties();
-	private boolean started = false;
 	
-	void init(PrintStream stderr, String stream) {
+	private Const() {
 		try {
-			prop.load(new StringReader(stream));
-		} catch (IOException io) {
-			io.printStackTrace(stderr);
+			InputStream inputStream = getClass().getResourceAsStream("/Constants.properties");
+			if (inputStream != null) {
+				prop.load(inputStream);
+				initProgrammaticConstants();
+			} else throw new IOException("Resource Constants.properties was not found!");
+		} catch (IOException e) {
+			System.err.println("[ERROR at com.lucaci32u4.main.Const constructor]: Cannot open Constants.properties resource! Exception stack trace:");
+			System.out.println("[ERROR at com.lucaci32u4.main.Const constructor]: Cannot open Constants.properties resource! Exception stack trace:");
+			e.printStackTrace(System.err);
+			e.printStackTrace(System.out);
 		}
-		started = true;
 	}
+	
+	private void initProgrammaticConstants() {
+		String separator = FileSystems.getDefault().getSeparator();
+		StringBuilder workspace = new StringBuilder();
+		if (System.getProperty("os.name").startsWith("Windows")) {
+			workspace.append(FileSystemView.getFileSystemView().getDefaultDirectory().getPath());
+		} else {
+			workspace.append(System.getProperty("user.home"));
+		}
+		if (!workspace.toString().endsWith(separator)) workspace.append(separator);
+		workspace.append(get("workspace.name"));
+		prop.put("file.separator", separator);
+		prop.put("workspace.path", workspace);
+	}
+	
 	public String get(String key) {
 		String result = prop.getProperty(key);
-		return (started && result != null ? result : "");
+		return (result != null ? result : "");
+	}
+	
+	public static String query(String key) {
+		return getInstance().get(key);
 	}
 }

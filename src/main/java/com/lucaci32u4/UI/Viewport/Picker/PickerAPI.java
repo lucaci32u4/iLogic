@@ -1,8 +1,8 @@
 package com.lucaci32u4.UI.Viewport.Picker;
 
-public interface PickerAPI extends PickerManager {
+public interface PickerAPI extends HitboxManager {
 	void init();
-	void pick(int pointerX, int pointerY, int pickerChannel);
+	Hitbox pick(int pointerX, int pointerY, int pickerChannel);
 	void destroy();
 }
 

@@ -103,12 +103,8 @@ public class MainWindow {
 	// Simulation variables
 	private boolean activeSimulation;
 	
-	// Strings
-	private String aboutText;
-	
-	public MainWindow(@Nullable UserInputListener uil, @NotNull String aboutText) {
+	public MainWindow(@Nullable UserInputListener uil) {
 		this.listener = uil;
-		this.aboutText = aboutText;
 		activeSimulation = false;
 		lang = LanguagePack.getInstance();
 		try {
@@ -411,19 +407,13 @@ public class MainWindow {
 				});
 			}
 			if (e.getSource() == miTutorial) {
-				String[] pages = new String[] {"r1\\c1", "r1\\c2", "r1\\c3", "r1\\c1\\sub", "r2\\c2"};
-				String[] contents = new String[] {"", "", "", "", ""};
-				Icon[] icons = new Icon[] {null, null, null, null, null};
-				PagedTreeWindow p = PagedTreeWindow.invokeNew(pages, contents, icons, "Tutorial");
-				p.setVisible(true);
+
 			}
 			if (e.getSource() == miDocumentation) {
 			
 			}
 			if (e.getSource() == miAbout) {
-				AboutWindow about = new AboutWindow();
-				about.setContent(aboutText);
-				about.setVisible(true);
+			
 			}
 		}
 	}

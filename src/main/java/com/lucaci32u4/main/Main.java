@@ -33,7 +33,6 @@ import com.lucaci32u4.IO.IOInterface;
 import com.lucaci32u4.UI.Windows.MainWindow;
 
 import com.lucaci32u4.UI.Windows.SettingsWindow;
-import com.lucaci32u4.util.Helper;
 
 import javax.swing.*;
 
@@ -47,24 +46,33 @@ public class Main {
 	}
 	public static void main(String[] args) {
 		setSystemLookAndFeel();
-		Main m = new Main();
+		Main application = new Main();
+		application.init(args);
+		application.run(args);
 	}
 	
 	
 	
-	private class UserEvent implements MainWindow.UserInputListener {
+	private class UserEventListener implements MainWindow.UserInputListener {
 		@Override public void onUserEvent(Type subject, int param1, String param2) {
-		
+			switch (subject) {
+				case COPY:
+			}
 		}
 	}
 	
 	private Main() {
-		IOInterface.getInstance().init(System.err, ApplicationConstants.getInstance().get("workspace.path"));
-		LanguagePack.getInstance().begin(getClass().getResourceAsStream(ApplicationConstants.getInstance().get("resource.language.english")));
-		String aboutText = Helper.freadText(getClass().getResourceAsStream(ApplicationConstants.getInstance().get("resource.about")));
-		MainWindow window = new MainWindow(new UserEvent(), aboutText);
+		MainWindow window = new MainWindow(new UserEventListener());
 		window.setVisible(true);
-		boolean run = true;
 		SettingsWindow s = new SettingsWindow();
+	}
+	
+	private void init(String [] args) {
+		IOInterface.getInstance().init(System.err, Const.query("workspace.path"));
+		LanguagePack.getInstance().init(System.err, IOInterface.getInstance().loadResourceString(Const.query("resource.language.english")));
+	}
+	
+	private void run(String[] args) {
+	
 	}
 }

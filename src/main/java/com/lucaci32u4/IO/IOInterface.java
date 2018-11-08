@@ -1,6 +1,35 @@
+/*
+ * iSignal - Digital circuit simulator
+ * Copyright (C) 2018-present Iercosan-Lucaci Alexandru
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ *    ||=============================================||
+ *    ||     _  _____  _          _            _     ||
+ *    ||    (_)/  ___|(_)       =)_)-         | |    ||
+ *    ||     _ \ `--.  _   __ _  _ __    __ _ | |    ||
+ *    ||    | | `--. \| | / _` || '_ \  / _` || |    ||
+ *    ||    | |/\__/ /| || (_| || | | || (_| || |    ||
+ *    ||    |_|\____/ |_| \__, ||_| |_| \__,_||_|    ||
+ *    ||                   __/ |                     ||
+ *    ||                  |___/  Digital Simulator   ||
+ *    ||=============================================||
+ */
+
 package com.lucaci32u4.IO;
 
-import com.lucaci32u4.main.ApplicationConstants;
+import com.lucaci32u4.main.Const;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
@@ -37,7 +66,7 @@ public class IOInterface {
 		try {
 			inputStream = getClass().getResourceAsStream(resource);
 			if (inputStream != null) {
-				res = IOUtils.toString(inputStream, ApplicationConstants.getInstance().get("resource.encoding"));
+				res = IOUtils.toString(inputStream, Const.getInstance().get("resource.encoding"));
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace(stderr.get());
@@ -60,13 +89,13 @@ public class IOInterface {
 	}
 	
 	public String setSystemWorkspaceDirectory(String dir) {
-		String separator = ApplicationConstants.getInstance().get("file.separator");
+		String separator = Const.getInstance().get("file.separator");
 		if (!dir.endsWith(separator)) dir += separator;
 		return workspace.getAndSet(dir);
 	}
 	
 	private String convertToSystemPath(String path) {
-		String separator = ApplicationConstants.getInstance().get("file.separator");
+		String separator = Const.getInstance().get("file.separator");
 		StringBuilder sb = new StringBuilder();
 		String bits[] = path.split("\\\\");
 		sb.append(workspace.get());
@@ -82,7 +111,7 @@ public class IOInterface {
 		String res = null;
 		try {
 			if (!systemAbsolute) path = convertToSystemPath(path);
-			res = FileUtils.readFileToString(new File(path), ApplicationConstants.getInstance().get("file.encoding"));
+			res = FileUtils.readFileToString(new File(path), Const.getInstance().get("file.encoding"));
 		} catch (IOException ioe) {
 			ioe.printStackTrace(stderr.get());
 		}
@@ -104,7 +133,7 @@ public class IOInterface {
 		IOException res = null;
 		try {
 			if (!systemAbsolute) path = convertToSystemPath(path);
-			FileUtils.writeStringToFile(new File(path), content, ApplicationConstants.getInstance().get("file.encoding"));
+			FileUtils.writeStringToFile(new File(path), content, Const.getInstance().get("file.encoding"));
 		} catch (IOException e) {
 			res = e;
 		}

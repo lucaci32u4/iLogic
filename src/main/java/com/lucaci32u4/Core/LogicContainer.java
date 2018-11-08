@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.core;
+package com.lucaci32u4.Core;
 
 import com.lucaci32u4.util.JSignal;
 import org.jetbrains.annotations.NotNull;

@@ -30,7 +30,7 @@
 package com.lucaci32u4.UI.Viewport;
 
 import com.lucaci32u4.UI.Viewport.Picker.PickerAPI;
-import com.lucaci32u4.UI.Viewport.Picker.PickerManager;
+import com.lucaci32u4.UI.Viewport.Picker.HitboxManager;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.RenderManager;
 import org.jetbrains.annotations.NotNull;
@@ -81,7 +81,7 @@ public class LogicViewport {
 		});
 	}
 
-	public PickerManager getPickerManager() {
+	public PickerAPI getPickerManager() {
 		return picker;
 	}
 
