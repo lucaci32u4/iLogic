@@ -43,10 +43,10 @@ public class SimpleEventQueue<Event> {
 	private Semaphore lock;
 	private JSignal newEvent;
 	
-	public SimpleEventQueue() {
+	public SimpleEventQueue(JSignal wakeSignal) {
 		queue = new ArrayDeque<>();
 		lock = new Semaphore(0);
-		newEvent = new JSignal(false);
+		newEvent = wakeSignal;
 		lock.release();
 	}
 	
@@ -60,7 +60,7 @@ public class SimpleEventQueue<Event> {
 	public Event consume(boolean wait) {
 		return consumeIf(wait, (e) -> (true));
 	}
-	public Event consumeIf(boolean wait, @NotNull CheckEvent check) {
+	public Event consumeIf(boolean wait, @NotNull CheckEvent<Event> check) {
 		Event result = null;
 		newEvent.set(false);
 		result = atomicIterateWithCheck(check);
@@ -71,7 +71,7 @@ public class SimpleEventQueue<Event> {
 		return result;
 	}
 	
-	private Event atomicIterateWithCheck(@NotNull CheckEvent check) {
+	private Event atomicIterateWithCheck(@NotNull CheckEvent<Event> check) {
 		Event result = null;
 		lock.acquireUninterruptibly();
 		for (Event event : queue) {

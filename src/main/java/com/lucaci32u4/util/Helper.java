@@ -35,6 +35,10 @@ import org.apache.commons.io.*;
 
 public class Helper {
 	
+	public final static int Kilobyte = 1024;
+	public final static int Megabyte = 1024 * Kilobyte;
+	public final static int Gigabyte = 1024 * Megabyte;
+	
 	public static String freadText(InputStream res) {
 		String str = null;
 		try {
@@ -59,6 +63,13 @@ public class Helper {
 			System.arraycopy(arr, 0, loc, 0, (arr.length > newSize ? newSize : arr.length));
 		}
 		return loc;
+	}
+	
+	public static Object[] resize(Object[] arr, int newSize, double marginError) {
+		double margin = Math.abs(((float)newSize / (float)arr.length) - 1.0);
+		if (newSize > arr.length || margin > marginError) {
+			return resize(arr, newSize);
+		} else return arr;
 	}
 
 	public static void join(Thread thread) {

@@ -30,9 +30,9 @@
 package com.lucaci32u4.main;
 
 import com.lucaci32u4.IO.IOInterface;
+import com.lucaci32u4.Model.ModelContainer;
 import com.lucaci32u4.UI.Windows.MainWindow;
 
-import com.lucaci32u4.UI.Windows.SettingsWindow;
 
 import javax.swing.*;
 
@@ -70,5 +70,6 @@ public class Main {
 		MainWindow window = new MainWindow(new UserEventListener());
 		window.updateText();
 		window.setVisible(true);
+		ModelContainer model = new ModelContainer();
 	}
 }

@@ -58,4 +58,10 @@ public class JSignal {
         }
         return immediateExit;
     }
+    
+    public synchronized boolean waitAndSet(boolean finalState, boolean set) {
+        boolean res = waitFor(finalState);
+        set(set);
+        return res;
+    }
 }
