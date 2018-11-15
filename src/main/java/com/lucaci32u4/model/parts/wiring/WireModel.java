@@ -4,7 +4,6 @@ import com.lucaci32u4.UI.Viewport.Renderer.DrawAPI;
 import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
-import com.lucaci32u4.model.parts.Component;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
