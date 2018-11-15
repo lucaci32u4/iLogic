@@ -1,4 +1,4 @@
-package com.lucaci32u4.Model;
+package com.lucaci32u4.model;
 
 import com.lucaci32u4.ViewController.UserActionListener;
 import com.lucaci32u4.ViewController.UserPointerListener;

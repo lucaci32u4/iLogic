@@ -211,7 +211,6 @@ public class LogicContainer {
     	while (!stopped) {
     		boolean stable = tickSimulation();
 			Sync.Event event = sync.retrieveEvent(!suspended, true, true, true, stable);
-			//System.out.println(event.getClass().getName());
     		if (event != null) {
 				switch (event.eventID) {
 					case Sync.EventAddComponent.ID:

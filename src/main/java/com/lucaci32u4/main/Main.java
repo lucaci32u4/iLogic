@@ -30,7 +30,7 @@
 package com.lucaci32u4.main;
 
 import com.lucaci32u4.IO.IOInterface;
-import com.lucaci32u4.Model.ModelContainer;
+import com.lucaci32u4.model.ModelContainer;
 import com.lucaci32u4.UI.Windows.MainWindow;
 
 
