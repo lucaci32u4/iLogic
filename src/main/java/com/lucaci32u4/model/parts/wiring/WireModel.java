@@ -76,9 +76,9 @@ public class WireModel implements VisualArtifact {
 				aux = end1; end1 = lt; lt = aux;
 				aux = end2; end2 = rb; rb = aux;
 			} 
-			if ((end1 & X_MASK) >= (lt & X_MASK) && (lt & X_MASK) >= (end1 & X_MASK)) if ((end1 & Y_MASK) >= (lt & Y_MASK) && (lt & Y_MASK) >= (end2 & Y_MASK)) {
+			if ((end1 & X_MASK) >= (lt & X_MASK) && (lt & X_MASK) >= (end1 & X_MASK)) if (((end1 & Y_MASK) << X_SHIFT) >= ((lt & Y_MASK) << X_SHIFT) && ((lt & Y_MASK) << X_SHIFT) >= ((end2 & Y_MASK) << X_SHIFT)) {
 				if (area) {
-					if ((end1 & X_MASK) >= (rb & X_MASK) && (rb & X_MASK) >= (end1 & X_MASK)) if ((end1 & Y_MASK) >= (rb & Y_MASK) && (rb & Y_MASK) >= (end2 & Y_MASK)) {
+					if ((end1 & X_MASK) >= (rb & X_MASK) && (rb & X_MASK) >= (end1 & X_MASK)) if (((end1 & Y_MASK) << X_SHIFT) >= ((lt & Y_MASK) << X_SHIFT) && ((lt & Y_MASK) << X_SHIFT) >= ((end2 & Y_MASK) << X_SHIFT)) {
 						selected.add(i);
 					}
 				} else {
