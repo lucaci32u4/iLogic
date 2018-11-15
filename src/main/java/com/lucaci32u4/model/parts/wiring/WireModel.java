@@ -24,6 +24,18 @@ public class WireModel implements VisualArtifact {
 	private volatile ArrayList<Integer> selected = new ArrayList<>();
 	private boolean isAreaSelecting = false;
 	
+	// Expansion variables
+	private volatile boolean expanding = false;
+	private boolean hasDirection = false;
+	private boolean dirVertical = false;
+	private long begin = 0;
+	private long now = 0;
+	private volatile int extensionCount = 0;
+	private volatile long ext1 = 0;
+	private volatile long ext2 = 0;
+	private volatile long sup1 = 0;
+	private volatile long sup2 = 0;
+	
 	
 	public void attach(Subcurcuit subcircuit) {
 		this.subcircuit = subcircuit;
@@ -52,6 +64,82 @@ public class WireModel implements VisualArtifact {
 		selected = new ArrayList<>();
 	}
 	
+	public void beginExpand(long beginPos) {
+		expanding = true;
+		hasDirection = false;
+		begin = beginPos;
+	}
+	
+	public void continueExpand(long pos) {
+		now = pos;
+		if (!hasDirection) {
+			dirVertical = (pos << X_SHIFT) == (begin << X_SHIFT);
+			hasDirection = true;
+		}
+		ext1 = begin;
+		extensionCount = 0;
+		if (pos != begin) {
+			extensionCount = 1;
+			if ((pos << X_SHIFT) != (begin << X_SHIFT) && (pos << Y_SHIFT) != (begin << Y_SHIFT)) {
+				extensionCount = 2;
+			}
+			if (dirVertical) {
+				ext2 = (ext1 & X_MASK) | (pos & Y_MASK);
+				if (extensionCount == 2) {
+					sup1 = ext2;
+					sup2 = (sup1 & Y_MASK) | (pos & X_MASK);
+				}
+			} else {
+				ext2 = (ext1 & Y_MASK) | (pos & X_MASK);
+				if (extensionCount == 2) {
+					sup1 = ext2;
+					sup2 = (sup1 & X_MASK) | (pos & Y_MASK);
+				}
+			}
+		}
+	}
+	
+	public void endExpand() {
+		expanding = false;
+		AtomicLongArray old1 = wiresPos1;
+		AtomicLongArray old2 = wiresPos2;
+		int oldLength = old1.length();
+		int newLength = oldLength + extensionCount;
+		if (extensionCount != 0) {
+			wiresPos1 = new AtomicLongArray(newLength);
+			wiresPos2 = new AtomicLongArray(newLength);
+			for (int i = 0; i < oldLength; i++) {
+				wiresPos1.set(i, old1.get(i));
+				wiresPos2.set(i, old2.get(i));
+			}
+			if (extensionCount >= 1) {
+				wiresPos1.set(oldLength, ext1);
+				wiresPos2.set(oldLength, ext2);
+			}
+			if (extensionCount >= 2) {
+				wiresPos1.set(oldLength + 1, sup1);
+				wiresPos2.set(oldLength + 1, sup2);
+			}
+			long left = Math.min(boundsPosition.get() & X_MASK, Math.min(ext2 & X_MASK, ext1 & X_MASK));
+			long top = Math.min(boundsPosition.get() << X_SHIFT, Math.min(ext2 << X_SHIFT, ext1 << X_SHIFT));
+			long right = Math.max(boundsPosition.get() & X_MASK, Math.max(ext2 & X_MASK, ext1 & X_MASK));
+			long bottom = Math.max(boundsPosition.get() << X_SHIFT, Math.max(ext2 << X_SHIFT, ext1 << X_SHIFT));
+			if (extensionCount >= 2) {
+				left = Math.min(left, Math.min(sup1 & X_MASK, sup2 & X_MASK));
+				top = Math.min(top, Math.min(sup1 << X_SHIFT, sup2 << X_SHIFT));
+				right = Math.max(right, Math.max(sup1 & X_MASK, sup2 & X_MASK));
+				bottom = Math.max(bottom, Math.max(sup1 << X_SHIFT, sup2 << X_SHIFT));
+			}
+			right -= left;
+			bottom -= top;
+			right = right >>> X_SHIFT;
+			bottom = bottom >>> X_SHIFT;
+			boundsPosition.set(left | top);
+			boundsPosition.set(right | bottom);
+		}
+	}
+	
+	@SuppressWarnings("all")
 	private int pickAt(long lt, long rb, boolean area) {
 		final int length = wiresPos1.length();
 		long end1;
@@ -60,15 +148,15 @@ public class WireModel implements VisualArtifact {
 		for (int i = 0; i < length; i++) {
 			end1 = wiresPos1.get(i);
 			end2 = wiresPos2.get(i);
-			if (end1 > end2) {
-				aux = end1; end1 = end2; end2 = aux;
-			}
+			
 			if ((X_MASK & (~(end1 ^ end2))) == X_MASK) {
-				end1 += (DELTA_WIDTH) << X_SHIFT; // make LT
-				end2 -= (DELTA_WIDTH) << X_SHIFT; // make RB
-				
+				if (end1 < end2) { aux = end1; end1 = end2; end2 = aux; }
+				end1 -= (DELTA_WIDTH) << X_SHIFT; // make LT
+				end2 += (DELTA_WIDTH) << X_SHIFT; // make RB
 			}
 			if ((Y_MASK & (~(end1 ^ end2))) == Y_MASK) {
+				if (end1 > end2) { aux = end1; end1 = end2; end2 = aux; }
+				// TODO: Not good. Does not work with two's complement!
 				end1 += (DELTA_WIDTH) << Y_SHIFT; // make LT
 				end2 -= (DELTA_WIDTH) << Y_SHIFT; // make RB
 			}
@@ -105,15 +193,19 @@ public class WireModel implements VisualArtifact {
 			drawMemory[index] = true;
 		}
 		for (int i = 0; i < length; i++) {
-			drawWire(w1.get(i), w2.get(i), drawMemory[i]);
+			drawWire(graphics, w1.get(i), w2.get(i), drawMemory[i], false);
 			drawMemory[i] = false;
+		}
+		if (expanding) {
+			if (extensionCount >= 1) drawWire(graphics, ext1, ext2, false, true);
+			if (extensionCount >= 2) drawWire(graphics, sup1, sup2, false, true);
 		}
 		if (detach) {
 			drawMemory = null;
 		}
 	}
 	
-	private void drawWire(long end1, long end2, boolean selected) {
+	private void drawWire(DrawAPI graphics, long end1, long end2, boolean selected, boolean extension) {
 		// TODO: Wire drawing code
 	}
 	
