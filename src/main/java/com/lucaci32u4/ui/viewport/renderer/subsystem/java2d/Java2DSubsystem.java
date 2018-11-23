@@ -29,6 +29,7 @@
 
 package com.lucaci32u4.ui.viewport.renderer.subsystem.java2d;
 
+import com.lucaci32u4.ui.viewport.RenderCallback;
 import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 import com.lucaci32u4.ui.viewport.LogicViewport;
 import com.lucaci32u4.ui.viewport.renderer.brush.OutlineBrush;
