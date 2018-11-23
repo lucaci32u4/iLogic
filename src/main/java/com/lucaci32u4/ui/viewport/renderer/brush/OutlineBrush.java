@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport.Renderer.Brushes;
+package com.lucaci32u4.ui.viewport.renderer.brush;
 
 public class OutlineBrush extends Brush {
 	public OutlineBrush(Object obj) {

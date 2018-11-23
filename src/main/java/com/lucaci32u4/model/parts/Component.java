@@ -1,13 +1,13 @@
 package com.lucaci32u4.model.parts;
 
-import com.lucaci32u4.UI.Viewport.Renderer.DrawAPI;
+import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.model.parts.wiring.Connectable;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import lombok.Getter;
 
-import com.lucaci32u4.Core.LogicPin;
+import com.lucaci32u4.core.LogicPin;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

@@ -27,9 +27,9 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport.Renderer;
+package com.lucaci32u4.ui.viewport.renderer;
 
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 
 public interface DrawAPI {
 	float unitsToPixels(int units);

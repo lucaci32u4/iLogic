@@ -1,6 +1,6 @@
 package com.lucaci32u4.model.parts.wiring;
 
-import com.lucaci32u4.UI.Viewport.Renderer.DrawAPI;
+import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +28,6 @@ public class WireModel {
 	private boolean hasDirection = false;
 	private boolean dirVertical = false;
 	private long begin = 0;
-	private long now = 0;
 	private volatile int extensionCount = 0;
 	private volatile long ext1 = 0;
 	private volatile long ext2 = 0;
@@ -70,7 +69,6 @@ public class WireModel {
 	}
 	
 	public void continueExpand(long pos) {
-		now = pos;
 		if (!hasDirection) {
 			dirVertical = (pos << X_SHIFT) == (begin << X_SHIFT);
 			hasDirection = true;

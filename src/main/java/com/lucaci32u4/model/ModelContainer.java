@@ -1,8 +1,8 @@
 package com.lucaci32u4.model;
 
-import com.lucaci32u4.Presentation.UserActionListener;
-import com.lucaci32u4.Presentation.UserPointerListener;
-import com.lucaci32u4.Presentation.ViewControllerInterface;
+import com.lucaci32u4.presentation.UserActionListener;
+import com.lucaci32u4.presentation.UserPointerListener;
+import com.lucaci32u4.presentation.ViewControllerInterface;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
@@ -114,6 +114,7 @@ public class ModelContainer {
 			
 			}
 			
+			@SuppressWarnings("all")
 			void userAction(UserActionListener.Type type, String param1, String param2, long param3, long param4) {
 				switch (type) {
 					case NEW:

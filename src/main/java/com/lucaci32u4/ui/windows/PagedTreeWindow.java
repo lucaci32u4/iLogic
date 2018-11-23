@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Windows;
+package com.lucaci32u4.ui.windows;
 
 import com.lucaci32u4.util.Helper;
 import org.jetbrains.annotations.NotNull;

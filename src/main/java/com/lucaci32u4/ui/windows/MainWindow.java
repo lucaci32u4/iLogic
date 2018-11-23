@@ -27,10 +27,9 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Windows;
+package com.lucaci32u4.ui.windows;
 
 import com.lucaci32u4.main.LanguagePack;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;

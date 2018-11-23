@@ -27,15 +27,15 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.Java2D;
+package com.lucaci32u4.ui.viewport.renderer.subsystem.java2d;
 
-import com.lucaci32u4.UI.Viewport.RenderCallback;
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.Brush;
-import com.lucaci32u4.UI.Viewport.LogicViewport;
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.OutlineBrush;
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.SolidBrush;
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.TextureBrush;
-import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
+import com.lucaci32u4.ui.viewport.RenderCallback;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
+import com.lucaci32u4.ui.viewport.LogicViewport;
+import com.lucaci32u4.ui.viewport.renderer.brush.OutlineBrush;
+import com.lucaci32u4.ui.viewport.renderer.brush.SolidBrush;
+import com.lucaci32u4.ui.viewport.renderer.brush.TextureBrush;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.SwingUtilities;

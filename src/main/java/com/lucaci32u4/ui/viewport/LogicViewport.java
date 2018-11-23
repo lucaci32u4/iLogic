@@ -27,9 +27,9 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport;
+package com.lucaci32u4.ui.viewport;
 
-import com.lucaci32u4.UI.Viewport.Renderer.RenderAPI;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

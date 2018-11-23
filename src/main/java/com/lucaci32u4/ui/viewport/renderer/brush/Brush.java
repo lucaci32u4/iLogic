@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport.Renderer.Brushes;
+package com.lucaci32u4.ui.viewport.renderer.brush;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

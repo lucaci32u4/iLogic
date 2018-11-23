@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport.Renderer.RenderingSubsystem.OpenGL;
+package com.lucaci32u4.ui.viewport.renderer.subsystem.opengl;
 
 /*
 

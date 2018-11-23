@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport.Renderer.Brushes;
+package com.lucaci32u4.ui.viewport.renderer.brush;
 
 public class SolidBrush extends Brush {
 	public static final SolidBrush BACKGROUND 	= new SolidBrush(null);

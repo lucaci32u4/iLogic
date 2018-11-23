@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport;
+package com.lucaci32u4.ui.viewport;
 
 import java.awt.event.MouseEvent;
 

@@ -27,11 +27,11 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.UI.Viewport.Renderer;
+package com.lucaci32u4.ui.viewport.renderer;
 
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.OutlineBrush;
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.SolidBrush;
-import com.lucaci32u4.UI.Viewport.Renderer.Brushes.TextureBrush;
+import com.lucaci32u4.ui.viewport.renderer.brush.OutlineBrush;
+import com.lucaci32u4.ui.viewport.renderer.brush.SolidBrush;
+import com.lucaci32u4.ui.viewport.renderer.brush.TextureBrush;
 
 import java.awt.image.BufferedImage;
 
