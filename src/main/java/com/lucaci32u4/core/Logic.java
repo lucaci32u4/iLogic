@@ -27,49 +27,28 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.main;
+package com.lucaci32u4.core;
 
-import com.lucaci32u4.io.IOInterface;
-import com.lucaci32u4.model.ModelContainer;
-import com.lucaci32u4.ui.windows.MainWindow;
+import org.jetbrains.annotations.NotNull;
 
+public class Logic {
+    public static final boolean LOW = false;
+    public static final boolean HIGH = true;
 
-import javax.swing.*;
+    public static final int FULL_DRIVER = 0b11;
+    public static final int HIGH_DRIVER = 0b01;
+    public static final int LOW_DRIVER = 0b10;
+    public static final int TRISTATE = 0b00;
 
-public class Main {
-	private static void setSystemLookAndFeel() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public static void main(String[] args) {
-		setSystemLookAndFeel();
-		Main application = new Main();
-		application.init(args);
-		application.run(args);
-	}
-	
-	
-	
-	private class UserEventListener implements MainWindow.UserInputListener {
-		@Override public void onUserEvent(Type subject, int param1, String param2) {
-			switch (subject) {
-				case COPY:
-			}
-		}
-	}
-	
-	private void init(String [] args) {
-		IOInterface.getInstance().init(System.err, Const.query("workspace.path"));
-		LanguagePack.getInstance().init(System.err, IOInterface.getInstance().loadResourceString(Const.query("resource.language.english")));
-	}
-	
-	private void run(String[] args) {
-		MainWindow window = new MainWindow(new UserEventListener());
-		window.updateText();
-		window.setVisible(true);
-		ModelContainer model = new ModelContainer();
-	}
+    public boolean state;
+    public boolean defined;
+    public Logic(boolean initialState, boolean define) { state = initialState; defined = define; }
+    public Logic(@NotNull Logic source) { state = source.state; defined = source.defined; }
+    public void copy(@NotNull Logic src) { state = src.state; defined = src.defined; }
+    @Override
+    public String toString() {
+    	return (defined ? (state ? "HIGH" : "LOW") : "TRISTATE");
+    }
+
+    public static boolean senseChange(@NotNull Logic from, @NotNull Logic to) { return ((from.defined) && (from.state != to.state)) || (from.defined != to.defined); }
 }

@@ -1,4 +1,4 @@
-package com.lucaci32u4.Presentation;
+package com.lucaci32u4.presentation;
 
 import javax.swing.Icon;
 

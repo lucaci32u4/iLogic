@@ -61,7 +61,7 @@ public class Const {
 	private void initProgrammaticConstants() {
 		String separator = FileSystems.getDefault().getSeparator();
 		StringBuilder workspace = new StringBuilder();
-		if (System.getProperty("os.name").startsWith("Windows")) {
+		if (System.getProperty("os.name").startsWith("windows")) {
 			workspace.append(FileSystemView.getFileSystemView().getDefaultDirectory().getPath());
 		} else {
 			workspace.append(System.getProperty("user.home"));

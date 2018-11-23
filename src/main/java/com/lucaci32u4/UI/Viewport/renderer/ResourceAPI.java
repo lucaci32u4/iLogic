@@ -27,49 +27,16 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.main;
+package com.lucaci32u4.ui.viewport.renderer;
 
-import com.lucaci32u4.io.IOInterface;
-import com.lucaci32u4.model.ModelContainer;
-import com.lucaci32u4.ui.windows.MainWindow;
+import com.lucaci32u4.ui.viewport.renderer.brush.OutlineBrush;
+import com.lucaci32u4.ui.viewport.renderer.brush.SolidBrush;
+import com.lucaci32u4.ui.viewport.renderer.brush.TextureBrush;
 
+import java.awt.image.BufferedImage;
 
-import javax.swing.*;
-
-public class Main {
-	private static void setSystemLookAndFeel() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public static void main(String[] args) {
-		setSystemLookAndFeel();
-		Main application = new Main();
-		application.init(args);
-		application.run(args);
-	}
-	
-	
-	
-	private class UserEventListener implements MainWindow.UserInputListener {
-		@Override public void onUserEvent(Type subject, int param1, String param2) {
-			switch (subject) {
-				case COPY:
-			}
-		}
-	}
-	
-	private void init(String [] args) {
-		IOInterface.getInstance().init(System.err, Const.query("workspace.path"));
-		LanguagePack.getInstance().init(System.err, IOInterface.getInstance().loadResourceString(Const.query("resource.language.english")));
-	}
-	
-	private void run(String[] args) {
-		MainWindow window = new MainWindow(new UserEventListener());
-		window.updateText();
-		window.setVisible(true);
-		ModelContainer model = new ModelContainer();
-	}
+public interface ResourceAPI {
+	SolidBrush createSolidBrush(int r, int g, int b);
+	OutlineBrush createOutlineBrush(int r, int g, int b);
+	TextureBrush createTextureBrush(BufferedImage image, int unitWidth, int unitHeight);
 }

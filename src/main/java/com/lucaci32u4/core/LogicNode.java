@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.Core;
+package com.lucaci32u4.core;
 
 import java.util.ArrayDeque;
 import java.util.UUID;

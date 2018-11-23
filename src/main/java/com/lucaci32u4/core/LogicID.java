@@ -27,49 +27,14 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.main;
+package com.lucaci32u4.core;
 
-import com.lucaci32u4.io.IOInterface;
-import com.lucaci32u4.model.ModelContainer;
-import com.lucaci32u4.ui.windows.MainWindow;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
 
-import javax.swing.*;
-
-public class Main {
-	private static void setSystemLookAndFeel() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public static void main(String[] args) {
-		setSystemLookAndFeel();
-		Main application = new Main();
-		application.init(args);
-		application.run(args);
-	}
-	
-	
-	
-	private class UserEventListener implements MainWindow.UserInputListener {
-		@Override public void onUserEvent(Type subject, int param1, String param2) {
-			switch (subject) {
-				case COPY:
-			}
-		}
-	}
-	
-	private void init(String [] args) {
-		IOInterface.getInstance().init(System.err, Const.query("workspace.path"));
-		LanguagePack.getInstance().init(System.err, IOInterface.getInstance().loadResourceString(Const.query("resource.language.english")));
-	}
-	
-	private void run(String[] args) {
-		MainWindow window = new MainWindow(new UserEventListener());
-		window.updateText();
-		window.setVisible(true);
-		ModelContainer model = new ModelContainer();
+class LogicID  {
+	public static String toString(@NotNull UUID id) {
+		return Long.toHexString(id.getMostSignificantBits()) + Long.toHexString(id.getLeastSignificantBits());
 	}
 }

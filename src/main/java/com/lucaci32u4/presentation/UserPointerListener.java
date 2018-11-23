@@ -1,4 +1,4 @@
-package com.lucaci32u4.Presentation;
+package com.lucaci32u4.presentation;
 
 public interface UserPointerListener {
 	void buttonDown(int x, int y, int button);

@@ -27,7 +27,7 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.IO;
+package com.lucaci32u4.io;
 
 import com.lucaci32u4.main.Const;
 import org.apache.commons.io.FileUtils;

@@ -27,49 +27,16 @@
  *    ||=============================================||
  */
 
-package com.lucaci32u4.main;
+package com.lucaci32u4.ui.viewport.renderer;
 
-import com.lucaci32u4.io.IOInterface;
-import com.lucaci32u4.model.ModelContainer;
-import com.lucaci32u4.ui.windows.MainWindow;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 
-
-import javax.swing.*;
-
-public class Main {
-	private static void setSystemLookAndFeel() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public static void main(String[] args) {
-		setSystemLookAndFeel();
-		Main application = new Main();
-		application.init(args);
-		application.run(args);
-	}
-	
-	
-	
-	private class UserEventListener implements MainWindow.UserInputListener {
-		@Override public void onUserEvent(Type subject, int param1, String param2) {
-			switch (subject) {
-				case COPY:
-			}
-		}
-	}
-	
-	private void init(String [] args) {
-		IOInterface.getInstance().init(System.err, Const.query("workspace.path"));
-		LanguagePack.getInstance().init(System.err, IOInterface.getInstance().loadResourceString(Const.query("resource.language.english")));
-	}
-	
-	private void run(String[] args) {
-		MainWindow window = new MainWindow(new UserEventListener());
-		window.updateText();
-		window.setVisible(true);
-		ModelContainer model = new ModelContainer();
-	}
+public interface DrawAPI {
+	float unitsToPixels(int units);
+	float pixelsToUnits(int pixels);
+	void setCanvasOffsetUnits(int offsetX, int offsetY);
+	void setBrush(Brush brush);
+	void drawLine(int fromX, int fromY, int toX, int toY, float thicknessPixels);
+	void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY);
+	void drawRectangle(int left, int top, int right, int bottom);
 }

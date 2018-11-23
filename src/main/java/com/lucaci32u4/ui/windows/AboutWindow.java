@@ -1,6 +1,6 @@
-package com.lucaci32u4.UI.Windows;
+package com.lucaci32u4.ui.windows;
 
-import com.lucaci32u4.IO.IOInterface;
+import com.lucaci32u4.io.IOInterface;
 import com.lucaci32u4.main.Const;
 import org.jetbrains.annotations.NotNull;
 
