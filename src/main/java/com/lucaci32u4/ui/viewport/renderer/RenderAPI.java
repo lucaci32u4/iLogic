@@ -31,7 +31,6 @@ package com.lucaci32u4.ui.viewport.renderer;
 
 
 import com.lucaci32u4.ui.viewport.LogicViewport;
-import com.lucaci32u4.ui.viewport.RenderCallback;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JPanel;
