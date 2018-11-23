@@ -31,14 +31,15 @@ package com.lucaci32u4.UI.Viewport.Renderer;
 
 
 import com.lucaci32u4.UI.Viewport.LogicViewport;
+import com.lucaci32u4.UI.Viewport.RenderCallback;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JPanel;
 
-public interface RenderAPI extends DrawAPI, ResourceAPI, RenderManager, RenderCoordinateManager {
-	void init(JPanel panel, LogicViewport viewport);
+public interface RenderAPI extends DrawAPI, ResourceAPI {
+	void init(@NotNull JPanel panel, @NotNull LogicViewport viewport, @NotNull RenderCallback callback);
 	void destroy();
 	void requestRenderFrame();
 	JPanel getCanvas();
-	Object switchChannel(Object newChannelContent);
 }
 

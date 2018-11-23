@@ -1,8 +1,8 @@
 package com.lucaci32u4.model;
 
-import com.lucaci32u4.ViewController.UserActionListener;
-import com.lucaci32u4.ViewController.UserPointerListener;
-import com.lucaci32u4.ViewController.ViewControllerInterface;
+import com.lucaci32u4.Presentation.UserActionListener;
+import com.lucaci32u4.Presentation.UserPointerListener;
+import com.lucaci32u4.Presentation.ViewControllerInterface;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
@@ -167,6 +167,12 @@ public class ModelContainer {
 		modelThread.running.set(false);
 		Sleeper.wake();
 		Helper.join(modelThread);
+	}
+	
+	public void invalidateGraphics(Subcurcuit circ) {
+		for (ViewControllerInterface wci : wcix) {
+			wci.invalidateGraphics();
+		}
 	}
 	
 	class UAL implements UserActionListener {

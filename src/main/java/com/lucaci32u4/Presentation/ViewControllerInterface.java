@@ -1,4 +1,4 @@
-package com.lucaci32u4.ViewController;
+package com.lucaci32u4.Presentation;
 
 import javax.swing.Icon;
 
@@ -8,4 +8,5 @@ public interface ViewControllerInterface {
 	void removeSimulationComponentModel(String family, String name);
 	void setUserActionListener(UserActionListener listener);
 	void setUserPointerListener(UserPointerListener listener);
+	void invalidateGraphics();
 }

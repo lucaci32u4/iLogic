@@ -1,7 +1,6 @@
 package com.lucaci32u4.model.parts.wiring;
 
 import com.lucaci32u4.UI.Viewport.Renderer.DrawAPI;
-import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicLongArray;
 
-public class WireModel implements VisualArtifact {
+public class WireModel {
 	private static final long DELTA_WIDTH = Long.parseLong(Const.query("dimensions.wireWidth")) >>> 1;
 	private static final long X_MASK = 0xFFFFFFFF00000000L;
 	private static final long Y_MASK = 0x00000000FFFFFFFFL;
@@ -178,7 +177,7 @@ public class WireModel implements VisualArtifact {
 	}
 	
 	private boolean[] drawMemory = null;
-	@Override public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
+	public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
 		AtomicLongArray w1 = wiresPos1;
 		AtomicLongArray w2 = wiresPos2;
 		ArrayList<Integer> select = selected;
@@ -209,11 +208,11 @@ public class WireModel implements VisualArtifact {
 		// TODO: Wire drawing code
 	}
 	
-	@Override public long getPosition() {
+	public long getPosition() {
 		return boundsPosition.get();
 	}
 	
-	@Override public long getDimension() {
+	public long getDimension() {
 		return boundsDimension.get();
 	}
 }

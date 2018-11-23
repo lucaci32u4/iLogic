@@ -23,6 +23,7 @@ public class Pin extends Component {
 		
 		@Override public void onAttach(Component componentContainer) {
 			component = componentContainer;
+			// TODO: Logic pin
 			termination = new Component.Termination(componentContainer, new LogicPin[]{ null });
 			termArr[0] = termination;
 		}
@@ -43,15 +44,15 @@ public class Pin extends Component {
 			return termArr;
 		}
 		
-		@Override public long getPosition() {
+		public long getPosition() {
 			return position.get();
 		}
 		
-		@Override public long getDimension() {
+		public long getDimension() {
 			return position.get();
 		}
 		
-		@Override public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
+		public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
 			
 		}
 	}

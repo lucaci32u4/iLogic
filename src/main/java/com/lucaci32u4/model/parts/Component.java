@@ -1,7 +1,6 @@
 package com.lucaci32u4.model.parts;
 
 import com.lucaci32u4.UI.Viewport.Renderer.DrawAPI;
-import com.lucaci32u4.UI.Viewport.Renderer.VisualArtifact;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.model.parts.wiring.Connectable;
 import lombok.Setter;
@@ -37,21 +36,15 @@ public class Component {
 		invalidateGraphics();
 	}
 	
-	public void resize(long newDimension) {
-		dimension = newDimension;
-		spec.onChangeDimension(dimension);
-		invalidateGraphics();
-	}
-	
-	public void interact(long position, boolean isSel) {
-		selected.set(isSel);
+	public void interact(long position, boolean begin, boolean end) {
+		if (begin) selected.set(true);
+		if (end) selected.set(false);
 		spec.onInteractiveClick(position);
 		invalidateGraphics();
 	}
 	
 	public void invalidateGraphics() {
 		subcircuit.invalidateGraphics();
-		invalidateGraphics();
 	}
 	
 	public static class Termination implements Connectable {
@@ -83,7 +76,7 @@ public class Component {
 		}
 	}
 	
-	public interface BehaviourSpecification extends VisualArtifact {
+	public interface BehaviourSpecification {
 		void onAttach(Component componentContainer);
 		void onChangePosition(long position);
 		void onChangeDimension(long dimension);
