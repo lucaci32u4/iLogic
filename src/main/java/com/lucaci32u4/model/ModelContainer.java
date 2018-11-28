@@ -4,6 +4,9 @@ import com.lucaci32u4.presentation.UserActionListener;
 import com.lucaci32u4.presentation.UserPointerListener;
 import com.lucaci32u4.presentation.ViewControllerInterface;
 import com.lucaci32u4.main.Const;
+import com.lucaci32u4.ui.viewport.RenderCallback;
+import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
 
@@ -11,8 +14,8 @@ import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-
-public class ModelContainer {
+@SuppressWarnings("squid:S1659") // Declaring on the same line
+public class ModelContainer implements RenderCallback {
 	
 	private ModelThread modelThread = new ModelThread();
 	
@@ -29,6 +32,7 @@ public class ModelContainer {
 	private final Object pointerLock = new Object();
 	private volatile int posX = 0, posY = 0;
 	private volatile boolean left = false, right = false, middle = false;
+	private Subcurcuit mainCirc = null;
 	
 	public void init() {
 		int bufferSize = Integer.getInteger(Const.query("userInput.buffersize"));
@@ -40,6 +44,7 @@ public class ModelContainer {
 			}
 		}
 		modelThread.start();
+		mainCirc = new Subcurcuit(this);
 	}
 	
 	private class ModelThread extends Thread {
@@ -158,6 +163,7 @@ public class ModelContainer {
 	
 	public void addViewController(ViewControllerInterface wci) {
 		synchronized (wcixLock) {
+			wci.init(this);
 			wci.setUserActionListener(ual);
 			wci.setUserPointerListener(upl);
 			wcix.add(wci);
@@ -176,7 +182,15 @@ public class ModelContainer {
 		}
 	}
 	
-	class UAL implements UserActionListener {
+	@Override public void onDraw(DrawAPI draw, RenderAPI ctrl) {
+	
+	}
+	
+	public RenderCallback getRenderCallback() {
+		return this;
+	}
+	
+	public class UAL implements UserActionListener {
 		@Override public void notify(Type type, String param1, String param2, long param3, long param4) {
 			ListableAction extracted = null;
 			boolean hasSpace = false;
@@ -204,7 +218,7 @@ public class ModelContainer {
 		}
 	}
 	
-	class UPL implements UserPointerListener {
+	public class UPL implements UserPointerListener {
 		
 		@Override public void buttonDown(int x, int y, int button) {
 			mkMask(x, y, button, true);

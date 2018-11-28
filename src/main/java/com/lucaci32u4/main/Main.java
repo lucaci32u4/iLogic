@@ -31,6 +31,7 @@ package com.lucaci32u4.main;
 
 import com.lucaci32u4.io.IOInterface;
 import com.lucaci32u4.model.ModelContainer;
+import com.lucaci32u4.presentation.PresentationContainer;
 import com.lucaci32u4.ui.windows.MainWindow;
 
 
@@ -51,15 +52,10 @@ public class Main {
 		application.run(args);
 	}
 	
+	private PresentationContainer presentation = null;
+	private ModelContainer model = null;
 	
 	
-	private class UserEventListener implements MainWindow.UserInputListener {
-		@Override public void onUserEvent(Type subject, int param1, String param2) {
-			switch (subject) {
-				case COPY:
-			}
-		}
-	}
 	
 	private void init(String [] args) {
 		IOInterface.getInstance().init(System.err, Const.query("workspace.path"));
@@ -67,9 +63,23 @@ public class Main {
 	}
 	
 	private void run(String[] args) {
-		MainWindow window = new MainWindow(new UserEventListener());
-		window.updateText();
-		window.setVisible(true);
-		ModelContainer model = new ModelContainer();
+		model = new ModelContainer();
+		presentation = new PresentationContainer();
+		model.addViewController(presentation);
 	}
 }
+
+
+/*
+
+5+ 1) 1. vita de vie
+2+ 2) 2. paie
+6+ 3) 3. fructe de mare
+1+ 4) 4. apa
+3+ 5) 5. Almanahe
+4+ 6) 6. 0venezuela
+
+
+
+
+ */
