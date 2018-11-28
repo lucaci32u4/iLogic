@@ -1,5 +1,6 @@
 package com.lucaci32u4.model;
 
+import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.presentation.UserActionListener;
 import com.lucaci32u4.presentation.UserPointerListener;
 import com.lucaci32u4.presentation.ViewControllerInterface;
@@ -12,6 +13,8 @@ import com.lucaci32u4.util.JSignal;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @SuppressWarnings("squid:S1659") // Declaring on the same line
@@ -33,6 +36,7 @@ public class ModelContainer implements RenderCallback {
 	private volatile int posX = 0, posY = 0;
 	private volatile boolean left = false, right = false, middle = false;
 	private Subcurcuit mainCirc = null;
+	private HashMap<UUID, LibFactory> libs = new HashMap<>();
 	
 	public void init() {
 		int bufferSize = Integer.getInteger(Const.query("userInput.buffersize"));
