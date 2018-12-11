@@ -8,5 +8,5 @@ public interface LibFactory {
 	String getFamilyName();
 	String[] getComponentsName();
 	Icon getComponentIcon(String name);
-	LibComponent createComponent();
+	LibComponent createComponent(String name);
 }

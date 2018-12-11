@@ -12,9 +12,9 @@ import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @SuppressWarnings("squid:S1659") // Declaring on the same line
@@ -32,11 +32,16 @@ public class ModelContainer implements RenderCallback {
 	private final Object queueLock = new Object();
 	private volatile ListableAction reserveTopPtr = null, reserveBottomPtr = null;
 	private volatile ListableAction topPtr = null, bottomPtr = null;
+	
 	private final Object pointerLock = new Object();
 	private volatile int posX = 0, posY = 0;
 	private volatile boolean left = false, right = false, middle = false;
+	
 	private Subcurcuit mainCirc = null;
-	private HashMap<UUID, LibFactory> libs = new HashMap<>();
+	private final HashMap<String, LibFactory> libs = new HashMap<>();
+	
+	private final Object newLibsLock = new Object();
+	private final Collection<LibFactory> newLibs = new ArrayList<>();
 	
 	public void init() {
 		int bufferSize = Integer.getInteger(Const.query("userInput.buffersize"));
@@ -64,6 +69,18 @@ public class ModelContainer implements RenderCallback {
 			ListableAction currentAction, listStart;
 			while (running.get()) {
 				Sleeper.sleep();
+				synchronized (newLibsLock) {
+					for (LibFactory lib : newLibs) {
+						libs.put(lib.getFamilyName(), lib);
+						String[] compNames = lib.getComponentsName();
+						for (ViewControllerInterface wci : wcix) {
+							for (String name : compNames) {
+								wci.addSimulationComponentModel(lib.getFamilyName(), name, lib.getComponentIcon(name));
+							}
+						}
+					}
+					newLibs.clear();
+				}
 				synchronized (pointerLock) {
 					if (posX != lastX || posY != lastY) {
 						lastX = posX;
@@ -94,7 +111,7 @@ public class ModelContainer implements RenderCallback {
 				}
 				currentAction = listStart;
 				do {
-					h.userAction(currentAction.type, currentAction.param1, currentAction.param2, currentAction.param3, currentAction.param4);
+					h.userAction(currentAction.source, currentAction.type, currentAction.param1, currentAction.param2, currentAction.param3, currentAction.param4);
 					currentAction = currentAction.next;
 				} while (currentAction.next != null);
 				synchronized (reserveLock) {
@@ -124,7 +141,7 @@ public class ModelContainer implements RenderCallback {
 			}
 			
 			@SuppressWarnings("all")
-			void userAction(UserActionListener.Type type, String param1, String param2, long param3, long param4) {
+			void userAction(ViewControllerInterface source, UserActionListener.Type type, String param1, String param2, long param3, long param4) {
 				switch (type) {
 					case NEW:
 						break;
@@ -133,6 +150,13 @@ public class ModelContainer implements RenderCallback {
 					case SAVE:
 						break;
 					case EXIT:
+						ViewControllerInterface.ExitDialogResult result = source.showExitDialog();
+						if (result.save) {
+							userAction(source, UserActionListener.Type.SAVE, null, null, 0, 0);
+						}
+						if (result.exit) {
+							ModelContainer.this.destroy();
+						}
 						break;
 					case UNDO:
 						break;
@@ -178,6 +202,9 @@ public class ModelContainer implements RenderCallback {
 		modelThread.running.set(false);
 		Sleeper.wake();
 		Helper.join(modelThread);
+		for (ViewControllerInterface wci : wcix) {
+			wci.destroy();
+		}
 	}
 	
 	public void invalidateGraphics(Subcurcuit circ) {
@@ -190,12 +217,16 @@ public class ModelContainer implements RenderCallback {
 	
 	}
 	
+	public void addLibrary(LibFactory lib) {
+	
+	}
+	
 	public RenderCallback getRenderCallback() {
 		return this;
 	}
 	
 	public class UAL implements UserActionListener {
-		@Override public void notify(Type type, String param1, String param2, long param3, long param4) {
+		@Override public void notify(ViewControllerInterface source, Type type, String param1, String param2, long param3, long param4) {
 			ListableAction extracted = null;
 			boolean hasSpace = false;
 			synchronized (reserveLock) {
@@ -268,6 +299,7 @@ public class ModelContainer implements RenderCallback {
 	}
 	
 	private class ListableAction {
+		ViewControllerInterface source;
 		ListableAction next;
 		UserActionListener.Type type;
 		String param1, param2;

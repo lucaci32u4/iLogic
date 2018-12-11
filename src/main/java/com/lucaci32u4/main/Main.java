@@ -64,22 +64,8 @@ public class Main {
 	
 	private void run(String[] args) {
 		model = new ModelContainer();
+		model.init();
 		presentation = new PresentationContainer();
-		model.addViewController(presentation);
+		presentation.init(model);
 	}
 }
-
-
-/*
-
-5+ 1) 1. vita de vie
-2+ 2) 2. paie
-6+ 3) 3. fructe de mare
-1+ 4) 4. apa
-3+ 5) 5. Almanahe
-4+ 6) 6. 0venezuela
-
-
-
-
- */

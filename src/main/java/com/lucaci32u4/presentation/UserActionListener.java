@@ -8,5 +8,5 @@ public interface UserActionListener {
 		ZOOM, START, STOP, PAUSE, SELCOMPMODEL,
 	}
 	
-	void notify(Type type, String param1, String param2, long param3, long param4);
+	void notify(ViewControllerInterface source, Type type, String param1, String param2, long param3, long param4);
 }

@@ -25,6 +25,7 @@ public class PresentationContainer implements ViewControllerInterface {
 		mainWindow = new MainWindow(windowListener);
 		viewportListener = new ViewportListener();
 		viewport.init(mainWindow.getCircuitPanel(), new Java2DSubsystem(), viewportListener, model.getRenderCallback());
+		model.addViewController(this);
 		
 	}
 	
@@ -73,7 +74,7 @@ public class PresentationContainer implements ViewControllerInterface {
 					// TODO: (lucaci32u4, 26/11/18): Saving window
 					break;
 				case EXIT:
-					fwdUal.notify(UserActionListener.Type.EXIT, null, null, 0, 0);
+					fwdUal.notify(PresentationContainer.this, UserActionListener.Type.EXIT, null, null, 0, 0);
 					break;
 				case UNDO:
 					// TODO: (lucaci32u4, 26/11/18): Implement change history remembering
@@ -116,6 +117,16 @@ public class PresentationContainer implements ViewControllerInterface {
 					break;
 			}
 		}
+	}
+	
+	@Override
+	public void destroy() {
+		mainWindow.close();
+	}
+	
+	@Override
+	public ExitDialogResult showExitDialog() {
+		return mainWindow.showExitPopup();
 	}
 	
 	private class ViewportListener implements UserInputListener {

@@ -49,7 +49,6 @@ public class Subcurcuit {
 		if (selecting) {
 			continueSelection(position);
 		}
-		
 	}
 	
 	public void onMainButton(boolean isPressed) {

@@ -48,13 +48,13 @@ public class LogicPin {
     boolean listening;
     private UUID uuid;
     
-    public LogicPin(LogicComponent component) {
+    public LogicPin() {
     	container = null;
     	node = null;
-    	this.component = component;
     	externalState = new Logic(Logic.LOW, false);
     	listening = false;
 	}
+	void setComponent(LogicComponent component) { this.component = component; }
 	void setContainer(LogicContainer container) {
     	this.container = container;
 	}
