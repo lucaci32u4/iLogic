@@ -1,5 +1,6 @@
 package com.lucaci32u4.model.parts;
 
+import com.lucaci32u4.model.CoordinateHelper;
 import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.model.parts.wiring.Connectable;
@@ -14,7 +15,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Component {
 	private final BehaviourSpecification spec;
 	private @Getter long position = 0;
-	private @Getter long dimension = 0;
 	private @Getter boolean ghosting = false;
 	private final AtomicBoolean selected = new AtomicBoolean();
 	private Subcurcuit subcircuit = null;
@@ -32,14 +32,14 @@ public class Component {
 	
 	public void move(long newPosition) {
 		position = newPosition;
-		spec.onChangePosition(newPosition);
+		spec.onChangePosition((int)(newPosition >> CoordinateHelper.SHIFT), (int)(newPosition & CoordinateHelper.Y_MASK));
 		invalidateGraphics();
 	}
 	
 	public void interact(long position, boolean begin, boolean end) {
 		if (begin) selected.set(true);
 		if (end) selected.set(false);
-		spec.onInteractiveClick(position);
+		spec.onInteractiveClick((int)(position >> CoordinateHelper.SHIFT), (int)(position & CoordinateHelper.Y_MASK));
 		invalidateGraphics();
 	}
 	
@@ -54,7 +54,7 @@ public class Component {
 		public static final int STATE_CONFLICT = 3;
 		public static final int STATE_MULTIBIT = 4;
 		private @Setter int state;
-		private @Setter long connectPosiiton;
+		private long connectPosiiton;
 		private final @Getter Component owner;
 		private final @Getter int bitWidth;
 		private final @Getter LogicPin[] pins;
@@ -71,6 +71,10 @@ public class Component {
 			return connectPosiiton;
 		}
 		
+		public void setConnectPosiiton(int x, int y) {
+			connectPosiiton = ((long)y >>> CoordinateHelper.SHIFT) | ((long)y);
+		}
+		
 		@Override public boolean isMutable() {
 			return false;
 		}
@@ -78,9 +82,10 @@ public class Component {
 	
 	public interface BehaviourSpecification {
 		void onAttach(Component componentContainer);
-		void onChangePosition(long position);
-		void onChangeDimension(long dimension);
-		void onInteractiveClick(long position);
+		void onChangePosition(int x, int y);
+		void onChangeDimension(int width, int height);
+		void onInteractiveClick(int x, int y);
 		Termination[] getTerminations();
+		void onDetach();
 	}
 }
