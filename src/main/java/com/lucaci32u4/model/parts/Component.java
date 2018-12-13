@@ -1,6 +1,5 @@
 package com.lucaci32u4.model.parts;
 
-import com.lucaci32u4.model.CoordinateHelper;
 import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.model.parts.wiring.Connectable;
@@ -33,14 +32,14 @@ public class Component {
 	
 	public void move(long newPosition) {
 		position = newPosition;
-		spec.onChangePosition((int)(newPosition >> CoordinateHelper.SHIFT), (int)(newPosition & CoordinateHelper.Y_MASK));
+		spec.onChangePosition(newPosition);
 		invalidateGraphics();
 	}
 	
 	public void interact(long position, boolean begin, boolean end) {
 		if (begin) selected.set(true);
 		if (end) selected.set(false);
-		spec.onInteractiveClick((int)(position >> CoordinateHelper.SHIFT), (int)(position & CoordinateHelper.Y_MASK));
+		spec.onInteractiveClick(position);
 		invalidateGraphics();
 	}
 	
@@ -55,7 +54,7 @@ public class Component {
 		public static final int STATE_CONFLICT = 3;
 		public static final int STATE_MULTIBIT = 4;
 		private @Setter int state;
-		private long connectPosiiton;
+		private @Setter long connectPosiiton;
 		private final @Getter Component owner;
 		private final @Getter int bitWidth;
 		private final @Getter LogicPin[] pins;
@@ -64,13 +63,8 @@ public class Component {
 			this.pins = pins;
 			bitWidth = pins.length;
 		}
-		
 		void render(DrawAPI pencil, boolean attach, boolean detach) {
 		
-		}
-		
-		public void setConnectPosition(int x, int y) {
-			connectPosiiton = ((long)x << CoordinateHelper.SHIFT) | (long)y;
 		}
 		
 		@Override public long getConnectPosition() {
@@ -84,10 +78,9 @@ public class Component {
 	
 	public interface BehaviourSpecification {
 		void onAttach(Component componentContainer);
-		void onChangePosition(int x, int y);
-		void onChangeDimension(int width, int height);
-		void onInteractiveClick(int x, int y);
-		void onDetach();
+		void onChangePosition(long position);
+		void onChangeDimension(long dimension);
+		void onInteractiveClick(long position);
 		Termination[] getTerminations();
 	}
 }

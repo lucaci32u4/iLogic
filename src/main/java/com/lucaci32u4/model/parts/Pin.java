@@ -1,7 +1,6 @@
 package com.lucaci32u4.model.parts;
 
 import com.lucaci32u4.core.LogicPin;
-import com.lucaci32u4.model.CoordinateHelper;
 import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.model.Subcurcuit;
 import org.jetbrains.annotations.NotNull;
@@ -29,15 +28,15 @@ public class Pin extends Component {
 			termArr[0] = termination;
 		}
 		
-		@Override public void onChangePosition(int x, int y) {
-			this.position.set((((long)x) << CoordinateHelper.SHIFT) | ((long)y));
+		@Override public void onChangePosition(long position) {
+			this.position.set(position);
 		}
 		
-		@Override public void onChangeDimension(int width, int height) {
-			this.dimension.set(dimension.get());
+		@Override public void onChangeDimension(long dimension) {
+			this.dimension.set(dimension);
 		}
 		
-		@Override public void onInteractiveClick(int x, int y) {
+		@Override public void onInteractiveClick(long position) {
 			// Nothing: pins do not interact with the user
 		}
 		
@@ -54,12 +53,7 @@ public class Pin extends Component {
 		}
 		
 		public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
-		
-		}
-		
-		@Override
-		public void onDetach() {
-		
+			
 		}
 	}
 }
