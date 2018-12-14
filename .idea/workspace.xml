@@ -10,7 +10,9 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="" />
+    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -176,9 +178,9 @@
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="4" />
-          <entry key="project.open.time.8" value="6" />
+          <entry key="project.open.time.8" value="7" />
           <entry key="project.open.time.9" value="14" />
-          <entry key="project.opened" value="36" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -187,7 +189,7 @@
           <entry key="dummy" value="26" />
           <entry key="gitignore" value="8" />
           <entry key="html" value="66" />
-          <entry key="java" value="32725" />
+          <entry key="java" value="32726" />
           <entry key="properties" value="538" />
           <entry key="txt" value="484" />
           <entry key="xml" value="155" />
@@ -196,7 +198,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="66" />
-          <entry key="JAVA" value="32725" />
+          <entry key="JAVA" value="32726" />
           <entry key="Manifest" value="7" />
           <entry key="PLAIN_TEXT" value="518" />
           <entry key="Properties" value="538" />
@@ -209,7 +211,7 @@
           <entry key="gitignore" value="4" />
           <entry key="html" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="179" />
+          <entry key="java" value="181" />
           <entry key="md" value="1" />
           <entry key="properties" value="11" />
           <entry key="svg" value="1" />
@@ -220,7 +222,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="179" />
+          <entry key="JAVA" value="181" />
           <entry key="Manifest" value="2" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
@@ -233,46 +235,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-374">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="136" column="58" lean-forward="true" selection-start-line="136" selection-start-column="58" selection-end-line="136" selection-end-column="58" />
+            <state relative-caret-position="255">
+              <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3816#3817#0" expanded="true" />
                 <element signature="e#3856#3857#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -391,7 +363,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/UserActionListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Component.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" />
@@ -399,6 +370,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" />
       </list>
     </option>
   </component>
@@ -447,7 +419,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="iLogic" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="iLogic" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -459,6 +441,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -626,17 +609,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="iLogic" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="iLogic" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -645,7 +617,7 @@
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="SearchEverywhereHistoryKey" value="share&#9;ACTION&#9;Github.Share&#10;switch&#9;ACTION&#9;null&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544748618610" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544749627431" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/target/iSignal-0.1-jar-with-dependencies.jar" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -1100,8 +1072,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29264393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29584223" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1113,13 +1086,13 @@
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="3" weight="0.329718" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4989339" weight="0.3275488" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49840087" visible="true" weight="0.3275488" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.3275488" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" sideWeight="0.49946696" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49573562" visible="true" weight="0.27006507" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5042644" side_tool="true" visible="true" weight="0.27006507" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49520257" weight="0.27006507" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50159913" side_tool="true" visible="true" weight="0.3275488" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946696" weight="0.29392624" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3275488" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1194,12 +1167,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java</url>
-          <line>76</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java</url>
           <line>421</line>
@@ -1546,17 +1513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="76" column="8" lean-forward="true" selection-end-line="91" />
-          <folding>
-            <element signature="e#2113#2114#0" expanded="true" />
-            <element signature="e#2162#2163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1567,31 +1523,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-446">
+        <state relative-caret-position="-136">
           <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-          <folding>
-            <element signature="e#2277#2278#0" expanded="true" />
-            <element signature="e#2352#2353#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1602,17 +1544,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        <state relative-caret-position="17">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="136" column="58" lean-forward="true" selection-start-line="136" selection-start-column="58" selection-end-line="136" selection-end-column="58" />
+        <state relative-caret-position="255">
+          <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3816#3817#0" expanded="true" />
