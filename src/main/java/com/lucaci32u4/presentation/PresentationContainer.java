@@ -25,8 +25,7 @@ public class PresentationContainer implements ViewControllerInterface {
 		mainWindow = new MainWindow(windowListener);
 		viewportListener = new ViewportListener();
 		viewport.init(mainWindow.getCircuitPanel(), new Java2DSubsystem(), viewportListener, model.getRenderCallback());
-		model.addViewController(this);
-		
+		mainWindow.setVisible(true);
 	}
 	
 	@Override
@@ -125,7 +124,7 @@ public class PresentationContainer implements ViewControllerInterface {
 	}
 	
 	@Override
-	public ExitDialogResult showExitDialog() {
+	public ViewControllerInterface.ExitDialogResult showExitDialog() {
 		return mainWindow.showExitPopup();
 	}
 	

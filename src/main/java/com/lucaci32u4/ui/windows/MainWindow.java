@@ -30,6 +30,7 @@
 package com.lucaci32u4.ui.windows;
 
 import com.lucaci32u4.main.LanguagePack;
+import com.lucaci32u4.presentation.ViewControllerInterface;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -44,12 +45,6 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainWindow {
-	public interface ExitDialogResult {
-		int EXIT_SAVE = 0b11;
-		int EXIT_DISCARD = 0b10;
-		int EXIT_CANCEL = 0b00;
-	}
-	
 	public interface UserInputListener {
 		enum Type {
 			NEW, OPEN, SAVE, EXPORT, SETTINGS, EXIT, UNDO,
@@ -332,16 +327,20 @@ public class MainWindow {
 		SwingUtilities.invokeLater(() -> frame.setVisible(val));
 	}
 
-	public int showExitPopup() {
+	public ViewControllerInterface.ExitDialogResult showExitPopup() {
 		String[] options = { lang.get("save"), lang.get("discard"), lang.get("cancel") };
+		ViewControllerInterface.ExitDialogResult[] result = { new ViewControllerInterface.ExitDialogResult(true, true),
+				                                              new ViewControllerInterface.ExitDialogResult(false, true),
+				                                              new ViewControllerInterface.ExitDialogResult(false, false)
+		};
 		AtomicInteger nOption = new AtomicInteger(JOptionPane.CLOSED_OPTION);
 		try {
 			SwingUtilities.invokeAndWait(() ->
 					nOption.set(JOptionPane.showOptionDialog(frame, lang.get("exitquestion"), lang.get("confirm"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]))
 			);
-		} catch (Exception e) { e.printStackTrace(); };
+		} catch (Exception e) { e.printStackTrace(); }
 		int n = nOption.get();
-		return (n == 2 || n == JOptionPane.CLOSED_OPTION ? ExitDialogResult.EXIT_CANCEL : (n == 0 ? ExitDialogResult.EXIT_SAVE : ExitDialogResult.EXIT_DISCARD));
+		return result[n];
 	}
 
 	public void close() {

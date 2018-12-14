@@ -44,7 +44,7 @@ public class ModelContainer implements RenderCallback {
 	private final Collection<LibFactory> newLibs = new ArrayList<>();
 	
 	public void init() {
-		int bufferSize = Integer.getInteger(Const.query("userInput.buffersize"));
+		int bufferSize = Integer.parseInt(Const.query("userInput.buffersize"));
 		synchronized (reserveLock) {
 			reserveBottomPtr = new ListableAction();
 			for (int i = 1; i < bufferSize; i++) {
