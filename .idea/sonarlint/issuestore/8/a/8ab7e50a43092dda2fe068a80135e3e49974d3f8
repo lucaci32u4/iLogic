@@ -1,0 +1,16 @@
+
+Nsquid:S1135z"2Complete the task associated to this TODO comment.(¢ÈÌÉùÿÿÿÿ
+V"squid:SwitchLastCaseIsDefaultCheck’""Add a default case to this switch.(Óå¼üÿÿÿÿ
+™squid:S1186Ø"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(±†¸Ë
+Hsquid:S1172Ò"+Remove this unused method parameter "circ".(óÔ‚½ÿÿÿÿÿ
+;squid:S1068}"%Remove this unused "x" private field.(ú¼ÖS
+nsquid:S3776?"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(‡ºÉŸùÿÿÿÿ
+squid:S1186‹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(éĞÇçşÿÿÿÿ
+;squid:S1068}"%Remove this unused "y" private field.(ú¼ÖS
+squid:S1186Ü"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(…÷İ©üÿÿÿÿ
+fsquid:S1450}"PRemove the "y" field and declare it as a local variable in the relevant methods.(ú¼ÖS
+fsquid:S1450}"PRemove the "x" field and declare it as a local variable in the relevant methods.(ú¼ÖS
+squid:S1186ƒ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Òò”ºüÿÿÿÿ
+ssquid:S1450("WRemove the "mainCirc" field and declare it as a local variable in the relevant methods.(‹¤‡Ñıÿÿÿÿ
+squid:S1186‡"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(äê³øÿÿÿÿ
+Hsquid:S1068(",Remove this unused "mainCirc" private field.(‹¤‡Ñıÿÿÿÿ

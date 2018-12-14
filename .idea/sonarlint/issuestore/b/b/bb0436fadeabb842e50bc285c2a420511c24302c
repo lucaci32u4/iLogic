@@ -1,0 +1,11 @@
+
+Bsquid:S1172<"+Remove this unused method parameter "args".(åÔ«
+Bsquid:S1172A"+Remove this unused method parameter "args".(¨¢ƒ“
+?squid:S1148-"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+ksquid:S14508"TRemove the "model" field and declare it as a local variable in the relevant methods.(ËØúì
+T
+squid:S106>"9Replace this use of System.out or System.err by a logger.(¦ßûèùÿÿÿÿ
+rsquid:S14507"[Remove the "presentation" field and declare it as a local variable in the relevant methods.(½ºÚñ
+O
+squid:S106="9Replace this use of System.out or System.err by a logger.(ýëÒÈ
+esquid:UselessImportCheck#"ARemove this unused import 'com.lucaci32u4.ui.windows.MainWindow'.(ªöŽ¯

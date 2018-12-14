@@ -1,0 +1,8 @@
+
+Isquid:S1068"-Remove this unused "component" private field.(•Á‚¼ÿÿÿÿÿ
+vsquid:S1450"ZRemove the "termination" field and declare it as a local variable in the relevant methods.(ÃùýÁúÿÿÿÿ
+tsquid:S1450"XRemove the "component" field and declare it as a local variable in the relevant methods.(•Á‚¼ÿÿÿÿÿ
+˜squid:S11867"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ïÒ¡Ï
+2squid:S1700"Rename field "pinSpec"(ÎÆ×¼øÿÿÿÿ
+Gsquid:S1068"+Remove this unused "pinSpec" private field.(ÎÆ×¼øÿÿÿÿ
+Nsquid:S1135"2Complete the task associated to this TODO comment.(î½óÿÿÿÿÿÿ
