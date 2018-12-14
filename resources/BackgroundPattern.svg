@@ -1,0 +1,11 @@
+<svg width="400.0000000000000" height="400.0000000000000" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>pointFragments</title>
+  <rect id="canvas-bk" x="-1" y="-1" width="402" height="402"  fill="#ffffff"/>
+  <rect id="lefttop" height="25" width="25" y="0" x="0" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
+  <rect id="righttop" height="25" width="25" y="0" x="375" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
+  <rect id="leftbottom" height="25" width="25" y="375" x="0" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
+  <rect id="rightbottom" height="25" width="25" y="375" x="375" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
+ </g>
+</svg>
