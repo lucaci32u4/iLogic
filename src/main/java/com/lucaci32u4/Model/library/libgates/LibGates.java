@@ -101,9 +101,9 @@ class GateAnd implements LibComponent {
 	public void onChangePosition(int x, int y) {
 		posX = x;
 		posY = y;
-		arrayTerminations[0].setConnectPosition(x, y + (height) / 3);
-		arrayTerminations[1].setConnectPosition(x, y + (height * 2) / 3);
-		arrayTerminations[2].setConnectPosition(x + width, y + height / 2);
+		arrayTerminations[0].setConnectPosiiton(x, y + (height) / 3);
+		arrayTerminations[1].setConnectPosiiton(x, y + (height * 2) / 3);
+		arrayTerminations[2].setConnectPosiiton(x + width, y + height / 2);
 	}
 	
 	@Override
