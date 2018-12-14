@@ -1,51 +1,0 @@
-
-Gsquid:EmptyStatementUsageCheckÖ"Remove this empty statement.(¤õ©½
-Gsquid:S1659D"+Declare "bottomToolBar" on a separate line.(Ñäÿÿÿÿÿ
-Csquid:S1659I",Declare "simulationTree" on a separate line.(î“êâ
-Lsquid:S1659K"0Declare "simulationTreeRoot" on a separate line.(ÈŸ¡÷ûÿÿÿÿ
-Bsquid:S1659T"&Declare "menuEdit" on a separate line.(ßİüƒıÿÿÿÿ
-Esquid:S1659T")Declare "menuProject" on a separate line.(ßİüƒıÿÿÿÿ
-Hsquid:S1659T",Declare "menuSimulation" on a separate line.(ßİüƒıÿÿÿÿ
-Dsquid:S1659T"(Declare "menuWindow" on a separate line.(ßİüƒıÿÿÿÿ
-Bsquid:S1659T"&Declare "menuHelp" on a separate line.(ßİüƒıÿÿÿÿ
-@squid:S1659U"$Declare "miOpen" on a separate line.(‚ÿ²•ıÿÿÿÿ
-@squid:S1659U"$Declare "miSave" on a separate line.(‚ÿ²•ıÿÿÿÿ
-Bsquid:S1659U"&Declare "miSaveAs" on a separate line.(‚ÿ²•ıÿÿÿÿ
-Bsquid:S1659U"&Declare "miExport" on a separate line.(‚ÿ²•ıÿÿÿÿ
-Dsquid:S1659U"(Declare "miSettings" on a separate line.(‚ÿ²•ıÿÿÿÿ
-@squid:S1659U"$Declare "miExit" on a separate line.(‚ÿ²•ıÿÿÿÿ
-:squid:S1659X"$Declare "miRedo" on a separate line.(Ç³f
-=squid:S1659X"'Declare "miRedoAll" on a separate line.(Ç³f
-:squid:S1659X"$Declare "miCopy" on a separate line.(Ç³f
-;squid:S1659X"%Declare "miPaste" on a separate line.(Ç³f
-9squid:S1659X"#Declare "miCut" on a separate line.(Ç³f
-<squid:S1659X"&Declare "miDelete" on a separate line.(Ç³f
-?squid:S1659X")Declare "miSelectAll" on a separate line.(Ç³f
-Csquid:S1659X"-Declare "miEditSelection" on a separate line.(Ç³f
-Dsquid:S1659Y"-Declare "miDeleteCircuit" on a separate line.(·ë—”
-@squid:S1659Y")Declare "miLibraries" on a separate line.(·ë—”
->squid:S1659^"'Declare "miMaxmise" on a separate line.(º°ÎÛ
-Dsquid:S1659a"-Declare "miDocumentation" on a separate line.(´³Ã¹
-<squid:S1659a"%Declare "miAbout" on a separate line.(´³Ã¹
-9squid:S1214/""Move constants to a class or enum.(‡ö½…
-osquid:S3776î"RRefactor this method to reduce its Cognitive Complexity from 34 to the 15 allowed.(Ã»è£ùÿÿÿÿ
-Gsquid:S00108˜")Either remove or fill this block of code.(Øéä‘úÿÿÿÿ
-Bsquid:S00108›")Either remove or fill this block of code.(»Í¦Ÿ
-Bsquid:S00108")Either remove or fill this block of code.(ŞÄ¬ê
-Bsquid:S00108Ò")Either remove or fill this block of code.(Âÿ×Í
-Bsquid:S00108Û")Either remove or fill this block of code.(Âÿ×Í
-™squid:S1186ª"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÍÀÁ
-squid:S1186­"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(½Õºšûÿÿÿÿ
-squid:S1186°"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(”ùºşÿÿÿÿ
-squid:S1186³"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(–Õ…Ôşÿÿÿÿ
-™squid:S1186¶"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ê§ç
-squid:S1186¹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(·Œ¤üÿÿÿÿ
-asquid:S3358Ø"DExtract this nested ternary operation into an independent statement.(¦Õ«Ôıÿÿÿÿ
-\squid:S3358Å"DExtract this nested ternary operation into an independent statement.(ÊÛšµ
-\squid:S3358Å"DExtract this nested ternary operation into an independent statement.(ÊÛšµ
-@squid:S1148š"#Use a logger to log this exception.(¢ò¨½şÿÿÿÿ
-;squid:S1148Ö"#Use a logger to log this exception.(¤õ©½
-Esquid:S1948À"(Make "closed" transient or serializable.(îçùùÿÿÿÿ
-Csquid:S1948Á"&Make "open" transient or serializable.(„Š£Æøÿÿÿÿ
-Csquid:S1948Â"&Make "leaf" transient or serializable.(’·ÿ²ùÿÿÿÿ
-fsquid:MaximumInheritanceDepth¿"<This class has 6 parents which is greater than 5 authorized.(ï¾ÜÇ
