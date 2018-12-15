@@ -66,6 +66,6 @@ public class Main {
 		model = new ModelContainer();
 		model.init();
 		presentation = new PresentationContainer();
-		presentation.init(model);
+		model.addViewController(presentation);
 	}
 }

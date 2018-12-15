@@ -218,7 +218,9 @@ public class ModelContainer implements RenderCallback {
 	}
 	
 	public void addLibrary(LibFactory lib) {
-	
+		synchronized (newLibsLock) {
+			newLibs.add(lib);
+		}
 	}
 	
 	public RenderCallback getRenderCallback() {
