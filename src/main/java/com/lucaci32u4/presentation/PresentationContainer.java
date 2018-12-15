@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 
 public class PresentationContainer implements ViewControllerInterface {
+	private final PresentationContainer pThis = this;
 	private ModelContainer model = null;
 	private UserActionListener fwdUal = null;
 	private UserPointerListener fwdUpl = null;
@@ -73,7 +74,7 @@ public class PresentationContainer implements ViewControllerInterface {
 					// TODO: (lucaci32u4, 26/11/18): Saving window
 					break;
 				case EXIT:
-					fwdUal.notify(PresentationContainer.this, UserActionListener.Type.EXIT, null, null, 0, 0);
+					fwdUal.notify(pThis, UserActionListener.Type.EXIT, null, null, 0, 0);
 					break;
 				case UNDO:
 					// TODO: (lucaci32u4, 26/11/18): Implement change history remembering
