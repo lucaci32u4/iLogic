@@ -132,12 +132,16 @@ public class PresentationContainer implements ViewControllerInterface {
 		private boolean[] pressed = new boolean[4];
 		@Override public void mouseButtonEvent(MouseEvent e) {
 			pressed[e.getButton()] = (e.getModifiersEx() & (1 << (9 + e.getButton()))) != 0;
-			if (e.getID() == MouseEvent.MOUSE_PRESSED) fwdUpl.buttonDown(e.getX(), e.getY(), e.getButton());
-			if (e.getID() == MouseEvent.MOUSE_RELEASED) fwdUpl.buttonUp(e.getX(), e.getY(), e.getButton());
+			if (fwdUpl != null) {
+				if (e.getID() == MouseEvent.MOUSE_PRESSED) fwdUpl.buttonDown(e.getX(), e.getY(), e.getButton());
+				if (e.getID() == MouseEvent.MOUSE_RELEASED) fwdUpl.buttonUp(e.getX(), e.getY(), e.getButton());
+			}
 		}
 		
 		@Override public void mouseMotionEvent(MouseEvent e, boolean drag) {
-			fwdUpl.pointerMove(e.getX(), e.getY());
+			if (fwdUpl != null) {
+				fwdUpl.pointerMove(e.getX(), e.getY());
+			}
 		}
 		
 		@Override public void notifyPerimeter(boolean inside) {
