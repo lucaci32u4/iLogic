@@ -110,10 +110,10 @@ public class ModelContainer implements RenderCallback {
 					bottomPtr = null;
 				}
 				currentAction = listStart;
-				do {
+				while (currentAction != null) {
 					h.userAction(currentAction.source, currentAction.type, currentAction.param1, currentAction.param2, currentAction.param3, currentAction.param4);
 					currentAction = currentAction.next;
-				} while (currentAction.next != null);
+				}
 				synchronized (reserveLock) {
 					reserveTopPtr.next = listStart;
 					reserveTopPtr = currentAction;
