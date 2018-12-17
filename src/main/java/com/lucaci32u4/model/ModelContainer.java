@@ -104,6 +104,7 @@ public class ModelContainer implements RenderCallback {
 				if (leftChange) h.mainPointer(lastLeft);
 				if (rightChange) h.secondaryPointer(lastRight);
 				if (midChange) h.auxButton(lastMiddle);
+				posChange = leftChange = rightChange = midChange = false;
 				synchronized (queueLock) {
 					listStart = topPtr;
 					topPtr = null;
@@ -242,6 +243,7 @@ public class ModelContainer implements RenderCallback {
 			}
 			if (hasSpace) {
 				extracted.next = null;
+				extracted.source = source;
 				extracted.type = type;
 				extracted.param1 = param1;
 				extracted.param2 = param2;
