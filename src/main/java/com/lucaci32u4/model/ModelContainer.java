@@ -52,6 +52,7 @@ public class ModelContainer implements RenderCallback {
 				reserveBottomPtr.next = reserveTopPtr;
 			}
 		}
+		modelThread.setName("ModelThread");
 		modelThread.start();
 		mainCirc = new Subcurcuit(this);
 	}
@@ -126,7 +127,6 @@ public class ModelContainer implements RenderCallback {
 			// TODO: Additional cleanup
 		}
 		class Handler {
-			
 			private int x = 0, y = 0;
 			void pointerMoved(int x, int y) {
 				this.x = x;
@@ -219,7 +219,7 @@ public class ModelContainer implements RenderCallback {
 	}
 	
 	@Override public void onDraw(DrawAPI draw, RenderAPI ctrl) {
-	
+		// TODO: drawing
 	}
 	
 	public void addLibrary(LibFactory lib) {
