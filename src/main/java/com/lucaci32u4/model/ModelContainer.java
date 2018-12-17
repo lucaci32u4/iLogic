@@ -126,14 +126,16 @@ public class ModelContainer implements RenderCallback {
 			// TODO: Additional cleanup
 		}
 		class Handler {
+			
 			private int x = 0, y = 0;
 			void pointerMoved(int x, int y) {
 				this.x = x;
 				this.y = y;
+				//mainCirc.onPointer(x, y);
 			}
 			
 			void mainPointer(boolean pressed) {
-			
+				mainCirc.onMainButton(pressed);
 			}
 			
 			void secondaryPointer(boolean pressed) {
