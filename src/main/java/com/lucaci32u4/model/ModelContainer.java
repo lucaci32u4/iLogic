@@ -116,10 +116,13 @@ public class ModelContainer implements RenderCallback {
 				}
 				synchronized (reserveLock) {
 					reserveTopPtr.next = listStart;
-					reserveTopPtr = currentAction;
+					while (reserveTopPtr.next != null) reserveTopPtr = reserveBottomPtr.next;
 				}
 			}
-			// TODO: Cleanup
+			for (ViewControllerInterface wci : wcix) {
+				wci.destroy();
+			}
+			// TODO: Additional cleanup
 		}
 		class Handler {
 			private int x = 0, y = 0;
@@ -201,9 +204,8 @@ public class ModelContainer implements RenderCallback {
 	public void destroy() {
 		modelThread.running.set(false);
 		Sleeper.wake();
-		Helper.join(modelThread);
-		for (ViewControllerInterface wci : wcix) {
-			wci.destroy();
+		if (Thread.currentThread() != modelThread) {
+			Helper.join(modelThread);
 		}
 	}
 	
