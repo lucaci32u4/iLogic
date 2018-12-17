@@ -340,6 +340,7 @@ public class MainWindow {
 			);
 		} catch (Exception e) { e.printStackTrace(); }
 		int n = nOption.get();
+		if (n == JOptionPane.CLOSED_OPTION) n = 2;
 		return result[n];
 	}
 
