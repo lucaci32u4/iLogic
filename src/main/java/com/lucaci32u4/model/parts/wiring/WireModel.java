@@ -14,10 +14,6 @@ import java.util.concurrent.atomic.AtomicLongArray;
 @SuppressWarnings("squid:S1659")
 public class WireModel {
 	private static final long DELTA_WIDTH = Long.parseLong(Const.query("dimensions.wireWidth")) >>> 1;
-	private static final long X_MASK = 0xFFFFFFFF00000000L;
-	private static final long Y_MASK = 0x00000000FFFFFFFFL;
-	private static final long X_SHIFT = 32;
-	private static final long Y_SHIFT = 0;
 	private Subcurcuit subcircuit = null;
 	private int boundsX = 0, boundsY = 0;
 	private int width = 0, height = 0;

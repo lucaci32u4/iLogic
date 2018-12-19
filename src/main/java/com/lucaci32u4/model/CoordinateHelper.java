@@ -2,10 +2,8 @@ package com.lucaci32u4.model;
 
 import org.jetbrains.annotations.Contract;
 
+@SuppressWarnings("squid:S00107")
 public class CoordinateHelper {
-	public static final long X_MASK = 0xFFFFFFFF00000000L;
-	public static final long Y_MASK = 0x00000000FFFFFFFFL;
-	public static final long SHIFT = 32;
 	
 	// LT & RB for Box and LT & RB for Obj
 	@Contract(pure = true)
