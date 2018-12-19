@@ -12,7 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -173,35 +177,36 @@
     <session id="1917661183">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="34" />
+          <entry key="project.closed" value="36" />
           <entry key="project.open.time.10" value="5" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="5" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="7" />
           <entry key="project.open.time.9" value="14" />
-          <entry key="project.opened" value="38" />
+          <entry key="project.opened" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="MF" value="7" />
-          <entry key="dummy" value="26" />
+          <entry key="dummy" value="46" />
           <entry key="gitignore" value="8" />
           <entry key="html" value="66" />
-          <entry key="java" value="33031" />
+          <entry key="java" value="36899" />
           <entry key="properties" value="538" />
-          <entry key="txt" value="609" />
+          <entry key="txt" value="836" />
           <entry key="xml" value="155" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="66" />
-          <entry key="JAVA" value="33031" />
+          <entry key="JAVA" value="36899" />
           <entry key="Manifest" value="7" />
-          <entry key="PLAIN_TEXT" value="643" />
+          <entry key="PLAIN_TEXT" value="890" />
           <entry key="Properties" value="538" />
           <entry key="XML" value="155" />
         </counts>
@@ -212,7 +217,7 @@
           <entry key="gitignore" value="4" />
           <entry key="html" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="187" />
+          <entry key="java" value="201" />
           <entry key="md" value="1" />
           <entry key="properties" value="12" />
           <entry key="svg" value="1" />
@@ -223,7 +228,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="187" />
+          <entry key="JAVA" value="201" />
           <entry key="Manifest" value="2" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
@@ -268,44 +273,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="152" selection-start-line="152" selection-end-line="152" />
+            <state relative-caret-position="1955">
+              <caret line="121" column="17" lean-forward="true" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="127" column="31" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
+            <state relative-caret-position="24">
+              <caret line="67" column="60" lean-forward="true" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
               <folding>
-                <element signature="e#3835#3836#0" expanded="true" />
-                <element signature="e#3875#3876#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#359#391#0" expanded="true" />
+                <element signature="e#830#831#0" expanded="true" />
+                <element signature="e#848#849#0" expanded="true" />
+                <element signature="e#879#880#0" expanded="true" />
+                <element signature="e#897#898#0" expanded="true" />
+                <element signature="e#924#925#0" expanded="true" />
+                <element signature="e#943#944#0" expanded="true" />
+                <element signature="e#971#972#0" expanded="true" />
+                <element signature="e#983#984#0" expanded="true" />
+                <element signature="e#2231#2232#0" expanded="true" />
+                <element signature="e#2262#2263#0" expanded="true" />
+                <element signature="e#2129#2130#0" expanded="true" />
+                <element signature="e#2153#2154#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="338" column="12" lean-forward="true" selection-start-line="338" selection-start-column="12" selection-end-line="338" selection-end-column="12" />
+            <state relative-caret-position="340">
+              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+            <state relative-caret-position="1751">
+              <caret line="112" column="29" lean-forward="true" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#442#474#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -354,6 +371,8 @@
       <find>ual</find>
       <find>ace</find>
       <find>set</find>
+      <find>de</find>
+      <find>ext</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -374,6 +393,7 @@
       <replace>rb</replace>
       <replace>&lt;&lt; X_SHIFT)</replace>
       <replace>max</replace>
+      <replace>sup</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -405,12 +425,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/VisualArtifact.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/Core/LogicContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/Model/parts/Component.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Wire.java" />
         <option value="$PROJECT_DIR$/resources/Constants.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ViewController/ViewControllerInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/LogicViewport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/RenderCallback.java" />
@@ -418,7 +436,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderingSubsystem/Java2D/Java2DSubsystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/Viewport/Renderer/RenderAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/RenderCallback.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/subsystem/java2d/Java2DSubsystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/RenderAPI.java" />
@@ -430,12 +447,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibComponent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" />
       </list>
     </option>
   </component>
@@ -484,6 +504,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="iLogic" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="iLogic" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -656,18 +688,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="iLogic" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="iLogic" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -676,7 +696,7 @@
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="SearchEverywhereHistoryKey" value="share&#9;ACTION&#9;Github.Share&#10;switch&#9;ACTION&#9;null&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544908439420" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545247284742" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -703,7 +723,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.iSignal Debug">
+  <component name="RunManager" selected="Maven.Package">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.lucaci32u4.main.Main" />
       <module name="iSignal" />
@@ -773,41 +793,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00137" summary="Simplified look and feel setter function">
-      <created>1540324617114</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1540324617114</updated>
-    </task>
-    <task id="LOCAL-00138" summary="Updated lombok to the latest version">
-      <created>1540330995442</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1540330995442</updated>
-    </task>
-    <task id="LOCAL-00139" summary="Switched from lombok setters to cascadable setters">
-      <created>1540331062861</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1540331062861</updated>
-    </task>
-    <task id="LOCAL-00140" summary="Added title">
-      <created>1540331078526</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1540331078526</updated>
-    </task>
-    <task id="LOCAL-00141" summary="Added custom drawing and event handling to JTree's">
-      <created>1540335784633</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
-      <option name="project" value="LOCAL" />
-      <updated>1540335784633</updated>
     </task>
     <task id="LOCAL-00142" summary="Updated readme">
       <created>1540405568936</created>
@@ -1117,7 +1102,42 @@
       <option name="project" value="LOCAL" />
       <updated>1544895313916</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="Explicit handling of closing button">
+      <created>1545081128452</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1545081128453</updated>
+    </task>
+    <task id="LOCAL-00187" summary="Window closing code">
+      <created>1545081214357</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1545081214357</updated>
+    </task>
+    <task id="LOCAL-00188" summary="Correct reinitialization of state variables">
+      <created>1545081251206</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1545081251206</updated>
+    </task>
+    <task id="LOCAL-00189" summary="Mouse pointer handling">
+      <created>1545081294999</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1545081294999</updated>
+    </task>
+    <task id="LOCAL-00190" summary="Gave the model thread a name for easier debugging">
+      <created>1545081420687</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1545081420687</updated>
+    </task>
+    <option name="localTasksCounter" value="191" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1130,10 +1150,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="32" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30655527" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3160981" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1145,12 +1165,12 @@
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="3" weight="0.329718" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" weight="0.3270525" />
-      <window_info active="true" anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" visible="true" weight="0.3270525" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" weight="0.26789588" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" weight="0.3264642" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" sideWeight="0.49946696" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49520257" weight="0.26917902" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49520257" weight="0.26898047" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.3275488" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946696" weight="0.29392624" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3275488" />
@@ -1196,11 +1216,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Simplified some code" />
-    <MESSAGE value="Added methods for writing files" />
-    <MESSAGE value="Changed code to use encoding constants" />
-    <MESSAGE value="Removed unused import statements" />
-    <MESSAGE value="Added file separator constant and programatic constants" />
     <MESSAGE value="Replaced some literals with constants" />
     <MESSAGE value="Added fonts" />
     <MESSAGE value="Added support for fonts" />
@@ -1221,7 +1236,12 @@
     <MESSAGE value="First commit after git trouble. Hoping all is ok on master." />
     <MESSAGE value="Checking against null values" />
     <MESSAGE value="Fixed model-presentation link initialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed model-presentation link initialization" />
+    <MESSAGE value="Explicit handling of closing button" />
+    <MESSAGE value="Window closing code" />
+    <MESSAGE value="Correct reinitialization of state variables" />
+    <MESSAGE value="Mouse pointer handling" />
+    <MESSAGE value="Gave the model thread a name for easier debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gave the model thread a name for easier debugging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1233,16 +1253,10 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java</url>
-          <line>335</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java</url>
-          <line>152</line>
+          <line>124</line>
           <properties />
-          <option name="timeStamp" value="22" />
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1301,33 +1315,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="68">
-            <caret line="4" column="97" selection-start-line="4" selection-start-column="97" selection-end-line="4" selection-end-column="97" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iSignal.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1316">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1371,22 +1358,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/UserPointerListener.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/Circuit/CircuitContainer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1401,23 +1374,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Wire.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/VisualArtifact.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/RenderManager.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/RenderCoordinateManager.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/ResourceAPI.java">
@@ -1438,13 +1396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1486,13 +1437,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/ViewControllerInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/UserActionListener.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/misc/Unsafe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="2293" column="23" selection-start-line="2293" selection-start-column="23" selection-end-line="2293" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/RenderCallback.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibFactory.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibComponent.java" />
@@ -1500,13 +1444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1518,13 +1455,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1536,46 +1466,158 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
           <caret line="80" selection-start-line="80" selection-end-line="80" />
-          <folding>
-            <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1623#1624#0" expanded="true" />
-            <element signature="e#3126#3127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="127" column="31" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
-          <folding>
-            <element signature="e#3835#3836#0" expanded="true" />
-            <element signature="e#3875#3876#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="116">
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/concurrent/locks/LockSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="193" selection-start-line="193" selection-end-line="193" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/java/awt/EventQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="565" selection-start-line="565" selection-end-line="565" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/java/awt/EventDispatchThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-115">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="2074" selection-start-line="2074" selection-end-line="2074" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/misc/Unsafe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="2293" column="23" selection-start-line="2293" selection-start-column="23" selection-end-line="2293" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="338" column="12" lean-forward="true" selection-start-line="338" selection-start-column="12" selection-end-line="338" selection-end-column="12" />
+        <state relative-caret-position="2500">
+          <caret line="337" column="46" lean-forward="true" selection-start-line="337" selection-start-column="46" selection-end-line="337" selection-end-column="46" />
+          <folding>
+            <element signature="e#17604#17605#0" expanded="true" />
+            <element signature="e#17671#17672#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="152" selection-start-line="152" selection-end-line="152" />
+        <state relative-caret-position="408">
+          <caret line="54" column="43" lean-forward="true" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+          <folding>
+            <element signature="e#4231#4232#0" expanded="true" />
+            <element signature="e#4272#4273#0" expanded="true" />
+            <element signature="e#6400#6401#0" expanded="true" />
+            <element signature="e#6418#6419#0" expanded="true" />
+            <element signature="e#7615#7616#0" expanded="true" />
+            <element signature="e#7651#7652#0" expanded="true" />
+            <element signature="e#7677#7678#0" expanded="true" />
+            <element signature="e#7699#7700#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1751">
+          <caret line="112" column="29" lean-forward="true" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
+          <folding>
+            <element signature="e#442#474#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="121" column="17" lean-forward="true" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="67" column="60" lean-forward="true" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#359#391#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+            <element signature="e#848#849#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#943#944#0" expanded="true" />
+            <element signature="e#971#972#0" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#2231#2232#0" expanded="true" />
+            <element signature="e#2262#2263#0" expanded="true" />
+            <element signature="e#2129#2130#0" expanded="true" />
+            <element signature="e#2153#2154#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

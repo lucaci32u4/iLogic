@@ -14,14 +14,14 @@ public class Subcurcuit {
 	private final ModelContainer mdl;
 	
 	// Pointer data
-	private long pos = 0;
+	private int pointerX, pointerY;
 	private boolean editMode = false;
 	
 	// Selection data
 	private boolean hasSelection = false;
 	private boolean selecting = false;
 	private boolean area = false;
-	private long selEnd1 = 0, selEnd2 = 0;
+	private int selX1 = 0, selX2 = 0, selY1 = 0, selY2 = 0;
 	private Collection<Object> selObjects = new ArrayList<>();
 	
 	// Interact data
@@ -36,62 +36,65 @@ public class Subcurcuit {
 	public void setPointerMode(boolean edit) {
 		editMode = edit;
 		if (interacting) {
-			interact(pos, false, true);
+			interact(pointerX, pointerY, false, true);
 		}
 	}
 	
-	public void onPointer(long position) {
-		pos = position;
+	public void onPointer(int x, int y) {
+		pointerX = x;
+		pointerY = y;
 		if (interacting) {
-			interact(position, false, false);
+			interact(x, y, false, false);
 		}
 		if (selecting) {
-			continueSelection(position);
+			continueSelection(x, y);
 		}
 	}
 	
 	public void onMainButton(boolean isPressed) {
 		if (editMode) {
 			if (isPressed) {
-				beginSelection(pos);
+				beginSelection(pointerX, pointerY);
 			} else {
-				endSelection(pos);
+				endSelection(pointerX, pointerY);
 			}
 			selecting = isPressed;
 		} else {
-			interact(pos, isPressed, !isPressed);
+			interact(pointerX, pointerY, isPressed, !isPressed);
 		}
 	}
 	
-	private void beginSelection(long begin) {
-		selEnd1 = begin;
+	private void beginSelection(int x, int y) {
+		selX1 = x;
+		selY1 = y;
 		area = false;
 		hasSelection = false;
-		continueSelection(begin);
+		continueSelection(x, y);
 	}
 	
-	private void continueSelection(long where) {
-		selEnd2 = where;
-		if (selEnd1 != selEnd2 && !area) area = true;
+	private void continueSelection(int x, int y) {
+		selX2 = x;
+		selY2 = y;
+		if (selX1 != selX2 && selY1 != selY2 && !area) area = true;
 		if (area) {
 			deselectAll();
 			selObjects.clear();
 			for (Component component : components) {
-				if (CoordinateHelper.intersectDimension(selEnd1, selEnd2, component.getPosition(), component.getDimension())) {
+				if (CoordinateHelper.intersectDimension(selX1, selY1, selX2, selY2, component.getPositionX(), component.getPositionY(), component.getWidth(), component.getHeight())) {
 					selObjects.add(component);
 					component.select(true);
 				}
 			}
 			for (WireModel wire : wires) {
-				if (wire.selectArea(selEnd1, selEnd2)) {
+				if (wire.selectArea(selX1, selY1, selX2, selY2)) {
 					selObjects.add(wire);
 				}
 			}
 		}
 	}
 	
-	private void endSelection(long end) {
-		continueSelection(end);
+	private void endSelection(int x, int y) {
+		continueSelection(x, y);
 		hasSelection = !selObjects.isEmpty();
 		selecting = false;
 	}
@@ -109,11 +112,11 @@ public class Subcurcuit {
 		}
 	}
 	
-	private void interact(long pos, boolean begin, boolean end) {
+	private void interact(int x, int y, boolean begin, boolean end) {
 		if (begin) {
 			interactObj = null;
 			for (Component component : components) {
-				if (CoordinateHelper.inside(pos, component.getPosition(), component.getDimension())) {
+				if (CoordinateHelper.inside(x, y, component.getPositionX(), component.getPositionY(), component.getWidth(), component.getHeight())) {
 					interactObj = component;
 					break;
 				}
@@ -122,7 +125,7 @@ public class Subcurcuit {
 		}
 		if (interacting) {
 			if (interactObj instanceof Component) {
-				((Component) interactObj).interact(pos, begin, end);
+				((Component) interactObj).interact(x, y, begin, end);
 			}
 		}
 		if (end) {
@@ -134,6 +137,5 @@ public class Subcurcuit {
 	public void invalidateGraphics() {
 		mdl.invalidateGraphics(this);
 	}
-	
 	
 }

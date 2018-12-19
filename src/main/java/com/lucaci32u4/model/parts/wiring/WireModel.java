@@ -1,14 +1,17 @@
 package com.lucaci32u4.model.parts.wiring;
 
+import com.lucaci32u4.model.CoordinateHelper;
 import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicLongArray;
 
+@SuppressWarnings("squid:S1659")
 public class WireModel {
 	private static final long DELTA_WIDTH = Long.parseLong(Const.query("dimensions.wireWidth")) >>> 1;
 	private static final long X_MASK = 0xFFFFFFFF00000000L;
@@ -16,10 +19,12 @@ public class WireModel {
 	private static final long X_SHIFT = 32;
 	private static final long Y_SHIFT = 0;
 	private Subcurcuit subcircuit = null;
-	private final AtomicLong boundsPosition = new AtomicLong();
-	private final AtomicLong boundsDimension = new AtomicLong();
-	private volatile AtomicLongArray wiresPos1 = new AtomicLongArray(0);
-	private volatile AtomicLongArray wiresPos2 = new AtomicLongArray(0);
+	private int boundsX = 0, boundsY = 0;
+	private int width = 0, height = 0;
+	private volatile AtomicIntegerArray wiresPos1X = new AtomicIntegerArray(0);
+	private volatile AtomicIntegerArray wiresPos2X = new AtomicIntegerArray(0);
+	private volatile AtomicIntegerArray wiresPos1Y = new AtomicIntegerArray(0);
+	private volatile AtomicIntegerArray wiresPos2Y = new AtomicIntegerArray(0);
 	private volatile ArrayList<Integer> selected = new ArrayList<>();
 	private boolean isAreaSelecting = false;
 	
@@ -27,21 +32,22 @@ public class WireModel {
 	private volatile boolean expanding = false;
 	private boolean hasDirection = false;
 	private boolean dirVertical = false;
-	private long begin = 0;
+	private int beginX = 0, beginY = 0;
 	private volatile int extensionCount = 0;
-	private volatile long ext1 = 0;
-	private volatile long ext2 = 0;
-	private volatile long sup1 = 0;
-	private volatile long sup2 = 0;
+	private int ext1X = 0, ext1Y = 0, ext2X = 0, ext2Y = 0;
+	private int sup1X = 0, sup1Y = 0, sup2X = 0, sup2Y = 0;
 	
 	
 	public void attach(Subcurcuit subcircuit) {
 		this.subcircuit = subcircuit;
-		if (wiresPos1.length() != 0) subcircuit.invalidateGraphics();
+		if (wiresPos1X.length() != 0) subcircuit.invalidateGraphics();
 	}
 	
-	public boolean selectArea(long lt, long rb) {
-		isAreaSelecting = pickAt(lt, rb, true) != 0;
+	public boolean selectArea(int l, int t, int r, int b) {
+		int aux = 0;
+		if (l > r) { aux = l; l = r; r = aux; }
+		if (t > b) { aux = t; t = b; b = aux; }
+		isAreaSelecting = pickAt(l, t, r, b, true) != 0;
 		if (isAreaSelecting) subcircuit.invalidateGraphics();
 		return isAreaSelecting;
 	}
@@ -51,8 +57,8 @@ public class WireModel {
 		subcircuit.invalidateGraphics();
 	}
 	
-	public boolean select(long pos) {
-		boolean hasSelected = pickAt(pos, pos, false) != 0;
+	public boolean select(int x, int y) {
+		boolean hasSelected = pickAt(x, y, x, y, false) != 0;
 		if (hasSelected) subcircuit.invalidateGraphics();
 		return hasSelected;
 	}
@@ -62,35 +68,43 @@ public class WireModel {
 		selected = new ArrayList<>();
 	}
 	
-	public void beginExpand(long beginPos) {
+	public void beginExpand(int x, int y) {
 		expanding = true;
 		hasDirection = false;
-		begin = beginPos;
+		beginX = x;
+		beginY = y;
 	}
 	
-	public void continueExpand(long pos) {
+	public void continueExpand(int x, int y) {
 		if (!hasDirection) {
-			dirVertical = (pos << X_SHIFT) == (begin << X_SHIFT);
+			dirVertical = beginX == x;
 			hasDirection = true;
 		}
-		ext1 = begin;
+		ext1X = beginX;
+		ext1Y = beginY;
 		extensionCount = 0;
-		if (pos != begin) {
+		if (x != beginX || y != beginY) {
 			extensionCount = 1;
-			if ((pos << X_SHIFT) != (begin << X_SHIFT) && (pos << Y_SHIFT) != (begin << Y_SHIFT)) {
+			if (x != beginX && y != beginY) {
 				extensionCount = 2;
 			}
 			if (dirVertical) {
-				ext2 = (ext1 & X_MASK) | (pos & Y_MASK);
+				ext2X = ext1X;
+				ext2Y = y;
 				if (extensionCount == 2) {
-					sup1 = ext2;
-					sup2 = (sup1 & Y_MASK) | (pos & X_MASK);
+					sup1X = ext2X;
+					sup1Y = ext2Y;
+					sup2X = x;
+					sup2Y = sup1Y;
 				}
 			} else {
-				ext2 = (ext1 & Y_MASK) | (pos & X_MASK);
+				ext2X = x;
+				ext2Y = ext1Y;
 				if (extensionCount == 2) {
-					sup1 = ext2;
-					sup2 = (sup1 & X_MASK) | (pos & Y_MASK);
+					sup1X = ext2X;
+					sup1Y = ext2Y;
+					sup2X = sup1X;
+					sup2Y = y;
 				}
 			}
 		}
@@ -98,76 +112,83 @@ public class WireModel {
 	
 	public void endExpand() {
 		expanding = false;
-		AtomicLongArray old1 = wiresPos1;
-		AtomicLongArray old2 = wiresPos2;
-		int oldLength = old1.length();
+		AtomicIntegerArray old1X = wiresPos1X, old1Y = wiresPos1Y, old2X = wiresPos2X, old2Y = wiresPos2Y;
+		int oldLength = old1X.length();
 		int newLength = oldLength + extensionCount;
 		if (extensionCount != 0) {
-			wiresPos1 = new AtomicLongArray(newLength);
-			wiresPos2 = new AtomicLongArray(newLength);
+			wiresPos1X = new AtomicIntegerArray(newLength);
+			wiresPos1Y = new AtomicIntegerArray(newLength);
+			wiresPos2X = new AtomicIntegerArray(newLength);
+			wiresPos2Y = new AtomicIntegerArray(newLength);
 			for (int i = 0; i < oldLength; i++) {
-				wiresPos1.set(i, old1.get(i));
-				wiresPos2.set(i, old2.get(i));
+				wiresPos1X.set(i, old1X.get(i));
+				wiresPos1Y.set(i, old1Y.get(i));
+				wiresPos2X.set(i, old2X.get(i));
+				wiresPos2Y.set(i, old2Y.get(i));
 			}
 			if (extensionCount >= 1) {
-				wiresPos1.set(oldLength, ext1);
-				wiresPos2.set(oldLength, ext2);
+				if (ext1X > ext2X) { ext1X ^= ext2X ^= ext1X ^= ext2X; }
+				else if (ext1Y > ext2Y) { ext1Y ^= ext2Y ^= ext1Y ^= ext2Y; }
+				wiresPos1X.set(oldLength, ext1X);
+				wiresPos1Y.set(oldLength, ext1Y);
+				wiresPos2X.set(oldLength, ext2X);
+				wiresPos2Y.set(oldLength, ext2Y);
 			}
 			if (extensionCount >= 2) {
-				wiresPos1.set(oldLength + 1, sup1);
-				wiresPos2.set(oldLength + 1, sup2);
+				if (sup1X > sup2X) { sup1X ^= sup2X ^= sup1X ^= sup2X; }
+				else if (sup1Y > sup2Y) { sup1Y ^= sup2Y ^= sup1Y ^= sup2Y; }
+				wiresPos1X.set(oldLength + 1, sup1X);
+				wiresPos1Y.set(oldLength + 1, sup1Y);
+				wiresPos2X.set(oldLength + 1, sup2X);
+				wiresPos2Y.set(oldLength + 1, sup2Y);
 			}
-			long left = Math.min(boundsPosition.get() & X_MASK, Math.min(ext2 & X_MASK, ext1 & X_MASK));
-			long top = Math.min(boundsPosition.get() << X_SHIFT, Math.min(ext2 << X_SHIFT, ext1 << X_SHIFT));
-			long right = Math.max(boundsPosition.get() & X_MASK, Math.max(ext2 & X_MASK, ext1 & X_MASK));
-			long bottom = Math.max(boundsPosition.get() << X_SHIFT, Math.max(ext2 << X_SHIFT, ext1 << X_SHIFT));
+			int left = Math.min(boundsX, ext1X);
+			int top = Math.min(boundsY, ext1Y);
+			int right = Math.max(boundsX + width, ext2X);
+			int bottom = Math.max(boundsY + height, ext2Y);
 			if (extensionCount >= 2) {
-				left = Math.min(left, Math.min(sup1 & X_MASK, sup2 & X_MASK));
-				top = Math.min(top, Math.min(sup1 << X_SHIFT, sup2 << X_SHIFT));
-				right = Math.max(right, Math.max(sup1 & X_MASK, sup2 & X_MASK));
-				bottom = Math.max(bottom, Math.max(sup1 << X_SHIFT, sup2 << X_SHIFT));
+				left = Math.min(left, sup1X);
+				top = Math.min(top, sup1Y);
+				right = Math.max(right, sup2X);
+				bottom = Math.max(bottom, sup2Y);
 			}
-			right -= left;
-			bottom -= top;
-			right = right >>> X_SHIFT;
-			bottom = bottom >>> X_SHIFT;
-			boundsPosition.set(left | top);
-			boundsPosition.set(right | bottom);
+			boundsX = left;
+			boundsY = top;
+			width = right - left;
+			height = top - bottom;
 		}
 	}
 	
 	@SuppressWarnings("all")
-	private int pickAt(long lt, long rb, boolean area) {
-		final int length = wiresPos1.length();
-		long end1;
-		long end2;
-		long aux;
+	private int pickAt(int l, int t, int r, int b, boolean area) {
+		final int length = wiresPos1X.length();
+		int end1X = 0, end1Y = 0;
+		int end2X = 0, end2Y = 0;
+		int aux;
 		for (int i = 0; i < length; i++) {
-			end1 = wiresPos1.get(i);
-			end2 = wiresPos2.get(i);
-			
-			if ((X_MASK & (~(end1 ^ end2))) == X_MASK) {
-				if (end1 < end2) { aux = end1; end1 = end2; end2 = aux; }
-				end1 -= (DELTA_WIDTH) << X_SHIFT; // make LT
-				end2 += (DELTA_WIDTH) << X_SHIFT; // make RB
-			}
-			if ((Y_MASK & (~(end1 ^ end2))) == Y_MASK) {
-				if (end1 > end2) { aux = end1; end1 = end2; end2 = aux; }
-				// TODO: Not good. Does not work with two's complement!
-				end1 += (DELTA_WIDTH) << Y_SHIFT; // make LT
-				end2 -= (DELTA_WIDTH) << Y_SHIFT; // make RB
+			end1X = wiresPos1X.get(i);
+			end1Y = wiresPos1Y.get(i);
+			end2X = wiresPos2Y.get(i);
+			end2Y = wiresPos2X.get(i);
+			if (end1X == end2X) {
+				if (end1Y < end2Y) { aux = end1Y; end1Y = end2Y; end2Y = aux; }
+				end1X -= DELTA_WIDTH; // make LT
+				end2X += DELTA_WIDTH; // make RB
+			} else if (end1Y == end2Y) {
+				if (end1X > end2Y) { aux = end1X; end1X = end2X; end2X = aux; }
+				end1Y += DELTA_WIDTH; // make LT
+				end2Y -= DELTA_WIDTH; // make RB
+			} else {
+				// Broken coordinates!
 			}
 			if (area) {
-				aux = end1; end1 = lt; lt = aux;
-				aux = end2; end2 = rb; rb = aux;
-			} 
-			if ((end1 & X_MASK) >= (lt & X_MASK) && (lt & X_MASK) >= (end1 & X_MASK)) if (((end1 & Y_MASK) << X_SHIFT) >= ((lt & Y_MASK) << X_SHIFT) && ((lt & Y_MASK) << X_SHIFT) >= ((end2 & Y_MASK) << X_SHIFT)) {
-				if (area) {
-					if ((end1 & X_MASK) >= (rb & X_MASK) && (rb & X_MASK) >= (end1 & X_MASK)) if (((end1 & Y_MASK) << X_SHIFT) >= ((lt & Y_MASK) << X_SHIFT) && ((lt & Y_MASK) << X_SHIFT) >= ((end2 & Y_MASK) << X_SHIFT)) {
-						selected.add(i);
-					}
-				} else {
+				if (CoordinateHelper.intersectRect(l, t, r, b, end1X, end1Y, end2X, end2Y)) {
 					selected.add(i);
+				}
+			} else {
+				if (CoordinateHelper.intersectRect(end1X, end1Y, end2X, end2Y, l, t, r, b)) {
+					selected.add(i);
+					break;
 				}
 			}
 		}
@@ -176,41 +197,35 @@ public class WireModel {
 	
 	private boolean[] drawMemory = null;
 	public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
-		AtomicLongArray w1 = wiresPos1;
-		AtomicLongArray w2 = wiresPos2;
+		AtomicIntegerArray w1x = wiresPos1X;
+		AtomicIntegerArray w1y = wiresPos1Y;
+		AtomicIntegerArray w2x = wiresPos2X;
+		AtomicIntegerArray w2y = wiresPos2Y;
 		ArrayList<Integer> select = selected;
-		int length = w1.length();
+		int length = w1x.length();
 		if (attach) {
 			drawMemory = new boolean[length];
 		}
-		if (drawMemory.length != w1.length()) {
+		if (drawMemory.length != length) {
 			drawMemory = new boolean[length];
 		}
 		for (int index : select) {
 			drawMemory[index] = true;
 		}
 		for (int i = 0; i < length; i++) {
-			drawWire(graphics, w1.get(i), w2.get(i), drawMemory[i], false);
+			drawWire(graphics, w1x.get(i), w1y.get(i), w2x.get(i), w2y.get(i), drawMemory[i], false);
 			drawMemory[i] = false;
 		}
 		if (expanding) {
-			if (extensionCount >= 1) drawWire(graphics, ext1, ext2, false, true);
-			if (extensionCount >= 2) drawWire(graphics, sup1, sup2, false, true);
+			if (extensionCount >= 1) drawWire(graphics, ext1X, ext1Y, ext2X, ext2Y, false, true);
+			if (extensionCount >= 2) drawWire(graphics, sup1X, sup1Y, sup2X, sup2Y, false, true);
 		}
 		if (detach) {
 			drawMemory = null;
 		}
 	}
 	
-	private void drawWire(DrawAPI graphics, long end1, long end2, boolean selected, boolean extension) {
+	private void drawWire(DrawAPI graphics, int fromX, int fromY, int toX, int toY, boolean selected, boolean extension) {
 		// TODO: Wire drawing code
-	}
-	
-	public long getPosition() {
-		return boundsPosition.get();
-	}
-	
-	public long getDimension() {
-		return boundsDimension.get();
 	}
 }
