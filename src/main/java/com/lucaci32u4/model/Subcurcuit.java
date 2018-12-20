@@ -3,14 +3,15 @@ package com.lucaci32u4.model;
 import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.model.parts.wiring.WireModel;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 
 
 public class Subcurcuit {
 	
-	private Collection<Component> components;
-	private Collection<WireModel> wires;
+	private Collection<Component> components = new ArrayDeque<>();
+	private Collection<WireModel> wires = new ArrayDeque<>();
 	private final ModelContainer mdl;
 	
 	// Pointer data
@@ -21,8 +22,8 @@ public class Subcurcuit {
 	private boolean hasSelection = false;
 	private boolean selecting = false;
 	private boolean area = false;
-	private int selX1 = 0, selX2 = 0, selY1 = 0, selY2 = 0;
-	private Collection<Object> selObjects = new ArrayList<>();
+	private int selX1 = 0, selY1 = 0;
+	private Collection<Object> selObjects = new ArrayDeque<>();
 	
 	// Interact data
 	private boolean interacting = false;
@@ -73,8 +74,8 @@ public class Subcurcuit {
 	}
 	
 	private void continueSelection(int x, int y) {
-		selX2 = x;
-		selY2 = y;
+		int selX2 = x;
+		int selY2 = y;
 		if (selX1 != selX2 && selY1 != selY2 && !area) area = true;
 		if (area) {
 			deselectAll();
