@@ -10,6 +10,8 @@ import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
+import com.sun.tools.javac.util.ArrayUtils;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -36,9 +38,13 @@ public class ModelContainer implements RenderCallback {
 	private final Object pointerLock = new Object();
 	private volatile int posX = 0, posY = 0;
 	private volatile boolean left = false, right = false, middle = false;
+	private volatile boolean inside = false;
 	
 	private Subcurcuit mainCirc = null;
 	private final HashMap<String, LibFactory> libs = new HashMap<>();
+	private LibFactory currentPlaceFactory = null;
+	private String currentPlaceModel = null;
+	private boolean ghosting = false;
 	
 	private final Object newLibsLock = new Object();
 	private final Collection<LibFactory> newLibs = new ArrayList<>();
@@ -63,6 +69,7 @@ public class ModelContainer implements RenderCallback {
 		Handler h = new Handler();
 		@Override public void run() {
 			boolean lastLeft = false, lastRight = false, lastMiddle = false;
+			boolean lastInside = false;
 			boolean posChange = false;
 			boolean leftChange = false;
 			boolean rightChange = false;
@@ -87,6 +94,22 @@ public class ModelContainer implements RenderCallback {
 						lastX = posX;
 						lastY = posY;
 						posChange = true;
+					}
+					if (inside != lastInside) {
+						inside = lastInside;
+						if (currentPlaceFactory != null && currentPlaceModel != null) {
+							if (lastInside) {
+								mainCirc.addNewGhostComponent(currentPlaceFactory, currentPlaceModel, posX, posY);
+								mainCirc.setGhostingVisibility(true);
+								currentPlaceFactory = null;
+								currentPlaceModel = null;
+								ghosting = true;
+							} else {
+								if (ghosting) {
+									mainCirc.setGhostingVisibility(false);
+								}
+							}
+						}
 					}
 					if (lastLeft != left) {
 						lastLeft = left;
@@ -189,6 +212,20 @@ public class ModelContainer implements RenderCallback {
 					case PAUSE:
 						break;
 					case SELCOMPMODEL:
+						System.out.println("==============================COMPONENT===================MODEL=======" + param1 + param2);
+						currentPlaceFactory = libs.get(param1);
+						if (currentPlaceFactory != null) {
+							String[] possibleModels = currentPlaceFactory.getComponentsName();
+							for (String model : possibleModels) {
+								if (model.equals(param2)) {
+									possibleModels = null;
+									break;
+								}
+							}
+							if (possibleModels == null) {
+								currentPlaceModel = param2;
+							} else throw new IllegalArgumentException();
+						}
 						break;
 				}
 			}
@@ -276,6 +313,10 @@ public class ModelContainer implements RenderCallback {
 			mkMask(x, y, -1, false);
 		}
 		
+		@Override public void perimeter(boolean inside) {
+			ModelContainer.this.inside = inside;
+		}
+		
 		private void mkMask(int x, int y, int button, boolean pressed) {
 			synchronized (pointerLock) {
 				posX = x;
@@ -290,6 +331,8 @@ public class ModelContainer implements RenderCallback {
 					case 3:
 						middle = pressed;
 						break;
+					default:
+						throw new IllegalArgumentException();
 				}
 			}
 			Sleeper.wake();

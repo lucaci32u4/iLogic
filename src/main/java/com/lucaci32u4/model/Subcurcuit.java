@@ -1,5 +1,7 @@
 package com.lucaci32u4.model;
 
+import com.lucaci32u4.model.library.LibComponent;
+import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.model.parts.wiring.WireModel;
 
@@ -24,6 +26,8 @@ public class Subcurcuit {
 	private boolean area = false;
 	private int selX1 = 0, selY1 = 0;
 	private Collection<Object> selObjects = new ArrayDeque<>();
+	private LibComponent ghost;
+	private boolean ghostingVisibility = false;
 	
 	// Interact data
 	private boolean interacting = false;
@@ -44,11 +48,15 @@ public class Subcurcuit {
 	public void onPointer(int x, int y) {
 		pointerX = x;
 		pointerY = y;
-		if (interacting) {
-			interact(x, y, false, false);
-		}
-		if (selecting) {
-			continueSelection(x, y);
+		if (ghost == null) {
+			if (interacting) {
+				interact(x, y, false, false);
+			}
+			if (selecting) {
+				continueSelection(x, y);
+			}
+		} else {
+			ghost.onChangePosition(x, y);
 		}
 	}
 	
@@ -133,6 +141,16 @@ public class Subcurcuit {
 			interacting = false;
 			interactObj = null;
 		}
+	}
+	
+	public void addNewGhostComponent(LibFactory factory, String name, int enterX, int enterY) {
+		ghost = factory.createComponent(name);
+		ghost.onChangePosition(enterX, enterY);
+	}
+	
+	public void setGhostingVisibility(boolean visibility) {
+		ghostingVisibility = visibility;
+		invalidateGraphics();
 	}
 	
 	public void invalidateGraphics() {

@@ -156,6 +156,7 @@ public class PresentationContainer implements ViewControllerInterface {
 			for (int i = 1; i < 4; i++) {
 				pressed[i] = inside;
 			}
+			fwdUpl.perimeter(inside);
 		}
 	}
 }
