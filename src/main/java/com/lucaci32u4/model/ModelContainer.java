@@ -226,6 +226,7 @@ public class ModelContainer implements RenderCallback {
 		synchronized (newLibsLock) {
 			newLibs.add(lib);
 		}
+		Sleeper.wake();
 	}
 	
 	public RenderCallback getRenderCallback() {

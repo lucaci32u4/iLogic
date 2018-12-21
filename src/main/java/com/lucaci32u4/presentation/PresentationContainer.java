@@ -5,6 +5,8 @@ import com.lucaci32u4.ui.viewport.LogicViewport;
 import com.lucaci32u4.ui.viewport.UserInputListener;
 import com.lucaci32u4.ui.viewport.renderer.subsystem.java2d.Java2DSubsystem;
 import com.lucaci32u4.ui.windows.MainWindow;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -30,13 +32,13 @@ public class PresentationContainer implements ViewControllerInterface {
 	}
 	
 	@Override
-	public void addSimulationComponentModel(String family, String name, Icon icon) {
-	
+	public void addSimulationComponentModel(@NotNull String family, @NotNull String name, @Nullable Icon icon) {
+		mainWindow.addComponentSelectionEntry(family, name, icon);
 	}
 	
 	@Override
-	public void removeSimulationComponentModel(String family, String name) {
-	
+	public void removeSimulationComponentModel(@NotNull String family, @NotNull String name) {
+		mainWindow.removeComponentSelectionEntry(family, name);
 	}
 	
 	@Override
@@ -56,7 +58,7 @@ public class PresentationContainer implements ViewControllerInterface {
 	
 	@SuppressWarnings({"squid:S1871", "squid:S1135"}) // Identical switch cases
 	private class MainWindowListener implements MainWindow.UserInputListener {
-		@Override public void onUserEvent(Type subject, int param1, String param2) {
+		@Override public void onUserEvent(Type subject, String param1, String param2) {
 			switch (subject) {
 				case NEW:
 					// TODO: (lucaci32u4, 26/11/18): Implement save mechanism
@@ -115,6 +117,11 @@ public class PresentationContainer implements ViewControllerInterface {
 				case ACTIVESIMULATION:
 					// TODO: (lucaci32u4, 26/11/18): Implement simulation status
 					break;
+				case PLACECOMPSEL:
+					fwdUal.notify(pThis, UserActionListener.Type.SELCOMPMODEL, param1, param2, 0, 0);
+					break;
+				default:
+					throw new IllegalArgumentException();
 			}
 		}
 	}

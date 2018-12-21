@@ -7,6 +7,8 @@ import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
+import com.lucaci32u4.ui.viewport.renderer.brush.OutlineBrush;
 
 import javax.swing.*;
 import java.util.UUID;
@@ -49,6 +51,8 @@ public class LibGates implements LibFactory {
 				return null;
 		}
 	}
+	
+	private static Brush gateOutlineBrush = null;
 }
 
 class GateAnd implements LibComponent {

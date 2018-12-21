@@ -31,6 +31,9 @@ package com.lucaci32u4.ui.windows;
 
 import com.lucaci32u4.main.LanguagePack;
 import com.lucaci32u4.presentation.ViewControllerInterface;
+import lombok.Getter;
+import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -41,6 +44,8 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayDeque;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -50,9 +55,9 @@ public class MainWindow {
 			NEW, OPEN, SAVE, EXPORT, SETTINGS, EXIT, UNDO,
 			REDO, COPY, PASTE, DELETE, SELECTALL, EDITSEL,
 			NEWCIRCUIT, DELETECIRCUIT, LIBRARIES, STARTSTOP,
-			RESET, ACTIVESIMULATION,
+			RESET, ACTIVESIMULATION, PLACECOMPSEL,
 		}
-		void onUserEvent(Type subject, int param1, String param2);
+		void onUserEvent(Type subject, String param1, String param2);
 	}
 
 	private LanguagePack lang;
@@ -73,6 +78,18 @@ public class MainWindow {
 	private JPanel propertiesPanel;
 	private MenuEventHandler menuEventHandler;
 	private WindowEventHandler windowEventHandler;
+	
+	// Components tree
+	private static class ComponentSelection {
+		private @Getter @Setter String family;
+		private @Getter @Setter String name;
+		private @Getter @Setter Icon icon;
+		@Override public String toString() {
+			return name;
+		}
+	}
+	private Collection<DefaultMutableTreeNode> familyNodes = new ArrayDeque<>();
+	private HashMap<DefaultMutableTreeNode, Collection<DefaultMutableTreeNode>> componentNodes = new HashMap<>();
 
 	// Swing menus
 	private JMenuBar menuBar;
@@ -351,6 +368,74 @@ public class MainWindow {
 			frame.dispose();
 		});
 	}
+	
+	public void addComponentSelectionEntry(@NotNull String family, @NotNull String name, @Nullable Icon icon) {
+		class AdderExecutor implements Runnable {
+			private @Setter DefaultMutableTreeNode root = null;
+			private @Setter DefaultMutableTreeNode family = null;
+			private @Setter DefaultMutableTreeNode component = null;
+			private void go() {
+				SwingUtilities.invokeLater(this);
+			}
+			@Override public void run() {
+				if (family != null && component != null) {
+					family.add(component);
+					if (root != null) root.add(family);
+					selectTree.updateUI();
+				} else throw new IllegalArgumentException();
+			}
+		}
+		AdderExecutor executor = new AdderExecutor();
+		ComponentSelection newSel = new ComponentSelection();
+		newSel.setFamily(family);
+		newSel.setName(name);
+		newSel.setIcon(icon);
+		DefaultMutableTreeNode nodeFamily = null;
+		for (DefaultMutableTreeNode node : familyNodes) {
+			if (node.getUserObject().toString().equals(family)) {
+				nodeFamily = node;
+				break;
+			}
+		}
+		if (nodeFamily == null) {
+			nodeFamily = new DefaultMutableTreeNode();
+			nodeFamily.setUserObject(family);
+			familyNodes.add(nodeFamily);
+			componentNodes.put(nodeFamily, new ArrayDeque<>());
+			executor.setRoot(componentsRoot);
+		}
+		DefaultMutableTreeNode nodeComp = new DefaultMutableTreeNode();
+		nodeComp.setUserObject(newSel);
+		componentNodes.get(nodeFamily).add(nodeComp);
+		executor.setFamily(nodeFamily);
+		executor.setComponent(nodeComp);
+		executor.go();
+	}
+	
+	public void removeComponentSelectionEntry(@NotNull String family, @NotNull String name) {
+		DefaultMutableTreeNode nodeFamily = null;
+		for (DefaultMutableTreeNode node : familyNodes) {
+			if (node.getUserObject().toString().equals(family)) {
+				nodeFamily = node;
+				break;
+			}
+		}
+		if (nodeFamily != null) {
+			Collection<DefaultMutableTreeNode> leafs = componentNodes.get(nodeFamily);
+			final DefaultMutableTreeNode nodeFamilyFinal = nodeFamily;
+			leafs.forEach(node -> {
+				if (node.getUserObject().equals(name)) {
+					SwingUtilities.invokeLater(() -> {
+						nodeFamilyFinal.remove(node);
+						if (nodeFamilyFinal.getChildCount() == 0) {
+							componentsRoot.remove(nodeFamilyFinal);
+						}
+					});
+				}
+			});
+			leafs.removeIf(node -> node.getUserObject().equals(name));
+		}
+	}
 
 	public void setActiveSimulation(boolean active) {
 		activeSimulation = active;
@@ -361,39 +446,41 @@ public class MainWindow {
 		return circuitPanel;
 	}
 	
+	// Handle JTree clicks
 	// Handle all JMenuItem clicks
 	private class MenuEventHandler implements ActionListener {
+		
 		@Override public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == miNew) listener.onUserEvent(UserInputListener.Type.NEW, 0, null);
-			if (e.getSource() == miOpen) listener.onUserEvent(UserInputListener.Type.OPEN, 0, null);
+			if (e.getSource() == miNew) listener.onUserEvent(UserInputListener.Type.NEW, "0", null);
+			if (e.getSource() == miOpen) listener.onUserEvent(UserInputListener.Type.OPEN, "0", null);
 			for (JMenuItem item : miOpenRecentFiles) if (e.getSource() == item) {
-				listener.onUserEvent(UserInputListener.Type.OPEN, 0, e.getActionCommand());
+				listener.onUserEvent(UserInputListener.Type.OPEN, "0", e.getActionCommand());
 				break;
 			}
-			if (e.getSource() == miSave) listener.onUserEvent(UserInputListener.Type.SAVE, 0, null);
-			if (e.getSource() == miSaveAs) listener.onUserEvent(UserInputListener.Type.SAVE, 1, null);
-			if (e.getSource() == miExport) listener.onUserEvent(UserInputListener.Type.EXPORT, 0, null);
-			if (e.getSource() == miSettings) listener.onUserEvent(UserInputListener.Type.SETTINGS, 0, null);
+			if (e.getSource() == miSave) listener.onUserEvent(UserInputListener.Type.SAVE, "0", null);
+			if (e.getSource() == miSaveAs) listener.onUserEvent(UserInputListener.Type.SAVE, "1", null);
+			if (e.getSource() == miExport) listener.onUserEvent(UserInputListener.Type.EXPORT, "0", null);
+			if (e.getSource() == miSettings) listener.onUserEvent(UserInputListener.Type.SETTINGS, "0", null);
 			if (e.getSource() == miExit) windowEventHandler.windowClosing(null);
-			if (e.getSource() == miUndo) listener.onUserEvent(UserInputListener.Type.UNDO, 0, null);
-			if (e.getSource() == miRedo) listener.onUserEvent(UserInputListener.Type.REDO, 0, null);
-			if (e.getSource() == miRedoAll) listener.onUserEvent(UserInputListener.Type.REDO, 1, null);
-			if (e.getSource() == miCopy) listener.onUserEvent(UserInputListener.Type.COPY, 0, null);
-			if (e.getSource() == miPaste) listener.onUserEvent(UserInputListener.Type.PASTE, 0, null);
+			if (e.getSource() == miUndo) listener.onUserEvent(UserInputListener.Type.UNDO, "0", null);
+			if (e.getSource() == miRedo) listener.onUserEvent(UserInputListener.Type.REDO, "0", null);
+			if (e.getSource() == miRedoAll) listener.onUserEvent(UserInputListener.Type.REDO, "1", null);
+			if (e.getSource() == miCopy) listener.onUserEvent(UserInputListener.Type.COPY, "0", null);
+			if (e.getSource() == miPaste) listener.onUserEvent(UserInputListener.Type.PASTE, "0", null);
 			if (e.getSource() == miCut) {
-				listener.onUserEvent(UserInputListener.Type.COPY, 0, null);
-				listener.onUserEvent(UserInputListener.Type.DELETE, 0, null);
+				listener.onUserEvent(UserInputListener.Type.COPY, "0", null);
+				listener.onUserEvent(UserInputListener.Type.DELETE, "0", null);
 			}
-			if (e.getSource() == miDelete) listener.onUserEvent(UserInputListener.Type.DELETE, 0, null);
-			if (e.getSource() == miSelectAll) listener.onUserEvent(UserInputListener.Type.SELECTALL, 0, null);
-			if (e.getSource() == miEditSelection) listener.onUserEvent(UserInputListener.Type.EDITSEL, 0, null);
-			if (e.getSource() == miNewCircuit) listener.onUserEvent(UserInputListener.Type.NEWCIRCUIT, 0, null);
-			if (e.getSource() == miDeleteCircuit) listener.onUserEvent(UserInputListener.Type.DELETECIRCUIT, 0, null);
-			if (e.getSource() == miLibraries) listener.onUserEvent(UserInputListener.Type.LIBRARIES, 0, null);
-			if (e.getSource() == miReset) listener.onUserEvent(UserInputListener.Type.RESET, 0, null);
-			if (e.getSource() == miStartStop) listener.onUserEvent(UserInputListener.Type.STARTSTOP, activeSimulation ? 1 : 0, null);
+			if (e.getSource() == miDelete) listener.onUserEvent(UserInputListener.Type.DELETE, "0", null);
+			if (e.getSource() == miSelectAll) listener.onUserEvent(UserInputListener.Type.SELECTALL, "0", null);
+			if (e.getSource() == miEditSelection) listener.onUserEvent(UserInputListener.Type.EDITSEL, "0", null);
+			if (e.getSource() == miNewCircuit) listener.onUserEvent(UserInputListener.Type.NEWCIRCUIT, "0", null);
+			if (e.getSource() == miDeleteCircuit) listener.onUserEvent(UserInputListener.Type.DELETECIRCUIT, "0", null);
+			if (e.getSource() == miLibraries) listener.onUserEvent(UserInputListener.Type.LIBRARIES, "0", null);
+			if (e.getSource() == miReset) listener.onUserEvent(UserInputListener.Type.RESET, "0", null);
+			if (e.getSource() == miStartStop) listener.onUserEvent(UserInputListener.Type.STARTSTOP, activeSimulation ? "1" : "0", null);
 			for (JMenuItem item : miActiveSimulationsOptions) if (e.getSource() == item) {
-				listener.onUserEvent(UserInputListener.Type.ACTIVESIMULATION, 0, e.getActionCommand());
+				listener.onUserEvent(UserInputListener.Type.ACTIVESIMULATION, "0", e.getActionCommand());
 				break;
 			}
 			if (e.getSource() == miMinimise) {
@@ -417,11 +504,11 @@ public class MainWindow {
 		}
 	}
 	
-	
 	// Handle window closing button
 	private class WindowEventHandler implements WindowListener {
+		
 		@Override public void windowClosing(WindowEvent e) {
-			listener.onUserEvent(UserInputListener.Type.EXIT, 0, null);
+			listener.onUserEvent(UserInputListener.Type.EXIT, "0", null);
 		}
 		@Override public void windowClosed(WindowEvent e) {
 		
@@ -442,12 +529,12 @@ public class MainWindow {
 
 		}
 	}
-	
 	// Handle tree cell drawing
 	private class MyTreeCellRenderer extends DefaultTreeCellRenderer implements TreeCellRenderer {
-		private Icon closed = UIManager.getIcon("Tree.closedIcon");
-		private Icon open = UIManager.getIcon("Tree.openIcon");
-		private Icon leaf = UIManager.getIcon("Tree.leafIcon");
+		
+		private final Icon closed = UIManager.getIcon("Tree.closedIcon");
+		private final Icon open = UIManager.getIcon("Tree.openIcon");
+		private final Icon leaf = UIManager.getIcon("Tree.leafIcon");
 		@Override public Component getTreeCellRendererComponent(JTree tree, Object value, boolean bSelected, boolean bExpanded, boolean bLeaf, int iRow, boolean bHasFocus) {
 			Icon nodeIcon = treeIcon.get(value);
 			nodeIcon = (nodeIcon != null ? nodeIcon : (bLeaf ? leaf : (bExpanded ? open : closed)));
@@ -458,13 +545,16 @@ public class MainWindow {
 			return super.getTreeCellRendererComponent(tree, value, bSelected, bExpanded, bLeaf, iRow, bHasFocus);
 		}
 	}
-	
 	// Handle component tree events
 	private class SelectTreeSelectionListener implements TreeSelectionListener {
+		private DefaultMutableTreeNode lastSelection = null;
 		@Override public void valueChanged(TreeSelectionEvent e) {
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode)selectTree.getLastSelectedPathComponent();
-			if (node != null) {
-			
+			if (node != null && lastSelection != node) {
+				lastSelection = node;
+				if (node.getUserObject() instanceof ComponentSelection) {
+					listener.onUserEvent(UserInputListener.Type.PLACECOMPSEL, ((ComponentSelection) node.getUserObject()).getFamily(), ((ComponentSelection) node.getUserObject()).getName());
+				}
 			}
 		}
 	}

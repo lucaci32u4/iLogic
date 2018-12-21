@@ -31,6 +31,7 @@ package com.lucaci32u4.main;
 
 import com.lucaci32u4.io.IOInterface;
 import com.lucaci32u4.model.ModelContainer;
+import com.lucaci32u4.model.library.libgates.LibGates;
 import com.lucaci32u4.presentation.PresentationContainer;
 import com.lucaci32u4.ui.windows.MainWindow;
 
@@ -67,5 +68,7 @@ public class Main {
 		model.init();
 		presentation = new PresentationContainer();
 		model.addViewController(presentation);
+		model.addLibrary(new LibGates());
+		
 	}
 }
