@@ -1,8 +1,10 @@
 package com.lucaci32u4.model.parts;
 
+import com.lucaci32u4.core.LogicComponent;
 import com.lucaci32u4.core.LogicPin;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.CoordinateHelper;
+import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.model.Subcurcuit;
 import lombok.Getter;
@@ -16,7 +18,7 @@ public class Pin extends Component {
 		super(new PinSpec(), subcurcuit);
 	}
 	
-	private static class PinSpec implements Component.BehaviourSpecification {
+	private static class PinSpec implements LibComponent {
 		private final PinSpec pinSpec = new PinSpec();
 		private Component.Termination termination = null;
 		private final Component.Termination[] termArr = new Component.Termination[1];
@@ -50,15 +52,35 @@ public class Pin extends Component {
 		
 		@Override
 		public void onDetach() {
-		
+			// Nothing clean up
 		}
 		
 		@Override public Component.Termination[] getTerminations() {
 			return termArr;
 		}
-		
-		public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
-		
+
+		@Override public void onDraw(DrawAPI api) {
+
+		}
+
+		@Override
+		public LogicPin[] onBegin() {
+			return new LogicPin[0];
+		}
+
+		@Override
+		public void onSimulationSignalEvent() {
+			// Nothing. Yet.
+		}
+
+		@Override
+		public void onSimulationInterrupt(LogicComponent.Interrupter interrupter) {
+			// Nothing. Yet.
+		}
+
+		@Override
+		public void onEnd() {
+			// Nothing. Yet.
 		}
 	}
 }
