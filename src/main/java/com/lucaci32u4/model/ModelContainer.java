@@ -248,7 +248,7 @@ public class ModelContainer implements RenderCallback {
 		}
 	}
 	
-	public void invalidateGraphics(Subcurcuit circ) {
+	void invalidateGraphics(Subcurcuit circ) {
 		for (ViewControllerInterface wci : wcix) {
 			wci.invalidateGraphics();
 		}

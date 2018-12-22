@@ -12,7 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -266,14 +265,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="867" />
-          <entry key="txt" value="138" />
+          <entry key="txt" value="342" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="867" />
-          <entry key="PLAIN_TEXT" value="138" />
+          <entry key="PLAIN_TEXT" value="342" />
           <entry key="XML" value="11" />
         </counts>
       </usages-collector>
@@ -724,7 +723,7 @@
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="SearchEverywhereHistoryKey" value="compo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;component&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;mainWindo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;libcom&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/model/library/LibComponent.java&#10;MAIN&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;view&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/viewport/LogicViewport.java&#10;share&#9;ACTION&#9;Github.Share&#10;switch&#9;ACTION&#9;null&#10;warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545490604874" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545492049264" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -821,13 +820,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00147" summary="Added a class that handles storage operations">
-      <created>1540933402945</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1540933402946</updated>
     </task>
     <task id="LOCAL-00148" summary="Capitalized resources">
       <created>1540933462329</created>
@@ -1165,7 +1157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545490195498</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="Migrated Pins and Components from Component.BehaviourSpecification&#10;to the more general LibComponent.">
+      <created>1545491222864</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1545491222864</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1193,7 +1192,7 @@
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="3" weight="0.329718" />
       <window_info anchor="bottom" id="Find" order="4" visible="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" weight="0.2678331" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.4978678" visible="true" weight="0.2678331" />
       <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" weight="0.3264642" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
@@ -1201,7 +1200,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49520257" weight="0.26898047" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.3275488" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946696" weight="0.29392624" />
-      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.3270525" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3270525" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1245,7 +1244,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="MVC pattern. Work in progress..." />
     <MESSAGE value="Wiring model, work in progress" />
     <MESSAGE value="Fixed two's complement comparison" />
     <MESSAGE value="Wiring model, work in progress..." />
@@ -1270,7 +1268,8 @@
     <MESSAGE value="Replaced field variable with local variable in appropiate method" />
     <MESSAGE value="Handled library adding and selecting" />
     <MESSAGE value="Drawing methods and click handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Drawing methods and click handling" />
+    <MESSAGE value="Migrated Pins and Components from Component.BehaviourSpecification&#10;to the more general LibComponent." />
+    <option name="LAST_COMMIT_MESSAGE" value="Migrated Pins and Components from Component.BehaviourSpecification&#10;to the more general LibComponent." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
