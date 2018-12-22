@@ -264,15 +264,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="867" />
-          <entry key="txt" value="342" />
+          <entry key="java" value="868" />
+          <entry key="txt" value="407" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="867" />
-          <entry key="PLAIN_TEXT" value="342" />
+          <entry key="JAVA" value="868" />
+          <entry key="PLAIN_TEXT" value="407" />
           <entry key="XML" value="11" />
         </counts>
       </usages-collector>
@@ -301,8 +301,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="320" column="25" lean-forward="true" selection-start-line="320" selection-start-column="25" selection-end-line="320" selection-end-column="25" />
+            <state relative-caret-position="165">
+              <caret line="242" column="27" lean-forward="true" selection-start-line="242" selection-start-column="27" selection-end-line="242" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -478,11 +478,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/UserPointerListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" />
       </list>
     </option>
   </component>
@@ -722,8 +722,8 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="compo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;component&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;mainWindo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;libcom&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/model/library/LibComponent.java&#10;MAIN&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;view&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/viewport/LogicViewport.java&#10;share&#9;ACTION&#9;Github.Share&#10;switch&#9;ACTION&#9;null&#10;warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545492049264" />
+    <property name="SearchEverywhereHistoryKey" value="AND&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libgates.GateAnd&#10;compo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;component&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;mainWindo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;libcom&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/model/library/LibComponent.java&#10;MAIN&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;view&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/viewport/LogicViewport.java&#10;share&#9;ACTION&#9;Github.Share&#10;switch&#9;ACTION&#9;null&#10;warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545492307731" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -820,13 +820,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00148" summary="Capitalized resources">
-      <created>1540933462329</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1540933462330</updated>
     </task>
     <task id="LOCAL-00149" summary="Removed unused statements">
       <created>1540933726971</created>
@@ -1164,7 +1157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545491222864</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="Access level for method changed from public to package-private">
+      <created>1545492139386</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1545492139386</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1177,7 +1177,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33933163" />
@@ -1244,7 +1244,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Wiring model, work in progress" />
     <MESSAGE value="Fixed two's complement comparison" />
     <MESSAGE value="Wiring model, work in progress..." />
     <MESSAGE value="Removed picker&#10;Adapted rendering system, simplified rendering code&#10;Continued wiring code&#10;Selecting code" />
@@ -1269,7 +1268,8 @@
     <MESSAGE value="Handled library adding and selecting" />
     <MESSAGE value="Drawing methods and click handling" />
     <MESSAGE value="Migrated Pins and Components from Component.BehaviourSpecification&#10;to the more general LibComponent." />
-    <option name="LAST_COMMIT_MESSAGE" value="Migrated Pins and Components from Component.BehaviourSpecification&#10;to the more general LibComponent." />
+    <MESSAGE value="Access level for method changed from public to package-private" />
+    <option name="LAST_COMMIT_MESSAGE" value="Access level for method changed from public to package-private" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1634,8 +1634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="320" column="25" lean-forward="true" selection-start-line="320" selection-start-column="25" selection-end-line="320" selection-end-column="25" />
+        <state relative-caret-position="165">
+          <caret line="242" column="27" lean-forward="true" selection-start-line="242" selection-start-column="27" selection-end-line="242" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

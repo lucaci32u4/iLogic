@@ -55,12 +55,15 @@ public class LibGates implements LibFactory {
 	private static Brush gateOutlineBrush = null;
 }
 
+
+
+
 class GateAnd implements LibComponent {
 	private final Component.Termination[] arrayTerminations = new Component.Termination[3];
 	private final LogicPin[] arrayPins = new LogicPin[3];
 	private int posX, posY, width, height;
 	private Component component = null;
-	
+
 	@Override
 	public void onAttach(Component componentContainer) {
 		component = componentContainer;
