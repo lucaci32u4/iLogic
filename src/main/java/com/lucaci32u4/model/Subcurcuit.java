@@ -4,6 +4,7 @@ import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.model.parts.wiring.WireModel;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Subcurcuit {
 	private boolean area = false;
 	private int selX1 = 0, selY1 = 0;
 	private Collection<Object> selObjects = new ArrayDeque<>();
-	private LibComponent ghost;
+	private Component ghost;
 	private boolean ghostingVisibility = false;
 	
 	// Interact data
@@ -56,7 +57,7 @@ public class Subcurcuit {
 				continueSelection(x, y);
 			}
 		} else {
-			ghost.onChangePosition(x, y);
+			ghost.move(x, y);
 		}
 	}
 	
@@ -144,8 +145,9 @@ public class Subcurcuit {
 	}
 	
 	public void addNewGhostComponent(LibFactory factory, String name, int enterX, int enterY) {
-		ghost = factory.createComponent(name);
-		ghost.onChangePosition(enterX, enterY);
+		ghost = new Component(factory.createComponent(name), this);
+		ghost.move(enterX, enterY);
+		invalidateGraphics();
 	}
 	
 	public void setGhostingVisibility(boolean visibility) {
@@ -156,5 +158,13 @@ public class Subcurcuit {
 	public void invalidateGraphics() {
 		mdl.invalidateGraphics(this);
 	}
-	
+
+	public void render(RenderAPI pencil, boolean attach, boolean detach) {
+		for (WireModel wire : wires) {
+			wire.onDraw(pencil, false, false);
+		}
+		for (Component component : components) {
+			component.render(pencil, attach, detach);
+		}
+	}
 }

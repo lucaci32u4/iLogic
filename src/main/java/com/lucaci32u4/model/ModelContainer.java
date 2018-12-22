@@ -10,9 +10,8 @@ import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
-import com.sun.tools.javac.util.ArrayUtils;
-import org.apache.commons.collections4.CollectionUtils;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -96,7 +95,7 @@ public class ModelContainer implements RenderCallback {
 						posChange = true;
 					}
 					if (inside != lastInside) {
-						inside = lastInside;
+						lastInside = inside;
 						if (currentPlaceFactory != null && currentPlaceModel != null) {
 							if (lastInside) {
 								mainCirc.addNewGhostComponent(currentPlaceFactory, currentPlaceModel, posX, posY);
@@ -322,14 +321,16 @@ public class ModelContainer implements RenderCallback {
 				posX = x;
 				posY = y;
 				switch (button) {
-					case 1:
+					case MouseEvent.BUTTON1:
 						left = pressed;
 						break;
-					case 2:
+					case MouseEvent.BUTTON2:
+						middle = pressed;
+						break;
+					case MouseEvent.BUTTON3:
 						right = pressed;
 						break;
-					case 3:
-						middle = pressed;
+					case -1: // Movement
 						break;
 					default:
 						throw new IllegalArgumentException();

@@ -1,8 +1,9 @@
 package com.lucaci32u4.model.parts;
 
-import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
+import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.model.parts.wiring.Connectable;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import lombok.Getter;
@@ -13,17 +14,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 @SuppressWarnings("squid:S1659")
 public class Component {
-	private final BehaviourSpecification spec;
+	private final LibComponent libComponent;
 	private int posX = 0, posY = 0;
 	private int width = 0, height = 0;
 	private @Getter boolean ghosting = false;
 	private final AtomicBoolean selected = new AtomicBoolean();
 	private Subcurcuit subcircuit = null;
 	
-	public Component(@NotNull BehaviourSpecification spec, Subcurcuit subcircuit) {
-		this.spec = spec;
+	public Component(@NotNull LibComponent libComponent, Subcurcuit subcircuit) {
+		this.libComponent = libComponent;
 		this.subcircuit = subcircuit;
-		spec.onAttach(this);
+		libComponent.onAttach(this);
 	}
 	
 	public int getPositionX() {
@@ -50,15 +51,22 @@ public class Component {
 	public void move(int x, int y) {
 		posX = x;
 		posY = y;
-		spec.onChangePosition(x, y);
+		libComponent.onChangePosition(x, y);
 		invalidateGraphics();
 	}
 	
 	public void interact(int x, int y, boolean begin, boolean end) {
 		if (begin) selected.set(true);
 		if (end) selected.set(false);
-		spec.onInteractiveClick(x, y);
+		libComponent.onInteractiveClick(x, y);
 		invalidateGraphics();
+	}
+
+	public void render(RenderAPI pencil, boolean attach, boolean detach) {
+		libComponent.onDraw(pencil);
+		for (Termination termination : libComponent.getTerminations()) {
+			termination.render(pencil);
+		}
 	}
 	
 	public void invalidateGraphics() {
@@ -81,7 +89,7 @@ public class Component {
 			this.pins = pins;
 			bitWidth = pins.length;
 		}
-		void render(DrawAPI pencil, boolean attach, boolean detach) {
+		void render(RenderAPI pencil) {
 		
 		}
 		
