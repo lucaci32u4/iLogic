@@ -84,20 +84,18 @@ public class Subcurcuit {
 	}
 	
 	private void continueSelection(int x, int y) {
-		int selX2 = x;
-		int selY2 = y;
-		if (selX1 != selX2 && selY1 != selY2 && !area) area = true;
+		if (selX1 != x && selY1 != y && !area) area = true;
 		if (area) {
 			deselectAll();
 			selObjects.clear();
 			for (Component component : components) {
-				if (CoordinateHelper.intersectDimension(selX1, selY1, selX2, selY2, component.getPositionX(), component.getPositionY(), component.getWidth(), component.getHeight())) {
+				if (CoordinateHelper.intersectDimension(selX1, selY1, x, y, component.getPositionX(), component.getPositionY(), component.getWidth(), component.getHeight())) {
 					selObjects.add(component);
 					component.select(true);
 				}
 			}
 			for (WireModel wire : wires) {
-				if (wire.selectArea(selX1, selY1, selX2, selY2)) {
+				if (wire.selectArea(selX1, selY1, x, y)) {
 					selObjects.add(wire);
 				}
 			}
