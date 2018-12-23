@@ -4,6 +4,8 @@ import com.lucaci32u4.model.CoordinateHelper;
 import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -192,7 +194,7 @@ public class WireModel {
 	}
 	
 	private boolean[] drawMemory = null;
-	public void onDraw(@NotNull DrawAPI graphics, boolean attach, boolean detach) {
+	public void onDraw(@NotNull RenderAPI graphics, boolean attach, boolean detach) {
 		AtomicIntegerArray w1x = wiresPos1X;
 		AtomicIntegerArray w1y = wiresPos1Y;
 		AtomicIntegerArray w2x = wiresPos2X;
@@ -220,8 +222,12 @@ public class WireModel {
 			drawMemory = null;
 		}
 	}
-	
-	private void drawWire(DrawAPI graphics, int fromX, int fromY, int toX, int toY, boolean selected, boolean extension) {
-		// TODO: Wire drawing code
+
+	private static Brush wireBrush = null;
+	private void drawWire(RenderAPI graphics, int fromX, int fromY, int toX, int toY, boolean selected, boolean extension) {
+		if (wireBrush == null) wireBrush = graphics.createSolidBrush(127, 127, 127);
+		graphics.setBrush(wireBrush);
+		graphics.drawLine(fromX, fromY, toX, toY, 1);
+		// TODO: (lucaci32u4, 23/12/18): Convert wire drawing from lines to rectangles in the nearest stable version
 	}
 }
