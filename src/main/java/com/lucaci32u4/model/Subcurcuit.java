@@ -160,9 +160,7 @@ public class Subcurcuit {
 		mdl.invalidateGraphics(this);
 	}
 
-	private static Brush backgroundBrush = null;
 	public void render(RenderAPI pencil, boolean attach, boolean detach) {
-		if (backgroundBrush == null) backgroundBrush = pencil.createSolidBrush(155, 255, 255);
 		for (WireModel wire : wires) {
 			wire.onDraw(pencil, false, false);
 		}

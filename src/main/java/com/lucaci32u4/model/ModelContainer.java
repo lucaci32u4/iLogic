@@ -7,6 +7,7 @@ import com.lucaci32u4.presentation.ViewControllerInterface;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.ui.viewport.RenderCallback;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
 
@@ -241,7 +242,7 @@ public class ModelContainer implements RenderCallback {
 		}
 	}
 	
-	public void destroy() {
+	private void destroy() {
 		modelThread.running.set(false);
 		Sleeper.wake();
 		if (Thread.currentThread() != modelThread) {
@@ -254,9 +255,13 @@ public class ModelContainer implements RenderCallback {
 			wci.invalidateGraphics();
 		}
 	}
-	
-	@Override public void onDraw(RenderAPI draw, RenderAPI ctrl) {
-		mainCirc.render(draw, false, false);
+
+	private static Brush backgroundBrush = null;
+	@Override public void onDraw(RenderAPI pencil, RenderAPI ctrl) {
+		if (backgroundBrush == null) backgroundBrush = pencil.createSolidBrush(255, 255, 255);
+		pencil.setBrush(backgroundBrush);
+		pencil.drawRectangle(0, 0, pencil.getSurfaceWidth(), pencil.getSurfaceHeight());
+		mainCirc.render(pencil, false, false);
 	}
 	
 	public void addLibrary(LibFactory lib) {

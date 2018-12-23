@@ -32,6 +32,8 @@ package com.lucaci32u4.ui.viewport.renderer;
 import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 
 public interface DrawAPI {
+	int getSurfaceWidth();
+	int getSurfaceHeight();
 	float unitsToPixels(int units);
 	float pixelsToUnits(int pixels);
 	void setCanvasOffsetUnits(int offsetX, int offsetY);

@@ -58,6 +58,8 @@ public class Java2DSubsystem implements RenderAPI {
 	private float pixelsPerUnit;
 	private int unitsOffsetX;
 	private int unitsOffsetY;
+	private int surfaceWidth;
+	private int surfaceHeight;
 	private Brush brush;
 	private Graphics2D g2d;
 	
@@ -86,7 +88,7 @@ public class Java2DSubsystem implements RenderAPI {
 					onDraw((Graphics2D)g);
 				}
 			};
-			canvas.setIgnoreRepaint(true);
+			canvas.setIgnoreRepaint(false);
 			canvas.setMinimumSize(new Dimension(10, 10));
 			canvasComponentListener = new ComponentListener() {
 				@Override public void componentShown(ComponentEvent e) {
@@ -162,10 +164,10 @@ public class Java2DSubsystem implements RenderAPI {
 		switch (brush.getType()) {
 			case TEXTURE:
 			case COLOR:
-				g2d.drawPolygon(x, y, 3);
+				g2d.fillPolygon(x, y, 3);
 				break;
 			case OUTLINE:
-				g2d.fillPolygon(x, y, 3);
+				g2d.drawPolygon(x, y, 3);
 				break;
 		}
 	}
@@ -180,15 +182,27 @@ public class Java2DSubsystem implements RenderAPI {
 		switch (brush.getType()) {
 			case TEXTURE:
 			case COLOR:
-				g2d.drawRect(left, top, right - left, bottom - top);
+				g2d.fillRect(left, top, right - left, bottom - top);
 				break;
 			case OUTLINE:
-				g2d.fillRect(left, top, right - left, bottom - top);
+				g2d.drawRect(left, top, right - left, bottom - top);
 				break;
 		}
 	}
-	
+
+	@Override
+	public int getSurfaceWidth() {
+		return surfaceWidth;
+	}
+
+	@Override
+	public int getSurfaceHeight() {
+		return surfaceHeight;
+	}
+
 	private void onDraw(Graphics2D g) {
+		surfaceWidth = canvas.getWidth();
+		surfaceHeight = canvas.getHeight();
 		g2d = g;
 		setCanvasOffsetUnits(0, 0);
 		renderFn.onDraw(this, this);

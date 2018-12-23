@@ -29,8 +29,11 @@
 
 package com.lucaci32u4.ui.viewport.renderer.brush;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.awt.*;
 
 public abstract class Brush {
 	public enum BrushType {
@@ -49,11 +52,12 @@ public abstract class Brush {
 		return type;
 	}
 	
+	@Contract(pure = true)
 	public static Object get(@NotNull Brush b) {
 		return b.obj;
 	}
 	
-	public static void get(@NotNull Brush b, @Nullable Object obj) {
+	public static void set(@NotNull Brush b, @Nullable Object obj) {
 		b.obj = obj;
 	}
 }
