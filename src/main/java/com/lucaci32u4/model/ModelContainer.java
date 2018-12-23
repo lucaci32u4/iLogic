@@ -131,13 +131,9 @@ public class ModelContainer implements RenderCallback {
 						midChange = true;
 					}
 				}
-				if ((lastLeft || lastRight) && ghosting) {
-					if (lastLeft) {
-						mainCirc.endGhosting(lastLeft);
-						ghosting = false;
-					}
-					lastLeft = false;
-					lastRight = false;
+				if (left && leftChange && ghosting) {
+					mainCirc.endGhosting(lastLeft);
+					ghosting = false;
 				}
 				if (posChange) h.pointerMoved(lastX, lastY);
 				if (leftChange) h.mainPointer(lastLeft);
