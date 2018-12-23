@@ -40,7 +40,12 @@ public class PresentationContainer implements ViewControllerInterface {
 	public void removeSimulationComponentModel(@NotNull String family, @NotNull String name) {
 		mainWindow.removeComponentSelectionEntry(family, name);
 	}
-	
+
+	@Override
+	public void deselectSimulationModel() {
+		mainWindow.deselectComponentModel();
+	}
+
 	@Override
 	public void setUserActionListener(UserActionListener listener) {
 		fwdUal = listener;

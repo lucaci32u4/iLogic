@@ -42,6 +42,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayDeque;
@@ -437,6 +438,10 @@ public class MainWindow {
 		}
 	}
 
+	public void deselectComponentModel() {
+		SwingUtilities.invokeLater(() -> selectTree.clearSelection());
+	}
+
 	public void setActiveSimulation(boolean active) {
 		activeSimulation = active;
 		SwingUtilities.invokeLater(() -> miStartStop.setState(activeSimulation));
@@ -547,11 +552,9 @@ public class MainWindow {
 	}
 	// Handle component tree events
 	private class SelectTreeSelectionListener implements TreeSelectionListener {
-		private DefaultMutableTreeNode lastSelection = null;
 		@Override public void valueChanged(TreeSelectionEvent e) {
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode)selectTree.getLastSelectedPathComponent();
-			if (node != null && lastSelection != node) {
-				lastSelection = node;
+			if (node != null) {
 				if (node.getUserObject() instanceof ComponentSelection) {
 					listener.onUserEvent(UserInputListener.Type.PLACECOMPSEL, ((ComponentSelection) node.getUserObject()).getFamily(), ((ComponentSelection) node.getUserObject()).getName());
 				}

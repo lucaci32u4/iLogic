@@ -97,7 +97,15 @@ public class ModelContainer implements RenderCallback {
 					if (inside != lastInside) {
 						lastInside = inside;
 						if (currentPlaceFactory != null && currentPlaceModel != null) {
+							if (ghosting) {
+								mainCirc.endGhosting(lastLeft);
+							}
 							if (lastInside) {
+								synchronized (wcixLock) {
+									for (ViewControllerInterface wci : wcix) {
+										wci.deselectSimulationModel();
+									}
+								}
 								mainCirc.setGhostingVisibility(true);
 								mainCirc.addNewGhostComponent(currentPlaceFactory, currentPlaceModel, posX, posY);
 								currentPlaceFactory = null;
@@ -135,7 +143,10 @@ public class ModelContainer implements RenderCallback {
 				if (leftChange) h.mainPointer(lastLeft);
 				if (rightChange) h.secondaryPointer(lastRight);
 				if (midChange) h.auxButton(lastMiddle);
-				posChange = leftChange = rightChange = midChange = false;
+				posChange = false;
+				leftChange = false;
+				rightChange = false;
+				midChange = false;
 				synchronized (queueLock) {
 					listStart = topPtr;
 					topPtr = null;
