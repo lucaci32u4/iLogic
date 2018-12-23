@@ -330,7 +330,7 @@ public class ModelContainer implements RenderCallback {
 		}
 		
 		@Override public void buttonUp(int x, int y, int button) {
-			mkMask(x, y, button, true);
+			mkMask(x, y, button, false);
 		}
 		
 		@Override public void pointerMove(int x, int y) {
