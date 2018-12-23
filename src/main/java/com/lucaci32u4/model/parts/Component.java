@@ -4,6 +4,7 @@ import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.model.parts.wiring.Connectable;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import lombok.Getter;
@@ -79,6 +80,7 @@ public class Component {
 		public static final int STATE_LOW = 2;
 		public static final int STATE_CONFLICT = 3;
 		public static final int STATE_MULTIBIT = 4;
+		public static final int TERMINATION_RADIUS = 6;
 		private @Setter int state;
 		private int connectX = 0, connectY = 0;
 		private final @Getter Component owner;
