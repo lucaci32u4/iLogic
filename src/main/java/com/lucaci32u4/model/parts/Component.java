@@ -20,11 +20,15 @@ public class Component {
 	private int width = 0, height = 0;
 	private @Getter boolean ghosting = false;
 	private final AtomicBoolean selected = new AtomicBoolean();
-	private Subcurcuit subcircuit = null;
+	private final Subcurcuit subcircuit;
+	private Termination[] terminations;
 	
 	public Component(@NotNull LibComponent libComponent, Subcurcuit subcircuit) {
 		this.libComponent = libComponent;
 		this.subcircuit = subcircuit;
+		Termination[] terminations = libComponent.getTerminations();
+		this.terminations = new Termination[terminations.length];
+		System.arraycopy(terminations, 0, this.terminations, 0, terminations.length);
 		libComponent.onAttach(this);
 	}
 	
@@ -42,6 +46,10 @@ public class Component {
 	
 	public int getHeight() {
 		return height;
+	}
+
+	public Termination[] getTerminations() {
+		return terminations;
 	}
 	
 	public void select(boolean isSel) {
@@ -116,11 +124,11 @@ public class Component {
 	}
 	
 	public interface BehaviourSpecification {
+		Termination[] getTerminations();
 		void onAttach(Component componentContainer);
 		void onChangePosition(int x, int y);
 		void onChangeDimension(int width, int height);
 		void onInteractiveClick(int x, int y);
-		Termination[] getTerminations();
 		void onDetach();
 	}
 }

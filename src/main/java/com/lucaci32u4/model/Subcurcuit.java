@@ -7,6 +7,7 @@ import com.lucaci32u4.model.parts.wiring.WireModel;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 
+import javax.smartcardio.TerminalFactory;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,7 +31,12 @@ public class Subcurcuit {
 	private Collection<Object> selObjects = new ArrayDeque<>();
 	private Component ghost;
 	private boolean ghostingVisibility = false;
-	
+
+	// Wiring
+	private boolean wiring = false;
+	private Component.Termination routeOriginTermination = null;
+	private WireModel expandingWire = null;
+
 	// Interact data
 	private boolean interacting = false;
 	private Object interactObj = null;
@@ -80,23 +86,44 @@ public class Subcurcuit {
 		selY1 = y;
 		area = false;
 		hasSelection = false;
+		for (Component component : components) {
+			for (Component.Termination termination : component.getTerminations()) {
+				if (CoordinateHelper.inside(x, y, termination.getConnectPositionX(), termination.getConnectPositionY(), Component.Termination.TERMINATION_RADIUS * 2, Component.Termination.TERMINATION_RADIUS * 2)) {
+					routeOriginTermination = termination;
+					wiring = true;
+				}
+			}
+		}
 		continueSelection(x, y);
 	}
 	
 	private void continueSelection(int x, int y) {
 		if (selX1 != x && selY1 != y && !area) area = true;
-		if (area) {
-			deselectAll();
-			selObjects.clear();
-			for (Component component : components) {
-				if (CoordinateHelper.intersectDimension(selX1, selY1, x, y, component.getPositionX(), component.getPositionY(), component.getWidth(), component.getHeight())) {
-					selObjects.add(component);
-					component.select(true);
+		if (wiring) {
+			if (area) {
+				if (expandingWire == null) {
+					expandingWire = new WireModel();
+					expandingWire.attach(this);
+					expandingWire.beginExpand(x, y);
+					invalidateGraphics();
+				} else {
+					expandingWire.continueExpand(x, y);
 				}
 			}
-			for (WireModel wire : wires) {
-				if (wire.selectArea(selX1, selY1, x, y)) {
-					selObjects.add(wire);
+		} else {
+			if (area) {
+				deselectAll();
+				selObjects.clear();
+				for (Component component : components) {
+					if (CoordinateHelper.intersectDimension(selX1, selY1, x, y, component.getPositionX(), component.getPositionY(), component.getWidth(), component.getHeight())) {
+						selObjects.add(component);
+						component.select(true);
+					}
+				}
+				for (WireModel wire : wires) {
+					if (wire.selectArea(selX1, selY1, x, y)) {
+						selObjects.add(wire);
+					}
 				}
 			}
 		}
@@ -104,8 +131,16 @@ public class Subcurcuit {
 	
 	private void endSelection(int x, int y) {
 		continueSelection(x, y);
-		hasSelection = !selObjects.isEmpty();
-		selecting = false;
+		if (selecting) {
+			hasSelection = !selObjects.isEmpty();
+			selecting = false;
+		} else if (wiring) {
+			if (expandingWire != null) {
+				expandingWire.endExpand();
+				wires.add(expandingWire);
+			}
+			wiring = false;
+		}
 	}
 	
 	private void deselectAll() {
@@ -170,6 +205,7 @@ public class Subcurcuit {
 		for (Component component : components) {
 			component.render(pencil, attach, detach);
 		}
+		if (wiring && expandingWire != null) expandingWire.onDraw(pencil, false, false);
 		if (ghostingVisibility && ghost != null) ghost.render(pencil, false, false);
 	}
 }
