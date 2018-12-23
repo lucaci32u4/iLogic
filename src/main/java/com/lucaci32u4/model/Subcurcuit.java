@@ -155,6 +155,11 @@ public class Subcurcuit {
 		ghostingVisibility = visibility;
 		invalidateGraphics();
 	}
+
+	public void endGhosting(boolean place) {
+		if (place) components.add(ghost);
+		ghost = null;
+	}
 	
 	public void invalidateGraphics() {
 		mdl.invalidateGraphics(this);

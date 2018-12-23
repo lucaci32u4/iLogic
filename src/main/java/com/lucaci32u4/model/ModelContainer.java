@@ -125,6 +125,11 @@ public class ModelContainer implements RenderCallback {
 						midChange = true;
 					}
 				}
+				if ((lastLeft || lastRight) && ghosting) {
+					mainCirc.endGhosting(lastLeft);
+					lastLeft = false;
+					lastRight = false;
+				}
 				if (posChange) h.pointerMoved(lastX, lastY);
 				if (leftChange) h.mainPointer(lastLeft);
 				if (rightChange) h.secondaryPointer(lastRight);
@@ -228,6 +233,8 @@ public class ModelContainer implements RenderCallback {
 							} else throw new IllegalArgumentException();
 						}
 						break;
+					default:
+						throw new IllegalArgumentException();
 				}
 			}
 		}
