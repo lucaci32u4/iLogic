@@ -10,9 +10,8 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
+    <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="Drawing code for te">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -267,15 +266,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3102" />
-          <entry key="txt" value="811" />
+          <entry key="java" value="3188" />
+          <entry key="txt" value="939" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3102" />
-          <entry key="PLAIN_TEXT" value="811" />
+          <entry key="JAVA" value="3188" />
+          <entry key="PLAIN_TEXT" value="939" />
           <entry key="XML" value="11" />
         </counts>
       </usages-collector>
@@ -295,24 +294,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
+            <state relative-caret-position="-578">
               <caret line="97" column="58" lean-forward="true" selection-start-line="97" selection-start-column="58" selection-end-line="97" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="101" column="51" lean-forward="true" selection-start-line="101" selection-start-column="51" selection-end-line="101" selection-end-column="51" />
+            <state relative-caret-position="357">
+              <caret line="97" column="155" selection-start-line="97" selection-start-column="155" selection-end-line="97" selection-end-column="155" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2656#2657#0" expanded="true" />
                 <element signature="e#2680#2681#0" expanded="true" />
+                <element signature="e#2727#2728#0" expanded="true" />
                 <element signature="e#2751#2752#0" expanded="true" />
                 <element signature="e#2885#2886#0" expanded="true" />
                 <element signature="e#2906#2907#0" expanded="true" />
@@ -448,8 +448,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" />
       </list>
     </option>
   </component>
@@ -836,20 +836,6 @@
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
     </task>
-    <task id="LOCAL-00158" summary="Added fonts">
-      <created>1540940818391</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1540940818391</updated>
-    </task>
-    <task id="LOCAL-00159" summary="Added support for fonts">
-      <created>1540942626846</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
-      <option name="project" value="LOCAL" />
-      <updated>1540942626847</updated>
-    </task>
     <task id="LOCAL-00160" summary="Model work in progress">
       <created>1541686512815</created>
       <option name="number" value="00160" />
@@ -1179,7 +1165,21 @@
       <option name="project" value="LOCAL" />
       <updated>1545595168609</updated>
     </task>
-    <option name="localTasksCounter" value="207" />
+    <task id="LOCAL-00207" summary="Removed local redundant variable">
+      <created>1545596022214</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1545596022214</updated>
+    </task>
+    <task id="LOCAL-00208" summary="Added a constant to represent the select radius of a termination">
+      <created>1545596081558</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1545596081558</updated>
+    </task>
+    <option name="localTasksCounter" value="209" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1259,8 +1259,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Fixing git" />
-    <MESSAGE value="First commit after git trouble. Hoping all is ok on master." />
     <MESSAGE value="Checking against null values" />
     <MESSAGE value="Fixed model-presentation link initialization" />
     <MESSAGE value="Explicit handling of closing button" />
@@ -1284,7 +1282,9 @@
     <MESSAGE value="Fixed mouse button up from being registered as button down" />
     <MESSAGE value="Components can now be added correctly" />
     <MESSAGE value="Removed debugging statement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed debugging statement" />
+    <MESSAGE value="Removed local redundant variable" />
+    <MESSAGE value="Added a constant to represent the select radius of a termination" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a constant to represent the select radius of a termination" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -1647,25 +1647,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-578">
+          <caret line="97" column="58" lean-forward="true" selection-start-line="97" selection-start-column="58" selection-end-line="97" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="101" column="51" lean-forward="true" selection-start-line="101" selection-start-column="51" selection-end-line="101" selection-end-column="51" />
+        <state relative-caret-position="357">
+          <caret line="97" column="155" selection-start-line="97" selection-start-column="155" selection-end-line="97" selection-end-column="155" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2656#2657#0" expanded="true" />
             <element signature="e#2680#2681#0" expanded="true" />
+            <element signature="e#2727#2728#0" expanded="true" />
             <element signature="e#2751#2752#0" expanded="true" />
             <element signature="e#2885#2886#0" expanded="true" />
             <element signature="e#2906#2907#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="97" column="58" lean-forward="true" selection-start-line="97" selection-start-column="58" selection-end-line="97" selection-end-column="58" />
         </state>
       </provider>
     </entry>

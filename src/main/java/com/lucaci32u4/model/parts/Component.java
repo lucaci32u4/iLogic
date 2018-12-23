@@ -91,8 +91,11 @@ public class Component {
 			this.pins = pins;
 			bitWidth = pins.length;
 		}
+		private static Brush terminationBrush = null;
 		void render(RenderAPI pencil) {
-		
+			if (terminationBrush == null) terminationBrush = pencil.createOutlineBrush(127, 127, 127);
+			pencil.setBrush(terminationBrush);
+			pencil.drawRectangle(connectX - TERMINATION_RADIUS, connectY - TERMINATION_RADIUS, connectX + TERMINATION_RADIUS, connectY + TERMINATION_RADIUS);
 		}
 		
 		@Override public int getConnectPositionX() {
