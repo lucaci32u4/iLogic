@@ -172,5 +172,6 @@ public class Subcurcuit {
 		for (Component component : components) {
 			component.render(pencil, attach, detach);
 		}
+		if (ghostingVisibility && ghost != null) ghost.render(pencil, false, false);
 	}
 }

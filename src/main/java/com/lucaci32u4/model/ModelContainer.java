@@ -98,16 +98,14 @@ public class ModelContainer implements RenderCallback {
 						lastInside = inside;
 						if (currentPlaceFactory != null && currentPlaceModel != null) {
 							if (lastInside) {
-								mainCirc.addNewGhostComponent(currentPlaceFactory, currentPlaceModel, posX, posY);
 								mainCirc.setGhostingVisibility(true);
+								mainCirc.addNewGhostComponent(currentPlaceFactory, currentPlaceModel, posX, posY);
 								currentPlaceFactory = null;
 								currentPlaceModel = null;
 								ghosting = true;
-								System.out.printf("Placing");
 							} else {
 								if (ghosting) {
 									mainCirc.setGhostingVisibility(false);
-									System.out.printf("Placing suspended");
 								}
 							}
 						}
@@ -126,7 +124,10 @@ public class ModelContainer implements RenderCallback {
 					}
 				}
 				if ((lastLeft || lastRight) && ghosting) {
-					mainCirc.endGhosting(lastLeft);
+					if (lastLeft) {
+						mainCirc.endGhosting(lastLeft);
+						ghosting = false;
+					}
 					lastLeft = false;
 					lastRight = false;
 				}

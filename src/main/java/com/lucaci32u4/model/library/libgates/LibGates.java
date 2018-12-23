@@ -128,10 +128,9 @@ class GateAnd implements LibComponent {
 	
 	@Override
 	public void onDraw(RenderAPI api) {
-		if (LibGates.gateOutlineBrush == null) LibGates.gateOutlineBrush = api.createSolidBrush(127, 127, 127);
+		if (LibGates.gateOutlineBrush == null) LibGates.gateOutlineBrush = api.createOutlineBrush(0, 0, 0);
 		api.setBrush(LibGates.gateOutlineBrush);
-		api.drawRectangle(posX, posY, width, height);
-		System.out.printf("Draw");
+		api.drawRectangle(posX, posY, posX + width, posY + height);
 	}
 	
 	@Override
