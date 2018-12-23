@@ -3,14 +3,10 @@ package com.lucaci32u4.model.parts;
 import com.lucaci32u4.core.LogicComponent;
 import com.lucaci32u4.core.LogicPin;
 import com.lucaci32u4.main.Const;
-import com.lucaci32u4.model.CoordinateHelper;
 import com.lucaci32u4.model.library.LibComponent;
-import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.model.Subcurcuit;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.concurrent.atomic.AtomicLong;
 
 public class Pin extends Component {
 	
@@ -59,7 +55,7 @@ public class Pin extends Component {
 			return termArr;
 		}
 
-		@Override public void onDraw(DrawAPI api) {
+		@Override public void onDraw(RenderAPI api) {
 
 		}
 

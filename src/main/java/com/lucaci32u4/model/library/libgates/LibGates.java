@@ -6,9 +6,8 @@ import com.lucaci32u4.core.LogicPin;
 import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
-import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
+import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
-import com.lucaci32u4.ui.viewport.renderer.brush.OutlineBrush;
 
 import javax.swing.*;
 import java.util.UUID;
@@ -42,17 +41,16 @@ public class LibGates implements LibFactory {
 	public LibComponent createComponent(String name) {
 		switch (name) {
 			case "AND":
-				return new GateAnd();
+				return new GateAnd(this);
 			case "OR":
-				return new GateOr();
+				return new GateOr(this);
 			case "NOT":
-				return new GateNot();
+				return new GateNot(this);
 			default:
 				return null;
 		}
 	}
-	
-	private static Brush gateOutlineBrush = null;
+	static Brush gateOutlineBrush = null;
 }
 
 
@@ -63,6 +61,11 @@ class GateAnd implements LibComponent {
 	private final LogicPin[] arrayPins = new LogicPin[3];
 	private int posX, posY, width, height;
 	private Component component = null;
+	private final LibGates lib;
+
+	GateAnd(LibGates lib) {
+		this.lib = lib;
+	}
 
 	@Override
 	public void onAttach(Component componentContainer) {
@@ -124,8 +127,11 @@ class GateAnd implements LibComponent {
 	}
 	
 	@Override
-	public void onDraw(DrawAPI api) {
-	
+	public void onDraw(RenderAPI api) {
+		if (LibGates.gateOutlineBrush == null) LibGates.gateOutlineBrush = api.createSolidBrush(127, 127, 127);
+		api.setBrush(LibGates.gateOutlineBrush);
+		api.drawRectangle(posX, posY, width, height);
+		System.out.printf("Draw");
 	}
 	
 	@Override
@@ -134,10 +140,19 @@ class GateAnd implements LibComponent {
 	}
 }
 
+
+
+
 class GateOr implements LibComponent {
+	private final LibGates lib;
+
+	GateOr(LibGates lib) {
+		this.lib = lib;
+	}
+
 	@Override
-	public void onDraw(DrawAPI api) {
-	
+	public void onDraw(RenderAPI api) {
+
 	}
 	
 	@Override
@@ -192,8 +207,14 @@ class GateOr implements LibComponent {
 }
 
 class GateNot implements LibComponent {
+	private final LibGates lib;
+
+	GateNot(LibGates lib) {
+		this.lib = lib;
+	}
+
 	@Override
-	public void onDraw(DrawAPI api) {
+	public void onDraw(RenderAPI api) {
 	
 	}
 	

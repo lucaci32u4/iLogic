@@ -5,6 +5,7 @@ import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.model.parts.wiring.WireModel;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
+import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -159,7 +160,9 @@ public class Subcurcuit {
 		mdl.invalidateGraphics(this);
 	}
 
+	private static Brush backgroundBrush = null;
 	public void render(RenderAPI pencil, boolean attach, boolean detach) {
+		if (backgroundBrush == null) backgroundBrush = pencil.createSolidBrush(155, 255, 255);
 		for (WireModel wire : wires) {
 			wire.onDraw(pencil, false, false);
 		}

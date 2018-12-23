@@ -6,7 +6,6 @@ import com.lucaci32u4.presentation.UserPointerListener;
 import com.lucaci32u4.presentation.ViewControllerInterface;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.ui.viewport.RenderCallback;
-import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.util.Helper;
 import com.lucaci32u4.util.JSignal;
@@ -103,9 +102,11 @@ public class ModelContainer implements RenderCallback {
 								currentPlaceFactory = null;
 								currentPlaceModel = null;
 								ghosting = true;
+								System.out.printf("Placing");
 							} else {
 								if (ghosting) {
 									mainCirc.setGhostingVisibility(false);
+									System.out.printf("Placing suspended");
 								}
 							}
 						}
@@ -153,7 +154,7 @@ public class ModelContainer implements RenderCallback {
 			void pointerMoved(int x, int y) {
 				this.x = x;
 				this.y = y;
-				//mainCirc.onPointer(x, y);
+				mainCirc.onPointer(x, y);
 			}
 			
 			void mainPointer(boolean pressed) {
@@ -254,8 +255,8 @@ public class ModelContainer implements RenderCallback {
 		}
 	}
 	
-	@Override public void onDraw(DrawAPI draw, RenderAPI ctrl) {
-		// TODO: drawing
+	@Override public void onDraw(RenderAPI draw, RenderAPI ctrl) {
+		mainCirc.render(draw, false, false);
 	}
 	
 	public void addLibrary(LibFactory lib) {
