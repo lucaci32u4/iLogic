@@ -226,7 +226,6 @@ public class ModelContainer implements RenderCallback {
 					case PAUSE:
 						break;
 					case SELCOMPMODEL:
-						System.out.println("==============================COMPONENT===================MODEL=======" + param1 + param2);
 						currentPlaceFactory = libs.get(param1);
 						if (currentPlaceFactory != null) {
 							String[] possibleModels = currentPlaceFactory.getComponentsName();
