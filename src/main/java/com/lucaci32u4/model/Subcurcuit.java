@@ -20,7 +20,6 @@ public class Subcurcuit {
 	private boolean editMode = false;
 	
 	// Selection data
-	private boolean hasSelection = false;
 	private boolean selecting = false;
 	private boolean area = false;
 	private int selX1 = 0, selY1 = 0;
