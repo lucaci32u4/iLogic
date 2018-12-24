@@ -122,16 +122,16 @@ public class WireModel {
 				wiresPos2Y.set(i, old2Y.get(i));
 			}
 			if (extensionCount >= 1) {
-				if (ext1X > ext2X) { ext1X ^= ext2X ^= ext1X ^= ext2X; }
-				else if (ext1Y > ext2Y) { ext1Y ^= ext2Y ^= ext1Y ^= ext2Y; }
+				if (ext1X > ext2X) { ext1X = ext1X ^ ext2X; ext2X = ext1X ^ ext2X; ext1X = ext1X ^ ext2X; }
+				else if (ext1Y > ext2Y) { ext1Y = ext1Y ^ ext2Y; ext2Y = ext1Y ^ ext2Y; ext1Y = ext1Y ^ ext2Y; }
 				wiresPos1X.set(oldLength, ext1X);
 				wiresPos1Y.set(oldLength, ext1Y);
 				wiresPos2X.set(oldLength, ext2X);
 				wiresPos2Y.set(oldLength, ext2Y);
 			}
 			if (extensionCount >= 2) {
-				if (sup1X > sup2X) { sup1X ^= sup2X ^= sup1X ^= sup2X; }
-				else if (sup1Y > sup2Y) { sup1Y ^= sup2Y ^= sup1Y ^= sup2Y; }
+				if (sup1X > sup2X) { sup1X = sup1X ^ sup2X; sup2X = sup1X ^ sup2X; sup1X = sup1X ^ sup2X; }
+				else if (sup1Y > sup2Y) { sup1Y = sup1Y ^ sup2Y; sup2Y = sup1Y ^ sup2Y; sup1Y = sup1Y ^ sup2Y; }
 				wiresPos1X.set(oldLength + 1, sup1X);
 				wiresPos1Y.set(oldLength + 1, sup1Y);
 				wiresPos2X.set(oldLength + 1, sup2X);
@@ -152,6 +152,7 @@ public class WireModel {
 			width = right - left;
 			height = top - bottom;
 		}
+		subcircuit.invalidateGraphics();
 	}
 	
 	@SuppressWarnings("all")
@@ -163,8 +164,8 @@ public class WireModel {
 		for (int i = 0; i < length; i++) {
 			end1X = wiresPos1X.get(i);
 			end1Y = wiresPos1Y.get(i);
-			end2X = wiresPos2Y.get(i);
-			end2Y = wiresPos2X.get(i);
+			end2X = wiresPos2X.get(i);
+			end2Y = wiresPos2Y.get(i);
 			if (end1X == end2X) {
 				if (end1Y < end2Y) { aux = end1Y; end1Y = end2Y; end2Y = aux; }
 				end1X -= DELTA_WIDTH; // make LT
@@ -212,8 +213,13 @@ public class WireModel {
 			drawMemory[i] = false;
 		}
 		if (expanding) {
-			if (extensionCount >= 1) drawWire(graphics, ext1X, ext1Y, ext2X, ext2Y, false, true);
-			if (extensionCount >= 2) drawWire(graphics, sup1X, sup1Y, sup2X, sup2Y, false, true);
+			System.out.println(extensionCount);
+			if (extensionCount >= 1) {
+				drawWire(graphics, ext1X, ext1Y, ext2X, ext2Y, false, true);
+			}
+			if (extensionCount >= 2) {
+				drawWire(graphics, sup1X, sup1Y, sup2X, sup2Y, false, true);
+			}
 		}
 		if (detach) {
 			drawMemory = null;
@@ -224,7 +230,7 @@ public class WireModel {
 	private void drawWire(RenderAPI graphics, int fromX, int fromY, int toX, int toY, boolean selected, boolean extension) {
 		if (wireBrush == null) wireBrush = graphics.createSolidBrush(127, 127, 127);
 		graphics.setBrush(wireBrush);
-		graphics.drawLine(fromX, fromY, toX, toY, 1);
+		graphics.drawLine(fromX, fromY, toX, toY, DELTA_WIDTH * 2);
 		// TODO: (lucaci32u4, 23/12/18): Convert wire drawing from lines to rectangles in the nearest stable version
 	}
 }
