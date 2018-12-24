@@ -103,6 +103,7 @@ public class WireModel {
 				}
 			}
 		}
+		subcircuit.invalidateGraphics();
 	}
 	
 	public void endExpand() {
