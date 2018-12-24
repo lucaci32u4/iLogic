@@ -81,7 +81,6 @@ public class Subcurcuit {
 		selX1 = x;
 		selY1 = y;
 		area = false;
-		hasSelection = false;
 		for (Component component : components) {
 			for (Component.Termination termination : component.getTerminations()) {
 				if (CoordinateHelper.inside(x, y, termination.getConnectPositionX(), termination.getConnectPositionY(), Component.Termination.TERMINATION_RADIUS * 2, Component.Termination.TERMINATION_RADIUS * 2)) {
@@ -128,7 +127,6 @@ public class Subcurcuit {
 	private void endSelection(int x, int y) {
 		continueSelection(x, y);
 		if (selecting) {
-			hasSelection = !selObjects.isEmpty();
 			selecting = false;
 		} else if (wiring) {
 			if (expandingWire != null) {
