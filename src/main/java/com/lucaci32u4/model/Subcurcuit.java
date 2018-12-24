@@ -17,7 +17,7 @@ public class Subcurcuit {
 	
 	// Pointer data
 	private int pointerX, pointerY;
-	private boolean editMode = false;
+	private boolean editMode = true;
 	
 	// Selection data
 	private boolean selecting = false;
