@@ -68,6 +68,8 @@ public class WireModel {
 		hasDirection = false;
 		beginX = x;
 		beginY = y;
+
+		extensionCount = 0;
 	}
 	
 	public void continueExpand(int x, int y) {

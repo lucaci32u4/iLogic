@@ -8,7 +8,7 @@ public class CoordinateHelper {
 	// LT & RB for Box and LT & RB for Obj
 	@Contract(pure = true)
 	public static boolean intersectRect(int lb, int tb, int rb, int bb, int lo, int to, int ro, int bo) {
-		return (lb <= lo && ro <= rb) && (tb <= to && bo <= bb);
+		return (lb <= lo && ro <= rb) && (bb <= to && bo <= tb);
 	}
 	
 	@Contract(pure = true)
