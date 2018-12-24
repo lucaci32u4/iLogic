@@ -145,9 +145,11 @@ public class Java2DSubsystem implements RenderAPI {
 		fromY += primitiveOffsetY + unitsOffsetY;	fromY *= pixelsPerUnit;
 		toX += primitiveOffsetX + unitsOffsetX; 	toX *= pixelsPerUnit;
 		toY += primitiveOffsetY + unitsOffsetY; 	toY *= pixelsPerUnit;
+		Stroke prevStroke = g2d.getStroke();
 		g2d.setPaint((Paint)(Brush.get(brush)));
 		g2d.setStroke(new BasicStroke(thicknessPixels));
 		g2d.drawLine(fromX, fromY, toX, toY);
+		g2d.setStroke(prevStroke);
 	}
 	
 	@SuppressWarnings("squid:SwitchLastCaseIsDefaultCheck")
