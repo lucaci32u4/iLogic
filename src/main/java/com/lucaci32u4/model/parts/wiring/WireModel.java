@@ -172,7 +172,7 @@ public class WireModel {
 				end1X -= DELTA_WIDTH; // make LT
 				end2X += DELTA_WIDTH; // make RB
 			} else if (end1Y == end2Y) {
-				if (end1X > end2Y) { aux = end1X; end1X = end2X; end2X = aux; }
+				if (end1X > end2X) { aux = end1X; end1X = end2X; end2X = aux; }
 				end1Y += DELTA_WIDTH; // make LT
 				end2Y -= DELTA_WIDTH; // make RB
 			} else {
