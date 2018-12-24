@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public abstract class LogicComponent {
+public class LogicComponent {
 	
     public static class Interrupter {
         private LogicComponent owner;
@@ -80,7 +80,7 @@ public abstract class LogicComponent {
 	void setUUID(@NotNull UUID uuid) {
     	this.uuid = uuid;
 	}
-	public UUID getUUID() {
+	UUID getUUID() {
     	return uuid;
 	}
 	@Override public String toString() {
