@@ -26,10 +26,10 @@ public class Component {
 	public Component(@NotNull LibComponent libComponent, Subcurcuit subcircuit) {
 		this.libComponent = libComponent;
 		this.subcircuit = subcircuit;
+		libComponent.onAttach(this);
 		Termination[] terminations = libComponent.getTerminations();
 		this.terminations = new Termination[terminations.length];
 		System.arraycopy(terminations, 0, this.terminations, 0, terminations.length);
-		libComponent.onAttach(this);
 	}
 	
 	public int getPositionX() {
