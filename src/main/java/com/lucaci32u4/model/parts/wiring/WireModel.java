@@ -21,6 +21,8 @@ public class WireModel {
 	private volatile AtomicIntegerArray wiresPos2X = new AtomicIntegerArray(0);
 	private volatile AtomicIntegerArray wiresPos1Y = new AtomicIntegerArray(0);
 	private volatile AtomicIntegerArray wiresPos2Y = new AtomicIntegerArray(0);
+	private volatile AtomicIntegerArray branchPointsX = new AtomicIntegerArray(0);
+	private volatile AtomicIntegerArray branchPointsY = new AtomicIntegerArray(0);
 	private volatile ArrayList<Integer> selected = new ArrayList<>();
 	private boolean isAreaSelecting = false;
 	private LogicNode[] node = null;
@@ -38,8 +40,10 @@ public class WireModel {
 	public void attach(Subcurcuit subcircuit) {
 		this.subcircuit = subcircuit;
 		if (wiresPos1X.length() != 0) subcircuit.invalidateGraphics();
+		node = new LogicNode[1];
 		for (int i = 0; i < node.length; i++) {
 			node[i] = new LogicNode();
+			subcircuit.getSimulator().addNode(node[i]);
 		}
 	}
 	
@@ -68,6 +72,31 @@ public class WireModel {
 	}
 	
 	public void beginExpand(int x, int y) {
+		/*
+		select(x, y);
+		int wireIndex = (selected.size() != 0 ? selected.get(0) : -1);
+		deselect();
+		if (wireIndex != -1 || wiresPos1X.length() > 0) {
+			if (wiresPos1X.length() > 0) {
+				int wireX1 = wiresPos1X.get(wireIndex);
+				int wireY1 = wiresPos1Y.get(wireIndex);
+				int wireX2 = wiresPos2X.get(wireIndex);
+				int wireY2 = wiresPos2X.get(wireIndex);
+				if (wireX1 == wireX2) {
+					beginX = wireX1;
+					beginY = y;
+				} else if (wireY1 == wireY2) {
+					beginX = x;
+					beginY = wireY1;
+				} else throw new IllegalStateException();
+			} else {
+				beginX = x;
+				beginY = y;
+			}
+			expanding = true;
+			hasDirection = false;
+		} else throw new IllegalStateException();
+		*/
 		expanding = true;
 		hasDirection = false;
 		beginX = x;
@@ -157,6 +186,15 @@ public class WireModel {
 			boundsY = top;
 			width = right - left;
 			height = top - bottom;
+			AtomicIntegerArray brX = branchPointsX, brY = branchPointsY;
+			branchPointsX = new AtomicIntegerArray(brX.length() + 1);
+			branchPointsY = new AtomicIntegerArray(brY.length() + 1);
+			for (int i = 0; i < brX.length(); i++) {
+				branchPointsX.set(i, brX.get(i));
+				branchPointsY.set(i, brY.get(i));
+			}
+			branchPointsX.set(brX.length(), beginX);
+			branchPointsY.set(brY.length(), beginY);
 		}
 		subcircuit.invalidateGraphics();
 	}
@@ -226,6 +264,10 @@ public class WireModel {
 				drawWire(graphics, sup1X, sup1Y, sup2X, sup2Y, false, true);
 			}
 		}
+		length = branchPointsX.length();
+		for (int i = 0; i < length; i++) {
+			drawBranch(graphics, branchPointsX.get(i), branchPointsY.get(i));
+		}
 		if (detach) {
 			drawMemory = null;
 		}
@@ -237,5 +279,9 @@ public class WireModel {
 		graphics.setBrush(wireBrush);
 		graphics.drawLine(fromX, fromY, toX, toY, DELTA_WIDTH * 2);
 		// TODO: (lucaci32u4, 23/12/18): Convert wire drawing from lines to rectangles in the nearest stable version
+	}
+	private void drawBranch(RenderAPI graphics, int x, int y) {
+		graphics.setBrush(wireBrush);
+		graphics.drawLine(x, y, x, y, DELTA_WIDTH * 2);
 	}
 }
