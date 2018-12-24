@@ -82,7 +82,11 @@ public class Subcurcuit {
 		area = false;
 		for (Component component : components) {
 			for (Component.Termination termination : component.getTerminations()) {
-				if (CoordinateHelper.inside(x, y, termination.getConnectPositionX(), termination.getConnectPositionY(), Component.Termination.TERMINATION_RADIUS * 2, Component.Termination.TERMINATION_RADIUS * 2)) {
+				if (CoordinateHelper.inside(x, y,
+					                        termination.getConnectPositionX() - Component.Termination.TERMINATION_RADIUS,
+						                    termination.getConnectPositionY() - Component.Termination.TERMINATION_RADIUS,
+					                        Component.Termination.TERMINATION_RADIUS * 2,
+					                        Component.Termination.TERMINATION_RADIUS * 2)) {
 					routeOriginTermination = termination;
 					wiring = true;
 				}
