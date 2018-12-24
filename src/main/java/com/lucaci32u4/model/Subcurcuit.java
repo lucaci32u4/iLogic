@@ -98,6 +98,8 @@ public class Subcurcuit {
 		}
 		for (WireModel wire : wires) {
 			if (wire.select(x, y)) {
+				wire.deselect();
+				wire.beginExpand(x, y);
 				routeOriginTermination = null;
 				expandingWire = wire;
 				wireOriginX = x;
