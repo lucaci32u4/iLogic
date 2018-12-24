@@ -1,15 +1,11 @@
 package com.lucaci32u4.model;
 
-import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.model.parts.wiring.WireModel;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
-import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 
-import javax.smartcardio.TerminalFactory;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
 
 
