@@ -71,8 +71,8 @@ public class WireModel {
 	}
 	
 	public void continueExpand(int x, int y) {
-		if (!hasDirection) {
-			dirVertical = beginX == x;
+		if (!hasDirection && (beginX != x || beginY != y)) {
+			dirVertical = Math.abs(beginX - x) < Math.abs(beginY - y);
 			hasDirection = true;
 		}
 		ext1X = beginX;
