@@ -39,9 +39,8 @@ public class WireModel {
 	}
 	
 	public boolean selectArea(int l, int t, int r, int b) {
-		int aux = 0;
-		if (l > r) { aux = l; l = r; r = aux; }
-		if (t > b) { aux = t; t = b; b = aux; }
+		if (l > r) { l = l ^ r; r = l ^ r; l = l ^ r; }
+		if (t > b) { t = t ^ b; b = t ^ b; t = t ^ b; }
 		isAreaSelecting = pickAt(l, t, r, b, true) != 0;
 		if (isAreaSelecting) subcircuit.invalidateGraphics();
 		return isAreaSelecting;
@@ -68,8 +67,6 @@ public class WireModel {
 		hasDirection = false;
 		beginX = x;
 		beginY = y;
-
-		extensionCount = 0;
 	}
 	
 	public void continueExpand(int x, int y) {
