@@ -31,6 +31,8 @@ public class Subcurcuit {
 	private boolean wiring = false;
 	private Component.Termination routeOriginTermination = null;
 	private WireModel expandingWire = null;
+	private int wireOriginX = 0;
+	private int wireOriginY = 0;
 
 	// Interact data
 	private boolean interacting = false;
@@ -70,7 +72,6 @@ public class Subcurcuit {
 			} else {
 				endPointerDrag(pointerX, pointerY);
 			}
-			selecting = isPressed;
 		} else {
 			interact(pointerX, pointerY, isPressed, !isPressed);
 		}
@@ -88,8 +89,21 @@ public class Subcurcuit {
 					                        Component.Termination.TERMINATION_RADIUS * 2,
 					                        Component.Termination.TERMINATION_RADIUS * 2)) {
 					routeOriginTermination = termination;
+					wireOriginX = termination.getConnectPositionX();
+					wireOriginY = termination.getConnectPositionY();
 					wiring = true;
+					break;
 				}
+			}
+		}
+		for (WireModel wire : wires) {
+			if (wire.select(x, y)) {
+				routeOriginTermination = null;
+				expandingWire = wire;
+				wireOriginX = x;
+				wireOriginY = y;
+				wiring = true;
+				break;
 			}
 		}
 		continuePointerDrag(x, y);
@@ -99,16 +113,19 @@ public class Subcurcuit {
 		if (selX1 != x && selY1 != y && !area) area = true;
 		if (wiring) {
 			if (area) {
-				if (expandingWire == null) {
+				if (expandingWire == null && routeOriginTermination != null) {
 					expandingWire = new WireModel();
 					expandingWire.attach(this);
-					expandingWire.beginExpand(x, y);
-					invalidateGraphics();
-				} else {
+					expandingWire.beginExpand(wireOriginX, wireOriginY);
 					expandingWire.continueExpand(x, y);
 				}
+				if (expandingWire != null) {
+					expandingWire.continueExpand(x, y);
+				} else throw new IllegalStateException();
+				invalidateGraphics();
 			}
 		} else {
+			selecting = true;
 			if (area) {
 				deselectAll();
 				selObjects.clear();
@@ -134,9 +151,12 @@ public class Subcurcuit {
 		} else if (wiring) {
 			if (expandingWire != null) {
 				expandingWire.endExpand();
-				wires.add(expandingWire);
+				if (routeOriginTermination != null) {
+					wires.add(expandingWire);
+				}
 			}
 			wiring = false;
+			expandingWire = null;
 		}
 	}
 	
@@ -195,14 +215,18 @@ public class Subcurcuit {
 		mdl.invalidateGraphics(this);
 	}
 
-	public void render(RenderAPI pencil, boolean attach, boolean detach) {
+	void render(RenderAPI pencil, boolean attach, boolean detach) {
 		for (WireModel wire : wires) {
 			wire.onDraw(pencil, false, false);
 		}
 		for (Component component : components) {
 			component.render(pencil, attach, detach);
 		}
-		if (wiring && expandingWire != null) expandingWire.onDraw(pencil, false, false);
-		if (ghostingVisibility && ghost != null) ghost.render(pencil, false, false);
+		if (expandingWire != null) {
+			expandingWire.onDraw(pencil, false, false);
+		}
+		if (ghostingVisibility && ghost != null) {
+			ghost.render(pencil, false, false);
+		}
 	}
 }
