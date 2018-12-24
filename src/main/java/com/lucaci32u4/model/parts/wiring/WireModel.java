@@ -71,14 +71,15 @@ public class WireModel {
 	}
 	
 	public void continueExpand(int x, int y) {
-		if (!hasDirection && (beginX != x || beginY != y)) {
-			dirVertical = Math.abs(beginX - x) < Math.abs(beginY - y);
-			hasDirection = true;
-		}
-		ext1X = beginX;
-		ext1Y = beginY;
+		System.out.println("expanding...");
 		extensionCount = 0;
 		if (x != beginX || y != beginY) {
+			if (!hasDirection) {
+				dirVertical = Math.abs(beginX - x) < Math.abs(beginY - y);
+				hasDirection = true;
+				ext1X = beginX;
+				ext1Y = beginY;
+			}
 			extensionCount = 1;
 			if (x != beginX && y != beginY) {
 				extensionCount = 2;
@@ -214,7 +215,6 @@ public class WireModel {
 			drawMemory[i] = false;
 		}
 		if (expanding) {
-			System.out.println(extensionCount);
 			if (extensionCount >= 1) {
 				drawWire(graphics, ext1X, ext1Y, ext2X, ext2Y, false, true);
 			}
