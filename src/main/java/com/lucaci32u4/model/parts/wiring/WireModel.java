@@ -201,7 +201,7 @@ public class WireModel {
 		AtomicIntegerArray w2y = wiresPos2Y;
 		ArrayList<Integer> select = selected;
 		int length = w1x.length();
-		if (attach) {
+		if (drawMemory == null) {
 			drawMemory = new boolean[length];
 		}
 		if (drawMemory.length != length) {
