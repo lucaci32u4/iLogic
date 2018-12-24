@@ -56,8 +56,8 @@ public class Subcurcuit {
 			if (interacting) {
 				interact(x, y, false, false);
 			}
-			if (selecting) {
-				continueSelection(x, y);
+			if (selecting || wiring) {
+				continuePointerDrag(x, y);
 			}
 		} else {
 			ghost.move(x, y);
@@ -67,9 +67,9 @@ public class Subcurcuit {
 	public void onMainButton(boolean isPressed) {
 		if (editMode) {
 			if (isPressed) {
-				beginSelection(pointerX, pointerY);
+				beginPointerDrag(pointerX, pointerY);
 			} else {
-				endSelection(pointerX, pointerY);
+				endPointerDrag(pointerX, pointerY);
 			}
 			selecting = isPressed;
 		} else {
@@ -77,7 +77,7 @@ public class Subcurcuit {
 		}
 	}
 	
-	private void beginSelection(int x, int y) {
+	private void beginPointerDrag(int x, int y) {
 		selX1 = x;
 		selY1 = y;
 		area = false;
@@ -89,10 +89,10 @@ public class Subcurcuit {
 				}
 			}
 		}
-		continueSelection(x, y);
+		continuePointerDrag(x, y);
 	}
 	
-	private void continueSelection(int x, int y) {
+	private void continuePointerDrag(int x, int y) {
 		if (selX1 != x && selY1 != y && !area) area = true;
 		if (wiring) {
 			if (area) {
@@ -124,8 +124,8 @@ public class Subcurcuit {
 		}
 	}
 	
-	private void endSelection(int x, int y) {
-		continueSelection(x, y);
+	private void endPointerDrag(int x, int y) {
+		continuePointerDrag(x, y);
 		if (selecting) {
 			selecting = false;
 		} else if (wiring) {
