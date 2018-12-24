@@ -199,13 +199,13 @@ public class Subcurcuit {
 		}
 	}
 	
-	public void addNewGhostComponent(LibFactory factory, String name, int enterX, int enterY) {
+	void addNewGhostComponent(LibFactory factory, String name, int enterX, int enterY) {
 		ghost = new Component(factory.createComponent(name), this);
 		ghost.move(enterX, enterY);
 		invalidateGraphics();
 	}
 	
-	public void setGhostingVisibility(boolean visibility) {
+	void setGhostingVisibility(boolean visibility) {
 		ghostingVisibility = visibility;
 		invalidateGraphics();
 	}
