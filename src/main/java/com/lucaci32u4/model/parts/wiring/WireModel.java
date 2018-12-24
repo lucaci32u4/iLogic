@@ -102,7 +102,7 @@ public class WireModel {
 					sup2Y = y;
 				}
 			}
-		}
+		} else hasDirection = false;
 		subcircuit.invalidateGraphics();
 	}
 	
