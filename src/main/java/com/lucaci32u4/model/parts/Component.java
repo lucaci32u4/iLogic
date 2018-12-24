@@ -1,5 +1,6 @@
 package com.lucaci32u4.model.parts;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import com.lucaci32u4.core.LogicComponent;
 import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.Subcurcuit;
@@ -12,7 +13,6 @@ import lombok.Getter;
 
 import com.lucaci32u4.core.LogicPin;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @SuppressWarnings("squid:S1659")
 public class Component {
@@ -33,6 +33,7 @@ public class Component {
 		this.terminations = new Termination[terminations.length];
 		System.arraycopy(terminations, 0, this.terminations, 0, terminations.length);
 		logicComponent = new LogicComponent(libComponent);
+		subcircuit.getSimulator().addComponent(logicComponent);
 	}
 	
 	public int getPositionX() {
