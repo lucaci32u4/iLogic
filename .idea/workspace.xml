@@ -12,7 +12,10 @@
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Constants.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Constants.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -255,28 +258,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="33" />
+          <entry key="java" value="37" />
+          <entry key="properties" value="1" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="33" />
+          <entry key="JAVA" value="37" />
+          <entry key="Properties" value="1" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="51" />
-          <entry key="java" value="4333" />
-          <entry key="txt" value="1222" />
+          <entry key="java" value="4493" />
+          <entry key="txt" value="1438" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4333" />
-          <entry key="PLAIN_TEXT" value="1273" />
+          <entry key="JAVA" value="4493" />
+          <entry key="PLAIN_TEXT" value="1489" />
           <entry key="XML" value="11" />
         </counts>
       </usages-collector>
@@ -298,11 +303,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+            <state relative-caret-position="165">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -311,10 +316,42 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1434#1435#0" expanded="true" />
+                <element signature="e#1460#1461#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="233" lean-forward="true" selection-start-line="233" selection-end-line="233" />
+            <state relative-caret-position="187">
+              <caret line="203" column="30" selection-start-line="203" selection-start-column="30" selection-end-line="203" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -414,7 +451,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/Core/LogicContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/Model/parts/Component.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Wire.java" />
-        <option value="$PROJECT_DIR$/resources/Constants.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/DrawAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ViewController/ViewControllerInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/UI/Viewport/Renderer/RenderManager.java" />
@@ -446,8 +482,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" />
+        <option value="$PROJECT_DIR$/resources/Constants.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" />
       </list>
     </option>
   </component>
@@ -735,8 +772,8 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="tree&#9;PSI&#9;JAVA://com.lucaci32u4.ui.windows.MainWindow.MyTreeCellRenderer&#10;main&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;mainw&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;mainwin&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;AND&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libgates.GateAnd&#10;compo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;component&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;mainWindo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;libcom&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/model/library/LibComponent.java&#10;MAIN&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;view&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/viewport/LogicViewport.java&#10;share&#9;ACTION&#9;Github.Share&#10;switch&#9;ACTION&#9;null&#10;warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545653324647" />
+    <property name="SearchEverywhereHistoryKey" value="gatea&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libgates.GateAnd&#10;compo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;tree&#9;PSI&#9;JAVA://com.lucaci32u4.ui.windows.MainWindow.MyTreeCellRenderer&#10;main&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;mainw&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;mainwin&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;AND&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libgates.GateAnd&#10;component&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins&#10;mainWindo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;libcom&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/model/library/LibComponent.java&#10;MAIN&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;view&#9;FILE&#9;file://D:/Data/Documents/IntelliJ IDEA Projects/iSignal/src/main/java/com/lucaci32u4/ui/viewport/LogicViewport.java&#10;share&#9;ACTION&#9;Github.Share&#10;switch&#9;ACTION&#9;null&#10;warning&#9;PSI&#9;JAVA://com.sun.org.apache.xerces.internal.xni.parser.XMLErrorHandler#warning&#10;terminal&#9;ACTION&#9;ActivateTerminalToolWindow&#10;font&#9;ACTION&#9;JumpToColorsAndFonts&#10;termina&#9;ACTION&#9;ActivateTerminalToolWindow&#10;toolbar&#9;ACTION&#9;MainToolBar&#10;tool&#9;ACTION&#9;ViewToolBar&#10;pus&#9;ACTION&#9;Vcs.Push&#10;git&#9;ACTION&#9;Github.Share&#10;github&#9;ACTION&#9;Github.Share&#10;refactor&#9;ACTION&#9;RefactoringMenu" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545657122970" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -833,27 +870,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00165" summary="Wiring model, work in progress">
-      <created>1542315291983</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1542315291984</updated>
-    </task>
-    <task id="LOCAL-00166" summary="Wiring model, work in progress">
-      <created>1542315429333</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1542315429333</updated>
-    </task>
-    <task id="LOCAL-00167" summary="Wiring model, work in progress">
-      <created>1542315478976</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1542315478976</updated>
     </task>
     <task id="LOCAL-00168" summary="Fixed two's complement comparison">
       <created>1542316117468</created>
@@ -1177,7 +1193,28 @@
       <option name="project" value="LOCAL" />
       <updated>1545648643450</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="Renamed some methods">
+      <created>1545653323627</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1545653323629</updated>
+    </task>
+    <task id="LOCAL-00215" summary="Removed unused field">
+      <created>1545653344685</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1545653344686</updated>
+    </task>
+    <task id="LOCAL-00216" summary="Set editMode to permanent true for testing purposes. editMode will be&#10;dynamically set to th right value when visualization mode will be made&#10;available">
+      <created>1545653431775</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1545653431775</updated>
+    </task>
+    <option name="localTasksCounter" value="217" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1193,7 +1230,7 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34832904" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34832904" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1205,8 +1242,8 @@
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="3" weight="0.329718" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32839838" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" weight="0.2678331" />
-      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" visible="true" weight="0.3257066" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.4978678" visible="true" weight="0.2678331" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" weight="0.3257066" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" sideWeight="0.49946696" weight="0.329718" />
@@ -1257,9 +1294,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Mouse pointer handling" />
-    <MESSAGE value="Gave the model thread a name for easier debugging" />
-    <MESSAGE value="Removed long encoding of (x, y) pair of coordinates. Replaced with&#10;separate x, y variables." />
     <MESSAGE value="Removed long encoding of (x, y) pair of coordinates. Replaced with&#10;separate x, y variables. Removed leftover code." />
     <MESSAGE value="Replaced field variable with local variable in appropiate method" />
     <MESSAGE value="Handled library adding and selecting" />
@@ -1282,7 +1316,10 @@
     <MESSAGE value="Wires can be created by draging off a termination.&#10;Added a getter method for terminations in Component to make them&#10;accessible for wiring operations" />
     <MESSAGE value="Removed redundant class field" />
     <MESSAGE value="Removed unused imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused imports" />
+    <MESSAGE value="Renamed some methods" />
+    <MESSAGE value="Removed unused field" />
+    <MESSAGE value="Set editMode to permanent true for testing purposes. editMode will be&#10;dynamically set to th right value when visualization mode will be made&#10;available" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set editMode to permanent true for testing purposes. editMode will be&#10;dynamically set to th right value when visualization mode will be made&#10;available" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1333,20 +1370,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/io/IOInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1429,13 +1452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1599,34 +1615,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="132" column="67" lean-forward="true" selection-start-line="132" selection-start-column="67" selection-end-line="132" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3764">
           <caret line="537" column="18" selection-start-line="537" selection-start-column="18" selection-end-line="537" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="51" column="28" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1435#1436#0" expanded="true" />
-            <element signature="e#1461#1462#0" expanded="true" />
-            <element signature="e#2656#2657#0" expanded="true" />
-            <element signature="e#2680#2681#0" expanded="true" />
-            <element signature="e#2727#2728#0" expanded="true" />
-            <element signature="e#2751#2752#0" expanded="true" />
-            <element signature="e#2885#2886#0" expanded="true" />
-            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#17070#17071#0" expanded="true" />
+            <element signature="e#17138#17139#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1635,13 +1630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="68" column="52" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="233" lean-forward="true" selection-start-line="233" selection-end-line="233" />
         </state>
       </provider>
     </entry>
@@ -1657,13 +1645,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1434#1435#0" expanded="true" />
+            <element signature="e#1460#1461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Long.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="816" selection-start-line="816" selection-end-line="816" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+        <state relative-caret-position="165">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Constants.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="203" column="30" selection-start-line="203" selection-start-column="30" selection-end-line="203" selection-end-column="30" />
         </state>
       </provider>
     </entry>
