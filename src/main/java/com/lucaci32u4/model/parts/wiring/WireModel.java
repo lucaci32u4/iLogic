@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 
 @SuppressWarnings("squid:S1659")
 public class WireModel {
-	private static final long DELTA_WIDTH = Long.parseLong(Const.query("dimensions.wireWidth"));
+	private static final long DELTA_WIDTH = Long.parseLong(Const.query("dimensions.wireWidth")) / 2;
 	private Subcurcuit subcircuit = null;
 	private int boundsX = 0, boundsY = 0;
 	private int width = 0, height = 0;
