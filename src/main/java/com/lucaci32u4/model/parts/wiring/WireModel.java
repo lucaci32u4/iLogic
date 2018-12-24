@@ -1,7 +1,6 @@
 package com.lucaci32u4.model.parts.wiring;
 
 import com.lucaci32u4.model.CoordinateHelper;
-import com.lucaci32u4.ui.viewport.renderer.DrawAPI;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
@@ -10,8 +9,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicIntegerArray;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicLongArray;
 
 @SuppressWarnings("squid:S1659")
 public class WireModel {
