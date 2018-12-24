@@ -1,5 +1,6 @@
 package com.lucaci32u4.model.parts.wiring;
 
+import com.lucaci32u4.core.LogicNode;
 import com.lucaci32u4.model.CoordinateHelper;
 import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
@@ -22,6 +23,7 @@ public class WireModel {
 	private volatile AtomicIntegerArray wiresPos2Y = new AtomicIntegerArray(0);
 	private volatile ArrayList<Integer> selected = new ArrayList<>();
 	private boolean isAreaSelecting = false;
+	private LogicNode[] node = null;
 	
 	// Expansion variables
 	private volatile boolean expanding = false;
@@ -36,6 +38,9 @@ public class WireModel {
 	public void attach(Subcurcuit subcircuit) {
 		this.subcircuit = subcircuit;
 		if (wiresPos1X.length() != 0) subcircuit.invalidateGraphics();
+		for (int i = 0; i < node.length; i++) {
+			node[i] = new LogicNode();
+		}
 	}
 	
 	public boolean selectArea(int l, int t, int r, int b) {

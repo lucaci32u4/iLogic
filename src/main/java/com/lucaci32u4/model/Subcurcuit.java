@@ -1,5 +1,6 @@
 package com.lucaci32u4.model;
 
+import com.lucaci32u4.core.LogicContainer;
 import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.model.parts.wiring.WireModel;
@@ -13,8 +14,9 @@ public class Subcurcuit {
 	
 	private Collection<Component> components = new ArrayDeque<>();
 	private Collection<WireModel> wires = new ArrayDeque<>();
+	private final LogicContainer simulator = new LogicContainer();
 	private final ModelContainer mdl;
-	
+
 	// Pointer data
 	private int pointerX, pointerY;
 	private boolean editMode = true;

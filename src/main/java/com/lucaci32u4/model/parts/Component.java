@@ -1,5 +1,6 @@
 package com.lucaci32u4.model.parts;
 
+import com.lucaci32u4.core.LogicComponent;
 import com.lucaci32u4.model.library.LibComponent;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.model.parts.wiring.Connectable;
@@ -21,7 +22,8 @@ public class Component {
 	private @Getter boolean ghosting = false;
 	private final AtomicBoolean selected = new AtomicBoolean();
 	private final Subcurcuit subcircuit;
-	private Termination[] terminations;
+	private final Termination[] terminations;
+	private final LogicComponent logicComponent;
 	
 	public Component(@NotNull LibComponent libComponent, Subcurcuit subcircuit) {
 		this.libComponent = libComponent;
@@ -30,6 +32,7 @@ public class Component {
 		Termination[] terminations = libComponent.getTerminations();
 		this.terminations = new Termination[terminations.length];
 		System.arraycopy(terminations, 0, this.terminations, 0, terminations.length);
+		logicComponent = new LogicComponent(libComponent);
 	}
 	
 	public int getPositionX() {
