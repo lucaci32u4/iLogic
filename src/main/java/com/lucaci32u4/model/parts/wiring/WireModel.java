@@ -8,12 +8,12 @@ import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
 @SuppressWarnings("squid:S1659")
 public class WireModel {
-	private static final long DELTA_WIDTH = Long.parseLong(Const.query("dimensions.wireWidth")) / 2;
+	private static final int DELTA_WIDTH = Integer.parseInt(Const.query("dimensions.wireWidth")) / 2;
 	private Subcurcuit subcircuit = null;
 	private int boundsX = 0, boundsY = 0;
 	private int width = 0, height = 0;
@@ -21,12 +21,15 @@ public class WireModel {
 	private volatile AtomicIntegerArray wiresPos2X = new AtomicIntegerArray(0);
 	private volatile AtomicIntegerArray wiresPos1Y = new AtomicIntegerArray(0);
 	private volatile AtomicIntegerArray wiresPos2Y = new AtomicIntegerArray(0);
-	private volatile AtomicIntegerArray branchPointsX = new AtomicIntegerArray(0);
-	private volatile AtomicIntegerArray branchPointsY = new AtomicIntegerArray(0);
 	private volatile ArrayList<Integer> selected = new ArrayList<>();
 	private boolean isAreaSelecting = false;
 	private LogicNode[] node = null;
-	
+
+	// Brnch data
+	private final Object branchLock = new Object();
+	private Collection<Integer> branchPointsX = new ArrayDeque<>();
+	private Collection<Integer> branchPointsY = new ArrayDeque<>();
+
 	// Expansion variables
 	private volatile boolean expanding = false;
 	private boolean hasDirection = false;
@@ -104,7 +107,7 @@ public class WireModel {
 	}
 	
 	public void continueExpand(int x, int y) {
-		System.out.println("expanding...");
+
 		extensionCount = 0;
 		if (x != beginX || y != beginY) {
 			if (!hasDirection) {
@@ -186,15 +189,7 @@ public class WireModel {
 			boundsY = top;
 			width = right - left;
 			height = top - bottom;
-			AtomicIntegerArray brX = branchPointsX, brY = branchPointsY;
-			branchPointsX = new AtomicIntegerArray(brX.length() + 1);
-			branchPointsY = new AtomicIntegerArray(brY.length() + 1);
-			for (int i = 0; i < brX.length(); i++) {
-				branchPointsX.set(i, brX.get(i));
-				branchPointsY.set(i, brY.get(i));
-			}
-			branchPointsX.set(brX.length(), beginX);
-			branchPointsY.set(brY.length(), beginY);
+			rescanBranchPoints();
 		}
 		subcircuit.invalidateGraphics();
 	}
@@ -234,7 +229,46 @@ public class WireModel {
 		}
 		return selected.size();
 	}
-	
+
+	private void rescanBranchPoints() {
+		synchronized (branchLock) {
+			branchPointsX.clear();
+			branchPointsY.clear();
+			int length = wiresPos1X.length();
+			for (int i = 0; i < length; i++) {
+				int oneX1 = wiresPos1X.get(i);
+				int oneY1 = wiresPos1Y.get(i);
+				int oneX2 = wiresPos2X.get(i);
+				int oneY2 = wiresPos2Y.get(i);
+				boolean oneHorizontal = (oneY1 == oneY2);
+				for (int j = i + 1; j < length; j++) {
+					int twoX1 = wiresPos1X.get(j);
+					int twoY1 = wiresPos1Y.get(j);
+					int twoX2 = wiresPos2X.get(j);
+					int twoY2 = wiresPos2Y.get(j);
+					boolean twoHorizontal = (twoY1 == twoY2);
+					if (oneHorizontal != twoHorizontal) {
+						if (oneHorizontal) {
+							if ((twoY1 < oneY1 && oneY2 < twoY2) && (oneX1 < twoX1 && twoX2 < oneX2)) {
+								branchPointsX.add(twoX1);
+								branchPointsY.add(oneY1);
+							}
+						} else {
+							if ((oneY1 < twoY1 && twoY2 < oneY2) && (twoX1 < oneX1 && oneX2 < twoX2)) {
+								branchPointsX.add(oneX1);
+								branchPointsY.add(twoY1);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public LogicNode[] getSimulatorNode() {
+		return node;
+	}
+
 	private boolean[] drawMemory = null;
 	public void onDraw(@NotNull RenderAPI graphics, boolean attach, boolean detach) {
 		AtomicIntegerArray w1x = wiresPos1X;
@@ -256,6 +290,20 @@ public class WireModel {
 			drawWire(graphics, w1x.get(i), w1y.get(i), w2x.get(i), w2y.get(i), drawMemory[i], false);
 			drawMemory[i] = false;
 		}
+		try {
+			synchronized (branchLock) {
+				length = branchPointsX.size();
+				Iterator<Integer> itX = branchPointsX.iterator();
+				Iterator<Integer> itY = branchPointsY.iterator();
+				for (int i = 0; i < length; i++) {
+					Integer x = itX.next();
+					Integer y = itY.next();
+					drawBranch(graphics, x, y);
+				}
+			}
+		} catch (NoSuchElementException nseex) {
+			nseex.printStackTrace(System.out);
+		}
 		if (expanding) {
 			if (extensionCount >= 1) {
 				drawWire(graphics, ext1X, ext1Y, ext2X, ext2Y, false, true);
@@ -264,24 +312,21 @@ public class WireModel {
 				drawWire(graphics, sup1X, sup1Y, sup2X, sup2Y, false, true);
 			}
 		}
-		length = branchPointsX.length();
-		for (int i = 0; i < length; i++) {
-			drawBranch(graphics, branchPointsX.get(i), branchPointsY.get(i));
-		}
 		if (detach) {
 			drawMemory = null;
 		}
 	}
 
 	private static Brush wireBrush = null;
-	private void drawWire(RenderAPI graphics, int fromX, int fromY, int toX, int toY, boolean selected, boolean extension) {
+	private void drawWire(@NotNull RenderAPI graphics, int fromX, int fromY, int toX, int toY, boolean selected, boolean extension) {
 		if (wireBrush == null) wireBrush = graphics.createSolidBrush(127, 127, 127);
 		graphics.setBrush(wireBrush);
 		graphics.drawLine(fromX, fromY, toX, toY, DELTA_WIDTH * 2);
 		// TODO: (lucaci32u4, 23/12/18): Convert wire drawing from lines to rectangles in the nearest stable version
 	}
-	private void drawBranch(RenderAPI graphics, int x, int y) {
+	private void drawBranch(@NotNull RenderAPI graphics, int x, int y) {
 		graphics.setBrush(wireBrush);
-		graphics.drawLine(x, y, x, y, DELTA_WIDTH * 2);
+		graphics.drawRectangle(x - DELTA_WIDTH * 2, y - DELTA_WIDTH * 2, x + DELTA_WIDTH * 2, y + DELTA_WIDTH * 2);
+		System.out.println("joint");
 	}
 }

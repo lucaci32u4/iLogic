@@ -116,7 +116,9 @@ public class Component {
 		@Override public int getConnectPositionY() {
 			return connectY;
 		}
-		
+		@Override public int getConnectionRadius() {
+			return TERMINATION_RADIUS;
+		}
 		public void setConnectPosiiton(int x, int y) {
 			connectX = x;
 			connectY = y;

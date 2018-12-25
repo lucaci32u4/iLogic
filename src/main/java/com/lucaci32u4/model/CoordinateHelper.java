@@ -18,7 +18,7 @@ public class CoordinateHelper {
 	
 	@Contract(pure = true)
 	public static boolean inside(int x, int y, int boxX, int boxY, int height, int width) {
-		return (boxX <= x && x <= boxX + width) && (boxY <= y && y <= boxX + height);
+		return (boxX <= x && x <= boxX + width) && (boxY <= y && y <= boxY + height);
 	}
 	
 }

@@ -1,10 +1,15 @@
 package com.lucaci32u4.model;
 
+import com.lucaci32u4.core.LogicComponent;
 import com.lucaci32u4.core.LogicContainer;
+import com.lucaci32u4.core.LogicNode;
+import com.lucaci32u4.core.LogicPin;
 import com.lucaci32u4.model.library.LibFactory;
 import com.lucaci32u4.model.parts.Component;
+import com.lucaci32u4.model.parts.wiring.Connectable;
 import com.lucaci32u4.model.parts.wiring.WireModel;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
@@ -83,20 +88,12 @@ public class Subcurcuit {
 		selX1 = x;
 		selY1 = y;
 		area = false;
-		for (Component component : components) {
-			for (Component.Termination termination : component.getTerminations()) {
-				if (CoordinateHelper.inside(x, y,
-					                        termination.getConnectPositionX() - Component.Termination.TERMINATION_RADIUS,
-						                    termination.getConnectPositionY() - Component.Termination.TERMINATION_RADIUS,
-					                        Component.Termination.TERMINATION_RADIUS * 2,
-					                        Component.Termination.TERMINATION_RADIUS * 2)) {
-					routeOriginTermination = termination;
-					wireOriginX = termination.getConnectPositionX();
-					wireOriginY = termination.getConnectPositionY();
-					wiring = true;
-					break;
-				}
-			}
+		Connectable connectable = getConnectableAt(x, y);
+		if (connectable instanceof Component.Termination) {
+			routeOriginTermination = (Component.Termination) connectable;
+			wireOriginX = connectable.getConnectPositionX();
+			wireOriginY = connectable.getConnectPositionY();
+			wiring = true;
 		}
 		for (WireModel wire : wires) {
 			if (wire.select(x, y)) {
@@ -154,10 +151,24 @@ public class Subcurcuit {
 			selecting = false;
 		} else if (wiring) {
 			if (expandingWire != null) {
-				expandingWire.endExpand();
 				if (routeOriginTermination != null) {
 					wires.add(expandingWire);
 				}
+				LogicNode[] logicNodes = expandingWire.getSimulatorNode();
+				Connectable connectable = getConnectableAt(x, y);
+				if (connectable instanceof Component.Termination) {
+					LogicPin[] logicPins = ((Component.Termination) connectable).getPins();
+					if (logicNodes.length != logicPins.length) {
+						int length = logicNodes.length;
+						for (int i = 0; i < length; i++) {
+							simulator.createLink(logicPins[i], logicNodes[i]);
+						}
+					}
+				}
+				if (connectable != null) {
+					expandingWire.continueExpand(connectable.getConnectPositionX(), connectable.getConnectPositionY());
+				}
+				expandingWire.endExpand();
 			}
 			wiring = false;
 			expandingWire = null;
@@ -197,6 +208,23 @@ public class Subcurcuit {
 			interacting = false;
 			interactObj = null;
 		}
+	}
+
+	@Nullable
+	private Connectable getConnectableAt(int x, int y) {
+		for (Component component : components) {
+			for (Connectable connectable : component.getTerminations()) {
+				int connectableRadius = connectable.getConnectionRadius();
+				if (CoordinateHelper.inside(x, y,
+						                    connectable.getConnectPositionX() - connectableRadius,
+						                    connectable.getConnectPositionY() - connectableRadius,
+						                    connectableRadius * 2,
+						                    connectableRadius * 2)) {
+					return connectable;
+				}
+			}
+		}
+		return null;
 	}
 	
 	void addNewGhostComponent(LibFactory factory, String name, int enterX, int enterY) {
