@@ -184,7 +184,7 @@ public class Java2DSubsystem implements RenderAPI {
 		switch (brush.getType()) {
 			case TEXTURE:
 			case COLOR:
-				g2d.fillRect(left, top, right - left, bottom - top);
+				g2d.fillRect(left, top, right - left + 1, bottom - top + 1);
 				break;
 			case OUTLINE:
 				g2d.drawRect(left, top, right - left, bottom - top);
