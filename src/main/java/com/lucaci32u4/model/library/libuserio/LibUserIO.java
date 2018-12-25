@@ -46,7 +46,7 @@ public class LibUserIO implements LibFactory {
 }
 
 class UserIOOutput implements LibComponent {
-	private final int radius = 20;
+	private final int radius = 10;
 	private int posX = 0;
 	private int posY = 0;
 	private final Component.Termination[] termArray = new Component.Termination[1];
@@ -62,6 +62,7 @@ class UserIOOutput implements LibComponent {
 			outlineBrush = api.createOutlineBrush(0, 0, 0);
 			insideBrushHigh = api.createSolidBrush(0, 255, 0);
 			insideBrushLow = api.createSolidBrush(255, 0, 0);
+			initBrushes = true;
 		}
 		api.setBrush(outlineBrush);
 		api.drawRectangle(posX - radius, posY - radius, posX + radius, posY + radius);

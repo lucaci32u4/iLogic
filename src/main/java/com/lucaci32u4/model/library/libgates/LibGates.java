@@ -51,6 +51,8 @@ public class LibGates implements LibFactory {
 		}
 	}
 	static Brush gateOutlineBrush = null;
+	static Brush gateInsideBrush = null;
+	static boolean brushesReady = false;
 }
 
 
@@ -59,7 +61,7 @@ public class LibGates implements LibFactory {
 class GateAnd implements LibComponent {
 	private final Component.Termination[] arrayTerminations = new Component.Termination[3];
 	private final LogicPin[] arrayPins = new LogicPin[3];
-	private int posX = 0, posY = 0, width = 80, height = 60;
+	private int posX = 0, posY = 0, width = 60, height = 60;
 
 	@Override
 	public void onAttach(Component componentContainer) {
@@ -117,9 +119,15 @@ class GateAnd implements LibComponent {
 	
 	@Override
 	public void onDraw(RenderAPI api) {
-		if (LibGates.gateOutlineBrush == null) LibGates.gateOutlineBrush = api.createOutlineBrush(0, 0, 0);
+		if (!LibGates.brushesReady) {
+			LibGates.gateOutlineBrush = api.createOutlineBrush(0, 0, 0);
+			LibGates.gateInsideBrush = api.createSolidBrush(200, 200, 200);
+			LibGates.brushesReady = true;
+		}
 		api.setBrush(LibGates.gateOutlineBrush);
 		api.drawRectangle(posX, posY, posX + width, posY + height);
+		api.setBrush(LibGates.gateInsideBrush);
+		api.drawRectangle(posX + 1, posY + 1, posX + width - 1, posY + height - 1);
 	}
 	
 	@Override
