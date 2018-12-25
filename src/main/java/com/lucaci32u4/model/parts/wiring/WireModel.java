@@ -75,35 +75,27 @@ public class WireModel {
 	}
 	
 	public void beginExpand(int x, int y) {
-		/*
-		select(x, y);
-		int wireIndex = (selected.size() != 0 ? selected.get(0) : -1);
-		deselect();
-		if (wireIndex != -1 || wiresPos1X.length() > 0) {
-			if (wiresPos1X.length() > 0) {
-				int wireX1 = wiresPos1X.get(wireIndex);
-				int wireY1 = wiresPos1Y.get(wireIndex);
-				int wireX2 = wiresPos2X.get(wireIndex);
-				int wireY2 = wiresPos2X.get(wireIndex);
-				if (wireX1 == wireX2) {
-					beginX = wireX1;
-					beginY = y;
-				} else if (wireY1 == wireY2) {
-					beginX = x;
-					beginY = wireY1;
-				} else throw new IllegalStateException();
-			} else {
-				beginX = x;
+		if (wiresPos1X.length() != 0) {
+			select(x, y);
+			int wireIndex = (selected.size() != 0 ? selected.get(0) : -1);
+			deselect();
+			int wireX1 = wiresPos1X.get(wireIndex);
+			int wireY1 = wiresPos1Y.get(wireIndex);
+			int wireX2 = wiresPos2X.get(wireIndex);
+			int wireY2 = wiresPos2Y.get(wireIndex);
+			if (wireX1 == wireX2) {
+				beginX = wireX1;
 				beginY = y;
-			}
-			expanding = true;
-			hasDirection = false;
-		} else throw new IllegalStateException();
-		*/
+			} else if (wireY1 == wireY2) {
+				beginX = x;
+				beginY = wireY1;
+			} else throw new IllegalStateException();
+		} else {
+			beginX = x;
+			beginY = y;
+		}
 		expanding = true;
 		hasDirection = false;
-		beginX = x;
-		beginY = y;
 	}
 	
 	public void continueExpand(int x, int y) {
