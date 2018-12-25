@@ -248,6 +248,11 @@ public class Subcurcuit {
 	void endGhosting(boolean place) {
 		if (place) components.add(ghost);
 		ghost = null;
+		invalidateGraphics();
+	}
+
+	boolean isGhosting() {
+		return (ghost != null);
 	}
 
 	public LogicContainer getSimulator() {

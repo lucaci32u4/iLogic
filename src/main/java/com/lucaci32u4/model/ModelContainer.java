@@ -44,6 +44,7 @@ public class ModelContainer implements RenderCallback {
 	private LibFactory currentPlaceFactory = null;
 	private String currentPlaceModel = null;
 	private boolean ghosting = false;
+	private boolean editMode = false;
 	
 	private final Object newLibsLock = new Object();
 	private final Collection<LibFactory> newLibs = new ArrayList<>();
@@ -226,22 +227,33 @@ public class ModelContainer implements RenderCallback {
 					case PAUSE:
 						break;
 					case SELCOMPMODEL:
-						currentPlaceFactory = libs.get(param1);
-						if (currentPlaceFactory != null) {
-							String[] possibleModels = currentPlaceFactory.getComponentsName();
-							for (String model : possibleModels) {
-								if (model.equals(param2)) {
-									possibleModels = null;
-									break;
+						if (editMode) {
+							currentPlaceFactory = libs.get(param1);
+							if (currentPlaceFactory != null) {
+								String[] possibleModels = currentPlaceFactory.getComponentsName();
+								for (String model : possibleModels) {
+									if (model.equals(param2)) {
+										possibleModels = null;
+										break;
+									}
 								}
+								if (possibleModels == null) {
+									currentPlaceModel = param2;
+								} else throw new IllegalArgumentException();
 							}
-							if (possibleModels == null) {
-								currentPlaceModel = param2;
-							} else throw new IllegalArgumentException();
+						} else {
+							source.deselectSimulationModel();
 						}
 						break;
 					case EDITMODE:
-						mainCirc.setPointerMode(Boolean.getBoolean(param1));
+						editMode = Boolean.parseBoolean(param1);
+						if (!editMode) {
+							if (mainCirc.isGhosting()) {
+								mainCirc.endGhosting(false);
+								ghosting = false;
+							}
+						}
+						mainCirc.setPointerMode(editMode);
 						break;
 					default:
 						throw new IllegalArgumentException();
