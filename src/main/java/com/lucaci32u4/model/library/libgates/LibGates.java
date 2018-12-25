@@ -41,13 +41,13 @@ public class LibGates implements LibFactory {
 	public LibComponent createComponent(String name) {
 		switch (name) {
 			case "AND":
-				return new GateAnd(this);
+				return new GateAnd();
 			case "OR":
-				return new GateOr(this);
+				return new GateOr();
 			case "NOT":
-				return new GateNot(this);
+				return new GateNot();
 			default:
-				return null;
+				throw new IllegalArgumentException();
 		}
 	}
 	static Brush gateOutlineBrush = null;
@@ -59,21 +59,10 @@ public class LibGates implements LibFactory {
 class GateAnd implements LibComponent {
 	private final Component.Termination[] arrayTerminations = new Component.Termination[3];
 	private final LogicPin[] arrayPins = new LogicPin[3];
-	private int posX, posY, width, height;
-	private Component component = null;
-	private final LibGates lib;
-
-	GateAnd(LibGates lib) {
-		this.lib = lib;
-	}
+	private int posX = 0, posY = 0, width = 80, height = 60;
 
 	@Override
 	public void onAttach(Component componentContainer) {
-		component = componentContainer;
-		posX = 0;
-		posY = 0;
-		width = 80;
-		height = 60;
 		for (int i = 0; i < 3; i++) {
 			arrayPins[i] = new LogicPin();
 			arrayTerminations[i] = new Component.Termination(componentContainer, new LogicPin[]{ arrayPins[i]});
@@ -143,11 +132,6 @@ class GateAnd implements LibComponent {
 
 
 class GateOr implements LibComponent {
-	private final LibGates lib;
-
-	GateOr(LibGates lib) {
-		this.lib = lib;
-	}
 
 	@Override
 	public void onDraw(RenderAPI api) {
@@ -206,11 +190,6 @@ class GateOr implements LibComponent {
 }
 
 class GateNot implements LibComponent {
-	private final LibGates lib;
-
-	GateNot(LibGates lib) {
-		this.lib = lib;
-	}
 
 	@Override
 	public void onDraw(RenderAPI api) {
