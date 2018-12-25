@@ -56,7 +56,7 @@ public class MainWindow {
 			NEW, OPEN, SAVE, EXPORT, SETTINGS, EXIT, UNDO,
 			REDO, COPY, PASTE, DELETE, SELECTALL, EDITSEL,
 			NEWCIRCUIT, DELETECIRCUIT, LIBRARIES, STARTSTOP,
-			RESET, ACTIVESIMULATION, PLACECOMPSEL,
+			RESET, ACTIVESIMULATION, PLACECOMPSEL, EDITMODE,
 		}
 		void onUserEvent(Type subject, String param1, String param2);
 	}
@@ -67,6 +67,7 @@ public class MainWindow {
 	private JFrame frame;
 	private JPanel contentPanel;
 	private JToolBar topToolBar, bottomToolBar;
+	private JCheckBox editMode;
 	private JSplitPane splitPaneVertical;
 	private JPanel circuitPanel;
 	private JSplitPane splitPaneHorizontal;
@@ -246,8 +247,10 @@ public class MainWindow {
 				frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				treeIcon = new HashMap<>();
 				contentPanel = new JPanel();
+				editMode = new JCheckBox();
 				topToolBar = new JToolBar();
-				topToolBar.add(new JButton("cba"));
+				editMode.addActionListener(new EditModeListener());
+				topToolBar.add(editMode);
 				bottomToolBar = new JToolBar();
 				bottomToolBar.add(new JButton("abc"));
 				splitPaneVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -338,6 +341,7 @@ public class MainWindow {
 			tabbedPane.setTitleAt(1, lang.get("simulationtree"));
 			componentsRoot.setUserObject(" " + lang.get("components") + " ");
 			circuitsRoot.setUserObject(" " + lang.get("circuits") + " ");
+			editMode.setText(lang.get("editmode"));
 		});
 	}
 
@@ -568,6 +572,13 @@ public class MainWindow {
 			if (node != null) {
 			
 			}
+		}
+	}
+
+	private class EditModeListener implements ActionListener {
+		@Override public void actionPerformed(ActionEvent e) {
+			AbstractButton absB = (AbstractButton) e.getSource();
+			listener.onUserEvent(UserInputListener.Type.EDITMODE, Boolean.toString(absB.getModel().isSelected()), null);
 		}
 	}
 }

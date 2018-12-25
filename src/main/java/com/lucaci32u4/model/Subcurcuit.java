@@ -24,7 +24,7 @@ public class Subcurcuit {
 
 	// Pointer data
 	private int pointerX, pointerY;
-	private boolean editMode = true;
+	private boolean editMode = false;
 	
 	// Selection data
 	private boolean selecting = false;
@@ -44,7 +44,9 @@ public class Subcurcuit {
 	// Interact data
 	private boolean interacting = false;
 	private Object interactObj = null;
-	
+
+	// Drawing data
+	private Connectable hoverConnectable = null;
 	
 	public Subcurcuit(ModelContainer mdl) {
 		this.mdl = mdl;
@@ -52,7 +54,7 @@ public class Subcurcuit {
 	
 	public void setPointerMode(boolean edit) {
 		editMode = edit;
-		if (interacting) {
+		if (interacting && edit) {
 			interact(pointerX, pointerY, false, true);
 		}
 	}
@@ -63,6 +65,11 @@ public class Subcurcuit {
 		if (ghost == null) {
 			if (interacting) {
 				interact(x, y, false, false);
+			}
+			if (editMode) {
+				Object lastHoverConnectable = hoverConnectable;
+				hoverConnectable = getConnectableAt(x, y);
+				if (lastHoverConnectable != hoverConnectable) invalidateGraphics();
 			}
 			if (selecting || wiring) {
 				continuePointerDrag(x, y);
@@ -258,11 +265,17 @@ public class Subcurcuit {
 		for (Component component : components) {
 			component.render(pencil, attach, detach);
 		}
-		if (expandingWire != null) {
-			expandingWire.onDraw(pencil, false, false);
+		Connectable localHoverConnectable = hoverConnectable;
+		if (localHoverConnectable != null) {
+			localHoverConnectable.render(pencil);
 		}
-		if (ghostingVisibility && ghost != null) {
-			ghost.render(pencil, false, false);
+		WireModel localExpandingWire = expandingWire;
+		if (localExpandingWire != null) {
+			localExpandingWire.onDraw(pencil, false, false);
+		}
+		Component localGhost = ghost;
+		if (ghostingVisibility && localGhost != null) {
+			localGhost.render(pencil, false, false);
 		}
 	}
 }

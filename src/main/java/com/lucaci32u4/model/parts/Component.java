@@ -77,9 +77,6 @@ public class Component {
 
 	public void render(RenderAPI pencil, boolean attach, boolean detach) {
 		libComponent.onDraw(pencil);
-		for (Termination termination : libComponent.getTerminations()) {
-			termination.render(pencil);
-		}
 	}
 	
 	public void invalidateGraphics() {
@@ -103,11 +100,12 @@ public class Component {
 			this.pins = pins;
 			bitWidth = pins.length;
 		}
+
 		private static Brush terminationBrush = null;
-		void render(RenderAPI pencil) {
-			if (terminationBrush == null) terminationBrush = pencil.createOutlineBrush(127, 127, 127);
-			pencil.setBrush(terminationBrush);
-			pencil.drawRectangle(connectX - TERMINATION_RADIUS, connectY - TERMINATION_RADIUS, connectX + TERMINATION_RADIUS, connectY + TERMINATION_RADIUS);
+		@Override public void render(RenderAPI graphics) {
+			if (terminationBrush == null) terminationBrush = graphics.createOutlineBrush(127, 127, 127);
+			graphics.setBrush(terminationBrush);
+			graphics.drawRectangle(connectX - TERMINATION_RADIUS, connectY - TERMINATION_RADIUS, connectX + TERMINATION_RADIUS, connectY + TERMINATION_RADIUS);
 		}
 		
 		@Override public int getConnectPositionX() {

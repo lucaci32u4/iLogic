@@ -240,6 +240,9 @@ public class ModelContainer implements RenderCallback {
 							} else throw new IllegalArgumentException();
 						}
 						break;
+					case EDITMODE:
+						mainCirc.setPointerMode(Boolean.getBoolean(param1));
+						break;
 					default:
 						throw new IllegalArgumentException();
 				}

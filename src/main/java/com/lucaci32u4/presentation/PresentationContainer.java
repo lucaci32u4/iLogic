@@ -125,6 +125,9 @@ public class PresentationContainer implements ViewControllerInterface {
 				case PLACECOMPSEL:
 					fwdUal.notify(pThis, UserActionListener.Type.SELCOMPMODEL, param1, param2, 0, 0);
 					break;
+				case EDITMODE:
+					fwdUal.notify(pThis, UserActionListener.Type.EDITMODE, param1, null, 0, 0);
+					break;
 				default:
 					throw new IllegalArgumentException();
 			}
