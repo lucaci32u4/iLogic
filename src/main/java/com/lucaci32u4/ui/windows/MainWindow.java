@@ -73,6 +73,7 @@ public class MainWindow {
 	private JSplitPane splitPaneHorizontal;
 	private JTabbedPane tabbedPane;
 	private JTree selectTree, simulationTree;
+	boolean selectTreeCanSelect;
 	private HashMap<Object, Icon> treeIcon;
 	private DefaultMutableTreeNode selectTreeRoot, simulationTreeRoot;
 	private DefaultMutableTreeNode circuitsRoot;
@@ -116,9 +117,10 @@ public class MainWindow {
 	// Simulation variables
 	private boolean activeSimulation;
 	
-	public MainWindow(@Nullable UserInputListener uil) {
+	public MainWindow(@Nullable UserInputListener uil, boolean initialEditMode) {
 		this.listener = uil;
 		activeSimulation = false;
+		selectTreeCanSelect = true;
 		lang = LanguagePack.getInstance();
 		try {
 			SwingUtilities.invokeAndWait(() -> {
@@ -249,6 +251,7 @@ public class MainWindow {
 				contentPanel = new JPanel();
 				editMode = new JCheckBox();
 				topToolBar = new JToolBar();
+				editMode.setSelected(initialEditMode);
 				editMode.addActionListener(new EditModeListener());
 				topToolBar.add(editMode);
 				bottomToolBar = new JToolBar();

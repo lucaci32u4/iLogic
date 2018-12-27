@@ -51,6 +51,7 @@ class UserIOOutput implements LibComponent {
 	private int posY = 0;
 	private final Component.Termination[] termArray = new Component.Termination[1];
 	private final LogicPin[] pinArray = new LogicPin[1];
+	private Component componentContainer = null;
 
 	private volatile boolean displayState = false;
 	private static Brush outlineBrush = null;
@@ -65,12 +66,12 @@ class UserIOOutput implements LibComponent {
 			initBrushes = true;
 		}
 		api.setBrush(outlineBrush);
-		api.drawRectangle(posX - radius, posY - radius, posX + radius, posY + radius);
+		api.drawRectangle(posX, posY, posX + radius * 2, posY + radius * 2);
 		api.setBrush(displayState ? insideBrushHigh : insideBrushLow);
-		api.drawRectangle(posX - radius + 1, posY - radius + 1, posX + radius - 1, posY + radius - 1);
+		api.drawRectangle(posX + 1, posY + 1, posX + radius * 2 - 1, posY + radius * 2 - 1);
 	}
 
-	@Override public LogicPin[] onBegin() {
+	@Override public LogicPin[] onSimulationBegin() {
 		return pinArray;
 	}
 
@@ -78,7 +79,7 @@ class UserIOOutput implements LibComponent {
 		// Nothing: Outputs do not recieve interrupts
 	}
 
-	@Override public void onEnd() {
+	@Override public void onSimulationEnd() {
 		// Nothing: No resources need allocation
 	}
 
@@ -87,21 +88,20 @@ class UserIOOutput implements LibComponent {
 	}
 
 	@Override public void onAttach(Component componentContainer) {
+		this.componentContainer = componentContainer;
 		pinArray[0] = new LogicPin();
+		pinArray[0].setListening(true);
+		pinArray[0].setDefaultValue(new Logic(Logic.LOW, false));
 		termArray[0] = new Component.Termination(componentContainer, new LogicPin[] { pinArray[0] });
 	}
 
 	@Override public void onChangePosition(int x, int y) {
 		posX = x;
 		posY = y;
-		termArray[0].setConnectPosiiton(x, y + radius);
+		termArray[0].setConnectPosiiton(x + radius, y + radius * 2);
 	}
 
-	@Override public void onChangeDimension(int width, int height) {
-		// Nothing: Outputs do not change sizes
-	}
-
-	@Override public void onInteractiveClick(int x, int y) {
+	@Override public void onInteractiveClick(int x, int y, boolean begin, boolean end) {
 		// Nothing: Outputs do not interact
 	}
 
@@ -111,53 +111,84 @@ class UserIOOutput implements LibComponent {
 
 	@Override public void onSimulationSignalEvent() {
 		Logic state = pinArray[0].read();
-		displayState = state.state && state.defined;
+		System.out.println("sth");
+		if (displayState != (state.state && state.defined)) {
+			displayState = (state.state && state.defined);
+			componentContainer.invalidateGraphics();
+		}
 	}
 }
 
 class UserIOInput implements LibComponent {
+	private final int radius = 10;
+	private int posX = 0;
+	private int posY = 0;
+	private final Component.Termination[] termArray = new Component.Termination[1];
+	private final LogicPin[] pinArray = new LogicPin[1];
+	private LogicComponent.Interrupter interactChange = null;
+	private Component componentContainer = null;
 
+	private volatile boolean displayState = false;
+	private static Brush outlineBrush = null;
+	private static Brush insideBrushHigh = null;
+	private static Brush insideBrushLow = null;
+	private static boolean initBrushes = false;
 	@Override public void onDraw(RenderAPI api) {
-		
+		if (!initBrushes) {
+			outlineBrush = api.createOutlineBrush(0, 0, 0);
+			insideBrushHigh = api.createSolidBrush(0, 255, 0);
+			insideBrushLow = api.createSolidBrush(255, 0, 0);
+			initBrushes = true;
+		}
+		api.setBrush(outlineBrush);
+		api.drawRectangle(posX, posY, posX + radius * 2, posY + radius * 2);
+		api.setBrush(displayState ? insideBrushHigh : insideBrushLow);
+		api.drawRectangle(posX + 5, posY + 5, posX + radius * 2 - 5, posY + radius * 2 - 5);
 	}
 
-	@Override public LogicPin[] onBegin() {
-		return new LogicPin[0];
-	}
-
-	@Override public void onSimulationSignalEvent() {
-
+	@Override public LogicPin[] onSimulationBegin() {
+		return pinArray;
 	}
 
 	@Override public void onSimulationInterrupt(LogicComponent.Interrupter interrupter) {
-
+		if (interrupter == interactChange) {
+			displayState = !displayState;
+			pinArray[0].drive(Logic.FULL_DRIVER, 1, displayState);
+			componentContainer.invalidateGraphics();
+		}
 	}
 
-	@Override public void onEnd() {
-
+	@Override public void onSimulationEnd() {
+		// Nothing: No resources need allocation
 	}
 
 	@Override public Component.Termination[] getTerminations() {
-		return new Component.Termination[0];
+		return termArray;
 	}
 
 	@Override public void onAttach(Component componentContainer) {
-
+		this.componentContainer = componentContainer.setWidth(radius * 2).setHeight(radius * 2);
+		pinArray[0] = new LogicPin();
+		pinArray[0].setListening(false);
+		termArray[0] = new Component.Termination(componentContainer, new LogicPin[] { pinArray[0] });
+		interactChange = componentContainer.createNewInterrupter();
 	}
 
 	@Override public void onChangePosition(int x, int y) {
-
+		posX = x;
+		posY = y;
+		termArray[0].setConnectPosiiton(x + radius, y);
 	}
 
-	@Override public void onChangeDimension(int width, int height) {
-
-	}
-
-	@Override public void onInteractiveClick(int x, int y) {
-
+	@Override public void onInteractiveClick(int x, int y, boolean begin, boolean end) {
+		if (end) interactChange.prepareInterrupt();
 	}
 
 	@Override public void onDetach() {
+		// Nothing: Inputs do not release any resources
+	}
 
+	@Override public void onSimulationSignalEvent() {
+		// Nothing: No inputs to process
 	}
 }

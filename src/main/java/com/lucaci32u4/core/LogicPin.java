@@ -29,6 +29,8 @@
 
 package com.lucaci32u4.core;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.UUID;
 
 public class LogicPin {
@@ -45,6 +47,7 @@ public class LogicPin {
     LogicComponent component;
     LogicNode node;
     Logic externalState;
+    Logic defaultValue = null;
     boolean listening;
     private UUID uuid;
     
@@ -54,6 +57,7 @@ public class LogicPin {
     	externalState = new Logic(Logic.LOW, false);
     	listening = false;
 	}
+
 	void setComponent(LogicComponent component) { this.component = component; }
 	void setContainer(LogicContainer container) {
     	this.container = container;
@@ -72,13 +76,23 @@ public class LogicPin {
 			externalState.defined = activeDriver;
 		}
 	}
+
     public Logic read() {
     	if (node != null) {
-			return (listening ? new Logic(node.logicState) : null);
+			return (listening ? new Logic(node.logicState) : defaultValue);
 		} else {
-    		return (listening ? new Logic(Logic.LOW, false) : null);
+    		return (listening ? new Logic(Logic.LOW, false) : defaultValue);
 		}
     }
+
+    public boolean isConnected() {
+    	return (node != null);
+    }
+
+    public void setDefaultValue(@Nullable Logic value) {
+		defaultValue = value;
+    }
+
     public void setListening(boolean isListening) {
         listening = isListening;
     }

@@ -20,7 +20,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 @SuppressWarnings("squid:S1659") // Declaring on the same line
 public class ModelContainer implements RenderCallback {
-	
+	private static final boolean INITIAL_EDIT_MODE = Boolean.parseBoolean(Const.query("startup.initialEditMode"));
+
 	private ModelThread modelThread = new ModelThread();
 	
 	private UAL ual = new UAL();
@@ -44,7 +45,7 @@ public class ModelContainer implements RenderCallback {
 	private LibFactory currentPlaceFactory = null;
 	private String currentPlaceModel = null;
 	private boolean ghosting = false;
-	private boolean editMode = false;
+	private boolean editMode = INITIAL_EDIT_MODE;
 	
 	private final Object newLibsLock = new Object();
 	private final Collection<LibFactory> newLibs = new ArrayList<>();
@@ -60,7 +61,7 @@ public class ModelContainer implements RenderCallback {
 		}
 		modelThread.setName("ModelThread");
 		modelThread.start();
-		mainCirc = new Subcurcuit(this);
+		mainCirc = new Subcurcuit(this, editMode);
 	}
 	
 	private class ModelThread extends Thread {
@@ -264,7 +265,7 @@ public class ModelContainer implements RenderCallback {
 	
 	public void addViewController(ViewControllerInterface wci) {
 		synchronized (wcixLock) {
-			wci.init(this);
+			wci.init(this, editMode);
 			wci.setUserActionListener(ual);
 			wci.setUserPointerListener(upl);
 			wcix.add(wci);

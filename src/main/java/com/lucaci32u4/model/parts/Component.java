@@ -25,15 +25,15 @@ public class Component {
 	private final Termination[] terminations;
 	private final LogicComponent logicComponent;
 	
-	public Component(@NotNull LibComponent libComponent, Subcurcuit subcircuit) {
+	public Component(@NotNull LibComponent libComponent, @NotNull Subcurcuit subcircuit) {
 		this.libComponent = libComponent;
 		this.subcircuit = subcircuit;
+		logicComponent = new LogicComponent(libComponent);
 		libComponent.onAttach(this);
+		subcircuit.getSimulator().addComponent(logicComponent);
 		Termination[] terminations = libComponent.getTerminations();
 		this.terminations = new Termination[terminations.length];
 		System.arraycopy(terminations, 0, this.terminations, 0, terminations.length);
-		logicComponent = new LogicComponent(libComponent);
-		subcircuit.getSimulator().addComponent(logicComponent);
 	}
 	
 	public int getPositionX() {
@@ -51,6 +51,10 @@ public class Component {
 	public int getHeight() {
 		return height;
 	}
+
+	public Component setWidth(int width) { this.width = width; return this; }
+
+	public Component setHeight(int height) { this.height = height; return this; }
 
 	public Termination[] getTerminations() {
 		return terminations;
@@ -71,12 +75,16 @@ public class Component {
 	public void interact(int x, int y, boolean begin, boolean end) {
 		if (begin) selected.set(true);
 		if (end) selected.set(false);
-		libComponent.onInteractiveClick(x, y);
+		libComponent.onInteractiveClick(x, y, begin, end);
 		invalidateGraphics();
 	}
 
 	public void render(RenderAPI pencil, boolean attach, boolean detach) {
 		libComponent.onDraw(pencil);
+	}
+
+	public LogicComponent.Interrupter createNewInterrupter() {
+		return new LogicComponent.Interrupter(logicComponent);
 	}
 	
 	public void invalidateGraphics() {
@@ -131,8 +139,7 @@ public class Component {
 		Termination[] getTerminations();
 		void onAttach(Component componentContainer);
 		void onChangePosition(int x, int y);
-		void onChangeDimension(int width, int height);
-		void onInteractiveClick(int x, int y);
+		void onInteractiveClick(int x, int y, boolean begin, boolean end);
 		void onDetach();
 	}
 }

@@ -321,6 +321,7 @@ public class LogicContainer {
  		componentPins = arrp;
  		componentPins[componentPins.length - 1] = component.onBegin(this, UUID.randomUUID());
  		for (LogicPin pin : componentPins[componentPins.length - 1]) {
+ 			pin.setComponent(component);
  			pin.setUUID(UUID.randomUUID());
  			pin.setContainer(this);
 		}
@@ -405,6 +406,7 @@ public class LogicContainer {
 	public void addComponent(@NotNull LogicComponent component) {
 		Sync.EventAddComponent event = new Sync.EventAddComponent();
 		event.component = component;
+		component.scheduleContainerAheadOfTime(this);
 		sync.postEvent(event);
 	}
 	public void removeComponent(@NotNull LogicComponent component) {

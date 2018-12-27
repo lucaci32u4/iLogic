@@ -49,10 +49,10 @@ public class LogicComponent {
     }
     
     public interface Handler {
-		LogicPin[] onBegin();
+		LogicPin[] onSimulationBegin();
 		void onSimulationSignalEvent();
 		void onSimulationInterrupt(Interrupter interrupter);
-		void onEnd();
+		void onSimulationEnd();
 	}
     
     private LogicContainer container;
@@ -62,27 +62,33 @@ public class LogicComponent {
     public LogicComponent(@NotNull Handler handler) {
     	this.handler = handler;
 	}
+
     LogicPin[] onBegin(@NotNull LogicContainer container, @NotNull UUID uuid) {
     	this.container = container;
     	this.uuid = uuid;
-    	return handler.onBegin();
+    	return handler.onSimulationBegin();
 	}
+
     void onSimulationSignalEvent() {
     	handler.onSimulationSignalEvent();
 	}
-    void onSimulationInterrupt(Interrupter interrupter) {
+
+    private void onSimulationInterrupt(Interrupter interrupter) {
     	handler.onSimulationInterrupt(interrupter);
 	}
+
     void onEnd() {
-    	handler.onEnd();
+    	handler.onSimulationEnd();
 	}
 	
-	void setUUID(@NotNull UUID uuid) {
-    	this.uuid = uuid;
+	void scheduleContainerAheadOfTime(LogicContainer owner) {
+    	this.container = owner;
 	}
+
 	UUID getUUID() {
     	return uuid;
 	}
+
 	@Override public String toString() {
     	return "c[" + LogicID.toString(uuid) + "] " + getClass().getName();
 	}

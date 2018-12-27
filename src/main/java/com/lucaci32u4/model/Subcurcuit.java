@@ -1,6 +1,5 @@
 package com.lucaci32u4.model;
 
-import com.lucaci32u4.core.LogicComponent;
 import com.lucaci32u4.core.LogicContainer;
 import com.lucaci32u4.core.LogicNode;
 import com.lucaci32u4.core.LogicPin;
@@ -9,6 +8,7 @@ import com.lucaci32u4.model.parts.Component;
 import com.lucaci32u4.model.parts.wiring.Connectable;
 import com.lucaci32u4.model.parts.wiring.WireModel;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayDeque;
@@ -48,8 +48,10 @@ public class Subcurcuit {
 	// Drawing data
 	private Connectable hoverConnectable = null;
 	
-	public Subcurcuit(ModelContainer mdl) {
+	public Subcurcuit(ModelContainer mdl, boolean initialEditMode) {
 		this.mdl = mdl;
+		this.editMode = initialEditMode;
+		simulator.startSimulation();
 	}
 	
 	public void setPointerMode(boolean edit) {
@@ -160,17 +162,15 @@ public class Subcurcuit {
 			if (expandingWire != null) {
 				if (routeOriginTermination != null) {
 					wires.add(expandingWire);
+					LogicPin[] logicPins = routeOriginTermination.getPins();
+					LogicNode[] logicNodes = expandingWire.getSimulatorNode();
+					CircuitHelper.linkPinArray(simulator, logicPins, logicNodes);
 				}
-				LogicNode[] logicNodes = expandingWire.getSimulatorNode();
 				Connectable connectable = getConnectableAt(x, y);
 				if (connectable instanceof Component.Termination) {
+					LogicNode[] logicNodes = expandingWire.getSimulatorNode();
 					LogicPin[] logicPins = ((Component.Termination) connectable).getPins();
-					if (logicNodes.length != logicPins.length) {
-						int length = logicNodes.length;
-						for (int i = 0; i < length; i++) {
-							simulator.createLink(logicPins[i], logicNodes[i]);
-						}
-					}
+					CircuitHelper.linkPinArray(simulator, logicPins, logicNodes);
 				}
 				if (connectable != null) {
 					expandingWire.continueExpand(connectable.getConnectPositionX(), connectable.getConnectPositionY());
@@ -204,7 +204,7 @@ public class Subcurcuit {
 					break;
 				}
 			}
-			interacting = interactObj != null;
+			interacting = (interactObj != null);
 		}
 		if (interacting) {
 			if (interactObj instanceof Component) {
@@ -283,4 +283,20 @@ public class Subcurcuit {
 			localGhost.render(pencil, false, false);
 		}
 	}
+}
+
+
+class CircuitHelper {
+
+	static boolean linkPinArray(@NotNull LogicContainer container, @NotNull LogicPin[] pins, @NotNull LogicNode[] nodes) {
+		int length = pins.length;
+		boolean valid = (length == nodes.length);
+		if (valid) {
+			for (int i = 0; i < length; i++) {
+				container.createLink(pins[i], nodes[i]);
+			}
+		}
+		return valid;
+	}
+
 }

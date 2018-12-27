@@ -21,11 +21,11 @@ public class PresentationContainer implements ViewControllerInterface {
 	private MainWindow mainWindow = null;
 	private MainWindowListener windowListener = null;
 	
-	@Override public void init(ModelContainer model) {
+	@Override public void init(ModelContainer model, boolean initialEditMode) {
 		this.model = model;
 		viewport = new LogicViewport();
 		windowListener = new MainWindowListener();
-		mainWindow = new MainWindow(windowListener);
+		mainWindow = new MainWindow(windowListener, initialEditMode);
 		viewportListener = new ViewportListener();
 		viewport.init(mainWindow.getCircuitPanel(), new Java2DSubsystem(), viewportListener, model.getRenderCallback());
 		mainWindow.setVisible(true);

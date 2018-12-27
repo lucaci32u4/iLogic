@@ -37,12 +37,7 @@ public class Pin extends Component {
 		}
 		
 		@Override
-		public void onChangeDimension(int width, int height) {
-			// Nothing: Pins do not change dimension
-		}
-		
-		@Override
-		public void onInteractiveClick(int x, int y) {
+		public void onInteractiveClick(int x, int y, boolean begin, boolean end) {
 			// Nothing: pins do not interact with the user
 		}
 		
@@ -60,7 +55,7 @@ public class Pin extends Component {
 		}
 
 		@Override
-		public LogicPin[] onBegin() {
+		public LogicPin[] onSimulationBegin() {
 			return new LogicPin[0];
 		}
 
@@ -75,7 +70,7 @@ public class Pin extends Component {
 		}
 
 		@Override
-		public void onEnd() {
+		public void onSimulationEnd() {
 			// Nothing. Yet.
 		}
 	}

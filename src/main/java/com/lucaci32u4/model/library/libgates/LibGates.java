@@ -67,6 +67,8 @@ class GateAnd implements LibComponent {
 	public void onAttach(Component componentContainer) {
 		for (int i = 0; i < 3; i++) {
 			arrayPins[i] = new LogicPin();
+			arrayPins[i].setListening(i < 2);
+			arrayPins[i].setDefaultValue(new Logic(Logic.LOW, false));
 			arrayTerminations[i] = new Component.Termination(componentContainer, new LogicPin[]{ arrayPins[i]});
 		}
 	}
@@ -77,7 +79,7 @@ class GateAnd implements LibComponent {
 	}
 	
 	@Override
-	public LogicPin[] onBegin() {
+	public LogicPin[] onSimulationBegin() {
 		return arrayPins;
 	}
 	
@@ -94,7 +96,7 @@ class GateAnd implements LibComponent {
 	}
 	
 	@Override
-	public void onEnd() {
+	public void onSimulationEnd() {
 		// Nothing: There are no resources allocated
 	}
 	
@@ -108,12 +110,7 @@ class GateAnd implements LibComponent {
 	}
 	
 	@Override
-	public void onChangeDimension(int width, int height) {
-		// Nothing: Gates do not change dimensions.
-	}
-	
-	@Override
-	public void onInteractiveClick(int x, int y) {
+	public void onInteractiveClick(int x, int y, boolean begin, boolean end) {
 		// Nothing: Gates do not interact.
 	}
 	
@@ -147,7 +144,7 @@ class GateOr implements LibComponent {
 	}
 	
 	@Override
-	public LogicPin[] onBegin() {
+	public LogicPin[] onSimulationBegin() {
 		return new LogicPin[0];
 	}
 	
@@ -162,7 +159,7 @@ class GateOr implements LibComponent {
 	}
 	
 	@Override
-	public void onEnd() {
+	public void onSimulationEnd() {
 	
 	}
 	
@@ -177,12 +174,7 @@ class GateOr implements LibComponent {
 	}
 	
 	@Override
-	public void onChangeDimension(int width, int height) {
-	
-	}
-	
-	@Override
-	public void onInteractiveClick(int x, int y) {
+	public void onInteractiveClick(int x, int y, boolean begin, boolean end) {
 	
 	}
 	
@@ -205,7 +197,7 @@ class GateNot implements LibComponent {
 	}
 	
 	@Override
-	public LogicPin[] onBegin() {
+	public LogicPin[] onSimulationBegin() {
 		return new LogicPin[0];
 	}
 	
@@ -220,7 +212,7 @@ class GateNot implements LibComponent {
 	}
 	
 	@Override
-	public void onEnd() {
+	public void onSimulationEnd() {
 	
 	}
 	
@@ -235,12 +227,7 @@ class GateNot implements LibComponent {
 	}
 	
 	@Override
-	public void onChangeDimension(int width, int height) {
-	
-	}
-	
-	@Override
-	public void onInteractiveClick(int x, int y) {
+	public void onInteractiveClick(int x, int y, boolean begin, boolean end) {
 	
 	}
 	
