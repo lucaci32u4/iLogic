@@ -12,20 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="04ba14d3-4717-43ca-b5e4-cfa04e87a758" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Constants.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Constants.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/io/IOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/io/IOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/ViewControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/ViewControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -275,14 +262,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="101" />
+          <entry key="java" value="102" />
           <entry key="properties" value="5" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="101" />
+          <entry key="JAVA" value="102" />
           <entry key="Properties" value="5" />
           <entry key="XML" value="1" />
         </counts>
@@ -290,16 +277,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="71" />
-          <entry key="java" value="15300" />
+          <entry key="java" value="15366" />
           <entry key="properties" value="68" />
-          <entry key="txt" value="3216" />
+          <entry key="txt" value="3260" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="15300" />
-          <entry key="PLAIN_TEXT" value="3287" />
+          <entry key="JAVA" value="15366" />
+          <entry key="PLAIN_TEXT" value="3331" />
           <entry key="Properties" value="68" />
           <entry key="XML" value="11" />
         </counts>
@@ -323,8 +310,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="289" selection-start-line="289" selection-end-line="289" />
+            <state relative-caret-position="151">
+              <caret line="259" selection-start-line="259" selection-end-line="259" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="320" column="9" lean-forward="true" selection-start-line="320" selection-start-column="9" selection-end-line="320" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -338,11 +337,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+            <state relative-caret-position="431">
+              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#2286#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2049#2050#0" expanded="true" />
+                <element signature="e#2112#2113#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -356,7 +361,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
@@ -375,15 +380,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
               <caret line="75" column="13" lean-forward="true" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -429,7 +425,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>X</find>
       <find>System</find>
       <find>&quot;2&quot;</find>
       <find>wire[X/Y]</find>
@@ -459,6 +454,7 @@
       <find>link</find>
       <find>routeoriginter</find>
       <find>lis</find>
+      <find />
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -485,6 +481,7 @@
       <replace>one[X/Y]</replace>
       <replace>two</replace>
       <replace>rride</replace>
+      <replace>\t</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -496,7 +493,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ViewController/UserActionListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/Model/ModelContainer.java" />
@@ -547,6 +543,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" />
       </list>
     </option>
   </component>
@@ -594,79 +591,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="iLogic" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="iLogic" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="iLogic" type="58d84e3e:PackageViewProjectNode" />
-              <item name="iLogic" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Translations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -674,7 +599,7 @@
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="SearchEverywhereHistoryKey" value="subcurcu&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/Subcurcuit.java&#10;subcircu&#9;PSI&#9;JAVA://com.lucaci32u4.model.parts.Component#subcircuit&#10;gateand&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libgates.GateAnd&#10;libgates&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java&#10;beha&#9;PSI&#9;JAVA://com.lucaci32u4.model.parts.Component.BehaviourSpecification&#10;libcomp&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/library/LibComponent.java&#10;io&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java&#10;ioin&#9;PSI&#9;JAVA://com.lucaci32u4.io.IOInterface&#10;iou&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libuserio.UserIOOutput&#10;logiccontainer&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicContainer.java&#10;logiccont&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicContainer.java&#10;logiccom&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicComponent.java&#10;component&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;logiccomponent&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicComponent.java&#10;subcur&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/Subcurcuit.java&#10;logiccompo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicComponent.java&#10;logicconta&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicContainer.java&#10;logicc&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicComponent.java&#10;libio&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java&#10;logicpin&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/core/LogicPin.java&#10;libuser&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java&#10;viewco&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/presentation/ViewControllerInterface.java&#10;model&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/ModelContainer.java&#10;Main&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/main/Main.java&#10;presentation&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java&#10;viewcontroll&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/presentation/ViewControllerInterface.java&#10;mainwindow&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;modelc&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/ModelContainer.java&#10;Pres&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java&#10;Com&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;Termination&#9;PSI&#9;JAVA://com.lucaci32u4.model.parts.Component.Termination&#10;Conn&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java&#10;connec&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java&#10;java2d&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/viewport/renderer/subsystem/java2d/Java2DSubsystem.java&#10;mai&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/main/Main.java&#10;termina&#9;PSI&#9;JAVA://com.lucaci32u4.model.parts.Component.Termination&#10;terminat&#9;PSI&#9;JAVA://com.lucaci32u4.model.parts.Component.Termination&#10;wirem&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java&#10;comp&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;subc&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/Subcurcuit.java&#10;WireM&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java&#10;Subcircuit&#9;PSI&#9;JAVA://com.lucaci32u4.model.parts.Component#subcircuit&#10;gatea&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libgates.GateAnd&#10;compo&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/model/parts/Component.java&#10;tree&#9;PSI&#9;JAVA://com.lucaci32u4.ui.windows.MainWindow.MyTreeCellRenderer&#10;main&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;mainw&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;mainwin&#9;FILE&#9;file://C:/Users/Catalin/IdeaProjects/iSignal/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java&#10;AND&#9;PSI&#9;JAVA://com.lucaci32u4.model.library.libgates.GateAnd&#10;plugins&#9;ACTION&#9;WelcomeScreen.Plugins" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545944582410" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545945212708" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -771,13 +696,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537463494167</updated>
-    </task>
-    <task id="LOCAL-00200" summary="Fixed some drawing code">
-      <created>1545576276763</created>
-      <option name="number" value="00200" />
-      <option name="presentableId" value="LOCAL-00200" />
-      <option name="project" value="LOCAL" />
-      <updated>1545576276763</updated>
     </task>
     <task id="LOCAL-00201" summary="Finished ghosting code">
       <created>1545577113218</created>
@@ -1115,7 +1033,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545775951433</updated>
     </task>
-    <option name="localTasksCounter" value="249" />
+    <task id="LOCAL-00249" summary="Simulator is now operational">
+      <created>1545944726032</created>
+      <option name="number" value="00249" />
+      <option name="presentableId" value="LOCAL-00249" />
+      <option name="project" value="LOCAL" />
+      <updated>1545944726033</updated>
+    </task>
+    <option name="localTasksCounter" value="250" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1144,11 +1069,11 @@
       <window_info anchor="bottom" id="FindBugs-IDEA" order="3" weight="0.329718" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32839838" />
       <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" weight="0.2678331" />
-      <window_info active="true" anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" visible="true" weight="0.3257066" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" weight="0.3257066" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" sideWeight="0.49946696" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49520257" weight="0.2678331" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49520257" visible="true" weight="0.2678331" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.3275488" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946696" weight="0.29340512" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3270525" />
@@ -1195,7 +1120,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Replaced defunct integer swapping" />
     <MESSAGE value="Wire width must be divided by two to get radius" />
     <MESSAGE value="Redraw is requested when new wires are being added" />
     <MESSAGE value="Fixed decision whether new wires are vertical or horizontal" />
@@ -1220,31 +1144,8 @@
     <MESSAGE value="Terminations are only rendered in edit mode when hovered over" />
     <MESSAGE value="Changed coordinates to be similar to Logisim" />
     <MESSAGE value="Components can not be added if not in edit mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Components can not be added if not in edit mode" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java</url>
-          <line>320</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java</url>
-          <line>380</line>
-          <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java</url>
-          <line>259</line>
-          <properties />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Simulator is now operational" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simulator is now operational" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1500,16 +1401,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178">
-          <caret line="171" column="55" selection-start-line="171" selection-start-column="55" selection-end-line="171" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -1618,13 +1509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -1642,13 +1526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="289" selection-start-line="289" selection-end-line="289" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
@@ -1657,6 +1534,36 @@
             <element signature="e#2345#2346#0" expanded="true" />
             <element signature="e#4711#4712#0" expanded="true" />
             <element signature="e#4733#4734#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="320" column="9" lean-forward="true" selection-start-line="320" selection-start-column="9" selection-end-line="320" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="259" selection-start-line="259" selection-end-line="259" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#2286#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
           </folding>
         </state>
       </provider>
