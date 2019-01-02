@@ -193,6 +193,7 @@ public class LogicContainer {
     public LogicContainer() {
     	sync = new Sync();
 		simulationThread = new Thread(this::mainSimulationEventLoop);
+		simulationThread.setName("LogicContainerThread@[" + this.hashCode() + "]");
 		timeStamp = 0;
 		components = new LogicComponent[0];
 		componentPins = new LogicPin[0][];

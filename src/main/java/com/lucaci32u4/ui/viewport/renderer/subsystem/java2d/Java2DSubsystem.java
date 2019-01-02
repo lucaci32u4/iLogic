@@ -191,7 +191,13 @@ public class Java2DSubsystem implements RenderAPI {
 				break;
 		}
 	}
-
+	
+	@Override
+	public void drawText(int left, int top, String text) {
+		g2d.setPaint((Paint)Brush.get(brush));
+		g2d.drawString(text, left, top);
+	}
+	
 	@Override
 	public int getSurfaceWidth() {
 		return surfaceWidth;

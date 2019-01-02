@@ -41,4 +41,5 @@ public interface DrawAPI {
 	void drawLine(int fromX, int fromY, int toX, int toY, float thicknessPixels);
 	void drawTriangle(int aX, int aY, int bX, int bY, int cX, int cY);
 	void drawRectangle(int left, int top, int right, int bottom);
+	void drawText(int left, int top, String text);
 }
