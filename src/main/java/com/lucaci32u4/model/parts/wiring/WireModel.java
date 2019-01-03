@@ -166,7 +166,7 @@ public class WireModel {
 			boundsY = top;
 			width = right - left;
 			height = top - bottom;
-			rescanBranchPoints();
+			rescanWires();
 		}
 		subcircuit.invalidateGraphics();
 	}
@@ -208,48 +208,9 @@ public class WireModel {
 		}
 		return selected.size();
 	}
-
-	private void rescanBranchPoints() {
-		synchronized (branchLock) {
-			branchPointsX.clear();
-			branchPointsY.clear();
-			int length = wiresPos1.size();
-			Pivot p1 = null;
-			Pivot p2 = null;
-			synchronized (segmentLock) {
-				for (int i = 0; i < length; i++) {
-					p1 = pivots.get(wiresPos1.get(i));
-					p2 = pivots.get(wiresPos2.get(i));
-					int oneX1 = p1.getX();
-					int oneY1 = p1.getY();
-					int oneX2 = p2.getX();
-					int oneY2 = p2.getY();
-					boolean oneHorizontal = (oneY1 == oneY2);
-					for (int j = i + 1; j < length; j++) {
-						p1 = pivots.get(wiresPos1.get(j));
-						p2 = pivots.get(wiresPos2.get(j));
-						int twoX1 = p1.getX();
-						int twoY1 = p1.getY();
-						int twoX2 = p2.getX();
-						int twoY2 = p2.getY();
-						boolean twoHorizontal = (twoY1 == twoY2);
-						if (oneHorizontal != twoHorizontal) {
-							if (oneHorizontal) {
-								if (((twoY1 < oneY1 && oneY2 < twoY2) && (oneX1 < twoX1 && twoX2 < oneX2)) || ((twoY1 <= oneY1 && oneY2 <= twoY2) && (oneX1 <= twoX1 && twoX2 <= oneX2))) {
-									branchPointsX.add(twoX1);
-									branchPointsY.add(oneY1);
-								}
-							} else {
-								if (((oneY1 < twoY1 && twoY2 < oneY2) && (twoX1 < oneX1 && oneX2 < twoX2)) || ((oneY1 <= twoY1 && twoY2 <= oneY2) && (twoX1 <= oneX1 && oneX2 <= twoX2))) {
-									branchPointsX.add(oneX1);
-									branchPointsY.add(twoY1);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+	
+	private void rescanWires() {
+		// Nothing yet
 		subcircuit.invalidateGraphics();
 	}
 
@@ -319,7 +280,7 @@ public class WireModel {
 
 @Accessors(chain = true)
 @EqualsAndHashCode
-class Pivot {
+class Pivot implements Comparable<Pivot> {
 	private @Getter @Setter int x = Integer.MIN_VALUE;
 	private @Getter @Setter int y = Integer.MIN_VALUE;
 	public Pivot copy(Pivot src) {
@@ -331,7 +292,7 @@ class Pivot {
 	}
 	
 	static void sort(@NotNull Pivot toSmall, @NotNull Pivot toBig) {
-		if ((toSmall.x * toSmall.x + toSmall.y * toSmall.y) > (toBig.x * toBig.x + toBig.y * toBig.y)) {
+		if (toSmall.compareTo(toBig) > 0) {
 			toSmall.y = toSmall.y ^ toBig.y;
 			toBig.y = toSmall.y ^ toBig.y;
 			toSmall.y = toSmall.y ^ toBig.y;
@@ -340,4 +301,10 @@ class Pivot {
 			toSmall.x = toSmall.x ^ toBig.x;
 		}
 	}
+	
+	@Override
+	public int compareTo(@NotNull Pivot o) {
+		return (x * x + y * y) - (o.x * o.x + o.y * o.y);
+	}
 }
+

@@ -52,10 +52,6 @@ public class Helper {
 		return str;
 	}
 	
-	public static int step(int origin, int current, int stepSize) {
-		return (int)(Math.round((origin - current) / (double)stepSize)) * stepSize;
-	}
-	
 	public static Object[] resize(Object[] arr, int newSize) {
 		Object[] loc = arr;
 		if (arr.length != newSize) {

@@ -29,6 +29,8 @@
 
 package com.lucaci32u4.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.Contract;
 
 @SuppressWarnings("squid:S00107")
@@ -48,6 +50,14 @@ public class CoordinateHelper {
 	@Contract(pure = true)
 	public static boolean inside(int x, int y, int boxX, int boxY, int height, int width) {
 		return (boxX <= x && x <= boxX + width) && (boxY <= y && y <= boxY + height);
+	}
+	
+	private static @Getter @Setter int gridOrigin = 0;
+	private static @Getter @Setter int gridSize = 0;
+	
+	@Contract(pure = true)
+	public static int snapToGrid(int point) {
+		return (int)(Math.round((gridOrigin - point) / (double)gridSize)) * gridSize;
 	}
 	
 }
