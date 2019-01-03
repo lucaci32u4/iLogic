@@ -50,6 +50,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @SuppressWarnings("squid:S1659") // Declaring on the same line
 public class ModelContainer implements RenderCallback {
 	private static final boolean INITIAL_EDIT_MODE = Boolean.parseBoolean(Const.query("startup.initialEditMode"));
+	private static final int GRID_SIZE = Integer.parseInt(Const.query("grid.size"));
 
 	private ModelThread modelThread = new ModelThread();
 	
@@ -105,6 +106,8 @@ public class ModelContainer implements RenderCallback {
 			boolean rightChange = false;
 			boolean midChange = false;
 			ListableAction currentAction, listStart;
+			CoordinateHelper.setGridOrigin(0);
+			CoordinateHelper.setGridSize(10);
 			while (running.get()) {
 				Sleeper.sleep();
 				synchronized (newLibsLock) {
