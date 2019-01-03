@@ -106,8 +106,7 @@ public class ModelContainer implements RenderCallback {
 			boolean rightChange = false;
 			boolean midChange = false;
 			ListableAction currentAction, listStart;
-			CoordinateHelper.setGridOrigin(0);
-			CoordinateHelper.setGridSize(10);
+			CoordinateHelper.setGridSize(GRID_SIZE);
 			while (running.get()) {
 				Sleeper.sleep();
 				synchronized (newLibsLock) {

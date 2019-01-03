@@ -52,12 +52,11 @@ public class CoordinateHelper {
 		return (boxX <= x && x <= boxX + width) && (boxY <= y && y <= boxY + height);
 	}
 	
-	private static @Getter @Setter int gridOrigin = 0;
 	private static @Getter @Setter int gridSize = 0;
 	
 	@Contract(pure = true)
 	public static int snapToGrid(int point) {
-		return (int)(Math.round((gridOrigin - point) / (double)gridSize)) * gridSize;
+		return ((int)(Math.round((point) / (double)gridSize))) * gridSize;
 	}
 	
 }

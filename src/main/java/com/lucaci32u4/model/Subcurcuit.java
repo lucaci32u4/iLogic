@@ -106,7 +106,7 @@ public class Subcurcuit {
 				continuePointerDrag(x, y);
 			}
 		} else {
-			ghost.move(x, y);
+			ghost.move(CoordinateHelper.snapToGrid(x), CoordinateHelper.snapToGrid(y));
 		}
 	}
 	
@@ -151,6 +151,8 @@ public class Subcurcuit {
 	private void continuePointerDrag(int x, int y) {
 		if (selX1 != x && selY1 != y && !area) area = true;
 		if (wiring) {
+			x = CoordinateHelper.snapToGrid(x);
+			y = CoordinateHelper.snapToGrid(y);
 			if (area) {
 				if (expandingWire == null && routeOriginTermination != null) {
 					expandingWire = new WireModel();
@@ -264,6 +266,8 @@ public class Subcurcuit {
 	}
 	
 	void addNewGhostComponent(LibFactory factory, String name, int enterX, int enterY) {
+		enterX = CoordinateHelper.snapToGrid(enterX);
+		enterY = CoordinateHelper.snapToGrid(enterY);
 		ghost = new Component(factory.createComponent(name), this);
 		ghost.move(enterX, enterY);
 		invalidateGraphics();
@@ -316,6 +320,9 @@ public class Subcurcuit {
 
 
 class CircuitHelper {
+	private CircuitHelper() {
+		// Nothing
+	}
 
 	static boolean linkPinArray(@NotNull LogicContainer container, @NotNull LogicPin[] pins, @NotNull LogicNode[] nodes) {
 		int length = pins.length;
@@ -324,6 +331,15 @@ class CircuitHelper {
 			for (int i = 0; i < length; i++) {
 				container.createLink(pins[i], nodes[i]);
 			}
+		}
+		return valid;
+	}
+	
+	static boolean mergeNodes(@NotNull LogicNode[] master, @NotNull LogicPin[] branch) {
+		int length = master.length;
+		boolean valid = (length == branch.length);
+		if (valid) {
+			// TODO: merge nodes
 		}
 		return valid;
 	}

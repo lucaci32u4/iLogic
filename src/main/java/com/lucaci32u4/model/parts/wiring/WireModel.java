@@ -89,9 +89,13 @@ public class WireModel {
 				Pivot p1 = pivots.get(wiresPos1.get(wireIndex));
 				Pivot p2 = pivots.get(wiresPos2.get(wireIndex));
 				if (p1.getX() == p2.getX()) {
-					ext1.setX(p1.getX()).setY(y);
+					ext1.setX(p1.getX()).setY(CoordinateHelper.snapToGrid(y));
+					ext2.copy(ext1);
+					ext3.copy(ext2);
 				} else if (p1.getY() == p2.getY()) {
-					ext1.setX(x).setY(p1.getY());
+					ext1.setY(p1.getY()).setX(CoordinateHelper.snapToGrid(x));
+					ext2.copy(ext1);
+					ext3.copy(ext2);
 				} else throw new IllegalStateException();
 			}
 		} else {
