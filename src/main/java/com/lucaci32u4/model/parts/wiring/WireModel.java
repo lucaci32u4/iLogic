@@ -6,21 +6,27 @@ import com.lucaci32u4.main.Const;
 import com.lucaci32u4.model.Subcurcuit;
 import com.lucaci32u4.ui.viewport.renderer.RenderAPI;
 import com.lucaci32u4.ui.viewport.renderer.brush.Brush;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicIntegerArray;
 
 @SuppressWarnings("squid:S1659")
 public class WireModel {
 	private static final int DELTA_WIDTH = Integer.parseInt(Const.query("dimensions.wireWidth")) / 2;
+	
 	private Subcurcuit subcircuit = null;
 	private int boundsX = 0, boundsY = 0;
 	private int width = 0, height = 0;
-	private volatile AtomicIntegerArray wiresPos1X = new AtomicIntegerArray(0);
-	private volatile AtomicIntegerArray wiresPos2X = new AtomicIntegerArray(0);
-	private volatile AtomicIntegerArray wiresPos1Y = new AtomicIntegerArray(0);
-	private volatile AtomicIntegerArray wiresPos2Y = new AtomicIntegerArray(0);
+	
+	// Segment data
+	private final Object segmentLock = new Object();
+	private ArrayList<Pivot> pivots = new ArrayList<>();
+	private ArrayList<Integer> wiresPos1 = new ArrayList<>();
+	private ArrayList<Integer> wiresPos2 = new ArrayList<>();
 	private volatile ArrayList<Integer> selected = new ArrayList<>();
 	private boolean isAreaSelecting = false;
 	private LogicNode[] node = null;
@@ -29,20 +35,20 @@ public class WireModel {
 	private final Object branchLock = new Object();
 	private Collection<Integer> branchPointsX = new ArrayDeque<>();
 	private Collection<Integer> branchPointsY = new ArrayDeque<>();
-
+	
 	// Expansion variables
 	private volatile boolean expanding = false;
 	private boolean hasDirection = false;
 	private boolean dirVertical = false;
-	private int beginX = 0, beginY = 0;
 	private volatile int extensionCount = 0;
-	private int ext1X = 0, ext1Y = 0, ext2X = 0, ext2Y = 0;
-	private int sup1X = 0, sup1Y = 0, sup2X = 0, sup2Y = 0;
+	private final Pivot ext1 = new Pivot();
+	private final Pivot ext2 = new Pivot();
+	private final Pivot ext3 = new Pivot();
 	
 	
 	public void attach(Subcurcuit subcircuit) {
 		this.subcircuit = subcircuit;
-		if (wiresPos1X.length() != 0) subcircuit.invalidateGraphics();
+		if (!wiresPos1.isEmpty()) subcircuit.invalidateGraphics();
 		node = new LogicNode[1];
 		for (int i = 0; i < node.length; i++) {
 			node[i] = new LogicNode();
@@ -75,60 +81,50 @@ public class WireModel {
 	}
 	
 	public void beginExpand(int x, int y) {
-		if (wiresPos1X.length() != 0) {
+		if (!wiresPos1.isEmpty()) {
 			select(x, y);
-			int wireIndex = (selected.size() != 0 ? selected.get(0) : -1);
+			int wireIndex = (!selected.isEmpty() ? selected.get(0) : -1);
 			deselect();
-			int wireX1 = wiresPos1X.get(wireIndex);
-			int wireY1 = wiresPos1Y.get(wireIndex);
-			int wireX2 = wiresPos2X.get(wireIndex);
-			int wireY2 = wiresPos2Y.get(wireIndex);
-			if (wireX1 == wireX2) {
-				beginX = wireX1;
-				beginY = y;
-			} else if (wireY1 == wireY2) {
-				beginX = x;
-				beginY = wireY1;
-			} else throw new IllegalStateException();
+			if (wireIndex >= 0) {
+				Pivot p1 = pivots.get(wiresPos1.get(wireIndex));
+				Pivot p2 = pivots.get(wiresPos2.get(wireIndex));
+				if (p1.getX() == p2.getX()) {
+					ext1.setX(p1.getX()).setY(y);
+				} else if (p1.getY() == p2.getY()) {
+					ext1.setX(x).setY(p1.getY());
+				} else throw new IllegalStateException();
+			}
 		} else {
-			beginX = x;
-			beginY = y;
+			ext1.setX(x).setY(y);
 		}
 		expanding = true;
 		hasDirection = false;
 	}
 	
 	public void continueExpand(int x, int y) {
-
 		extensionCount = 0;
-		if (x != beginX || y != beginY) {
+		if (x != ext1.getX() || y != ext1.getY()) {
 			if (!hasDirection) {
-				dirVertical = Math.abs(beginX - x) < Math.abs(beginY - y);
+				dirVertical = Math.abs(ext1.getX() - x) < Math.abs(ext1.getY()- y);
 				hasDirection = true;
-				ext1X = beginX;
-				ext1Y = beginY;
 			}
 			extensionCount = 1;
-			if (x != beginX && y != beginY) {
+			if (x != ext1.getX() && y != ext1.getY()) {
 				extensionCount = 2;
 			}
 			if (dirVertical) {
-				ext2X = ext1X;
-				ext2Y = y;
+				ext2.setX(ext1.getX());
+				ext2.setY(y);
 				if (extensionCount == 2) {
-					sup1X = ext2X;
-					sup1Y = ext2Y;
-					sup2X = x;
-					sup2Y = sup1Y;
+					ext3.setX(x);
+					ext3.setY(ext2.getY());
 				}
 			} else {
-				ext2X = x;
-				ext2Y = ext1Y;
+				ext2.setX(x);
+				ext2.setY(ext1.getY());
 				if (extensionCount == 2) {
-					sup1X = ext2X;
-					sup1Y = ext2Y;
-					sup2X = sup1X;
-					sup2Y = y;
+					ext3.setX(ext2.getX());
+					ext3.setY(y);
 				}
 			}
 		} else hasDirection = false;
@@ -137,45 +133,34 @@ public class WireModel {
 	
 	public void endExpand() {
 		expanding = false;
-		AtomicIntegerArray old1X = wiresPos1X, old1Y = wiresPos1Y, old2X = wiresPos2X, old2Y = wiresPos2Y;
-		int oldLength = old1X.length();
-		int newLength = oldLength + extensionCount;
 		if (extensionCount != 0) {
-			wiresPos1X = new AtomicIntegerArray(newLength);
-			wiresPos1Y = new AtomicIntegerArray(newLength);
-			wiresPos2X = new AtomicIntegerArray(newLength);
-			wiresPos2Y = new AtomicIntegerArray(newLength);
-			for (int i = 0; i < oldLength; i++) {
-				wiresPos1X.set(i, old1X.get(i));
-				wiresPos1Y.set(i, old1Y.get(i));
-				wiresPos2X.set(i, old2X.get(i));
-				wiresPos2Y.set(i, old2Y.get(i));
-			}
-			if (extensionCount >= 1) {
-				if (ext1X > ext2X) { ext1X = ext1X ^ ext2X; ext2X = ext1X ^ ext2X; ext1X = ext1X ^ ext2X; }
-				else if (ext1Y > ext2Y) { ext1Y = ext1Y ^ ext2Y; ext2Y = ext1Y ^ ext2Y; ext1Y = ext1Y ^ ext2Y; }
-				wiresPos1X.set(oldLength, ext1X);
-				wiresPos1Y.set(oldLength, ext1Y);
-				wiresPos2X.set(oldLength, ext2X);
-				wiresPos2Y.set(oldLength, ext2Y);
-			}
+			Pivot middle = null;
 			if (extensionCount >= 2) {
-				if (sup1X > sup2X) { sup1X = sup1X ^ sup2X; sup2X = sup1X ^ sup2X; sup1X = sup1X ^ sup2X; }
-				else if (sup1Y > sup2Y) { sup1Y = sup1Y ^ sup2Y; sup2Y = sup1Y ^ sup2Y; sup1Y = sup1Y ^ sup2Y; }
-				wiresPos1X.set(oldLength + 1, sup1X);
-				wiresPos1Y.set(oldLength + 1, sup1Y);
-				wiresPos2X.set(oldLength + 1, sup2X);
-				wiresPos2Y.set(oldLength + 1, sup2Y);
+				middle = new Pivot().copy(ext2);
 			}
-			int left = Math.min(boundsX, ext1X);
-			int top = Math.min(boundsY, ext1Y);
-			int right = Math.max(boundsX + width, ext2X);
-			int bottom = Math.max(boundsY + height, ext2Y);
+			synchronized (segmentLock) {
+				if (extensionCount >= 1) {
+					if (!pivots.contains(ext1)) pivots.add(new Pivot().copy(ext1));
+					if (!pivots.contains(ext2)) pivots.add(new Pivot().copy(ext2));
+					Pivot.sort(ext1, ext2);
+					wiresPos1.add(pivots.indexOf(ext1));
+					wiresPos2.add(pivots.indexOf(ext2));
+				}
+				if (extensionCount >= 2) {
+					ext2.copy(middle);
+					if (!pivots.contains(ext3)) pivots.add(new Pivot().copy(ext3));
+					Pivot.sort(ext2, ext3);
+					wiresPos1.add(pivots.indexOf(ext2));
+					wiresPos2.add(pivots.indexOf(ext3));
+				}
+			}
+			int left = Math.min(boundsX, ext1.getX());
+			int top = Math.min(boundsY, ext1.getY());
+			int right = Math.max(boundsX + width, ext2.getX());
+			int bottom = Math.max(boundsY + height, ext2.getY());
 			if (extensionCount >= 2) {
-				left = Math.min(left, sup1X);
-				top = Math.min(top, sup1Y);
-				right = Math.max(right, sup2X);
-				bottom = Math.max(bottom, sup2Y);
+				right = Math.max(right, ext3.getX());
+				bottom = Math.max(bottom, ext3.getY());
 			}
 			boundsX = left;
 			boundsY = top;
@@ -188,15 +173,17 @@ public class WireModel {
 	
 	@SuppressWarnings("all")
 	private int pickAt(int l, int t, int r, int b, boolean area) {
-		final int length = wiresPos1X.length();
+		final int length = wiresPos1.size();
 		int end1X = 0, end1Y = 0;
 		int end2X = 0, end2Y = 0;
 		int aux;
 		for (int i = 0; i < length; i++) {
-			end1X = wiresPos1X.get(i);
-			end1Y = wiresPos1Y.get(i);
-			end2X = wiresPos2X.get(i);
-			end2Y = wiresPos2Y.get(i);
+			Pivot p1 = pivots.get(wiresPos1.get(i));
+			Pivot p2 = pivots.get(wiresPos2.get(i));
+			end1X = p1.getX();
+			end1Y = p1.getY();
+			end2X = p2.getX();
+			end2Y = p2.getY();
 			if (end1X == end2X) {
 				if (end1Y < end2Y) { aux = end1Y; end1Y = end2Y; end2Y = aux; }
 				end1X -= DELTA_WIDTH; // make LT
@@ -226,35 +213,44 @@ public class WireModel {
 		synchronized (branchLock) {
 			branchPointsX.clear();
 			branchPointsY.clear();
-			int length = wiresPos1X.length();
-			for (int i = 0; i < length; i++) {
-				int oneX1 = wiresPos1X.get(i);
-				int oneY1 = wiresPos1Y.get(i);
-				int oneX2 = wiresPos2X.get(i);
-				int oneY2 = wiresPos2Y.get(i);
-				boolean oneHorizontal = (oneY1 == oneY2);
-				for (int j = i + 1; j < length; j++) {
-					int twoX1 = wiresPos1X.get(j);
-					int twoY1 = wiresPos1Y.get(j);
-					int twoX2 = wiresPos2X.get(j);
-					int twoY2 = wiresPos2Y.get(j);
-					boolean twoHorizontal = (twoY1 == twoY2);
-					if (oneHorizontal != twoHorizontal) {
-						if (oneHorizontal) {
-							if ((twoY1 < oneY1 && oneY2 < twoY2) && (oneX1 < twoX1 && twoX2 < oneX2)) {
-								branchPointsX.add(twoX1);
-								branchPointsY.add(oneY1);
-							}
-						} else {
-							if ((oneY1 < twoY1 && twoY2 < oneY2) && (twoX1 < oneX1 && oneX2 < twoX2)) {
-								branchPointsX.add(oneX1);
-								branchPointsY.add(twoY1);
+			int length = wiresPos1.size();
+			Pivot p1 = null;
+			Pivot p2 = null;
+			synchronized (segmentLock) {
+				for (int i = 0; i < length; i++) {
+					p1 = pivots.get(wiresPos1.get(i));
+					p2 = pivots.get(wiresPos2.get(i));
+					int oneX1 = p1.getX();
+					int oneY1 = p1.getY();
+					int oneX2 = p2.getX();
+					int oneY2 = p2.getY();
+					boolean oneHorizontal = (oneY1 == oneY2);
+					for (int j = i + 1; j < length; j++) {
+						p1 = pivots.get(wiresPos1.get(j));
+						p2 = pivots.get(wiresPos2.get(j));
+						int twoX1 = p1.getX();
+						int twoY1 = p1.getY();
+						int twoX2 = p2.getX();
+						int twoY2 = p2.getY();
+						boolean twoHorizontal = (twoY1 == twoY2);
+						if (oneHorizontal != twoHorizontal) {
+							if (oneHorizontal) {
+								if (((twoY1 < oneY1 && oneY2 < twoY2) && (oneX1 < twoX1 && twoX2 < oneX2)) || ((twoY1 <= oneY1 && oneY2 <= twoY2) && (oneX1 <= twoX1 && twoX2 <= oneX2))) {
+									branchPointsX.add(twoX1);
+									branchPointsY.add(oneY1);
+								}
+							} else {
+								if (((oneY1 < twoY1 && twoY2 < oneY2) && (twoX1 < oneX1 && oneX2 < twoX2)) || ((oneY1 <= twoY1 && twoY2 <= oneY2) && (twoX1 <= oneX1 && oneX2 <= twoX2))) {
+									branchPointsX.add(oneX1);
+									branchPointsY.add(twoY1);
+								}
 							}
 						}
 					}
 				}
 			}
 		}
+		subcircuit.invalidateGraphics();
 	}
 
 	public LogicNode[] getSimulatorNode() {
@@ -263,28 +259,28 @@ public class WireModel {
 
 	private boolean[] drawMemory = null;
 	public void onDraw(@NotNull RenderAPI graphics, boolean attach, boolean detach) {
-		AtomicIntegerArray w1x = wiresPos1X;
-		AtomicIntegerArray w1y = wiresPos1Y;
-		AtomicIntegerArray w2x = wiresPos2X;
-		AtomicIntegerArray w2y = wiresPos2Y;
-		ArrayList<Integer> select = selected;
-		int length = w1x.length();
-		if (drawMemory == null) {
-			drawMemory = new boolean[length];
-		}
-		if (drawMemory.length != length) {
-			drawMemory = new boolean[length];
-		}
-		for (int index : select) {
-			drawMemory[index] = true;
-		}
-		for (int i = 0; i < length; i++) {
-			drawWire(graphics, w1x.get(i), w1y.get(i), w2x.get(i), w2y.get(i), drawMemory[i], false);
-			drawMemory[i] = false;
+		synchronized (segmentLock) {
+			ArrayList<Integer> select = selected;
+			int length = wiresPos1.size();
+			if (drawMemory == null) {
+				drawMemory = new boolean[length];
+			}
+			if (drawMemory.length != length) {
+				drawMemory = new boolean[length];
+			}
+			for (int index : select) {
+				drawMemory[index] = true;
+			}
+			for (int i = 0; i < length; i++) {
+				Pivot p1 = pivots.get(wiresPos1.get(i));
+				Pivot p2 = pivots.get(wiresPos2.get(i));
+				drawWire(graphics, p1.getX(), p1.getY(), p2.getX(), p2.getY(), drawMemory[i], false);
+				drawMemory[i] = false;
+			}
 		}
 		try {
 			synchronized (branchLock) {
-				length = branchPointsX.size();
+				int length = branchPointsX.size();
 				Iterator<Integer> itX = branchPointsX.iterator();
 				Iterator<Integer> itY = branchPointsY.iterator();
 				for (int i = 0; i < length; i++) {
@@ -298,10 +294,10 @@ public class WireModel {
 		}
 		if (expanding) {
 			if (extensionCount >= 1) {
-				drawWire(graphics, ext1X, ext1Y, ext2X, ext2Y, false, true);
+				drawWire(graphics, ext1.getX(), ext1.getY(), ext2.getX(), ext2.getY(), false, true);
 			}
 			if (extensionCount >= 2) {
-				drawWire(graphics, sup1X, sup1Y, sup2X, sup2Y, false, true);
+				drawWire(graphics, ext2.getX(), ext2.getY(), ext3.getX(), ext3.getY(), false, true);
 			}
 		}
 		if (detach) {
@@ -314,11 +310,34 @@ public class WireModel {
 		if (wireBrush == null) wireBrush = graphics.createSolidBrush(127, 127, 127);
 		graphics.setBrush(wireBrush);
 		graphics.drawLine(fromX, fromY, toX, toY, DELTA_WIDTH * 2);
-		// TODO: (lucaci32u4, 23/12/18): Convert wire drawing from lines to rectangles in the nearest stable version
 	}
 	private void drawBranch(@NotNull RenderAPI graphics, int x, int y) {
 		graphics.setBrush(wireBrush);
 		graphics.drawRectangle(x - DELTA_WIDTH * 2, y - DELTA_WIDTH * 2, x + DELTA_WIDTH * 2, y + DELTA_WIDTH * 2);
-		System.out.println("joint");
+	}
+}
+
+@Accessors(chain = true)
+@EqualsAndHashCode
+class Pivot {
+	private @Getter @Setter int x = Integer.MIN_VALUE;
+	private @Getter @Setter int y = Integer.MIN_VALUE;
+	public Pivot copy(Pivot src) {
+		x = src.x; y = src.y; return this;
+	}
+	
+	@Override public String toString() {
+		return String.format("[%1$d %2$d]", x, y);
+	}
+	
+	static void sort(@NotNull Pivot toSmall, @NotNull Pivot toBig) {
+		if ((toSmall.x * toSmall.x + toSmall.y * toSmall.y) > (toBig.x * toBig.x + toBig.y * toBig.y)) {
+			toSmall.y = toSmall.y ^ toBig.y;
+			toBig.y = toSmall.y ^ toBig.y;
+			toSmall.y = toSmall.y ^ toBig.y;
+			toSmall.x = toSmall.x ^ toBig.x;
+			toBig.x = toSmall.x ^ toBig.x;
+			toSmall.x = toSmall.x ^ toBig.x;
+		}
 	}
 }
