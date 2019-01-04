@@ -97,6 +97,7 @@ public class ModelContainer implements RenderCallback {
 	private class ModelThread extends Thread {
 		private AtomicBoolean running = new AtomicBoolean(true);
 		int lastX = 0, lastY = 0;
+		boolean inhibitNextLeftbuttonUp = false;
 		Handler h = new Handler();
 		@Override public void run() {
 			boolean lastLeft = false, lastRight = false, lastMiddle = false;
@@ -167,6 +168,12 @@ public class ModelContainer implements RenderCallback {
 				if (left && leftChange && ghosting) {
 					mainCirc.endGhosting(lastLeft);
 					ghosting = false;
+					leftChange = false;
+					inhibitNextLeftbuttonUp = true;
+				}
+				if (!left && leftChange && inhibitNextLeftbuttonUp) {
+					leftChange = false;
+					inhibitNextLeftbuttonUp = false;
 				}
 				if (posChange) h.pointerMoved(lastX, lastY);
 				if (leftChange) h.mainPointer(lastLeft);

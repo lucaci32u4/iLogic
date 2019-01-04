@@ -65,6 +65,7 @@ class GateAnd implements LibComponent {
 
 	@Override
 	public void onAttach(Component componentContainer) {
+		componentContainer.setWidth(width).setHeight(height);
 		for (int i = 0; i < 3; i++) {
 			arrayPins[i] = new LogicPin();
 			arrayPins[i].setListening(i < 2);
@@ -142,6 +143,7 @@ class GateOr implements LibComponent {
 	
 	@Override
 	public void onAttach(Component componentContainer) {
+		componentContainer.setWidth(width).setHeight(height);
 		for (int i = 0; i < 3; i++) {
 			arrayPins[i] = new LogicPin();
 			arrayPins[i].setListening(i < 2);
@@ -219,6 +221,7 @@ class GateNot implements LibComponent {
 	
 	@Override
 	public void onAttach(Component componentContainer) {
+		componentContainer.setWidth(width).setHeight(height);
 		for (int i = 0; i < 2; i++) {
 			arrayPins[i] = new LogicPin();
 			arrayPins[i].setListening(i < 1);

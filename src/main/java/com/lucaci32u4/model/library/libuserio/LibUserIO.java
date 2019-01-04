@@ -88,7 +88,7 @@ class UserIOOutput implements LibComponent {
 	}
 
 	@Override public void onAttach(Component componentContainer) {
-		this.componentContainer = componentContainer;
+		this.componentContainer = componentContainer.setWidth(radius * 2).setHeight(radius * 2);
 		pinArray[0] = new LogicPin();
 		pinArray[0].setListening(true);
 		pinArray[0].setDefaultValue(new Logic(Logic.LOW, false));

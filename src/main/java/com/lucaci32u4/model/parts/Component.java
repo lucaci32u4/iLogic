@@ -20,7 +20,7 @@ public class Component {
 	private int posX = 0, posY = 0;
 	private int width = 0, height = 0;
 	private @Getter boolean ghosting = false;
-	private final AtomicBoolean selected = new AtomicBoolean();
+	private volatile boolean selected = false;
 	private final Subcurcuit subcircuit;
 	private final Termination[] terminations;
 	private final LogicComponent logicComponent;
@@ -61,7 +61,7 @@ public class Component {
 	}
 	
 	public void select(boolean isSel) {
-		selected.set(isSel);
+		selected = isSel;
 		invalidateGraphics();
 	}
 	
@@ -73,14 +73,15 @@ public class Component {
 	}
 	
 	public void interact(int x, int y, boolean begin, boolean end) {
-		if (begin) selected.set(true);
-		if (end) selected.set(false);
 		libComponent.onInteractiveClick(x, y, begin, end);
 		invalidateGraphics();
 	}
 
 	public void render(RenderAPI pencil, boolean attach, boolean detach) {
 		libComponent.onDraw(pencil);
+		if (selected) {
+			ComponentHelper.drawCornerMarkers(pencil, posX, posY, width, height);
+		}
 	}
 
 	public LogicComponent.Interrupter createNewInterrupter() {
@@ -141,5 +142,33 @@ public class Component {
 		void onChangePosition(int x, int y);
 		void onInteractiveClick(int x, int y, boolean begin, boolean end);
 		void onDetach();
+	}
+}
+
+
+class ComponentHelper {
+	private ComponentHelper() {
+		// Nothing
+	}
+	
+	private static boolean hasPaints = false;
+	private static Brush outlineBrush = null;
+	private static Brush fillBrush = null;
+	static void drawCornerMarkers(RenderAPI graphics, int left, int top, int width, int height) {
+		if (!hasPaints) {
+			hasPaints = true;
+			outlineBrush = graphics.createOutlineBrush(0, 0, 0);
+			fillBrush = graphics.createSolidBrush(255, 255, 255);
+		}
+		graphics.setBrush(outlineBrush);
+		graphics.drawRectangle(left, top, left + 5, top + 5);
+		graphics.drawRectangle(left, top + height - 5, left + 5, top + height);
+		graphics.drawRectangle(left + width - 5, top, left + width, top + 5);
+		graphics.drawRectangle(left + width - 5, top + height - 5, left + width, top + height);
+		graphics.setBrush(fillBrush);
+		graphics.drawRectangle(left + 1, top + 1, left + 4, top + 4);
+		graphics.drawRectangle(left + 1, top + height - 4, left + 4, top + height - 1);
+		graphics.drawRectangle(left + width - 4, top + 1, left + width - 1, top + 4);
+		graphics.drawRectangle(left + width - 4, top + height - 4, left + width - 1, top + height - 1);
 	}
 }

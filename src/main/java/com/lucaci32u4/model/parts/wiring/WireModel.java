@@ -201,11 +201,15 @@ public class WireModel {
 			}
 			if (area) {
 				if (CoordinateHelper.intersectRect(l, t, r, b, end1X, end1Y, end2X, end2Y)) {
-					selected.add(i);
+					synchronized (segmentLock) {
+						selected.add(i);
+					}
 				}
 			} else {
 				if (CoordinateHelper.intersectRect(end1X, end1Y, end2X, end2Y, l, t, r, b)) {
-					selected.add(i);
+					synchronized (segmentLock) {
+						selected.add(i);
+					}
 					break;
 				}
 			}
@@ -221,26 +225,20 @@ public class WireModel {
 	public LogicNode[] getSimulatorNode() {
 		return node;
 	}
-
-	private boolean[] drawMemory = null;
+	
 	public void onDraw(@NotNull RenderAPI graphics, boolean attach, boolean detach) {
 		synchronized (segmentLock) {
 			ArrayList<Integer> select = selected;
 			int length = wiresPos1.size();
-			if (drawMemory == null) {
-				drawMemory = new boolean[length];
-			}
-			if (drawMemory.length != length) {
-				drawMemory = new boolean[length];
-			}
-			for (int index : select) {
-				drawMemory[index] = true;
-			}
 			for (int i = 0; i < length; i++) {
 				Pivot p1 = pivots.get(wiresPos1.get(i));
 				Pivot p2 = pivots.get(wiresPos2.get(i));
-				drawWire(graphics, p1.getX(), p1.getY(), p2.getX(), p2.getY(), drawMemory[i], false);
-				drawMemory[i] = false;
+				drawWire(graphics, p1.getX(), p1.getY(), p2.getX(), p2.getY(), false, false);
+			}
+			for (int i : select) {
+				Pivot p1 = pivots.get(wiresPos1.get(i));
+				Pivot p2 = pivots.get(wiresPos2.get(i));
+				drawWire(graphics, p1.getX(), p1.getY(), p2.getX(), p2.getY(), true, false);
 			}
 		}
 		try {
@@ -265,15 +263,16 @@ public class WireModel {
 				drawWire(graphics, ext2.getX(), ext2.getY(), ext3.getX(), ext3.getY(), false, true);
 			}
 		}
-		if (detach) {
-			drawMemory = null;
-		}
 	}
 
 	private static Brush wireBrush = null;
+	private static Brush selectBrush = null;
+	private static Brush newBrush = null;
 	private void drawWire(@NotNull RenderAPI graphics, int fromX, int fromY, int toX, int toY, boolean selected, boolean extension) {
 		if (wireBrush == null) wireBrush = graphics.createSolidBrush(127, 127, 127);
-		graphics.setBrush(wireBrush);
+		if (selectBrush == null) selectBrush = graphics.createSolidBrush(60, 60, 60);
+		if (newBrush == null) newBrush = graphics.createSolidBrush(200, 200, 200);
+		graphics.setBrush(selected ? selectBrush : (extension ? newBrush : wireBrush));
 		graphics.drawLine(fromX, fromY, toX, toY, DELTA_WIDTH * 2);
 	}
 	private void drawBranch(@NotNull RenderAPI graphics, int x, int y) {
