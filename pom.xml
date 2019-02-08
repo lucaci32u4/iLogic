@@ -18,6 +18,7 @@
             <artifactId>commons-collections4</artifactId>
             <version>${org.apache.commons}</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.jogamp.gluegen</groupId>
             <artifactId>gluegen-rt-main</artifactId>
@@ -28,7 +29,6 @@
             <artifactId>jogl-all-main</artifactId>
             <version>2.0-rc11</version>
         </dependency>
-        <!--
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis-ext</artifactId>
