@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="af7a3bab-b7dc-4689-8052-955e8046f96b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitTermination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/iSignal.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/License.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iSignal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iSignal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/About.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/BackgroundPattern.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Constants.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Fonts/Inconsolata.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Fonts/OCRA.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Translations/English.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Logic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicID.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/LogicPin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/io/IOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/ApplicationSettings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Const.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/LanguagePack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/main/SaveFileHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/CoordinateHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/ModelContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/Subcurcuit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/LibFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libgates/LibGates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/library/libuserio/LibUserIO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Component.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/Pin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/mousemachine/MouseStateMachine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/mousemachine/State.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/Connectable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/model/parts/wiring/WireModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/PresentationContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/UserActionListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/UserPointerListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/presentation/ViewControllerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/LogicViewport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/RenderCallback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/UserInputListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/DrawAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/RenderAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/ResourceAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/brush/Brush.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/brush/OutlineBrush.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/brush/SolidBrush.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/brush/TextureBrush.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/subsystem/java2d/Java2DSubsystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/subsystem/opengl/GL2Subsystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/subsystem/opengl/GLSL/fragment_color_position_picker_to_color_picker.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/viewport/renderer/subsystem/opengl/GLSL/vertex_colormap_position_ct_colormap_spacemap_to_color_position.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/AboutWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/MainWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/PagedTreeWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/ui/windows/SettingsWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/CircularSwapchain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Helper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/JSignal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleEventQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/SimpleWorkerThread.java" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
+              <folding>
+                <element signature="e#319#320#0" expanded="true" />
+                <element signature="e#337#338#0" expanded="true" />
+                <element signature="e#367#368#0" expanded="true" />
+                <element signature="e#385#386#0" expanded="true" />
+                <element signature="e#589#590#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#667#668#0" expanded="true" />
+                <element signature="e#872#873#0" expanded="true" />
+                <element signature="e#927#928#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding>
+                <element signature="e#476#477#0" expanded="true" />
+                <element signature="e#519#520#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="559">
+              <caret line="44" column="88" selection-start-line="44" selection-start-column="88" selection-end-line="44" selection-end-column="88" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#271#272#0" expanded="true" />
+                <element signature="e#293#294#0" expanded="true" />
+                <element signature="e#2038#2039#0" expanded="true" />
+                <element signature="e#2199#2200#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitTermination.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/Circuit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CirucitLink.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitTermination.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="60" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="isignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="isignal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="isignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="isignal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="isignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="isignal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="isignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="isignal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="isignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="isignal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="isignal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="isignal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lucaci32u4" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af7a3bab-b7dc-4689-8052-955e8046f96b" name="Default Changelist" comment="" />
+      <created>1556467455960</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556467455960</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Learn" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitTermination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#519#520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
+          <folding>
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#667#668#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="44" column="88" selection-start-line="44" selection-start-column="88" selection-end-line="44" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#2038#2039#0" expanded="true" />
+            <element signature="e#2199#2200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
