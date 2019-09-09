@@ -7,8 +7,12 @@ public class CircuitData {
 	private final ArrayList<CircuitLink> links = new ArrayList<>();
 	private final ArrayList<CircuitNode> nodes = new ArrayList<>();
 
-	public ArrayList<CircuitLink> getLinks() {
+	public Iterable<CircuitLink> iterLinks() {
 		return links;
+	}
+
+	public Iterable<CircuitNode> iterNodes() {
+		return nodes;
 	}
 
 	public int countLinks() {

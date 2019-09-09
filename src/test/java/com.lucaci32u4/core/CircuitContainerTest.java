@@ -303,7 +303,7 @@ class CircuitContainerTest {
 	}
 
 	@Test @Order(3)
-	void AddComponent() {
+	void AddCircuitNode() {
 		CircuitContainer container = new CircuitContainer();
 		CircuitNode[] n = new CircuitNode[4];
 		for (int i = 0; i < n.length; i++) { n[i] = new NodeA(1); }
@@ -343,8 +343,8 @@ class CircuitContainerTest {
 		assertFalse(container.contains(cl2));
 		assertTrue(container.contains(new CircuitLink(5, 6, true, 0)));
 		assertTrue(container.contains(new CircuitLink(6, 9, true, 0)));
-		assertTrue(container.contains(new CircuitLink(8, 11, false, 22)));
-		assertTrue(container.contains(new CircuitLink(11, 16, false, 22)));
+		assertTrue(container.contains(new CircuitLink(8, 11, false, 7)));
+		assertTrue(container.contains(new CircuitLink(11, 16, false, 7)));
 		assertEquals(4, container.countLinks());
 		for (int i = 0; i < n.length; i++) { container.removeCircuitNode(n[i]); }
 		assertTrue(container.contains(cl1));
@@ -355,8 +355,8 @@ class CircuitContainerTest {
 		assertFalse(container.contains(cl2));
 		assertTrue(container.contains(new CircuitLink(5, 6, true, 0)));
 		assertTrue(container.contains(new CircuitLink(6, 9, true, 0)));
-		assertTrue(container.contains(new CircuitLink(8, 11, false, 22)));
-		assertTrue(container.contains(new CircuitLink(11, 16, false, 22)));
+		assertTrue(container.contains(new CircuitLink(8, 11, false, 7)));
+		assertTrue(container.contains(new CircuitLink(11, 16, false, 7)));
 		assertEquals(4, container.countLinks());
 		container.clearLinks();
 		container.clearNodes();

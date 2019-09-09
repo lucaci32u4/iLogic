@@ -4,14 +4,14 @@ package com.lucaci32u4.core;
 import com.lucaci32u4.util.Rotation;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 
 public class CircuitContainer {
 	private CircuitData data = new CircuitData();
 
+
 	/**
-	 * Add a new node/component to the circuit
+	 * Add a new node to the circuit
 	 * @param node the node
 	 */
 	public void addCircuitNode(CircuitNode node, Rotation rot, int x, int y) {
@@ -32,8 +32,8 @@ public class CircuitContainer {
 		boolean found = data.removeNode(node);
 		if (found) {
 			for (CircuitPin pin : node.getPins()) {
-				mergeAtPoint(pin.x, pin.y, false);
-				mergeAtPoint(pin.y, pin.y, true);
+				mergeAtPoint(pin.worldX, pin.worldY, false);
+				mergeAtPoint(pin.worldY, pin.worldX, true);
 			}
 		}
 	}
@@ -121,7 +121,7 @@ public class CircuitContainer {
 		boolean vertical = link.isVertical();
 		ArrayList<CircuitLink> toMerge = new ArrayList<>();
 
-		for (CircuitLink old : data.getLinks()) {
+		for (CircuitLink old : data.iterLinks()) {
 			boolean oldVertical = old.isVertical();
 			if (vertical == oldVertical && link.getLineColumn() == old.getLineColumn()) {
 				int o1 = old.getP1();
@@ -146,19 +146,27 @@ public class CircuitContainer {
 		boolean vertical = link.isVertical();
 		ArrayList<Integer> ptsSubdivide = new ArrayList<>();
 
-		for (CircuitLink old : data.getLinks()) {
+		for (CircuitLink old : data.iterLinks()) {
 			int o1 = old.getP1();
 			int o2 = old.getP2();
 			if (old.isVertical() != vertical) {
 				int olc = old.getLineColumn();
-				if ((p1 == olc || p2 == olc) && o1 < lincol && lincol < o2) {
-
-				} else {
+				if ((p1 != olc && p2 != olc) || o1 > lincol || lincol > o2) {
 					/* subdiv this */
 					boolean contact = (o1 == lincol || o2 == lincol);
 					if (contact && p1 < olc && olc < p2) {
 						if (!ptsSubdivide.contains(olc)) ptsSubdivide.add(olc);
 					}
+				}
+			}
+		}
+		for (CircuitNode node : data.iterNodes()) {
+			for (CircuitPin pin : node.getPins()) {
+				if (p1 < pin.worldX && pin.worldX < p2 && lincol == pin.worldY) {
+					if (!ptsSubdivide.contains(pin.worldY)) ptsSubdivide.add(pin.worldX);
+				}
+				if (p1 < pin.worldY && pin.worldY < p2 && lincol == pin.worldX) {
+					if (!ptsSubdivide.contains(pin.worldX)) ptsSubdivide.add(pin.worldY);
 				}
 			}
 		}
@@ -175,13 +183,12 @@ public class CircuitContainer {
 	private void subdivideAtPoint(int p, int lincol, boolean vertical) {
 		CircuitLink subdivLink = null;
 		int subdivWhere = 0;
-		for (CircuitLink old : data.getLinks()) {
+		for (CircuitLink old : data.iterLinks()) {
 			int o1 = old.getP1();
 			int o2 = old.getP2();
 			if (old.isVertical() != vertical) {
 				int olc = old.getLineColumn();
 				if (p == olc && o1 < lincol && lincol < o2) {
-					/* subdiv others */
 					subdivLink = old;
 					subdivWhere = lincol;
 					break;
@@ -200,7 +207,7 @@ public class CircuitContainer {
 		int mergeLinksCounter = 0;
 		boolean pointContinues = false;
 
-		for (CircuitLink old : data.getLinks()) {
+		for (CircuitLink old : data.iterLinks()) {
 			if (vertical != old.isVertical()) {
 				if (old.getLineColumn() == p && (old.getP1() == lincol || old.getP2() == lincol)) {
 					mergeLinks[mergeLinksCounter++] = old;

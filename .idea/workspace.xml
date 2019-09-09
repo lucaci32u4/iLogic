@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af7a3bab-b7dc-4689-8052-955e8046f96b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Rotation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitTermination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitPin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,15 +57,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CirucitLink.java" />
         <option value="$PROJECT_DIR$/src/test/java/com.lucaci32u4/util/Vector2Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitTermination.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Rotation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitPin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" />
         <option value="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" />
       </list>
     </option>
   </component>
@@ -108,7 +103,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,20 +194,12 @@
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="CircuitContainerTest.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
-            <path>
-              <item name="iSignal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="iSignal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com.lucaci32u4" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,41 +266,41 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CircuitContainerTest - 2019.05.14 at 00h 53m 03s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 27m 11s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.05.14 at 00h 56m 57s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 28m 12s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.05.17 at 01h 10m 09s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 28m 44s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.05.17 at 01h 20m 20s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 29m 08s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.08 at 18h 18m 57s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 29m 34s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.08 at 18h 19m 43s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 14h 34m 59s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.08 at 18h 21m 25s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 14h 35m 49s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.08 at 18h 25m 11s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 14h 36m 53s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.08 at 18h 27m 20s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 14h 38m 33s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.08 at 18h 49m 11s.xml">
+    <history-entry file="CircuitContainerTest - 2019.09.09 at 14h 39m 04s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18215811" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18856838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -325,7 +311,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32944915" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.25717214" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.45184427" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.44159836" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -337,11 +323,23 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2497332" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.32977587" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.1832265" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
     </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -361,13 +359,7 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-engine/5.1.0/junit-jupiter-engine-5.1.0.jar!/org/junit/jupiter/engine/descriptor/TestMethodTestDescriptor.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.1.0/junit-platform-commons-1.1.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/util/Vector2Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/util/Vector2Test.java" />
     <entry file="jar:///opt/zulu11.29.11-ca-jdk11.0.2-linux_x64/lib/src.zip!/java.base/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
@@ -389,30 +381,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding>
-            <element signature="e#343#344#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#434#435#0" expanded="true" />
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
-            <element signature="e#596#597#0" expanded="true" />
-            <element signature="e#631#632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Vector2.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/util/Rotation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -427,16 +396,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="909">
-          <caret line="368" column="10" selection-start-line="368" selection-start-column="10" selection-end-line="368" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="519">
@@ -444,70 +403,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="830">
-          <caret line="106" column="30" selection-start-line="106" selection-start-column="30" selection-end-line="106" selection-end-column="30" />
-          <folding>
-            <element signature="docComment;method#addCircuitNode#0;class#CircuitContainer#0" />
-            <element signature="docComment;method#removeCircuitNode#0;class#CircuitContainer#0" />
-            <element signature="docComment;method#addCircuitLink#0;class#CircuitContainer#0" />
-            <element signature="method#addCircuitLink#0;class#CircuitContainer#0" />
-            <element signature="docComment;method#removeCircuitLink#0;class#CircuitContainer#0" />
-            <element signature="method#removeCircuitLink#0;class#CircuitContainer#0" />
-            <element signature="e#1483#1632#1" />
-            <element signature="e#2043#2044#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
-            <element signature="e#2140#2141#0" expanded="true" />
-            <element signature="e#2125#2126#0" expanded="true" />
-            <element signature="e#2149#2150#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2203#2204#0" expanded="true" />
-            <element signature="e#2280#2281#0" expanded="true" />
-            <element signature="e#2306#2307#0" expanded="true" />
-            <element signature="e#2340#2341#0" expanded="true" />
-            <element signature="e#2357#2358#0" expanded="true" />
-            <element signature="docComment;method#mergeConcurrentSegments#0;class#CircuitContainer#0" />
-            <element signature="method#mergeConcurrentSegments#0;class#CircuitContainer#0" />
-            <element signature="e#2398#2755#1" />
-            <element signature="e#2522#2751#1" />
-            <element signature="e#2660#2746#1" />
-            <element signature="method#subdivideSegmentAtIntersections#0;class#CircuitContainer#0" />
-            <element signature="e#3166#3577#1" />
-            <element signature="e#3255#3573#1" />
-            <element signature="e#3370#3568#1" />
-            <element signature="e#3377#3394#0" />
-            <element signature="e#3492#3562#1" />
-            <element signature="e#3823#3928#1" />
-            <element signature="method#subdivideAtPoint#0;class#CircuitContainer#0" />
-            <element signature="e#4122#4399#1" />
-            <element signature="e#4211#4395#1" />
-            <element signature="e#4296#4390#1" />
-            <element signature="e#4303#4322#0" />
-            <element signature="e#4426#4625#1" />
-            <element signature="method#mergeAtPoint#0;class#CircuitContainer#0" />
-            <element signature="e#4851#5167#1" />
-            <element signature="e#4890#5034#1" />
-            <element signature="e#4978#5029#1" />
-            <element signature="e#5040#5163#1" />
-            <element signature="e#5123#5158#1" />
-            <element signature="e#5217#5452#1" />
-          </folding>
+        <state relative-caret-position="525">
+          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+        <state relative-caret-position="30">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitLink.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+        <state relative-caret-position="414">
+          <caret line="362" column="5" lean-forward="true" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+          <folding>
+            <element signature="docComment;method#addCircuitNode#0;class#CircuitContainer#0" />
+            <element signature="docComment;method#removeCircuitNode#0;class#CircuitContainer#0" />
+            <element signature="docComment;method#addCircuitLink#0;class#CircuitContainer#0" />
+            <element signature="docComment;method#removeCircuitLink#0;class#CircuitContainer#0" />
+            <element signature="method#subdivideSegmentAtIntersections#0;class#CircuitContainer#0" />
+            <element signature="method#subdivideAtPoint#0;class#CircuitContainer#0" />
+            <element signature="method#mergeAtPoint#0;class#CircuitContainer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
         </state>
       </provider>
     </entry>
