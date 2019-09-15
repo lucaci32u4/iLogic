@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CircuitContainerTest {
 
 	@Test @Order(1)
-	void AddCircuitLink() {
+	void AddLinks() {
 		CircuitContainer container = new CircuitContainer();
 		/* Single */
 		CircuitLink l1 = new CircuitLink(3, 7, true, 0);
@@ -237,7 +237,7 @@ class CircuitContainerTest {
 	}
 
 	@Test @Order(2)
-	void RemoveCircuitLink() {
+	void RemoveLinks() {
 		CircuitContainer container = new CircuitContainer();
 		CircuitLink vbar1 = new CircuitLink(0, 7, true, 0);
 		CircuitLink vbar2 = new CircuitLink(0, 7, true, 4);
@@ -303,7 +303,7 @@ class CircuitContainerTest {
 	}
 
 	@Test @Order(3)
-	void AddCircuitNode() {
+	void ComponentsLinks() {
 		CircuitContainer container = new CircuitContainer();
 		CircuitNode[] n = new CircuitNode[4];
 		for (int i = 0; i < n.length; i++) { n[i] = new NodeA(1); }

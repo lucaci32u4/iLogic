@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af7a3bab-b7dc-4689-8052-955e8046f96b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/WiringHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/WiringHelperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,14 +20,58 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1515">
+              <caret line="116" column="66" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/WiringHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+              <folding>
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#897#898#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/WiringHelperTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -63,9 +106,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitPin.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitNode.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java" />
         <option value="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/WiringHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/WiringHelperTest.java" />
       </list>
     </option>
   </component>
@@ -103,6 +148,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,7 +244,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -207,12 +252,12 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.lucaci32u4.util" />
       <recent name="com.lucaci32u4.core" />
+      <recent name="com.lucaci32u4.util" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -230,8 +275,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="CircuitContainerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.WiringHelperTest">
+    <configuration name="CircuitContainerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="isignal" />
       <extension name="coverage">
         <pattern>
@@ -246,11 +291,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.CircuitContainerTest" />
-      </list>
-    </recent_temporary>
+    <configuration name="WiringHelperTest" type="JUnit" factoryName="JUnit">
+      <module name="isignal" />
+      <option name="PACKAGE_NAME" value="com.lucaci32u4.core" />
+      <option name="MAIN_CLASS_NAME" value="com.lucaci32u4.core.WiringHelperTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.WiringHelperTest" />
+      <item itemvalue="JUnit.CircuitContainerTest" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -263,18 +318,24 @@
       <option name="presentableId" value="Default" />
       <updated>1556467455960</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added maven surefire plugin for JUnit tests">
+      <created>1568054909029</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1568054909029</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Corrected tests for nodes">
+      <created>1568055041232</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568055041232</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 27m 11s.xml">
-      <configuration name="CircuitContainerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 28m 12s.xml">
-      <configuration name="CircuitContainerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 28m 44s.xml">
-      <configuration name="CircuitContainerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CircuitContainerTest - 2019.09.09 at 09h 29m 08s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
@@ -296,11 +357,29 @@
     <history-entry file="CircuitContainerTest - 2019.09.09 at 14h 39m 04s.xml">
       <configuration name="CircuitContainerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Unnamed - 2019.09.09 at 17h 06m 49s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WiringHelperTest - 2019.09.09 at 17h 11m 43s.xml">
+      <configuration name="WiringHelperTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WiringHelperTest - 2019.09.09 at 17h 38m 27s.xml">
+      <configuration name="WiringHelperTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18856838" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17788461" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -309,14 +388,14 @@
       <window_info id="Image Layers" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32944915" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.25717214" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32944915" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" weight="0.25717214" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44159836" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32991803" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32991803" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053364" side_tool="true" weight="0.25813222" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -329,17 +408,10 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
     </layout>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java</url>
-          <line>32</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added maven surefire plugin for JUnit tests" />
+    <MESSAGE value="Corrected tests for nodes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected tests for nodes" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -417,38 +489,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="116" column="66" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/CircuitContainerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="362" column="5" lean-forward="true" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+        <state relative-caret-position="105">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/WiringHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+          <folding>
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com.lucaci32u4/core/WiringHelperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lucaci32u4/core/CircuitContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding>
-            <element signature="docComment;method#addCircuitNode#0;class#CircuitContainer#0" />
-            <element signature="docComment;method#removeCircuitNode#0;class#CircuitContainer#0" />
-            <element signature="docComment;method#addCircuitLink#0;class#CircuitContainer#0" />
-            <element signature="docComment;method#removeCircuitLink#0;class#CircuitContainer#0" />
-            <element signature="method#subdivideSegmentAtIntersections#0;class#CircuitContainer#0" />
-            <element signature="method#subdivideAtPoint#0;class#CircuitContainer#0" />
-            <element signature="method#mergeAtPoint#0;class#CircuitContainer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

@@ -9,7 +9,6 @@ import java.util.Comparator;
 public class CircuitContainer {
 	private CircuitData data = new CircuitData();
 
-
 	/**
 	 * Add a new node to the circuit
 	 * @param node the node
