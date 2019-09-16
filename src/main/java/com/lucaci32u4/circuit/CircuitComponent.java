@@ -4,14 +4,14 @@ import com.lucaci32u4.util.Rotation;
 
 
 
-public class CircuitNode {
+public class CircuitComponent {
 
     private int posX = 0, posY = 0;
     private int width = 0, height = 0;
     private CircuitPin[] pins;
     private Rotation rot = Rotation.R0;
 
-    protected void initNode(CircuitPin[] pinsInfo, int width, int height) {
+    protected void initComponent(CircuitPin[] pinsInfo, int width, int height) {
         pins = pinsInfo.clone();
         this.width = width;
         this.height = height;

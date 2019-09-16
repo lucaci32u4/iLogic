@@ -10,27 +10,27 @@ public class CircuitContainer {
 	private CircuitData data = new CircuitData();
 
 	/**
-	 * Add a new node to the circuit
-	 * @param node the node
+	 * Add a new component to the circuit
+	 * @param component the component
 	 */
-	public void addCircuitNode(CircuitNode node, Rotation rot, int x, int y) {
-		data.addNode(node);
-		node.setPosition(x, y);
-		node.setRotation(rot);
-		for (CircuitPin pin : node.getPins()) {
+	public void addCircuitComponent(CircuitComponent component, Rotation rot, int x, int y) {
+		data.addComponent(component);
+		component.setPosition(x, y);
+		component.setRotation(rot);
+		for (CircuitPin pin : component.getPins()) {
 			subdivideAtPoint(pin.worldX, pin.worldY, false);
 			subdivideAtPoint(pin.worldY, pin.worldX, true);
 		}
 	}
 
 	/**
-	 * Remove a node
-	 * @param node the node
+	 * Remove a component
+	 * @param component the component
 	 */
-	public void removeCircuitNode(CircuitNode node) {
-		boolean found = data.removeNode(node);
+	public void removeCircuitComponent(CircuitComponent component) {
+		boolean found = data.removeComponent(component);
 		if (found) {
-			for (CircuitPin pin : node.getPins()) {
+			for (CircuitPin pin : component.getPins()) {
 				mergeAtPoint(pin.worldX, pin.worldY, false);
 				mergeAtPoint(pin.worldY, pin.worldX, true);
 			}
@@ -71,12 +71,12 @@ public class CircuitContainer {
 	}
 
 	/**
-	 * Check if the container contains a node
-	 * @param node the node to be checked
-	 * @return whether the container has the node
+	 * Check if the container contains a component
+	 * @param component the component to be checked
+	 * @return whether the container has the component
 	 */
-	public boolean contains(CircuitNode node) {
-		return data.contains(node);
+	public boolean contains(CircuitComponent component) {
+		return data.contains(component);
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class CircuitContainer {
 	}
 
 	/**
-	 * Removes all nodes
+	 * Removes all components
 	 */
-	public void clearNodes() {
-		data.clearNodes();
+	public void clearComponents() {
+		data.clearComponents();
 	}
 
 	/**
@@ -102,11 +102,11 @@ public class CircuitContainer {
 	}
 
 	/**
-	 * Get the number of nodes
-	 * @return nubmer of nodes
+	 * Get the number of components
+	 * @return nubmer of components
 	 */
-	public int countNodes() {
-		return data.countNodes();
+	public int countComponents() {
+		return data.countComponents();
 	}
 
 	/**
@@ -159,8 +159,8 @@ public class CircuitContainer {
 				}
 			}
 		}
-		for (CircuitNode node : data.iterNodes()) {
-			for (CircuitPin pin : node.getPins()) {
+		for (CircuitComponent component : data.iterComponents()) {
+			for (CircuitPin pin : component.getPins()) {
 				if (p1 < pin.worldX && pin.worldX < p2 && lincol == pin.worldY) {
 					if (!ptsSubdivide.contains(pin.worldY)) ptsSubdivide.add(pin.worldX);
 				}

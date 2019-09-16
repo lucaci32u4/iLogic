@@ -5,38 +5,38 @@ import java.util.ArrayList;
 public class CircuitData {
 
 	private final ArrayList<CircuitLink> links = new ArrayList<>();
-	private final ArrayList<CircuitNode> nodes = new ArrayList<>();
+	private final ArrayList<CircuitComponent> components = new ArrayList<>();
 
 	public Iterable<CircuitLink> iterLinks() {
 		return links;
 	}
 
-	public Iterable<CircuitNode> iterNodes() {
-		return nodes;
+	public Iterable<CircuitComponent> iterComponents() {
+		return components;
 	}
 
 	public int countLinks() {
 		return links.size();
 	}
 
-	public int countNodes() {
-		return nodes.size();
+	public int countComponents() {
+		return components.size();
 	}
 
 	public boolean contains(CircuitLink link) {
 		return links.contains(link);
 	}
 
-	public boolean contains(CircuitNode node) {
-		return nodes.contains(node);
+	public boolean contains(CircuitComponent component) {
+		return components.contains(component);
 	}
 
 	public void clearLinks() {
 		links.clear();
 	}
 
-	public void clearNodes() {
-		nodes.clear();
+	public void clearComponents() {
+		components.clear();
 	}
 
 	public void addLink(CircuitLink link) {
@@ -55,11 +55,11 @@ public class CircuitData {
 		links.forEach(this.links::remove);
 	}
 
-	public void addNode(CircuitNode node) {
-		nodes.add(node);
+	public void addComponent(CircuitComponent component) {
+		components.add(component);
 	}
 
-	public boolean removeNode(CircuitNode node) {
-		return nodes.remove(node);
+	public boolean removeComponent(CircuitComponent component) {
+		return components.remove(component);
 	}
 }

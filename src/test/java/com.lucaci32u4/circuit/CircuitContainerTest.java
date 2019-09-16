@@ -305,9 +305,9 @@ class CircuitContainerTest {
 	@Test @Order(3)
 	void ComponentsLinks() {
 		CircuitContainer container = new CircuitContainer();
-		CircuitNode[] n = new CircuitNode[4];
-		for (int i = 0; i < n.length; i++) { n[i] = new NodeA(1); }
-		for (int i = 0; i < n.length; i++) { container.addCircuitNode(n[i], Rotation.from(90 * i) ,10 * i, 5); }
+		CircuitComponent[] n = new CircuitComponent[4];
+		for (int i = 0; i < n.length; i++) { n[i] = new ComponentA(1); }
+		for (int i = 0; i < n.length; i++) { container.addCircuitComponent(n[i], Rotation.from(90 * i) ,10 * i, 5); }
 		for (int i = 0; i < n.length; i++) {
 			assertEquals(10 * i, n[i].getPositionX());
 			assertEquals(5, n[i].getPositionY());
@@ -321,10 +321,10 @@ class CircuitContainerTest {
 		assertEquals(6, n[2].getPins()[0].worldY);
 		assertEquals(5, n[3].getPins()[0].worldY);
 		for (int i = 0; i < n.length; i++) { assertTrue(container.contains(n[i])); }
-		for (int i = 0; i < n.length; i++) { container.removeCircuitNode(n[i]); }
+		for (int i = 0; i < n.length; i++) { container.removeCircuitComponent(n[i]); }
 		for (int i = 0; i < n.length; i++) { assertFalse(container.contains(n[i])); }
-		assertEquals(0, container.countNodes());
-		for (int i = 0; i < n.length; i++) { container.addCircuitNode(n[i], Rotation.from(90 * i) ,10 * i, 5); }
+		assertEquals(0, container.countComponents());
+		for (int i = 0; i < n.length; i++) { container.addCircuitComponent(n[i], Rotation.from(90 * i) ,10 * i, 5); }
 		CircuitLink cl1 = new CircuitLink(0, 4, false, 6);
 		CircuitLink cl2 = new CircuitLink(7, 9, true, 22);
 		container.addCircuitLink(cl1);
@@ -346,11 +346,11 @@ class CircuitContainerTest {
 		assertTrue(container.contains(new CircuitLink(8, 11, false, 7)));
 		assertTrue(container.contains(new CircuitLink(11, 16, false, 7)));
 		assertEquals(4, container.countLinks());
-		for (int i = 0; i < n.length; i++) { container.removeCircuitNode(n[i]); }
+		for (int i = 0; i < n.length; i++) { container.removeCircuitComponent(n[i]); }
 		assertTrue(container.contains(cl1));
 		assertTrue(container.contains(cl2));
 		assertEquals(2, container.countLinks());
-		for (int i = 0; i < n.length; i++) { container.addCircuitNode(n[i], Rotation.from(90 * i) ,10 * i, 5); }
+		for (int i = 0; i < n.length; i++) { container.addCircuitComponent(n[i], Rotation.from(90 * i) ,10 * i, 5); }
 		assertFalse(container.contains(cl1));
 		assertFalse(container.contains(cl2));
 		assertTrue(container.contains(new CircuitLink(5, 6, true, 0)));
@@ -359,16 +359,16 @@ class CircuitContainerTest {
 		assertTrue(container.contains(new CircuitLink(11, 16, false, 7)));
 		assertEquals(4, container.countLinks());
 		container.clearLinks();
-		container.clearNodes();
+		container.clearComponents();
 	}
 }
 
 /**
- * Basic 2x2 node with one pin on the left
+ * Basic 2x2 component with one pin on the left
  */
-class NodeA extends CircuitNode {
-	NodeA(int bitWidth) {
+class ComponentA extends CircuitComponent {
+	ComponentA(int bitWidth) {
 		CircuitPin[] pins = new CircuitPin[] { new CircuitPin(0, 1, bitWidth) };
-		super.initNode(pins, 2, 2);
+		super.initComponent(pins, 2, 2);
 	}
 }
