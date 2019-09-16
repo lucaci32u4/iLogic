@@ -1,4 +1,4 @@
-package com.lucaci32u4.core;
+package com.lucaci32u4.circuit;
 
 public class CircuitLink {
 	private final int p1, p2, lincol;

@@ -1,4 +1,4 @@
-package com.lucaci32u4.core;
+package com.lucaci32u4.circuit;
 
 import java.util.ArrayList;
 

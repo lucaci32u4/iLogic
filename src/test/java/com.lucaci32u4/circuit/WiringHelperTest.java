@@ -1,4 +1,4 @@
-package com.lucaci32u4.core;
+package com.lucaci32u4.circuit;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
